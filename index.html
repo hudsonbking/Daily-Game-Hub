@@ -1,1 +1,131 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+  <title>The Daily Duel</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #101c30;
+      color: white;
+      margin: 0;
+      padding: 25px;
+    }
+
+    .container {
+      max-width: 750px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 5px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #b5c6df;
+      margin-bottom: 35px;
+    }
+
+    h2 {
+      margin-top: 30px;
+    }
+
+    .games {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .game {
+      background: #243650;
+      padding: 25px 15px;
+      border-radius: 12px;
+      text-align: center;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    .game:hover {
+      background: #37557b;
+      transform: translateY(-3px);
+    }
+
+    .leaderboard {
+      background: #243650;
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 15px;
+    }
+
+    .player {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px;
+      border-bottom: 1px solid #405570;
+    }
+
+    .player:last-child {
+      border-bottom: none;
+    }
+
+    @media (max-width: 450px) {
+      .games {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <h1>The Daily Duel</h1>
+    <p class="subtitle">
+      Our daily games. One leaderboard.
+    </p>
+
+    <h2>Today's Games</h2>
+
+    <div class="games">
+      <a class="game" href="https://krillion.me/"
+         target="_blank" rel="noopener noreferrer">
+        Krillion
+      </a>
+
+      <a class="game" href="https://maptap.gg/home"
+         target="_blank" rel="noopener noreferrer">
+        MapTap
+      </a>
+
+      <a class="game" href="https://worldle.com/"
+         target="_blank" rel="noopener noreferrer">
+        Worldle
+      </a>
+    </div>
+
+    <h2>Leaderboard</h2>
+
+    <div class="leaderboard">
+      <div class="player">
+        <span>Player 1</span>
+        <span>0 points</span>
+      </div>
+
+      <div class="player">
+        <span>Player 2</span>
+        <span>0 points</span>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
+
