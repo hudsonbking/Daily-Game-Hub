@@ -3,129 +3,1078 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
-  <title>The Daily Duel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101827">
+  <title>Hudson & Noah | Daily Games</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #101c30;
-      color: white;
-      margin: 0;
-      padding: 25px;
+    :root {
+      --bg: #101827;
+      --panel: #192437;
+      --panel2: #202e44;
+      --border: #304058;
+      --text: #f4f6fb;
+      --muted: #a2b0c5;
+      --accent: #e8fb86;
+      --orange: #ffad75;
+      --green: #7be3b2;
     }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.5;
+    }
+
+    button, input, select {
+      font: inherit;
+    }
+
+    button { cursor: pointer; }
 
     .container {
-      max-width: 750px;
+      max-width: 1180px;
       margin: auto;
+      padding: 0 22px;
     }
 
-    h1 {
-      text-align: center;
-      margin-bottom: 5px;
+    .nav {
+      border-bottom: 1px solid var(--border);
     }
 
-    .subtitle {
-      text-align: center;
-      color: #b5c6df;
-      margin-bottom: 35px;
-    }
-
-    h2 {
-      margin-top: 30px;
-    }
-
-    .games {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 18px;
+      padding-bottom: 18px;
       gap: 15px;
     }
 
-    .game {
-      background: #243650;
-      padding: 25px 15px;
+    .brand {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: -.7px;
+    }
+
+    .brand span { color: var(--accent); }
+
+    .nav-right {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .date-pill {
+      font-size: 12px;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      padding: 8px 12px;
+    }
+
+    .hero {
+      padding: 55px 0 39px;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    }
+
+    h1, h2, h3, p {
+      margin-top: 0;
+    }
+
+    h1, h2, h3 {
+      font-family: "Space Grotesk", sans-serif;
+    }
+
+    h1 {
+      font-size: clamp(40px, 7vw, 76px);
+      letter-spacing: -3px;
+      line-height: 1.04;
+      margin-bottom: 16px;
+    }
+
+    h1 span { color: var(--accent); }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 16px;
+      margin: 0;
+    }
+
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .stat {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 12px 18px;
       border-radius: 12px;
-      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .stat strong {
+      color: var(--text);
+      font-size: 18px;
+      margin-right: 7px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 15px;
+      margin-bottom: 19px;
+    }
+
+    .section-heading h2 {
+      font-size: 24px;
+      letter-spacing: -.8px;
+      margin: 0;
+    }
+
+    .section-heading p {
+      margin: 5px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 15px;
+    }
+
+    .game-card {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
       text-decoration: none;
       color: white;
-      font-weight: bold;
-      transition: 0.2s;
+      min-height: 245px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.17);
+      padding: 22px;
+      transition: transform .2s, box-shadow .2s;
     }
 
-    .game:hover {
-      background: #37557b;
-      transform: translateY(-3px);
+    .game-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 35px rgba(0,0,0,.22);
     }
 
-    .leaderboard {
-      background: #243650;
-      border-radius: 12px;
-      padding: 20px;
-      margin-top: 15px;
+    .game-card::before {
+      content: "";
+      position: absolute;
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.09);
+      top: -85px;
+      right: -75px;
     }
 
-    .player {
+    .game-card::after {
+      content: "";
+      position: absolute;
+      width: 110px;
+      height: 110px;
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 50%;
+      top: 15px;
+      right: -45px;
+    }
+
+    .krillion { background: linear-gradient(135deg,#173a77,#3177cf); }
+    .maptap { background: linear-gradient(135deg,#1d6055,#31a38a); }
+    .hooked { background: linear-gradient(135deg,#9b3942,#e77a67); }
+    .connections { background: linear-gradient(135deg,#51498b,#9681c5); }
+    .farflung { background: linear-gradient(135deg,#80502b,#d99b47); }
+    .kabloom { background: linear-gradient(135deg,#643b91,#b36cdd); }
+    .globle { background: linear-gradient(135deg,#1f626e,#4eb6c6); }
+
+    .game-logo {
       display: flex;
-      justify-content: space-between;
-      padding: 12px;
-      border-bottom: 1px solid #405570;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto 17px;
+      width: 76px;
+      height: 76px;
+      background: rgba(255,255,255,.94);
+      border-radius: 18px;
+      padding: 13px;
+      box-shadow: 0 6px 24px rgba(0,0,0,.13);
     }
 
-    .player:last-child {
-      border-bottom: none;
+    .game-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
 
-    @media (max-width: 450px) {
-      .games {
-        grid-template-columns: 1fr;
+    .logo-fallback {
+      display: none;
+      font-weight: 800;
+      color: #182237;
+      font-size: 25px;
+    }
+
+    .game-title {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      font-size: 23px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .game-description {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      color: rgba(255,255,255,.86);
+      font-size: 13px;
+      margin-bottom: 19px;
+    }
+
+    .play-link {
+      position: relative;
+      z-index: 1;
+      margin-top: auto;
+      align-self: center;
+      background: rgba(255,255,255,.16);
+      border: 1px solid rgba(255,255,255,.23);
+      padding: 9px 17px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .leaderboard-section {
+      padding-top: 53px;
+      padding-bottom: 70px;
+    }
+
+    .board-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 24px;
+    }
+
+    .panel h3 {
+      font-size: 19px;
+      margin-bottom: 6px;
+    }
+
+    .subtext {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .field-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      display: block;
+      margin: 14px 0 8px;
+    }
+
+    .player-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .player-btn {
+      padding: 13px 10px;
+      background: var(--panel2);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      font-weight: 700;
+    }
+
+    .player-btn.active {
+      background: var(--accent);
+      color: #14201a;
+      border-color: var(--accent);
+    }
+
+    input, select {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 13px 14px;
+      color: var(--text);
+      width: 100%;
+      outline: none;
+    }
+
+    input:focus, select:focus {
+      border-color: var(--accent);
+    }
+
+    .submit {
+      background: var(--accent);
+      border: 0;
+      color: #17221a;
+      border-radius: 10px;
+      padding: 14px;
+      font-weight: 800;
+      width: 100%;
+      margin-top: 20px;
+      transition: filter .2s;
+    }
+
+    .submit:hover { filter: brightness(.92); }
+
+    .feedback {
+      margin-top: 13px;
+      font-size: 13px;
+      color: var(--green);
+      min-height: 20px;
+    }
+
+    .overall {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 21px;
+    }
+
+    .person {
+      background: var(--panel2);
+      border: 1px solid var(--border);
+      padding: 17px;
+      border-radius: 12px;
+    }
+
+    .person-name {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .person-score {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 36px;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-top: 5px;
+    }
+
+    .person-score small {
+      font-size: 12px;
+      font-family: "DM Sans", sans-serif;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .board-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    .board-table th {
+      text-align: left;
+      color: var(--muted);
+      padding: 10px 7px;
+      font-weight: 600;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .board-table td {
+      padding: 12px 7px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .board-table tr:last-child td { border-bottom: 0; }
+
+    .winner {
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    .pending { color: var(--muted); }
+
+    .board-status {
+      margin-top: 18px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .footer {
+      text-align: center;
+      padding: 25px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      font-size: 12px;
+    }
+
+    @media(max-width:850px) {
+      .board-layout { grid-template-columns: 1fr; }
+      .games-grid { grid-template-columns: repeat(2,1fr); }
+    }
+
+    @media(max-width:540px) {
+      .hero { padding-top: 38px; }
+      h1 { letter-spacing: -2px; }
+      .games-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+
+      .game-card {
+        min-height: 217px;
+        padding: 14px 10px;
       }
+
+      .game-logo {
+        width: 62px;
+        height: 62px;
+        margin-bottom: 13px;
+      }
+
+      .game-title { font-size: 18px; }
+      .game-description { font-size: 11px; }
+      .play-link { font-size: 11px; }
+      .panel { padding: 17px; }
+      .date-pill { display: none; }
+      .board-table { font-size: 11px; }
+      .board-table th, .board-table td { padding: 11px 4px; }
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
 
-    <h1>The Daily Duel</h1>
-    <p class="subtitle">
-      Our daily games. One leaderboard.
-    </p>
-
-    <h2>Today's Games</h2>
-
-    <div class="games">
-      <a class="game" href="https://krillion.me/"
-         target="_blank" rel="noopener noreferrer">
-        Krillion
-      </a>
-
-      <a class="game" href="https://maptap.gg/home"
-         target="_blank" rel="noopener noreferrer">
-        MapTap
-      </a>
-
-      <a class="game" href="https://worldle.com/"
-         target="_blank" rel="noopener noreferrer">
-        Worldle
-      </a>
-    </div>
-
-    <h2>Leaderboard</h2>
-
-    <div class="leaderboard">
-      <div class="player">
-        <span>Player 1</span>
-        <span>0 points</span>
-      </div>
-
-      <div class="player">
-        <span>Player 2</span>
-        <span>0 points</span>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">H<span>&</span>N / DAILY</div>
+      <div class="nav-right">
+        <span class="date-pill" id="datePill"></span>
+        <span style="font-size:12px;color:var(--accent)">● Game day</span>
       </div>
     </div>
+  </nav>
 
-  </div>
+  <main class="container">
+
+    <header class="hero">
+      <div class="eyebrow">THE DAILY LINEUP</div>
+      <h1>Hudson <span>vs.</span> Noah.</h1>
+      <p>Seven games. Two players. One daily winner.</p>
+
+      <div class="hero-stats">
+        <div class="stat"><strong>07</strong> Daily games</div>
+        <div class="stat"><strong>02</strong> Players</div>
+        <div class="stat"><strong id="completedCount">0/7</strong> Games decided</div>
+      </div>
+    </header>
+
+    <section>
+      <div class="section-heading">
+        <div>
+          <h2>Today's games</h2>
+          <p>Pick a game and get to it.</p>
+        </div>
+      </div>
+
+      <div class="games-grid" id="gamesGrid"></div>
+    </section>
+
+    <section class="leaderboard-section" id="leaderboard">
+
+      <div class="section-heading">
+        <div>
+          <h2>The scoreboard</h2>
+          <p>Enter your score. See who's ahead.</p>
+        </div>
+      </div>
+
+      <div class="board-layout">
+
+        <div class="panel">
+          <h3>Log your score</h3>
+          <p class="subtext">
+            One score per game, per day.
+            Submit again to update it.
+          </p>
+
+          <label class="field-label">WHO'S PLAYING?</label>
+          <div class="player-options">
+            <button type="button" class="player-btn" id="hudsonBtn">
+              Hudson
+            </button>
+            <button type="button" class="player-btn" id="noahBtn">
+              Noah
+            </button>
+          </div>
+
+          <label class="field-label" for="gameSelect">GAME</label>
+          <select id="gameSelect"></select>
+
+          <label class="field-label" for="scoreInput">YOUR SCORE</label>
+          <input
+            id="scoreInput"
+            type="number"
+            step="any"
+            min="0"
+            placeholder="Enter your score"
+          >
+
+          <button class="submit" id="submitBtn">
+            Save score
+          </button>
+
+          <div class="feedback" id="feedback" role="status"></div>
+        </div>
+
+        <div class="panel">
+
+          <h3>Today's standings</h3>
+          <p class="subtext" id="boardDate"></p>
+
+          <div class="overall">
+            <div class="person">
+              <div class="person-name">HUDSON</div>
+              <div class="person-score">
+                <span id="hudsonWins">0</span>
+                <small>wins</small>
+              </div>
+            </div>
+
+            <div class="person">
+              <div class="person-name">NOAH</div>
+              <div class="person-score">
+                <span id="noahWins">0</span>
+                <small>wins</small>
+              </div>
+            </div>
+          </div>
+
+          <table class="board-table">
+            <thead>
+              <tr>
+                <th>Game</th>
+                <th>Hudson</th>
+                <th>Noah</th>
+                <th>Winner</th>
+              </tr>
+            </thead>
+            <tbody id="scoreRows"></tbody>
+          </table>
+
+          <div class="board-status" id="syncStatus">
+            Loading scores...
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    Hudson King × Noah Bonn · Daily Games
+  </footer>
+
+  <script type="module">
+    import { initializeApp } from
+      "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+
+    import {
+      getAuth,
+      signInAnonymously
+    } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+
+    import {
+      getFirestore,
+      collection,
+      doc,
+      setDoc,
+      onSnapshot,
+      serverTimestamp
+    } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
+
+    /*
+     * FIREBASE SETUP
+     *
+     * Leave these empty to use local demo mode.
+     *
+     * To share a live leaderboard between devices,
+     * replace the configuration below with the
+     * configuration from your Firebase project.
+     *
+     * Enable:
+     * 1. Firebase Authentication -> Anonymous
+     * 2. Firestore Database
+     */
+
+    const firebaseConfig = {
+      apiKey: "",
+      authDomain: "",
+      projectId: "",
+      storageBucket: "",
+      messagingSenderId: "",
+      appId: ""
+    };
+
+    /*
+     * GAME SETTINGS
+     *
+     * "lower" = lowest number wins
+     * "higher" = highest number wins
+     *
+     * Change the scoring direction for any game
+     * if its score works differently.
+     *
+     * Scores must be numeric for automatic comparison.
+     */
+
+    const games = [
+      {
+        id: "krillion",
+        name: "Krillion",
+        description: "Guess the mystery country as fast as you can.",
+        url: "https://krillion.io",
+        domain: "krillion.io",
+        direction: "lower",
+        short: "K"
+      },
+      {
+        id: "maptap",
+        name: "MapTap",
+        description: "Test how well you know the map.",
+        url: "https://maptap.gg",
+        domain: "maptap.gg",
+        direction: "lower",
+        short: "M"
+      },
+      {
+        id: "hooked",
+        name: "Hooked",
+        description: "Figure out the daily hidden connection.",
+        url: "https://hookeddailygame.com/",
+        domain: "hookeddailygame.com",
+        direction: "lower",
+        short: "H"
+      },
+      {
+        id: "connections",
+        name: "Connections",
+        description: "Group the words into the right categories.",
+        url: "https://www.nytimes.com/games/connections",
+        domain: "nytimes.com",
+        direction: "lower",
+        short: "C"
+      },
+      {
+        id: "farflung",
+        name: "Farflung",
+        description: "Guess the place from almost nothing.",
+        url: "https://farflung.game",
+        domain: "farflung.game",
+        direction: "lower",
+        short: "F"
+      },
+      {
+        id: "kabloom",
+        name: "Kabloom",
+        description: "Build the right word from the clues.",
+        url: "https://kabloom.io",
+        domain: "kabloom.io",
+        direction: "higher",
+        short: "K"
+      },
+      {
+        id: "globle",
+        name: "Globle",
+        description: "Find the mystery country using heat clues.",
+        url: "https://globle-game.com/game",
+        domain: "globle-game.com",
+        direction: "lower",
+        short: "G"
+      }
+    ];
+
+    const $ = id => document.getElementById(id);
+
+    let selectedPlayer = localStorage.getItem("hn_player") || "";
+    let scores = {};
+    let db = null;
+    let currentUser = null;
+    let unsubscribe = null;
+    let live = false;
+    let activeDate = getDateKey();
+
+    function getDateKey() {
+      const parts = new Intl.DateTimeFormat("en-US", {
+        timeZone: "America/New_York",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit"
+      }).formatToParts(new Date());
+
+      const part = type => parts.find(p => p.type === type).value;
+
+      return `${part("year")}-${part("month")}-${part("day")}`;
+    }
+
+    function getDisplayDate() {
+      return new Intl.DateTimeFormat("en-US", {
+        timeZone: "America/New_York",
+        weekday: "long",
+        month: "long",
+        day: "numeric"
+      }).format(new Date());
+    }
+
+    function renderGames() {
+      $("gamesGrid").innerHTML = games.map(game => `
+        <a
+          class="game-card ${game.id}"
+          href="${game.url}"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Play ${game.name}"
+        >
+          <div class="game-logo">
+            <img
+              src="https://www.google.com/s2/favicons?domain=${game.domain}&sz=128"
+              alt="${game.name} logo"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+            >
+            <span class="logo-fallback">${game.short}</span>
+          </div>
+
+          <div class="game-title">${game.name}</div>
+          <div class="game-description">${game.description}</div>
+          <div class="play-link">Play game ↗</div>
+        </a>
+      `).join("");
+
+      $("gameSelect").innerHTML = `
+        <option value="">Choose a game</option>
+        ${games.map(game => `
+          <option value="${game.id}">${game.name}</option>
+        `).join("")}
+      `;
+    }
+
+    function selectPlayer(name) {
+      selectedPlayer = name;
+      localStorage.setItem("hn_player", name);
+
+      $("hudsonBtn").classList.toggle("active", name === "Hudson");
+      $("noahBtn").classList.toggle("active", name === "Noah");
+
+      loadExistingScore();
+    }
+
+    function loadExistingScore() {
+      const gameId = $("gameSelect").value;
+
+      if (!selectedPlayer || !gameId) {
+        $("scoreInput").value = "";
+        return;
+      }
+
+      const entry = scores[gameId]?.[selectedPlayer];
+      $("scoreInput").value =
+        entry !== undefined ? entry : "";
+    }
+
+    function getWinner(game) {
+      const entries = scores[game.id] || {};
+      const hudson = entries.Hudson;
+      const noah = entries.Noah;
+
+      if (hudson === undefined || noah === undefined) {
+        return null;
+      }
+
+      if (hudson === noah) return "Tie";
+
+      const hudsonWon = game.direction === "higher"
+        ? hudson > noah
+        : hudson < noah;
+
+      return hudsonWon ? "Hudson" : "Noah";
+    }
+
+    function renderLeaderboard() {
+      let hudsonWins = 0;
+      let noahWins = 0;
+      let decided = 0;
+
+      $("scoreRows").innerHTML = games.map(game => {
+        const entry = scores[game.id] || {};
+        const h = entry.Hudson;
+        const n = entry.Noah;
+        const winner = getWinner(game);
+
+        if (winner !== null) decided++;
+        if (winner === "Hudson") hudsonWins++;
+        if (winner === "Noah") noahWins++;
+
+        const format = value =>
+          value === undefined
+            ? '<span class="pending">—</span>'
+            : String(value);
+
+        return `
+          <tr>
+            <td><strong>${game.name}</strong></td>
+            <td class="${winner === "Hudson" ? "winner" : ""}">
+              ${format(h)}
+            </td>
+            <td class="${winner === "Noah" ? "winner" : ""}">
+              ${format(n)}
+            </td>
+            <td class="${winner && winner !== "Tie" ? "winner" : "pending"}">
+              ${winner || "Waiting"}
+            </td>
+          </tr>
+        `;
+      }).join("");
+
+      $("hudsonWins").textContent = hudsonWins;
+      $("noahWins").textContent = noahWins;
+      $("completedCount").textContent = `${decided}/7`;
+
+      loadExistingScore();
+    }
+
+    function localStorageKey() {
+      return `hn_scores_${activeDate}`;
+    }
+
+    function loadLocalScores() {
+      try {
+        scores = JSON.parse(
+          localStorage.getItem(localStorageKey()) || "{}"
+        );
+      } catch {
+        scores = {};
+      }
+      renderLeaderboard();
+    }
+
+    async function saveScore() {
+      const game = $("gameSelect").value;
+      const rawScore = $("scoreInput").value.trim();
+      const feedback = $("feedback");
+
+      feedback.style.color = "var(--orange)";
+
+      if (!selectedPlayer) {
+        feedback.textContent = "Pick Hudson or Noah first.";
+        return;
+      }
+
+      if (!game) {
+        feedback.textContent = "Choose a game first.";
+        return;
+      }
+
+      if (!rawScore || !Number.isFinite(Number(rawScore)) ||
+          Number(rawScore) < 0) {
+        feedback.textContent = "Enter a valid score.";
+        return;
+      }
+
+      const score = Number(rawScore);
+      const button = $("submitBtn");
+      button.disabled = true;
+      button.textContent = "Saving...";
+
+      try {
+        if (live && db && currentUser) {
+          const recordId = `${game}_${selectedPlayer.toLowerCase()}`;
+
+          await setDoc(
+            doc(db, "dailyScores", activeDate, "entries", recordId),
+            {
+              game,
+              player: selectedPlayer,
+              score,
+              updatedBy: currentUser.uid,
+              updatedAt: serverTimestamp()
+            }
+          );
+        } else {
+          if (!scores[game]) scores[game] = {};
+          scores[game][selectedPlayer] = score;
+
+          localStorage.setItem(
+            localStorageKey(),
+            JSON.stringify(scores)
+          );
+          renderLeaderboard();
+        }
+
+        feedback.style.color = "var(--green)";
+        feedback.textContent = "Score saved!";
+      } catch (error) {
+        console.error(error);
+        feedback.textContent =
+          "Couldn't save score. Check your connection or Firebase setup.";
+      } finally {
+        button.disabled = false;
+        button.textContent = "Save score";
+      }
+    }
+
+    function subscribeToDate() {
+      if (!db) return;
+
+      if (unsubscribe) unsubscribe();
+
+      const entries = collection(
+        db,
+        "dailyScores",
+        activeDate,
+        "entries"
+      );
+
+      unsubscribe = onSnapshot(entries, snapshot => {
+        const updated = {};
+
+        snapshot.forEach(record => {
+          const value = record.data();
+          if (
+            games.some(g => g.id === value.game) &&
+            ["Hudson", "Noah"].includes(value.player) &&
+            typeof value.score === "number" &&
+            Number.isFinite(value.score)
+          ) {
+            if (!updated[value.game]) updated[value.game] = {};
+            updated[value.game][value.player] = value.score;
+          }
+        });
+
+        scores = updated;
+        renderLeaderboard();
+
+        $("syncStatus").textContent =
+          "● Live leaderboard · Scores update automatically";
+      }, error => {
+        console.error(error);
+        $("syncStatus").textContent =
+          "Live sync error · Check Firebase permissions";
+      });
+    }
+
+    async function initializeLeaderboard() {
+      const configured =
+        firebaseConfig.apiKey &&
+        firebaseConfig.projectId &&
+        firebaseConfig.appId;
+
+      if (!configured) {
+        live = false;
+        loadLocalScores();
+        $("syncStatus").textContent =
+          "Demo mode · Scores are saved on this device only";
+        return;
+      }
+
+      try {
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const result = await signInAnonymously(auth);
+
+        currentUser = result.user;
+        db = getFirestore(app);
+        live = true;
+
+        subscribeToDate();
+      } catch (error) {
+        console.error(error);
+        live = false;
+        loadLocalScores();
+        $("syncStatus").textContent =
+          "Firebase unavailable · Local demo mode";
+      }
+    }
+
+    function refreshDate() {
+      $("datePill").textContent = getDisplayDate();
+      $("boardDate").textContent = getDisplayDate();
+
+      const newDate = getDateKey();
+
+      if (newDate !== activeDate) {
+        activeDate = newDate;
+        scores = {};
+
+        if (live) {
+          subscribeToDate();
+        } else {
+          loadLocalScores();
+        }
+      }
+    }
+
+    $("hudsonBtn").addEventListener("click", () => {
+      selectPlayer("Hudson");
+    });
+
+    $("noahBtn").addEventListener("click", () => {
+      selectPlayer("Noah");
+    });
+
+    $("gameSelect").addEventListener("change", loadExistingScore);
+
+    $("submitBtn").addEventListener("click", saveScore);
+
+    $("scoreInput").addEventListener("keydown", event => {
+      if (event.key === "Enter") saveScore();
+    });
+
+    renderGames();
+    refreshDate();
+
+    if (selectedPlayer) {
+      selectPlayer(selectedPlayer);
+    }
+
+    renderLeaderboard();
+    initializeLeaderboard();
+
+    // Check for a new game day every minute.
+    setInterval(refreshDate, 60000);
+
+  </script>
 </body>
 </html>
-
