@@ -2,1079 +2,1048 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#101827">
-  <title>Hudson & Noah | Daily Games</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --bg: #101827;
-      --panel: #192437;
-      --panel2: #202e44;
-      --border: #304058;
-      --text: #f4f6fb;
-      --muted: #a2b0c5;
-      --accent: #e8fb86;
-      --orange: #ffad75;
-      --green: #7be3b2;
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: "DM Sans", sans-serif;
-      line-height: 1.5;
-    }
-
-    button, input, select {
-      font: inherit;
-    }
-
-    button { cursor: pointer; }
-
-    .container {
-      max-width: 1180px;
-      margin: auto;
-      padding: 0 22px;
-    }
-
-    .nav {
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: 18px;
-      padding-bottom: 18px;
-      gap: 15px;
-    }
-
-    .brand {
-      font-family: "Space Grotesk", sans-serif;
-      font-weight: 700;
-      font-size: 18px;
-      letter-spacing: -.7px;
-    }
-
-    .brand span { color: var(--accent); }
-
-    .nav-right {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-    }
-
-    .date-pill {
-      font-size: 12px;
-      color: var(--muted);
-      border: 1px solid var(--border);
-      border-radius: 30px;
-      padding: 8px 12px;
-    }
-
-    .hero {
-      padding: 55px 0 39px;
-    }
-
-    .eyebrow {
-      color: var(--accent);
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 15px;
-    }
-
-    h1, h2, h3, p {
-      margin-top: 0;
-    }
-
-    h1, h2, h3 {
-      font-family: "Space Grotesk", sans-serif;
-    }
-
-    h1 {
-      font-size: clamp(40px, 7vw, 76px);
-      letter-spacing: -3px;
-      line-height: 1.04;
-      margin-bottom: 16px;
-    }
-
-    h1 span { color: var(--accent); }
-
-    .hero p {
-      color: var(--muted);
-      font-size: 16px;
-      margin: 0;
-    }
-
-    .hero-stats {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 28px;
-    }
-
-    .stat {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      padding: 12px 18px;
-      border-radius: 12px;
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    .stat strong {
-      color: var(--text);
-      font-size: 18px;
-      margin-right: 7px;
-    }
-
-    .section-heading {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 15px;
-      margin-bottom: 19px;
-    }
-
-    .section-heading h2 {
-      font-size: 24px;
-      letter-spacing: -.8px;
-      margin: 0;
-    }
-
-    .section-heading p {
-      margin: 5px 0 0;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .games-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 15px;
-    }
-
-    .game-card {
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      text-decoration: none;
-      color: white;
-      min-height: 245px;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,.17);
-      padding: 22px;
-      transition: transform .2s, box-shadow .2s;
-    }
-
-    .game-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 16px 35px rgba(0,0,0,.22);
-    }
-
-    .game-card::before {
-      content: "";
-      position: absolute;
-      width: 170px;
-      height: 170px;
-      border-radius: 50%;
-      background: rgba(255,255,255,.09);
-      top: -85px;
-      right: -75px;
-    }
-
-    .game-card::after {
-      content: "";
-      position: absolute;
-      width: 110px;
-      height: 110px;
-      border: 1px solid rgba(255,255,255,.13);
-      border-radius: 50%;
-      top: 15px;
-      right: -45px;
-    }
-
-    .krillion { background: linear-gradient(135deg,#173a77,#3177cf); }
-    .maptap { background: linear-gradient(135deg,#1d6055,#31a38a); }
-    .hooked { background: linear-gradient(135deg,#9b3942,#e77a67); }
-    .connections { background: linear-gradient(135deg,#51498b,#9681c5); }
-    .farflung { background: linear-gradient(135deg,#80502b,#d99b47); }
-    .kabloom { background: linear-gradient(135deg,#643b91,#b36cdd); }
-    .globle { background: linear-gradient(135deg,#1f626e,#4eb6c6); }
-
-    .game-logo {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 0 auto 17px;
-      width: 76px;
-      height: 76px;
-      background: rgba(255,255,255,.94);
-      border-radius: 18px;
-      padding: 13px;
-      box-shadow: 0 6px 24px rgba(0,0,0,.13);
-    }
-
-    .game-logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    .logo-fallback {
-      display: none;
-      font-weight: 800;
-      color: #182237;
-      font-size: 25px;
-    }
-
-    .game-title {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      font-size: 23px;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-
-    .game-description {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      color: rgba(255,255,255,.86);
-      font-size: 13px;
-      margin-bottom: 19px;
-    }
-
-    .play-link {
-      position: relative;
-      z-index: 1;
-      margin-top: auto;
-      align-self: center;
-      background: rgba(255,255,255,.16);
-      border: 1px solid rgba(255,255,255,.23);
-      padding: 9px 17px;
-      border-radius: 10px;
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .leaderboard-section {
-      padding-top: 53px;
-      padding-bottom: 70px;
-    }
-
-    .board-layout {
-      display: grid;
-      grid-template-columns: 1fr 1.5fr;
-      gap: 18px;
-      align-items: start;
-    }
-
-    .panel {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 24px;
-    }
-
-    .panel h3 {
-      font-size: 19px;
-      margin-bottom: 6px;
-    }
-
-    .subtext {
-      font-size: 13px;
-      color: var(--muted);
-      margin-bottom: 20px;
-    }
-
-    .field-label {
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--muted);
-      display: block;
-      margin: 14px 0 8px;
-    }
-
-    .player-options {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-
-    .player-btn {
-      padding: 13px 10px;
-      background: var(--panel2);
-      color: var(--text);
-      border: 1px solid var(--border);
-      border-radius: 11px;
-      font-weight: 700;
-    }
-
-    .player-btn.active {
-      background: var(--accent);
-      color: #14201a;
-      border-color: var(--accent);
-    }
-
-    input, select {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 13px 14px;
-      color: var(--text);
-      width: 100%;
-      outline: none;
-    }
-
-    input:focus, select:focus {
-      border-color: var(--accent);
-    }
-
-    .submit {
-      background: var(--accent);
-      border: 0;
-      color: #17221a;
-      border-radius: 10px;
-      padding: 14px;
-      font-weight: 800;
-      width: 100%;
-      margin-top: 20px;
-      transition: filter .2s;
-    }
-
-    .submit:hover { filter: brightness(.92); }
-
-    .feedback {
-      margin-top: 13px;
-      font-size: 13px;
-      color: var(--green);
-      min-height: 20px;
-    }
-
-    .overall {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-bottom: 21px;
-    }
-
-    .person {
-      background: var(--panel2);
-      border: 1px solid var(--border);
-      padding: 17px;
-      border-radius: 12px;
-    }
-
-    .person-name {
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .person-score {
-      font-family: "Space Grotesk", sans-serif;
-      font-size: 36px;
-      font-weight: 700;
-      line-height: 1.1;
-      margin-top: 5px;
-    }
-
-    .person-score small {
-      font-size: 12px;
-      font-family: "DM Sans", sans-serif;
-      color: var(--muted);
-      font-weight: 500;
-    }
-
-    .board-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 13px;
-    }
-
-    .board-table th {
-      text-align: left;
-      color: var(--muted);
-      padding: 10px 7px;
-      font-weight: 600;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .board-table td {
-      padding: 12px 7px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .board-table tr:last-child td { border-bottom: 0; }
-
-    .winner {
-      color: var(--accent);
-      font-weight: 800;
-    }
-
-    .pending { color: var(--muted); }
-
-    .board-status {
-      margin-top: 18px;
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .footer {
-      text-align: center;
-      padding: 25px;
-      color: var(--muted);
-      border-top: 1px solid var(--border);
-      font-size: 12px;
-    }
-
-    @media(max-width:850px) {
-      .board-layout { grid-template-columns: 1fr; }
-      .games-grid { grid-template-columns: repeat(2,1fr); }
-    }
-
-    @media(max-width:540px) {
-      .hero { padding-top: 38px; }
-      h1 { letter-spacing: -2px; }
-      .games-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
-
-      .game-card {
-        min-height: 217px;
-        padding: 14px 10px;
-      }
-
-      .game-logo {
-        width: 62px;
-        height: 62px;
-        margin-bottom: 13px;
-      }
-
-      .game-title { font-size: 18px; }
-      .game-description { font-size: 11px; }
-      .play-link { font-size: 11px; }
-      .panel { padding: 17px; }
-      .date-pill { display: none; }
-      .board-table { font-size: 11px; }
-      .board-table th, .board-table td { padding: 11px 4px; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#082744">
+<title>Hudson & Noah's Daily Games</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --navy:#071b37;
+  --deep:#082c51;
+  --blue:#075383;
+  --sea:#1685b5;
+  --cyan:#5beaff;
+  --sky:#b5effb;
+  --cream:#f5f7e8;
+  --pink:#ff638e;
+  --yellow:#ffe58b;
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  margin:0;
+  background:var(--navy);
+  color:var(--cream);
+  font-family:'VT323',monospace;
+  font-size:23px;
+}
+button,input,select { font:inherit; }
+button { cursor:pointer; }
+button:disabled { opacity:.55;cursor:wait; }
+a { color:inherit;text-decoration:none; }
+.pixel-font { font-family:'Press Start 2P',monospace; }
+.wrap { width:min(100% - 32px,960px);margin:auto; }
+
+.topbar {
+  height:54px;
+  background:#092f52;
+  border-bottom:4px solid #59e4f5;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 max(16px,calc((100vw - 960px)/2));
+  font-size:20px;
+  letter-spacing:1px;
+}
+.topbar a { color:var(--cyan); }
+.topbar span { color:#c9edff; }
+
+.sky {
+  height:310px;
+  background:linear-gradient(#7cd4f1,#c9f4f8);
+  position:relative;
+  overflow:hidden;
+  text-align:center;
+  color:#063858;
+}
+.sky:after {
+  content:"";
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  height:8px;
+  background:repeating-linear-gradient(
+    90deg,#f0ffff 0 28px,#82dff1 28px 48px,
+    #f0ffff 48px 58px,#82dff1 58px 78px
+  );
+}
+.cloud {
+  position:absolute;
+  width:100px;
+  height:20px;
+  background:#f6ffff;
+  box-shadow:
+    20px -20px #f6ffff,
+    40px -40px #f6ffff,
+    60px -20px #f6ffff,
+    -20px 0 #f6ffff,
+    80px 0 #f6ffff;
+  opacity:.9;
+}
+.cloud.one { top:75px;left:10%;transform:scale(.65); }
+.cloud.two { top:48px;right:13%;transform:scale(.85); }
+.cloud.three { top:185px;left:78%;transform:scale(.4); }
+
+.hero-content {
+  position:relative;
+  z-index:2;
+  padding:65px 15px 0;
+}
+.tiny-label {
+  font-size:19px;
+  letter-spacing:4px;
+  color:#1477a1;
+}
+.hero-title {
+  font-family:'Press Start 2P',monospace;
+  font-size:clamp(17px,4.4vw,39px);
+  line-height:1.7;
+  color:#073960;
+  text-shadow:3px 3px #ff6696,6px 6px #ffffff;
+  margin:18px 0 10px;
+}
+.hero-sub {
+  font-size:23px;
+  color:#215778;
+  letter-spacing:2px;
+}
+.boat {
+  position:absolute;
+  width:82px;
+  height:25px;
+  bottom:7px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#082747;
+  z-index:3;
+  clip-path:polygon(0 0,100% 0,84% 100%,16% 100%);
+  box-shadow:none;
+}
+.boat:before {
+  content:"";
+  position:absolute;
+  width:27px;
+  height:13px;
+  background:#082747;
+  left:20px;top:-10px;
+}
+
+.water {
+  position:relative;
+  background:linear-gradient(
+    #239dca 0%,
+    #126b9c 24%,
+    #094d7b 55%,
+    #072c53 82%,
+    #071b37 100%
+  );
+  padding:49px 0 90px;
+  min-height:1100px;
+  overflow:hidden;
+}
+.water:before {
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:.22;
+  background-image:repeating-linear-gradient(
+    0deg,transparent 0 48px,#001a34 48px 51px
+  );
+}
+.water>.wrap { position:relative;z-index:2; }
+
+.fish {
+  position:absolute;
+  font-size:34px;
+  color:#06416c;
+  opacity:.45;
+  pointer-events:none;
+  animation:swim 12s ease-in-out infinite alternate;
+}
+.fish.f1 { top:95px;left:10%; }
+.fish.f2 { top:540px;right:8%;animation-delay:-5s; }
+.fish.f3 { top:970px;left:6%;animation-delay:-3s; }
+@keyframes swim {
+  from { transform:translateX(-15px); }
+  to { transform:translateX(40px); }
+}
+@media(prefers-reduced-motion:reduce) {
+  .fish { animation:none; }
+}
+
+.bubbles {
+  position:absolute;
+  color:#88e6fa;
+  opacity:.5;
+  line-height:1.8;
+  font-size:25px;
+  pointer-events:none;
+}
+.bubbles.left { top:210px;left:3%; }
+.bubbles.right { top:740px;right:5%; }
+
+.divider-title {
+  text-align:center;
+  color:var(--cyan);
+  font-size:23px;
+  letter-spacing:4px;
+  margin-bottom:10px;
+}
+.section-title {
+  font-family:'Press Start 2P',monospace;
+  font-size:clamp(14px,2.7vw,21px);
+  color:white;
+  text-align:center;
+  line-height:1.8;
+  margin:0 0 14px;
+}
+.section-description {
+  text-align:center;
+  color:#c2e6f7;
+  margin:0 auto 30px;
+}
+
+.game-grid {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+}
+.game-card {
+  --game-color:#53dff3;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  min-height:240px;
+  padding:24px 12px 18px;
+  background:#082747;
+  border:3px solid var(--game-color);
+  box-shadow:5px 5px 0 #03152b,
+    inset 0 0 0 3px #174a73;
+  position:relative;
+  transition:transform .12s,background .12s;
+}
+.game-card:hover,
+.game-card:focus-visible {
+  background:#123c61;
+  transform:translateY(-4px);
+}
+.game-card:active { transform:translateY(2px); }
+.game-card:before,
+.game-card:after {
+  content:"";
+  position:absolute;
+  width:8px;height:8px;
+  background:var(--game-color);
+}
+.game-card:before { top:6px;left:6px; }
+.game-card:after { right:6px;bottom:6px; }
+
+.game-logo {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:78px;
+  height:78px;
+  background:#e9fbfc;
+  border:4px solid #07213e;
+  box-shadow:4px 4px 0 #02152b;
+  margin-bottom:18px;
+  image-rendering:pixelated;
+}
+.game-logo img {
+  width:60px;height:60px;
+  object-fit:contain;
+}
+.logo-fallback {
+  display:none;
+  font-family:'Press Start 2P';
+  font-size:26px;
+  color:#073960;
+}
+.game-name {
+  font-family:'Press Start 2P',monospace;
+  font-size:12px;
+  line-height:1.8;
+  color:#fff;
+}
+.game-description {
+  font-size:19px;
+  color:#badcef;
+  line-height:1.1;
+  padding-top:11px;
+  margin-bottom:17px;
+  flex:1;
+}
+.play-button {
+  background:var(--game-color);
+  color:#072641;
+  padding:10px 12px;
+  font-family:'Press Start 2P',monospace;
+  font-size:9px;
+  box-shadow:3px 3px 0 #011525;
+}
+
+.score-section { margin-top:85px; }
+.arcade-panel {
+  background:rgba(3,26,52,.9);
+  border:4px solid #4ce5f8;
+  outline:3px solid #0a355d;
+  padding:26px;
+  box-shadow:8px 8px 0 #03162a;
+  margin-top:25px;
+}
+.score-layout {
+  display:grid;
+  grid-template-columns:1fr 1.35fr;
+  gap:25px;
+}
+.panel-heading {
+  font-family:'Press Start 2P';
+  font-size:13px;
+  color:var(--cyan);
+  line-height:1.8;
+  margin:0 0 15px;
+}
+.small-note {
+  color:#a9d5e9;
+  font-size:19px;
+  margin:0 0 17px;
+}
+.pixel-label {
+  display:block;
+  color:var(--yellow);
+  font-size:19px;
+  margin:18px 0 6px;
+}
+.players {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+.player {
+  padding:10px 4px;
+  color:white;
+  border:2px solid #3780a8;
+  background:#0c3b66;
+  box-shadow:3px 3px #041c36;
+}
+.player.active {
+  color:#061e39;
+  background:var(--cyan);
+  border-color:#d9fbff;
+}
+.pixel-input {
+  width:100%;
+  border:3px solid #478fb4;
+  border-radius:0;
+  color:white;
+  background:#061d39;
+  padding:11px;
+  font-size:23px;
+}
+.pixel-input:focus {
+  outline:2px solid var(--cyan);
+  outline-offset:2px;
+}
+.pixel-input option { background:#082744; }
+.save-button {
+  width:100%;
+  background:var(--pink);
+  color:#071b37;
+  border:3px solid #ffb1c7;
+  border-radius:0;
+  box-shadow:5px 5px 0 #641c48;
+  padding:15px 5px;
+  margin-top:25px;
+  font-family:'Press Start 2P';
+  font-size:11px;
+  line-height:1.6;
+}
+.save-button:hover { background:#ff90ac; }
+.feedback {
+  min-height:30px;
+  color:var(--yellow);
+  margin-top:16px;
+  font-size:19px;
+}
+
+.wins {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-bottom:24px;
+}
+.win-box {
+  border:2px solid #3c799f;
+  background:#0a345a;
+  padding:15px 12px;
+  text-align:center;
+}
+.win-name {
+  color:#c4ebf7;
+  font-family:'Press Start 2P';
+  font-size:10px;
+  line-height:1.6;
+}
+.win-number {
+  font-family:'Press Start 2P';
+  font-size:35px;
+  color:var(--yellow);
+  margin:17px 0 7px;
+}
+.win-caption { font-size:18px;color:#b1dbe9; }
+.table-scroll { overflow-x:auto; }
+table { width:100%;border-collapse:collapse; }
+th {
+  font-size:17px;
+  color:var(--cyan);
+  text-align:left;
+  border-bottom:2px solid #4d8caf;
+  padding:9px 5px;
+}
+td {
+  padding:10px 5px;
+  font-size:19px;
+  border-bottom:1px dashed #35658a;
+}
+td:first-child { color:#f7f8fd; }
+td:not(:first-child) { text-align:center; }
+th:not(:first-child) { text-align:center; }
+.win { color:var(--yellow); }
+.muted { color:#83a9bf; }
+
+.day-result {
+  border:2px dashed #4a97b8;
+  padding:18px 10px;
+  text-align:center;
+  margin-top:25px;
+}
+.day-result .result-label {
+  color:#c8dff1;
+  font-size:19px;
+  letter-spacing:2px;
+}
+.day-result .result-name {
+  font-family:'Press Start 2P';
+  color:var(--yellow);
+  line-height:1.7;
+  font-size:13px;
+  margin-top:11px;
+}
+.sync-status {
+  margin-top:18px;
+  color:#90cfe5;
+  font-size:17px;
+  text-align:center;
+}
+.footer {
+  text-align:center;
+  padding:30px 12px;
+  background:#06172e;
+  color:#8ab8d0;
+  border-top:3px solid #16628d;
+  font-size:19px;
+}
+.depth {
+  text-align:center;
+  font-size:18px;
+  letter-spacing:4px;
+  color:#7ec9e7;
+  margin:58px 0 0;
+}
+.progress {
+  text-align:center;
+  color:#c8eaf5;
+  margin:0 0 25px;
+}
+.progress strong { color:var(--yellow); }
+
+@media(max-width:750px) {
+  .score-layout { grid-template-columns:1fr; }
+  .game-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .arcade-panel { padding:18px; }
+}
+@media(max-width:480px) {
+  .topbar { font-size:16px; }
+  .topbar .date { font-size:14px; }
+  .sky { height:280px; }
+  .hero-content { padding-top:74px; }
+  .hero-sub { font-size:19px; }
+  .game-grid { gap:11px; }
+  .game-card {
+    min-height:224px;
+    padding:18px 7px 14px;
+  }
+  .game-logo {
+    width:64px;height:64px;
+  }
+  .game-logo img { width:48px;height:48px; }
+  .game-name { font-size:9px; }
+  .game-description { font-size:17px; }
+  .play-button { font-size:8px; }
+  .score-section { margin-top:65px; }
+}
+</style>
 </head>
 
 <body>
 
-  <nav class="nav">
-    <div class="container nav-inner">
-      <div class="brand">H<span>&</span>N / DAILY</div>
-      <div class="nav-right">
-        <span class="date-pill" id="datePill"></span>
-        <span style="font-size:12px;color:var(--accent)">● Game day</span>
-      </div>
-    </div>
-  </nav>
+<header class="topbar">
+  <a href="#">H + N</a>
+  <span class="date" id="headerDate"></span>
+  <a href="#scores">SCORES ↓</a>
+</header>
 
-  <main class="container">
+<section class="sky">
+  <div class="cloud one"></div>
+  <div class="cloud two"></div>
+  <div class="cloud three"></div>
 
-    <header class="hero">
-      <div class="eyebrow">THE DAILY LINEUP</div>
-      <h1>Hudson <span>vs.</span> Noah.</h1>
-      <p>Seven games. Two players. One daily winner.</p>
+  <div class="hero-content">
+    <div class="tiny-label">THE DAILY GAMES</div>
+    <h1 class="hero-title">HUDSON<br>VS NOAH</h1>
+    <div class="hero-sub">7 games · 2 players · 1 winner</div>
+  </div>
 
-      <div class="hero-stats">
-        <div class="stat"><strong>07</strong> Daily games</div>
-        <div class="stat"><strong>02</strong> Players</div>
-        <div class="stat"><strong id="completedCount">0/7</strong> Games decided</div>
-      </div>
-    </header>
+  <div class="boat"></div>
+</section>
 
-    <section>
-      <div class="section-heading">
-        <div>
-          <h2>Today's games</h2>
-          <p>Pick a game and get to it.</p>
-        </div>
-      </div>
+<main class="water">
+  <span class="fish f1">◀◆</span>
+  <span class="fish f2">◆▶</span>
+  <span class="fish f3">◀◆</span>
+  <div class="bubbles left">○<br>°<br>○<br>°</div>
+  <div class="bubbles right">°<br>○<br>°<br>○</div>
 
-      <div class="games-grid" id="gamesGrid"></div>
-    </section>
+  <div class="wrap">
+    <div class="divider-title">⚓ SELECT GAME ⚓</div>
+    <h2 class="section-title">TODAY'S LINEUP</h2>
+    <p class="section-description">
+      Pick a game. Play it. Drop your score.
+    </p>
 
-    <section class="leaderboard-section" id="leaderboard">
+    <div class="game-grid" id="gameGrid"></div>
 
-      <div class="section-heading">
-        <div>
-          <h2>The scoreboard</h2>
-          <p>Enter your score. See who's ahead.</p>
-        </div>
-      </div>
+    <div class="depth">▼ DESCENDING ▼</div>
 
-      <div class="board-layout">
+    <section class="score-section" id="scores">
+      <div class="divider-title">★ HIGH SCORES ★</div>
+      <h2 class="section-title">THE LEADERBOARD</h2>
+      <p class="section-description">
+        Scores reset each day. Bragging rights don't.
+      </p>
+      <p class="progress">
+        <strong id="progressCount">0/7</strong> games decided
+      </p>
 
-        <div class="panel">
-          <h3>Log your score</h3>
-          <p class="subtext">
-            One score per game, per day.
-            Submit again to update it.
-          </p>
+      <div class="arcade-panel">
+        <div class="score-layout">
 
-          <label class="field-label">WHO'S PLAYING?</label>
-          <div class="player-options">
-            <button type="button" class="player-btn" id="hudsonBtn">
-              Hudson
-            </button>
-            <button type="button" class="player-btn" id="noahBtn">
-              Noah
-            </button>
-          </div>
+          <div>
+            <h3 class="panel-heading">SUBMIT SCORE</h3>
+            <p class="small-note">
+              Choose your name and game, then enter your score.
+            </p>
 
-          <label class="field-label" for="gameSelect">GAME</label>
-          <select id="gameSelect"></select>
-
-          <label class="field-label" for="scoreInput">YOUR SCORE</label>
-          <input
-            id="scoreInput"
-            type="number"
-            step="any"
-            min="0"
-            placeholder="Enter your score"
-          >
-
-          <button class="submit" id="submitBtn">
-            Save score
-          </button>
-
-          <div class="feedback" id="feedback" role="status"></div>
-        </div>
-
-        <div class="panel">
-
-          <h3>Today's standings</h3>
-          <p class="subtext" id="boardDate"></p>
-
-          <div class="overall">
-            <div class="person">
-              <div class="person-name">HUDSON</div>
-              <div class="person-score">
-                <span id="hudsonWins">0</span>
-                <small>wins</small>
-              </div>
+            <label class="pixel-label">PLAYER</label>
+            <div class="players">
+              <button type="button" class="player" id="hudsonBtn">
+                HUDSON
+              </button>
+              <button type="button" class="player" id="noahBtn">
+                NOAH
+              </button>
             </div>
 
-            <div class="person">
-              <div class="person-name">NOAH</div>
-              <div class="person-score">
-                <span id="noahWins">0</span>
-                <small>wins</small>
-              </div>
-            </div>
-          </div>
+            <label class="pixel-label" for="gameSelect">
+              GAME
+            </label>
+            <select class="pixel-input" id="gameSelect"></select>
 
-          <table class="board-table">
-            <thead>
-              <tr>
-                <th>Game</th>
-                <th>Hudson</th>
-                <th>Noah</th>
-                <th>Winner</th>
-              </tr>
-            </thead>
-            <tbody id="scoreRows"></tbody>
-          </table>
-
-          <div class="board-status" id="syncStatus">
-            Loading scores...
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="footer">
-    Hudson King × Noah Bonn · Daily Games
-  </footer>
-
-  <script type="module">
-    import { initializeApp } from
-      "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-
-    import {
-      getAuth,
-      signInAnonymously
-    } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
-
-    import {
-      getFirestore,
-      collection,
-      doc,
-      setDoc,
-      onSnapshot,
-      serverTimestamp
-    } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
-
-    /*
-     * FIREBASE SETUP
-     *
-     * Leave these empty to use local demo mode.
-     *
-     * To share a live leaderboard between devices,
-     * replace the configuration below with the
-     * configuration from your Firebase project.
-     *
-     * Enable:
-     * 1. Firebase Authentication -> Anonymous
-     * 2. Firestore Database
-     */
-
-    const firebaseConfig = {
-      apiKey: "",
-      authDomain: "",
-      projectId: "",
-      storageBucket: "",
-      messagingSenderId: "",
-      appId: ""
-    };
-
-    /*
-     * GAME SETTINGS
-     *
-     * "lower" = lowest number wins
-     * "higher" = highest number wins
-     *
-     * Change the scoring direction for any game
-     * if its score works differently.
-     *
-     * Scores must be numeric for automatic comparison.
-     */
-
-    const games = [
-      {
-        id: "krillion",
-        name: "Krillion",
-        description: "Guess the mystery country as fast as you can.",
-        url: "https://krillion.io",
-        domain: "krillion.io",
-        direction: "lower",
-        short: "K"
-      },
-      {
-        id: "maptap",
-        name: "MapTap",
-        description: "Test how well you know the map.",
-        url: "https://maptap.gg",
-        domain: "maptap.gg",
-        direction: "lower",
-        short: "M"
-      },
-      {
-        id: "hooked",
-        name: "Hooked",
-        description: "Figure out the daily hidden connection.",
-        url: "https://hookeddailygame.com/",
-        domain: "hookeddailygame.com",
-        direction: "lower",
-        short: "H"
-      },
-      {
-        id: "connections",
-        name: "Connections",
-        description: "Group the words into the right categories.",
-        url: "https://www.nytimes.com/games/connections",
-        domain: "nytimes.com",
-        direction: "lower",
-        short: "C"
-      },
-      {
-        id: "farflung",
-        name: "Farflung",
-        description: "Guess the place from almost nothing.",
-        url: "https://farflung.game",
-        domain: "farflung.game",
-        direction: "lower",
-        short: "F"
-      },
-      {
-        id: "kabloom",
-        name: "Kabloom",
-        description: "Build the right word from the clues.",
-        url: "https://kabloom.io",
-        domain: "kabloom.io",
-        direction: "higher",
-        short: "K"
-      },
-      {
-        id: "globle",
-        name: "Globle",
-        description: "Find the mystery country using heat clues.",
-        url: "https://globle-game.com/game",
-        domain: "globle-game.com",
-        direction: "lower",
-        short: "G"
-      }
-    ];
-
-    const $ = id => document.getElementById(id);
-
-    let selectedPlayer = localStorage.getItem("hn_player") || "";
-    let scores = {};
-    let db = null;
-    let currentUser = null;
-    let unsubscribe = null;
-    let live = false;
-    let activeDate = getDateKey();
-
-    function getDateKey() {
-      const parts = new Intl.DateTimeFormat("en-US", {
-        timeZone: "America/New_York",
-        year: "numeric",
-        month: "2-digit",
-        day: "2-digit"
-      }).formatToParts(new Date());
-
-      const part = type => parts.find(p => p.type === type).value;
-
-      return `${part("year")}-${part("month")}-${part("day")}`;
-    }
-
-    function getDisplayDate() {
-      return new Intl.DateTimeFormat("en-US", {
-        timeZone: "America/New_York",
-        weekday: "long",
-        month: "long",
-        day: "numeric"
-      }).format(new Date());
-    }
-
-    function renderGames() {
-      $("gamesGrid").innerHTML = games.map(game => `
-        <a
-          class="game-card ${game.id}"
-          href="${game.url}"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Play ${game.name}"
-        >
-          <div class="game-logo">
-            <img
-              src="https://www.google.com/s2/favicons?domain=${game.domain}&sz=128"
-              alt="${game.name} logo"
-              onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+            <label class="pixel-label" for="scoreInput">
+              SCORE
+            </label>
+            <input
+              class="pixel-input"
+              id="scoreInput"
+              type="number"
+              min="0"
+              step="any"
+              placeholder="Enter score"
             >
-            <span class="logo-fallback">${game.short}</span>
+
+            <button class="save-button" id="saveBtn">
+              ▼ SAVE SCORE ▼
+            </button>
+
+            <div id="feedback" class="feedback" role="status"></div>
           </div>
 
-          <div class="game-title">${game.name}</div>
-          <div class="game-description">${game.description}</div>
-          <div class="play-link">Play game ↗</div>
-        </a>
-      `).join("");
+          <div>
+            <h3 class="panel-heading">TODAY'S STANDINGS</h3>
+            <p class="small-note" id="boardDate"></p>
 
-      $("gameSelect").innerHTML = `
-        <option value="">Choose a game</option>
-        ${games.map(game => `
-          <option value="${game.id}">${game.name}</option>
-        `).join("")}
-      `;
-    }
+            <div class="wins">
+              <div class="win-box">
+                <div class="win-name">HUDSON</div>
+                <div class="win-number" id="hudsonWins">0</div>
+                <div class="win-caption">GAME WINS</div>
+              </div>
+              <div class="win-box">
+                <div class="win-name">NOAH</div>
+                <div class="win-number" id="noahWins">0</div>
+                <div class="win-caption">GAME WINS</div>
+              </div>
+            </div>
 
-    function selectPlayer(name) {
-      selectedPlayer = name;
-      localStorage.setItem("hn_player", name);
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th>GAME</th>
+                    <th>HK</th>
+                    <th>NB</th>
+                    <th>WIN</th>
+                  </tr>
+                </thead>
+                <tbody id="leaderboardRows"></tbody>
+              </table>
+            </div>
 
-      $("hudsonBtn").classList.toggle("active", name === "Hudson");
-      $("noahBtn").classList.toggle("active", name === "Noah");
+            <div class="day-result">
+              <div class="result-label">★ DAILY CHAMPION ★</div>
+              <div class="result-name" id="dailyWinner">
+                STILL PLAYING...
+              </div>
+            </div>
 
-      loadExistingScore();
-    }
+            <div class="sync-status" id="syncStatus"></div>
+          </div>
 
-    function loadExistingScore() {
-      const gameId = $("gameSelect").value;
+        </div>
+      </div>
+    </section>
 
-      if (!selectedPlayer || !gameId) {
-        $("scoreInput").value = "";
-        return;
-      }
+    <div class="depth">▼ END OF DIVE ▼</div>
+  </div>
+</main>
 
-      const entry = scores[gameId]?.[selectedPlayer];
-      $("scoreInput").value =
-        entry !== undefined ? entry : "";
-    }
+<footer class="footer">
+  HUDSON KING × NOAH BONN
+  <div style="margin-top:5px">
+    SEE YOU TOMORROW
+  </div>
+</footer>
 
-    function getWinner(game) {
-      const entries = scores[game.id] || {};
-      const hudson = entries.Hudson;
-      const noah = entries.Noah;
+<script type="module">
+import { initializeApp } from
+  "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+import {
+  getAuth,signInAnonymously
+} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+import {
+  getFirestore,collection,doc,setDoc,
+  onSnapshot,serverTimestamp
+} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
 
-      if (hudson === undefined || noah === undefined) {
-        return null;
-      }
+/*
+  FIREBASE:
+  Paste your Firebase web app configuration below
+  to share live scores between phones.
 
-      if (hudson === noah) return "Tie";
+  Without Firebase, scores are stored in the
+  current browser only.
 
-      const hudsonWon = game.direction === "higher"
-        ? hudson > noah
-        : hudson < noah;
+  Anonymous Authentication and Firestore
+  must be enabled in your Firebase project.
+*/
+const firebaseConfig = {
+  apiKey:"",
+  authDomain:"",
+  projectId:"",
+  storageBucket:"",
+  messagingSenderId:"",
+  appId:""
+};
 
-      return hudsonWon ? "Hudson" : "Noah";
-    }
+/*
+  SCORE RULES:
+  "lower" = smaller score wins
+  "higher" = larger score wins
 
-    function renderLeaderboard() {
-      let hudsonWins = 0;
-      let noahWins = 0;
-      let decided = 0;
+  These are editable defaults. Verify each
+  game's actual scoring system before playing.
+*/
+const games = [
+  {
+    id:"krillion",
+    name:"KRILLION",
+    description:"Find the rarest answers and dive deeper.",
+    url:"https://krillion.io",
+    domain:"krillion.io",
+    color:"#5beaff",
+    direction:"higher",
+    fallback:"K"
+  },
+  {
+    id:"maptap",
+    name:"MAPTAP",
+    description:"Test how well you know the map.",
+    url:"https://maptap.gg",
+    domain:"maptap.gg",
+    color:"#9bf0a3",
+    direction:"lower",
+    fallback:"M"
+  },
+  {
+    id:"hooked",
+    name:"HOOKED",
+    description:"Figure out the daily hidden connection.",
+    url:"https://hookeddailygame.com/",
+    domain:"hookeddailygame.com",
+    color:"#ff94ab",
+    direction:"lower",
+    fallback:"H"
+  },
+  {
+    id:"connections",
+    name:"CONNECTIONS",
+    description:"Group the words into the right categories.",
+    url:"https://www.nytimes.com/games/connections",
+    domain:"nytimes.com",
+    color:"#c5a8ff",
+    direction:"lower",
+    fallback:"C"
+  },
+  {
+    id:"farflung",
+    name:"FARFLUNG",
+    description:"Guess the place from almost nothing.",
+    url:"https://farflung.game",
+    domain:"farflung.game",
+    color:"#ffd28a",
+    direction:"lower",
+    fallback:"F"
+  },
+  {
+    id:"kabloom",
+    name:"KABLOOM",
+    description:"Build the right word from the clues.",
+    url:"https://kabloom.io",
+    domain:"kabloom.io",
+    color:"#e1a1ff",
+    direction:"higher",
+    fallback:"K"
+  },
+  {
+    id:"globle",
+    name:"GLOBLE",
+    description:"Find the mystery country using heat clues.",
+    url:"https://globle-game.com/game",
+    domain:"globle-game.com",
+    color:"#8be7dc",
+    direction:"lower",
+    fallback:"G"
+  }
+];
 
-      $("scoreRows").innerHTML = games.map(game => {
-        const entry = scores[game.id] || {};
-        const h = entry.Hudson;
-        const n = entry.Noah;
-        const winner = getWinner(game);
+const $ = id => document.getElementById(id);
 
-        if (winner !== null) decided++;
-        if (winner === "Hudson") hudsonWins++;
-        if (winner === "Noah") noahWins++;
+let player = localStorage.getItem("hn_player") || "";
+let scores = {};
+let day = getDay();
+let db = null;
+let currentUser = null;
+let unsubscribe = null;
+let live = false;
 
-        const format = value =>
-          value === undefined
-            ? '<span class="pending">—</span>'
-            : String(value);
+function getDay() {
+  const parts = new Intl.DateTimeFormat("en-US",{
+    timeZone:"America/New_York",
+    year:"numeric",
+    month:"2-digit",
+    day:"2-digit"
+  }).formatToParts(new Date());
 
-        return `
-          <tr>
-            <td><strong>${game.name}</strong></td>
-            <td class="${winner === "Hudson" ? "winner" : ""}">
-              ${format(h)}
-            </td>
-            <td class="${winner === "Noah" ? "winner" : ""}">
-              ${format(n)}
-            </td>
-            <td class="${winner && winner !== "Tie" ? "winner" : "pending"}">
-              ${winner || "Waiting"}
-            </td>
-          </tr>
-        `;
-      }).join("");
+  const p = type => parts.find(x=>x.type===type).value;
+  return `${p("year")}-${p("month")}-${p("day")}`;
+}
 
-      $("hudsonWins").textContent = hudsonWins;
-      $("noahWins").textContent = noahWins;
-      $("completedCount").textContent = `${decided}/7`;
+function displayDate() {
+  return new Intl.DateTimeFormat("en-US",{
+    timeZone:"America/New_York",
+    month:"short",
+    day:"numeric",
+    weekday:"short"
+  }).format(new Date()).toUpperCase();
+}
 
-      loadExistingScore();
-    }
+function renderCards() {
+  const grid = $("gameGrid");
 
-    function localStorageKey() {
-      return `hn_scores_${activeDate}`;
-    }
+  grid.innerHTML = games.map(g=>`
+    <a class="game-card"
+       href="${g.url}"
+       target="_blank"
+       rel="noopener noreferrer"
+       style="--game-color:${g.color}"
+       aria-label="Play ${g.name}">
+      <div class="game-logo">
+        <img
+          src="https://www.google.com/s2/favicons?domain=${g.domain}&sz=128"
+          alt="${g.name} icon"
+          loading="lazy"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+        >
+        <span class="logo-fallback">${g.fallback}</span>
+      </div>
+      <div class="game-name">${g.name}</div>
+      <div class="game-description">${g.description}</div>
+      <div class="play-button">▶ PLAY</div>
+    </a>
+  `).join("");
 
-    function loadLocalScores() {
-      try {
-        scores = JSON.parse(
-          localStorage.getItem(localStorageKey()) || "{}"
-        );
-      } catch {
-        scores = {};
-      }
-      renderLeaderboard();
-    }
+  $("gameSelect").innerHTML =
+    `<option value="">SELECT A GAME</option>` +
+    games.map(g=>`<option value="${g.id}">${g.name}</option>`).join("");
+}
 
-    async function saveScore() {
-      const game = $("gameSelect").value;
-      const rawScore = $("scoreInput").value.trim();
-      const feedback = $("feedback");
+function choosePlayer(name) {
+  player = name;
+  localStorage.setItem("hn_player",name);
+  $("hudsonBtn").classList.toggle("active",name==="Hudson");
+  $("noahBtn").classList.toggle("active",name==="Noah");
+  fillScore();
+}
 
-      feedback.style.color = "var(--orange)";
+function fillScore() {
+  const game = $("gameSelect").value;
+  const current = scores[game]?.[player];
+  $("scoreInput").value = current===undefined ? "" : current;
+}
 
-      if (!selectedPlayer) {
-        feedback.textContent = "Pick Hudson or Noah first.";
-        return;
-      }
+function winnerOf(game) {
+  const entry = scores[game.id] || {};
+  const h = entry.Hudson;
+  const n = entry.Noah;
 
-      if (!game) {
-        feedback.textContent = "Choose a game first.";
-        return;
-      }
+  if(h===undefined || n===undefined) return null;
+  if(h===n) return "TIE";
 
-      if (!rawScore || !Number.isFinite(Number(rawScore)) ||
-          Number(rawScore) < 0) {
-        feedback.textContent = "Enter a valid score.";
-        return;
-      }
+  const hudsonWins = game.direction==="higher" ? h>n : h<n;
+  return hudsonWins ? "HK" : "NB";
+}
 
-      const score = Number(rawScore);
-      const button = $("submitBtn");
-      button.disabled = true;
-      button.textContent = "Saving...";
+function renderScores() {
+  let hk = 0;
+  let nb = 0;
+  let completed = 0;
 
-      try {
-        if (live && db && currentUser) {
-          const recordId = `${game}_${selectedPlayer.toLowerCase()}`;
+  $("leaderboardRows").innerHTML = games.map(g=>{
+    const entry = scores[g.id] || {};
+    const w = winnerOf(g);
 
-          await setDoc(
-            doc(db, "dailyScores", activeDate, "entries", recordId),
-            {
-              game,
-              player: selectedPlayer,
-              score,
-              updatedBy: currentUser.uid,
-              updatedAt: serverTimestamp()
-            }
-          );
-        } else {
-          if (!scores[game]) scores[game] = {};
-          scores[game][selectedPlayer] = score;
+    if(w!==null) completed++;
+    if(w==="HK") hk++;
+    if(w==="NB") nb++;
 
-          localStorage.setItem(
-            localStorageKey(),
-            JSON.stringify(scores)
-          );
-          renderLeaderboard();
+    const val = v => v===undefined ? "—" : v;
+
+    return `
+      <tr>
+        <td>${g.name}</td>
+        <td class="${w==="HK"?"win":""}">${val(entry.Hudson)}</td>
+        <td class="${w==="NB"?"win":""}">${val(entry.Noah)}</td>
+        <td class="${w?"win":"muted"}">${w||"..."}</td>
+      </tr>
+    `;
+  }).join("");
+
+  $("hudsonWins").textContent = hk;
+  $("noahWins").textContent = nb;
+  $("progressCount").textContent = `${completed}/7`;
+
+  if(hk>nb) {
+    $("dailyWinner").textContent =
+      completed===7 ? "HUDSON WINS!" : "HUDSON LEADS";
+  } else if(nb>hk) {
+    $("dailyWinner").textContent =
+      completed===7 ? "NOAH WINS!" : "NOAH LEADS";
+  } else if(completed===7) {
+    $("dailyWinner").textContent = "IT'S A TIE!";
+  } else {
+    $("dailyWinner").textContent = "STILL PLAYING...";
+  }
+
+  fillScore();
+}
+
+function storageKey() {
+  return "hn_daily_"+day;
+}
+
+function loadLocal() {
+  try {
+    scores = JSON.parse(localStorage.getItem(storageKey())||"{}");
+  } catch {
+    scores = {};
+  }
+  renderScores();
+}
+
+async function saveScore() {
+  const game = $("gameSelect").value;
+  const raw = $("scoreInput").value.trim();
+  const feedback = $("feedback");
+
+  if(!player) {
+    feedback.textContent="SELECT YOUR NAME FIRST";
+    return;
+  }
+  if(!game) {
+    feedback.textContent="SELECT A GAME FIRST";
+    return;
+  }
+  if(raw==="" || !Number.isFinite(Number(raw)) ||
+     Number(raw)<0) {
+    feedback.textContent="ENTER A VALID SCORE";
+    return;
+  }
+
+  const score = Number(raw);
+  const btn = $("saveBtn");
+  btn.disabled=true;
+  btn.textContent="SAVING...";
+
+  try {
+    if(live && db && currentUser) {
+      await setDoc(
+        doc(db,"dailyScores",day,"entries",
+          `${game}_${player.toLowerCase()}`),
+        {
+          game,
+          player,
+          score,
+          updatedBy:currentUser.uid,
+          updatedAt:serverTimestamp()
         }
-
-        feedback.style.color = "var(--green)";
-        feedback.textContent = "Score saved!";
-      } catch (error) {
-        console.error(error);
-        feedback.textContent =
-          "Couldn't save score. Check your connection or Firebase setup.";
-      } finally {
-        button.disabled = false;
-        button.textContent = "Save score";
-      }
-    }
-
-    function subscribeToDate() {
-      if (!db) return;
-
-      if (unsubscribe) unsubscribe();
-
-      const entries = collection(
-        db,
-        "dailyScores",
-        activeDate,
-        "entries"
       );
-
-      unsubscribe = onSnapshot(entries, snapshot => {
-        const updated = {};
-
-        snapshot.forEach(record => {
-          const value = record.data();
-          if (
-            games.some(g => g.id === value.game) &&
-            ["Hudson", "Noah"].includes(value.player) &&
-            typeof value.score === "number" &&
-            Number.isFinite(value.score)
-          ) {
-            if (!updated[value.game]) updated[value.game] = {};
-            updated[value.game][value.player] = value.score;
-          }
-        });
-
-        scores = updated;
-        renderLeaderboard();
-
-        $("syncStatus").textContent =
-          "● Live leaderboard · Scores update automatically";
-      }, error => {
-        console.error(error);
-        $("syncStatus").textContent =
-          "Live sync error · Check Firebase permissions";
-      });
+    } else {
+      if(!scores[game]) scores[game]={};
+      scores[game][player]=score;
+      localStorage.setItem(storageKey(),JSON.stringify(scores));
+      renderScores();
     }
 
-    async function initializeLeaderboard() {
-      const configured =
-        firebaseConfig.apiKey &&
-        firebaseConfig.projectId &&
-        firebaseConfig.appId;
+    feedback.style.color="#9bf0a3";
+    feedback.textContent="✓ SCORE SAVED";
+  } catch(error) {
+    console.error(error);
+    feedback.style.color="#ff94ab";
+    feedback.textContent="SAVE FAILED — CHECK CONNECTION";
+  } finally {
+    btn.disabled=false;
+    btn.textContent="▼ SAVE SCORE ▼";
+  }
+}
 
-      if (!configured) {
-        live = false;
-        loadLocalScores();
-        $("syncStatus").textContent =
-          "Demo mode · Scores are saved on this device only";
-        return;
+function subscribe() {
+  if(!db) return;
+  if(unsubscribe) unsubscribe();
+
+  const ref = collection(db,"dailyScores",day,"entries");
+
+  unsubscribe = onSnapshot(ref,snapshot=>{
+    const updated={};
+
+    snapshot.forEach(record=>{
+      const e=record.data();
+      if(
+        games.some(g=>g.id===e.game) &&
+        ["Hudson","Noah"].includes(e.player) &&
+        typeof e.score==="number" &&
+        Number.isFinite(e.score)
+      ) {
+        if(!updated[e.game]) updated[e.game]={};
+        updated[e.game][e.player]=e.score;
       }
-
-      try {
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const result = await signInAnonymously(auth);
-
-        currentUser = result.user;
-        db = getFirestore(app);
-        live = true;
-
-        subscribeToDate();
-      } catch (error) {
-        console.error(error);
-        live = false;
-        loadLocalScores();
-        $("syncStatus").textContent =
-          "Firebase unavailable · Local demo mode";
-      }
-    }
-
-    function refreshDate() {
-      $("datePill").textContent = getDisplayDate();
-      $("boardDate").textContent = getDisplayDate();
-
-      const newDate = getDateKey();
-
-      if (newDate !== activeDate) {
-        activeDate = newDate;
-        scores = {};
-
-        if (live) {
-          subscribeToDate();
-        } else {
-          loadLocalScores();
-        }
-      }
-    }
-
-    $("hudsonBtn").addEventListener("click", () => {
-      selectPlayer("Hudson");
     });
 
-    $("noahBtn").addEventListener("click", () => {
-      selectPlayer("Noah");
-    });
+    scores=updated;
+    renderScores();
+    $("syncStatus").textContent="● LIVE SCORES CONNECTED";
+  },error=>{
+    console.error(error);
+    $("syncStatus").textContent="LIVE SYNC ERROR";
+  });
+}
 
-    $("gameSelect").addEventListener("change", loadExistingScore);
+async function initializeScores() {
+  const configured =
+    firebaseConfig.apiKey &&
+    firebaseConfig.projectId &&
+    firebaseConfig.appId;
 
-    $("submitBtn").addEventListener("click", saveScore);
+  if(!configured) {
+    loadLocal();
+    $("syncStatus").textContent=
+      "LOCAL MODE — SCORES SAVED ON THIS DEVICE";
+    return;
+  }
 
-    $("scoreInput").addEventListener("keydown", event => {
-      if (event.key === "Enter") saveScore();
-    });
+  try {
+    const app=initializeApp(firebaseConfig);
+    const auth=getAuth(app);
+    const result=await signInAnonymously(auth);
+    currentUser=result.user;
+    db=getFirestore(app);
+    live=true;
+    subscribe();
+  } catch(error) {
+    console.error(error);
+    live=false;
+    loadLocal();
+    $("syncStatus").textContent=
+      "OFFLINE MODE — LOCAL SCORES";
+  }
+}
 
-    renderGames();
-    refreshDate();
+function updateDay() {
+  $("headerDate").textContent=displayDate();
+  $("boardDate").textContent=displayDate();
 
-    if (selectedPlayer) {
-      selectPlayer(selectedPlayer);
-    }
+  const today=getDay();
+  if(today!==day) {
+    day=today;
+    scores={};
 
-    renderLeaderboard();
-    initializeLeaderboard();
+    if(live) subscribe();
+    else loadLocal();
+  }
+}
 
-    // Check for a new game day every minute.
-    setInterval(refreshDate, 60000);
+$("hudsonBtn").addEventListener("click",
+  ()=>choosePlayer("Hudson"));
+$("noahBtn").addEventListener("click",
+  ()=>choosePlayer("Noah"));
+$("gameSelect").addEventListener("change",fillScore);
+$("saveBtn").addEventListener("click",saveScore);
+$("scoreInput").addEventListener("keydown",e=>{
+  if(e.key==="Enter") saveScore();
+});
 
-  </script>
+renderCards();
+updateDay();
+if(player) choosePlayer(player);
+renderScores();
+initializeScores();
+setInterval(updateDay,60000);
+</script>
+
 </body>
 </html>
