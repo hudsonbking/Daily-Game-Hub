@@ -6,7 +6,6 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#061729">
 <title>Hudson vs Noah | Daily Game Hub</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
 
 <style>
@@ -19,33 +18,21 @@
   --yellow:#ffe76a;
 }
 
-* {box-sizing:border-box}
-
+* { box-sizing:border-box; }
 html {
   scroll-behavior:smooth;
   -webkit-text-size-adjust:100%;
 }
-
 body {
   margin:0;
   background:var(--dark);
   color:var(--white);
   font:22px 'VT323',monospace;
-  -webkit-font-smoothing:antialiased;
 }
-
-button,input,select {font:inherit}
-button {cursor:pointer}
-button:disabled {
-  opacity:.5;
-  cursor:not-allowed;
-}
-a {
-  color:inherit;
-  text-decoration:none;
-}
-
-/* NAVIGATION */
+button,input,select { font:inherit; }
+button { cursor:pointer; }
+button:disabled { opacity:.5;cursor:not-allowed; }
+a { color:inherit;text-decoration:none; }
 
 .topbar {
   height:42px;
@@ -57,9 +44,7 @@ a {
   padding:0 max(18px,calc((100% - 980px)/2));
   font-size:19px;
 }
-.topbar a {color:#84f5ff}
-
-/* HERO */
+.topbar a { color:#84f5ff; }
 
 .hero {
   height:430px;
@@ -67,7 +52,6 @@ a {
   overflow:hidden;
   background:#bceaf4;
 }
-
 .hero canvas {
   position:absolute;
   inset:0;
@@ -76,7 +60,6 @@ a {
   image-rendering:pixelated;
   display:block;
 }
-
 .hero-copy {
   position:absolute;
   z-index:2;
@@ -86,59 +69,44 @@ a {
   text-align:center;
   pointer-events:none;
 }
-
 .hero-title {
   margin:0 0 22px;
-  line-height:1.8;
   white-space:nowrap;
-  font:clamp(17px,4.6vw,45px)/1.8 'Press Start 2P',monospace;
-  color:#ffffff;
-
-  /* Pixel-art shadows, mobile compatible */
+  font:clamp(17px,4.6vw,45px)/1.8
+       'Press Start 2P',monospace;
+  color:white;
   text-shadow:
     -2px -2px 0 #00eaff,
     -3px -3px 0 #00eaff,
     2px 2px 0 #ff4389,
     3px 3px 0 #ff4389,
     4px 4px 0 #ff4389;
-
   filter:none;
-  -webkit-filter:none;
 }
-
 .hero-title .letter {
   display:inline-block;
-  color:inherit;
-  text-shadow:inherit;
   animation:title-ripple 3.2s ease-in-out infinite;
   animation-delay:calc(var(--i)*-.115s);
-  backface-visibility:hidden;
 }
-
 @keyframes title-ripple {
   0%,27%,72%,100% {transform:translateY(0)}
   48% {transform:translateY(-4px)}
   61% {transform:translateY(2px)}
 }
-
 .hero-kicker {
   color:#007fa5;
   letter-spacing:5px;
   font-size:20px;
   margin:0 0 16px;
 }
-
 .hero-subtitle {
   color:#12394f;
   font-size:21px;
-  letter-spacing:1px;
 }
-
 .hero-subtitle strong {
   color:#007eab;
   font-weight:normal;
 }
-
 .dive-link {
   position:absolute;
   z-index:4;
@@ -155,57 +123,44 @@ a {
   font:11px 'Press Start 2P';
   box-shadow:4px 4px #020b13;
 }
-
-.dive-link:hover {
-  background:#153653;
-}
-
-/* UNDERWATER SECTION */
+.dive-link:hover {background:#153653}
 
 .ocean {
   position:relative;
   background:linear-gradient(
-    180deg,
-    #091b30 0%,
-    #082a49 48%,
-    #061729 100%
+    180deg,#091b30,#082a49 48%,#061729
   );
   padding:62px 0 85px;
   overflow:hidden;
 }
-
 .ocean:before {
   content:"";
   position:absolute;
   inset:0;
   pointer-events:none;
   background:repeating-linear-gradient(
-    180deg,
-    transparent 0 85px,
+    180deg,transparent 0 85px,
     rgba(49,240,255,.065) 86px 89px
   );
 }
-
 .container {
   position:relative;
   max-width:980px;
   padding:0 18px;
   margin:auto;
 }
-
 .eyebrow {
   text-align:center;
   color:#65edff;
   font-size:18px;
   letter-spacing:4px;
 }
-
 .section-heading {
   text-align:center;
-  font:clamp(13px,2.7vw,23px)/1.7 'Press Start 2P';
+  font:clamp(13px,2.7vw,23px)/1.7
+       'Press Start 2P';
   margin:15px 0 9px;
 }
-
 .intro {
   text-align:center;
   color:#d1e9f5;
@@ -213,14 +168,11 @@ a {
   margin:0 0 30px;
 }
 
-/* GAME CARDS */
-
 .games {
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
   gap:15px;
 }
-
 .game {
   --c:#31f0ff;
   min-height:225px;
@@ -234,12 +186,10 @@ a {
   text-align:center;
   transition:transform .15s,background .15s;
 }
-
 .game:hover {
   transform:translateY(-4px);
   background:#164461;
 }
-
 .game-image {
   width:72px;
   height:72px;
@@ -251,25 +201,21 @@ a {
   margin-bottom:17px;
   image-rendering:pixelated;
 }
-
 .game-image img {
   width:55px;
   height:55px;
   object-fit:contain;
 }
-
 .fallback {
   display:none;
   font:24px 'Press Start 2P';
   color:#12405a;
 }
-
 .game h3 {
   font:12px/1.6 'Press Start 2P';
   margin:0;
-  color:#ffffff;
+  color:white;
 }
-
 .game p {
   color:#d0e8f4;
   font-size:20px;
@@ -278,15 +224,28 @@ a {
   flex:1;
 }
 
-.play {
+/* BLACK PLAY TRIANGLE — NO EMOJI */
+
+.game .play {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
   background:var(--c);
   color:#06192b;
-  font:10px 'Press Start 2P';
+  font:10px 'Press Start 2P',monospace;
   padding:11px 14px;
   box-shadow:3px 3px #041323;
 }
-
-/* DIVIDERS */
+.play-triangle {
+  display:inline-block;
+  width:0;
+  height:0;
+  border-top:6px solid transparent;
+  border-bottom:6px solid transparent;
+  border-left:10px solid #06192b;
+  flex-shrink:0;
+}
 
 .depth {
   text-align:center;
@@ -295,8 +254,6 @@ a {
   margin:65px 0 52px;
 }
 
-/* LEADERBOARD */
-
 .score-shell {
   margin-top:25px;
   border:2px solid var(--cyan);
@@ -304,32 +261,27 @@ a {
   padding:25px;
   box-shadow:5px 5px #010c18;
 }
-
 .score-grid {
   display:grid;
   grid-template-columns:1fr 1.3fr;
   gap:30px;
 }
-
 .panel-title {
   font:13px/1.6 'Press Start 2P';
   color:var(--cyan);
   margin:0 0 15px;
 }
-
 .sub {
   color:#c0d9e9;
   font-size:20px;
   margin:0 0 18px;
 }
-
 .field-label {
   display:block;
   color:var(--yellow);
   font-size:20px;
   margin:16px 0 6px;
 }
-
 .field {
   width:100%;
   padding:11px;
@@ -339,11 +291,7 @@ a {
   border-radius:0;
   outline:none;
 }
-
-.field:focus {
-  border-color:var(--cyan);
-}
-
+.field:focus {border-color:var(--cyan)}
 .save {
   display:block;
   width:100%;
@@ -355,7 +303,6 @@ a {
   font:11px 'Press Start 2P';
   box-shadow:3px 3px #7c3154;
 }
-
 .feedback {
   min-height:28px;
   font-size:19px;
@@ -363,33 +310,26 @@ a {
   color:#a8ffca;
   overflow-wrap:anywhere;
 }
-
-/* LOGIN */
-
 .auth-box {
   background:#0b3452;
   border:2px solid #4798b7;
   padding:15px;
   margin-bottom:22px;
 }
-
 .auth-button {
   width:100%;
   background:var(--cyan);
   color:#061729;
   border:2px solid #bcf6ff;
   padding:12px;
-  font:10px 'Press Start 2P';
-  line-height:1.7;
+  font:10px/1.7 'Press Start 2P';
 }
-
 .auth-status {
   margin:12px 0 0;
   color:#c7eafa;
   font-size:18px;
   overflow-wrap:anywhere;
 }
-
 .uid {
   color:var(--yellow);
   font-size:16px;
@@ -397,70 +337,52 @@ a {
   user-select:all;
 }
 
-/* DAILY WIN COUNTERS */
-
 .wins {
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:12px;
   margin:18px 0 22px;
 }
-
 .win-box {
   background:#0e314c;
   border:2px solid #438fa8;
   padding:13px;
   text-align:center;
 }
-
 .win-box label {
   color:#d5f3ff;
   font:10px 'Press Start 2P';
 }
-
 .win-num {
   color:var(--yellow);
   font:30px 'Press Start 2P';
   margin:16px 0 6px;
 }
-
 .win-box small {
   font-size:18px;
   color:#c1e1f0;
 }
 
-/* SCORE TABLE */
-
 .table-wrap {overflow-x:auto}
-
 table {
   width:100%;
   border-collapse:collapse;
 }
-
 th {
   text-align:left;
   color:var(--cyan);
   font-size:18px;
   border-bottom:2px solid #4596b5;
 }
-
 td {
   font-size:20px;
   border-bottom:1px dashed #326987;
 }
-
 td,th {padding:9px 5px}
-
 td:not(:first-child),
-th:not(:first-child) {
-  text-align:center;
-}
-
+th:not(:first-child) {text-align:center}
 .won {color:var(--yellow)}
 .waiting {color:#85b4cc}
-
-/* CHAMPION */
 
 .champ {
   text-align:center;
@@ -468,25 +390,21 @@ th:not(:first-child) {
   padding:15px;
   margin-top:24px;
 }
-
 .champ small {
   font-size:18px;
   letter-spacing:2px;
 }
-
 .champ div {
   font:12px/1.7 'Press Start 2P';
   color:var(--yellow);
   margin-top:10px;
 }
-
 .sync {
   text-align:center;
   color:#b0d6e8;
   font-size:17px;
   margin-top:16px;
 }
-
 .footer {
   text-align:center;
   border-top:2px solid #173952;
@@ -495,63 +413,34 @@ th:not(:first-child) {
   font-size:20px;
 }
 
-/* MOBILE */
-
 @media(max-width:700px) {
   .games {
     grid-template-columns:repeat(2,minmax(0,1fr));
   }
-
-  .score-grid {
-    grid-template-columns:1fr;
-  }
-
+  .score-grid {grid-template-columns:1fr}
   .hero {height:415px}
   .hero-copy {top:100px}
   .hero-kicker {font-size:16px}
   .hero-subtitle {font-size:17px}
   .score-shell {padding:17px}
-
   .hero-title {
     font-size:clamp(16px,5.2vw,30px);
     text-shadow:
       -1px -1px 0 #00eaff,
       -2px -2px 0 #00eaff,
-      1px 1px 0 #ff4389,
       2px 2px 0 #ff4389,
       3px 3px 0 #ff4389;
   }
 }
-
 @media(max-width:420px) {
-  .game {
-    padding:17px 8px;
-    min-height:220px;
-  }
-
-  .game-image {
-    width:62px;
-    height:62px;
-  }
-
-  .game-image img {
-    width:46px;
-    height:46px;
-  }
-
+  .game {padding:17px 8px;min-height:220px}
+  .game-image {width:62px;height:62px}
+  .game-image img {width:46px;height:46px}
   .game h3 {font-size:9px}
   .game p {font-size:18px}
-  .game .play {
-    font-size:9px;
-    padding:10px;
-  }
-
-  .hero-title {
-    font-size:clamp(12px,4vw,16px);
-    letter-spacing:-.3px;
-  }
+  .game .play {font-size:9px;padding:10px}
+  .hero-title {font-size:clamp(12px,4vw,16px)}
 }
-
 @media(prefers-reduced-motion:reduce) {
   .hero-title .letter {animation:none}
   .game {transition:none}
@@ -576,9 +465,7 @@ th:not(:first-child) {
         aria-label="Hudson vs Noah">
       HUDSON VS NOAH
     </h1>
-
     <p class="hero-kicker">THE DAILY GAMES</p>
-
     <div class="hero-subtitle">
       8 games · 2 players · <strong>1 winner</strong>
     </div>
@@ -606,7 +493,6 @@ th:not(:first-child) {
 <section id="scores">
   <div class="eyebrow">✦ HIGH SCORES ✦</div>
   <h2 class="section-heading">THE LEADERBOARD</h2>
-
   <p class="intro">
     One day. Eight games. Whoever wins more takes it.
   </p>
@@ -621,7 +507,6 @@ th:not(:first-child) {
           <button id="loginBtn" class="auth-button">
             SIGN IN WITH GOOGLE
           </button>
-
           <button id="logoutBtn"
                   class="auth-button"
                   style="display:none">
@@ -629,15 +514,14 @@ th:not(:first-child) {
           </button>
 
           <div class="auth-status" id="authStatus">
-            Sign in to enter your scores.
+            Sign in to submit scores.
           </div>
-
           <div class="uid" id="uidDisplay"></div>
         </div>
 
         <p class="sub">
-          Your account selects your player automatically.
-          Update scores whenever you want.
+          Your Google account automatically selects your
+          player. Enter the result shown by each game.
         </p>
 
         <label for="gameSelect" class="field-label">
@@ -645,17 +529,23 @@ th:not(:first-child) {
         </label>
         <select id="gameSelect" class="field"></select>
 
-        <label for="scoreInput" class="field-label">
+        <label for="scoreInput"
+               class="field-label"
+               id="scoreLabel">
           SCORE
         </label>
+
+        <p class="sub" id="scoreHelp">
+          Select a game to see how scoring works.
+        </p>
+
         <input
           id="scoreInput"
           class="field"
           type="number"
           min="0"
-          max="1000000000"
           step="any"
-          placeholder="Enter your score"
+          placeholder="Enter score"
         >
 
         <button id="saveBtn" class="save" disabled>
@@ -677,7 +567,6 @@ th:not(:first-child) {
             <div class="win-num" id="hudsonWins">0</div>
             <small>GAME WINS</small>
           </div>
-
           <div class="win-box">
             <label>NOAH</label>
             <div class="win-num" id="noahWins">0</div>
@@ -724,13 +613,12 @@ th:not(:first-child) {
 
 <script>
 /* ======================================
-   PIXEL OCEAN + BOAT
+   ANIMATED PIXEL OCEAN & BOAT
    ====================================== */
 
 const canvas=document.getElementById("scene");
 const ctx=canvas.getContext("2d",{alpha:false});
-
-const reduceMotion=window.matchMedia(
+const reduceMotion=matchMedia(
   "(prefers-reduced-motion: reduce)"
 );
 
@@ -745,17 +633,14 @@ function resizeScene() {
   canvas.height=H;
   ctx.imageSmoothingEnabled=false;
 }
-
 window.addEventListener("resize",resizeScene);
 resizeScene();
 
 function rect(x,y,w,h,c) {
   ctx.fillStyle=c;
   ctx.fillRect(
-    Math.round(x),
-    Math.round(y),
-    Math.round(w),
-    Math.round(h)
+    Math.round(x),Math.round(y),
+    Math.round(w),Math.round(h)
   );
 }
 
@@ -782,14 +667,11 @@ function drawBoat(t) {
     Math.round(cx),
     Math.round(surface+1)
   );
-
   ctx.scale(.55,.55);
   ctx.translate(-30,-22);
 
-  // Mast
+  // Mast and flag
   rect(35,-16,2,32,"#17374a");
-
-  // Pink flag
   rect(37,-15,12,3,"#ff4389");
   rect(37,-12,9,3,"#e34e83");
 
@@ -817,14 +699,13 @@ function drawBoat(t) {
   rect(8,21,45,4,"#102d43");
   rect(13,25,35,2,"#092139");
 
-  // Gold hull details
+  // Hull details
   rect(6,14,49,2,"#ffe28f");
   rect(16,19,5,2,"#e1c08b");
   rect(39,19,5,2,"#e1c08b");
 
   ctx.restore();
 
-  // Foam beside boat
   rect(cx-25,surface+1,8,1,"#e7ffff");
   rect(cx+18,surface+1,8,1,"#e7ffff");
 }
@@ -834,16 +715,12 @@ function drawScene(time) {
 
   ctx.fillStyle="#c7f4ff";
   ctx.fillRect(0,0,W,H);
-
-  // Sky
   rect(0,0,W,H*.54,"#a9ebfa");
 
-  // Clouds
   cloud(W*.08,27,1.15);
   cloud(W*.75,20,1.65);
   cloud(W*.87,53,.55);
 
-  // Horizon
   for(let x=0;x<W;x+=8) {
     const y=waveY(x,t);
     if(y>0) {
@@ -855,7 +732,6 @@ function drawScene(time) {
     }
   }
 
-  // Ocean surface
   for(let x=0;x<W;x++) {
     const y=Math.round(waveY(x,t));
     rect(x,y,1,H-y,"#093354");
@@ -863,13 +739,11 @@ function drawScene(time) {
     rect(x,y+2,1,2,"#5be5f5");
   }
 
-  // Underwater layers
   for(let x=0;x<W;x+=4) {
     const y=waveY(x,t);
     rect(x,y+12,4,H-y-12,"#082541");
   }
 
-  // Animated highlights
   for(let j=0;j<11;j++) {
     const x=((j*47+t*(j%2?3:-4)+W*8)%W);
     const y=H*.85+(j%4)*7;
@@ -882,10 +756,9 @@ function drawScene(time) {
     requestAnimationFrame(drawScene);
   }
 }
-
 requestAnimationFrame(drawScene);
 
-// Letter-by-letter wave
+// Animated title letters
 const title=document.getElementById("waveTitle");
 const original=title.textContent.trim();
 title.textContent="";
@@ -901,7 +774,7 @@ title.textContent="";
 
 <script type="module">
 /* ======================================
-   FIREBASE REALTIME DATABASE
+   FIREBASE IMPORTS
    ====================================== */
 
 import {initializeApp} from
@@ -911,8 +784,6 @@ import {
   getAuth,
   GoogleAuthProvider,
   signInWithPopup,
-  signInWithRedirect,
-  getRedirectResult,
   signOut,
   onAuthStateChanged
 } from
@@ -926,7 +797,10 @@ import {
 } from
 "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
 
-// Firebase configuration
+/* ======================================
+   FIREBASE CONFIGURATION
+   ====================================== */
+
 const firebaseConfig={
   apiKey:"AIzaSyDqfUuUIWKZ76ds5obBF-aaFqaMwNscYh8",
   authDomain:"hudson-noah-game-hub.firebaseapp.com",
@@ -937,15 +811,15 @@ const firebaseConfig={
   appId:"1:264833341126:web:74f47208502a291bace9c7"
 };
 
-// Authorized Firebase users
-// Add Noah's UID once available.
+// Add Noah's UID when available.
+// Use the same UIDs in Firebase database rules.
 const playerUIDs={
   Hudson:"jTgzNimxj4XXVk8Zqr7FQfvEnTp1",
   Noah:"NOAH_FIREBASE_UID"
 };
 
 /* ======================================
-   GAME INFORMATION
+   EIGHT DAILY GAMES
    ====================================== */
 
 const games=[
@@ -957,7 +831,12 @@ const games=[
     domain:"krillion.io",
     color:"#31edff",
     direction:"higher",
-    fallback:"K"
+    fallback:"K",
+    label:"TOTAL POINTS",
+    help:"Enter your final rarity points. Higher wins.",
+    min:0,
+    max:1000000000,
+    integer:false
   },
   {
     id:"maptap",
@@ -966,8 +845,13 @@ const games=[
     url:"https://maptap.gg",
     domain:"maptap.gg",
     color:"#89ffad",
-    direction:"lower",
-    fallback:"M"
+    direction:"higher",
+    fallback:"M",
+    label:"DAILY POINTS",
+    help:"Enter your overall daily score out of 1,000. Higher wins.",
+    min:0,
+    max:1000,
+    integer:false
   },
   {
     id:"hooked",
@@ -977,7 +861,12 @@ const games=[
     domain:"hookeddailygame.com",
     color:"#ff79a6",
     direction:"lower",
-    fallback:"H"
+    fallback:"H",
+    label:"ATTEMPTS",
+    help:"Provisional scoring: enter attempts taken. Fewer wins. Both players should use the same result type.",
+    min:1,
+    max:1000,
+    integer:true
   },
   {
     id:"connections",
@@ -987,27 +876,42 @@ const games=[
     domain:"nytimes.com",
     color:"#cba7ff",
     direction:"lower",
-    fallback:"C"
+    fallback:"C",
+    label:"MISTAKES",
+    help:"Enter 0–3 if you solved it. Enter 4 if you failed. Fewer mistakes wins.",
+    min:0,
+    max:4,
+    integer:true
   },
   {
     id:"farflung",
     name:"FARFLUNG",
-    description:"Guess the place from almost nothing.",
+    description:"Pin rare correct countries across five prompts.",
     url:"https://farflung.game",
     domain:"farflung.game",
     color:"#ffda7a",
-    direction:"lower",
-    fallback:"F"
+    direction:"higher",
+    fallback:"F",
+    label:"DISTANCE / POINTS",
+    help:"Enter your final result. Both players must use the same score type and units. Higher wins.",
+    min:0,
+    max:1000000000,
+    integer:false
   },
   {
     id:"kabloom",
     name:"KABLOOM",
-    description:"Build the right word from the clues.",
+    description:"Complete seven questions without reusing answers.",
     url:"https://kabloom.io",
     domain:"kabloom.io",
     color:"#e9a0ff",
     direction:"higher",
-    fallback:"K"
+    fallback:"K",
+    label:"QUESTIONS CLEARED",
+    help:"Enter how many of the seven questions you completed (0–7). Higher wins.",
+    min:0,
+    max:7,
+    integer:true
   },
   {
     id:"globle",
@@ -1017,17 +921,27 @@ const games=[
     domain:"globle-game.com",
     color:"#67ffe3",
     direction:"lower",
-    fallback:"G"
+    fallback:"G",
+    label:"COUNTRY GUESSES",
+    help:"Enter the number of guesses it took to find the mystery country. Fewer wins.",
+    min:1,
+    max:1000000,
+    integer:true
   },
   {
     id:"magnitudle",
     name:"SIZE IT UP",
-    description:"Put objects in order from smallest to largest.",
+    description:"Estimate sizes across five rounds.",
     url:"https://magnitudle.com/size-it-up",
     domain:"magnitudle.com",
     color:"#ffc36d",
     direction:"higher",
-    fallback:"S"
+    fallback:"S",
+    label:"TOTAL POINTS",
+    help:"Enter your total score across five rounds out of 500. Higher wins.",
+    min:0,
+    max:500,
+    integer:false
   }
 ];
 
@@ -1039,7 +953,6 @@ const app=initializeApp(firebaseConfig);
 const auth=getAuth(app);
 const db=getDatabase(app);
 const provider=new GoogleAuthProvider();
-
 const $=id=>document.getElementById(id);
 
 let currentUser=null;
@@ -1048,9 +961,10 @@ let scores={};
 let day=getDay();
 let unsubscribe=null;
 let synced=false;
+let saving=false;
 
 /* ======================================
-   DATES (EASTERN TIME)
+   EASTERN TIME DATES
    ====================================== */
 
 function getDay() {
@@ -1081,7 +995,7 @@ function displayDate() {
 }
 
 /* ======================================
-   RENDER GAME CARDS
+   GAME CARDS
    ====================================== */
 
 function renderCards() {
@@ -1103,7 +1017,12 @@ function renderCards() {
 
       <h3>${g.name}</h3>
       <p>${g.description}</p>
-      <span class="play">▶ PLAY</span>
+
+      <span class="play">
+        <span class="play-triangle"
+              aria-hidden="true"></span>
+        PLAY
+      </span>
     </a>
   `).join("");
 
@@ -1115,13 +1034,44 @@ function renderCards() {
 }
 
 /* ======================================
+   SCORE INPUT SETTINGS
+   ====================================== */
+
+function selectedGame() {
+  return games.find(g=>g.id===$("gameSelect").value);
+}
+
+function fillScore() {
+  const g=selectedGame();
+  const current=g?scores[g.id]?.[player]:undefined;
+
+  $("scoreInput").value=
+    current===undefined?"":current;
+
+  $("scoreLabel").textContent=g?g.label:"SCORE";
+
+  $("scoreHelp").textContent=g
+    ?g.help
+    :"Select a game to see how scoring works.";
+
+  $("scoreInput").min=g?g.min:0;
+  $("scoreInput").max=g?g.max:1000000000;
+  $("scoreInput").step=g?.integer?1:"any";
+  $("scoreInput").placeholder=g?g.label:"Enter score";
+}
+
+/* ======================================
    AUTHENTICATION
    ====================================== */
 
 function setPlayer(name) {
   player=name;
-  $("saveBtn").disabled=!name||!synced;
+  updateSaveButton();
   fillScore();
+}
+
+function updateSaveButton() {
+  $("saveBtn").disabled=!player||!synced||saving;
 }
 
 $("loginBtn").addEventListener("click",async()=>{
@@ -1130,13 +1080,8 @@ $("loginBtn").addEventListener("click",async()=>{
   try {
     await signInWithPopup(auth,provider);
   } catch(error) {
-    if(error.code==="auth/popup-blocked") {
-      $("authStatus").textContent=
-        "POPUP BLOCKED. CHECK BROWSER SETTINGS.";
-    } else {
-      $("authStatus").textContent=
-        "LOGIN FAILED: "+error.message;
-    }
+    $("authStatus").textContent=
+      "LOGIN FAILED: "+error.message;
   }
 });
 
@@ -1181,14 +1126,14 @@ onAuthStateChanged(auth,user=>{
 });
 
 /* ======================================
-   REALTIME SCORE CONNECTION
+   LIVE FIREBASE LEADERBOARD
    ====================================== */
 
 function subscribe() {
   if(unsubscribe) unsubscribe();
 
   synced=false;
-  $("saveBtn").disabled=true;
+  updateSaveButton();
 
   $("syncStatus").textContent=
     "CONNECTING TO LIVE LEADERBOARD...";
@@ -1218,16 +1163,16 @@ function subscribe() {
 
       scores=updated;
       synced=true;
-      $("saveBtn").disabled=!player;
 
       renderScores();
+      updateSaveButton();
 
       $("syncStatus").textContent=
         "● LIVE SCORES CONNECTED";
     },
     error=>{
       synced=false;
-      $("saveBtn").disabled=true;
+      updateSaveButton();
 
       $("syncStatus").textContent=
         "LIVE SYNC ERROR: "+error.message;
@@ -1240,7 +1185,9 @@ function subscribe() {
    ====================================== */
 
 async function saveScore() {
-  const game=$("gameSelect").value;
+  if(saving) return;
+
+  const g=selectedGame();
   const raw=$("scoreInput").value.trim();
   const feedback=$("feedback");
 
@@ -1257,14 +1204,12 @@ async function saveScore() {
   }
 
   if(!synced) {
-    feedback.textContent=
-      "WAIT FOR LIVE CONNECTION";
+    feedback.textContent="WAIT FOR LIVE CONNECTION";
     return;
   }
 
-  if(!games.some(g=>g.id===game)) {
-    feedback.textContent=
-      "SELECT A GAME FIRST";
+  if(!g) {
+    feedback.textContent="SELECT A GAME FIRST";
     return;
   }
 
@@ -1273,17 +1218,18 @@ async function saveScore() {
   if(
     raw===""||
     !Number.isFinite(score)||
-    score<0||
-    score>1000000000
+    score<g.min||
+    score>g.max||
+    (g.integer&&!Number.isInteger(score))
   ) {
     feedback.textContent=
-      "ENTER A VALID SCORE";
+      `ENTER A VALID RESULT (${g.min}–${g.max})`;
     return;
   }
 
-  const button=$("saveBtn");
-  button.disabled=true;
-  button.textContent="SAVING...";
+  saving=true;
+  updateSaveButton();
+  $("saveBtn").textContent="SAVING...";
 
   try {
     if(getDay()!==day) {
@@ -1294,7 +1240,7 @@ async function saveScore() {
     }
 
     await set(
-      ref(db,`dailyScores/${day}/${game}/${player}`),
+      ref(db,`dailyScores/${day}/${g.id}/${player}`),
       score
     );
 
@@ -1307,29 +1253,18 @@ async function saveScore() {
       "SAVE FAILED: "+error.message;
   }
   finally {
-    button.disabled=!player||!synced;
-    button.textContent="▼ SAVE SCORE ▼";
+    saving=false;
+    $("saveBtn").textContent="▼ SAVE SCORE ▼";
+    updateSaveButton();
   }
 }
 
 /* ======================================
-   FILL CURRENT SCORE
+   GAME WINNERS
    ====================================== */
 
-function fillScore() {
-  const game=$("gameSelect").value;
-  const current=scores[game]?.[player];
-
-  $("scoreInput").value=
-    current===undefined?"":current;
-}
-
-/* ======================================
-   DETERMINE WINNER
-   ====================================== */
-
-function winnerOf(game) {
-  const entry=scores[game.id]||{};
+function winnerOf(g) {
+  const entry=scores[g.id]||{};
 
   const h=entry.Hudson;
   const n=entry.Noah;
@@ -1340,10 +1275,9 @@ function winnerOf(game) {
   if(h===n)
     return "TIE";
 
-  const hudsonWon=
-    game.direction==="higher"
-      ?h>n
-      :h<n;
+  const hudsonWon=g.direction==="higher"
+    ?h>n
+    :h<n;
 
   return hudsonWon?"HK":"NB";
 }
@@ -1365,8 +1299,13 @@ function renderScores() {
     if(winner==="HK") hk++;
     if(winner==="NB") nb++;
 
-    const value=v=>
-      v===undefined?"—":v;
+    const value=v=>{
+      if(v===undefined) return "—";
+      if(g.id==="connections"&&v===4) {
+        return "DNF (4)";
+      }
+      return v;
+    };
 
     return `
       <tr>
@@ -1406,7 +1345,10 @@ function renderScores() {
     $("champion").textContent="STILL PLAYING...";
   }
 
-  fillScore();
+  // Don't overwrite a score while someone is typing.
+  if(document.activeElement!==$("scoreInput")) {
+    fillScore();
+  }
 }
 
 /* ======================================
@@ -1428,7 +1370,7 @@ function updateDay() {
 }
 
 /* ======================================
-   BUTTON EVENT LISTENERS
+   EVENT LISTENERS
    ====================================== */
 
 $("gameSelect").addEventListener(
