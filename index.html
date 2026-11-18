@@ -6,41 +6,60 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#061729">
 <title>Hudson vs Noah | Daily Game Hub</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
 
 <style>
 :root {
   --dark:#061729;
   --deep:#091c33;
-  --cyan:#4adbee;
-  --white:#eefcff;
-  --pink:#ff5f91;
-  --yellow:#ffe18d;
+  --cyan:#31f0ff;
+  --white:#f5fdff;
+  --pink:#ff4389;
+  --yellow:#ffe76a;
 }
-* { box-sizing:border-box; }
-html { scroll-behavior:smooth; }
+
+* {box-sizing:border-box}
+
+html {
+  scroll-behavior:smooth;
+  -webkit-text-size-adjust:100%;
+}
+
 body {
   margin:0;
   background:var(--dark);
   color:var(--white);
   font:22px 'VT323',monospace;
+  -webkit-font-smoothing:antialiased;
 }
-button,input,select { font:inherit; }
-button { cursor:pointer; }
-button:disabled { opacity:.5;cursor:not-allowed; }
-a { text-decoration:none;color:inherit; }
+
+button,input,select {font:inherit}
+button {cursor:pointer}
+button:disabled {
+  opacity:.5;
+  cursor:not-allowed;
+}
+a {
+  color:inherit;
+  text-decoration:none;
+}
+
+/* NAVIGATION */
 
 .topbar {
   height:42px;
   background:#082239;
-  border-bottom:2px solid #1e708c;
+  border-bottom:2px solid #2598b7;
   display:flex;
   align-items:center;
   justify-content:space-between;
   padding:0 max(18px,calc((100% - 980px)/2));
   font-size:19px;
 }
-.topbar a { color:#7deafa; }
+.topbar a {color:#84f5ff}
+
+/* HERO */
 
 .hero {
   height:430px;
@@ -48,13 +67,16 @@ a { text-decoration:none;color:inherit; }
   overflow:hidden;
   background:#bceaf4;
 }
+
 .hero canvas {
   position:absolute;
   inset:0;
   width:100%;
   height:100%;
   image-rendering:pixelated;
+  display:block;
 }
+
 .hero-copy {
   position:absolute;
   z-index:2;
@@ -64,39 +86,59 @@ a { text-decoration:none;color:inherit; }
   text-align:center;
   pointer-events:none;
 }
+
 .hero-title {
   margin:0 0 22px;
-  line-height:1.7;
+  line-height:1.8;
   white-space:nowrap;
-  font:clamp(17px,4.6vw,45px) 'Press Start 2P';
-  color:#f4ffff;
-  filter:
-    drop-shadow(4px 4px 0 #ff5c92)
-    drop-shadow(-2px -1px 0 #53dce9);
+  font:clamp(17px,4.6vw,45px)/1.8 'Press Start 2P',monospace;
+  color:#ffffff;
+
+  /* Pixel-art shadows, mobile compatible */
+  text-shadow:
+    -2px -2px 0 #00eaff,
+    -3px -3px 0 #00eaff,
+    2px 2px 0 #ff4389,
+    3px 3px 0 #ff4389,
+    4px 4px 0 #ff4389;
+
+  filter:none;
+  -webkit-filter:none;
 }
+
 .hero-title .letter {
   display:inline-block;
+  color:inherit;
+  text-shadow:inherit;
   animation:title-ripple 3.2s ease-in-out infinite;
   animation-delay:calc(var(--i)*-.115s);
+  backface-visibility:hidden;
 }
+
 @keyframes title-ripple {
   0%,27%,72%,100% {transform:translateY(0)}
-  48% {transform:translateY(-3px)}
-  61% {transform:translateY(1px)}
+  48% {transform:translateY(-4px)}
+  61% {transform:translateY(2px)}
 }
+
 .hero-kicker {
-  color:#077aa0;
+  color:#007fa5;
   letter-spacing:5px;
   font-size:20px;
+  margin:0 0 16px;
 }
+
 .hero-subtitle {
-  color:#16364c;
+  color:#12394f;
   font-size:21px;
+  letter-spacing:1px;
 }
+
 .hero-subtitle strong {
-  color:#0c7391;
+  color:#007eab;
   font-weight:normal;
 }
+
 .dive-link {
   position:absolute;
   z-index:4;
@@ -106,63 +148,81 @@ a { text-decoration:none;color:inherit; }
   width:min(390px,calc(100% - 38px));
   padding:14px 5px;
   background:#071a2a;
-  color:#e7ffff;
-  border:2px solid #4fe1ef;
+  color:#efffff;
+  border:2px solid var(--cyan);
   outline:3px solid #071a2a;
   text-align:center;
   font:11px 'Press Start 2P';
   box-shadow:4px 4px #020b13;
 }
 
+.dive-link:hover {
+  background:#153653;
+}
+
+/* UNDERWATER SECTION */
+
 .ocean {
   position:relative;
   background:linear-gradient(
-    180deg,#091b30,#082440 48%,#061729
+    180deg,
+    #091b30 0%,
+    #082a49 48%,
+    #061729 100%
   );
   padding:62px 0 85px;
   overflow:hidden;
 }
+
 .ocean:before {
   content:"";
   position:absolute;
   inset:0;
   pointer-events:none;
   background:repeating-linear-gradient(
-    180deg,transparent 0 85px,
-    rgba(46,128,160,.05) 86px 89px
+    180deg,
+    transparent 0 85px,
+    rgba(49,240,255,.065) 86px 89px
   );
 }
+
 .container {
   position:relative;
   max-width:980px;
   padding:0 18px;
   margin:auto;
 }
+
 .eyebrow {
   text-align:center;
-  color:#62d8e7;
+  color:#65edff;
   font-size:18px;
   letter-spacing:4px;
 }
+
 .section-heading {
   text-align:center;
   font:clamp(13px,2.7vw,23px)/1.7 'Press Start 2P';
   margin:15px 0 9px;
 }
+
 .intro {
   text-align:center;
-  color:#b9d4df;
+  color:#d1e9f5;
   font-size:23px;
   margin:0 0 30px;
 }
+
+/* GAME CARDS */
 
 .games {
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
   gap:15px;
 }
+
 .game {
-  --c:#54dbf3;
+  --c:#31f0ff;
   min-height:225px;
   padding:22px 12px 18px;
   border:2px solid var(--c);
@@ -174,10 +234,12 @@ a { text-decoration:none;color:inherit; }
   text-align:center;
   transition:transform .15s,background .15s;
 }
+
 .game:hover {
   transform:translateY(-4px);
-  background:#133a57;
+  background:#164461;
 }
+
 .game-image {
   width:72px;
   height:72px;
@@ -189,27 +251,33 @@ a { text-decoration:none;color:inherit; }
   margin-bottom:17px;
   image-rendering:pixelated;
 }
+
 .game-image img {
   width:55px;
   height:55px;
   object-fit:contain;
 }
+
 .fallback {
   display:none;
   font:24px 'Press Start 2P';
   color:#12405a;
 }
+
 .game h3 {
   font:12px/1.6 'Press Start 2P';
   margin:0;
+  color:#ffffff;
 }
+
 .game p {
-  color:#bcdbe6;
+  color:#d0e8f4;
   font-size:20px;
   line-height:1.08;
   margin:11px 0 19px;
   flex:1;
 }
+
 .play {
   background:var(--c);
   color:#06192b;
@@ -218,50 +286,64 @@ a { text-decoration:none;color:inherit; }
   box-shadow:3px 3px #041323;
 }
 
+/* DIVIDERS */
+
 .depth {
   text-align:center;
-  color:#478ba9;
+  color:#5fa6c3;
   letter-spacing:5px;
   margin:65px 0 52px;
 }
+
+/* LEADERBOARD */
+
 .score-shell {
   margin-top:25px;
-  border:2px solid #44d9e9;
+  border:2px solid var(--cyan);
   background:#081f35;
   padding:25px;
   box-shadow:5px 5px #010c18;
 }
+
 .score-grid {
   display:grid;
   grid-template-columns:1fr 1.3fr;
   gap:30px;
 }
+
 .panel-title {
   font:13px/1.6 'Press Start 2P';
   color:var(--cyan);
   margin:0 0 15px;
 }
+
 .sub {
-  color:#a3c5d7;
+  color:#c0d9e9;
   font-size:20px;
   margin:0 0 18px;
 }
+
 .field-label {
   display:block;
   color:var(--yellow);
   font-size:20px;
   margin:16px 0 6px;
 }
+
 .field {
   width:100%;
   padding:11px;
-  border:2px solid #4688aa;
+  border:2px solid #529fbd;
   background:#061729;
   color:white;
   border-radius:0;
   outline:none;
 }
-.field:focus {border-color:var(--cyan)}
+
+.field:focus {
+  border-color:var(--cyan);
+}
+
 .save {
   display:block;
   width:100%;
@@ -273,19 +355,24 @@ a { text-decoration:none;color:inherit; }
   font:11px 'Press Start 2P';
   box-shadow:3px 3px #7c3154;
 }
+
 .feedback {
   min-height:28px;
   font-size:19px;
   margin-top:13px;
-  color:#a8eeb9;
+  color:#a8ffca;
   overflow-wrap:anywhere;
 }
+
+/* LOGIN */
+
 .auth-box {
   background:#0b3452;
-  border:2px solid #377797;
+  border:2px solid #4798b7;
   padding:15px;
   margin-bottom:22px;
 }
+
 .auth-button {
   width:100%;
   background:var(--cyan);
@@ -295,110 +382,176 @@ a { text-decoration:none;color:inherit; }
   font:10px 'Press Start 2P';
   line-height:1.7;
 }
+
 .auth-status {
   margin:12px 0 0;
-  color:#a8d9ea;
+  color:#c7eafa;
   font-size:18px;
   overflow-wrap:anywhere;
 }
+
 .uid {
   color:var(--yellow);
   font-size:16px;
   overflow-wrap:anywhere;
   user-select:all;
 }
+
+/* DAILY WIN COUNTERS */
+
 .wins {
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:12px;
   margin:18px 0 22px;
 }
+
 .win-box {
   background:#0e314c;
-  border:2px solid #326882;
+  border:2px solid #438fa8;
   padding:13px;
   text-align:center;
 }
+
 .win-box label {
-  color:#bee7f4;
+  color:#d5f3ff;
   font:10px 'Press Start 2P';
 }
+
 .win-num {
   color:var(--yellow);
   font:30px 'Press Start 2P';
   margin:16px 0 6px;
 }
+
 .win-box small {
   font-size:18px;
-  color:#a8ccdf;
+  color:#c1e1f0;
 }
+
+/* SCORE TABLE */
+
 .table-wrap {overflow-x:auto}
+
 table {
   width:100%;
   border-collapse:collapse;
 }
+
 th {
   text-align:left;
   color:var(--cyan);
   font-size:18px;
-  border-bottom:2px solid #34718e;
+  border-bottom:2px solid #4596b5;
 }
+
 td {
   font-size:20px;
-  border-bottom:1px dashed #285778;
+  border-bottom:1px dashed #326987;
 }
+
 td,th {padding:9px 5px}
+
 td:not(:first-child),
-th:not(:first-child) {text-align:center}
+th:not(:first-child) {
+  text-align:center;
+}
+
 .won {color:var(--yellow)}
-.waiting {color:#779caf}
+.waiting {color:#85b4cc}
+
+/* CHAMPION */
+
 .champ {
   text-align:center;
-  border:2px dashed #316e8d;
+  border:2px dashed #459ab8;
   padding:15px;
   margin-top:24px;
 }
+
 .champ small {
   font-size:18px;
   letter-spacing:2px;
 }
+
 .champ div {
   font:12px/1.7 'Press Start 2P';
   color:var(--yellow);
   margin-top:10px;
 }
+
 .sync {
   text-align:center;
-  color:#91b6cb;
+  color:#b0d6e8;
   font-size:17px;
   margin-top:16px;
 }
+
 .footer {
   text-align:center;
   border-top:2px solid #173952;
-  color:#81abc0;
+  color:#9fc9de;
   padding:28px 12px;
   font-size:20px;
 }
 
+/* MOBILE */
+
 @media(max-width:700px) {
-  .games {grid-template-columns:repeat(2,minmax(0,1fr))}
-  .score-grid {grid-template-columns:1fr}
+  .games {
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .score-grid {
+    grid-template-columns:1fr;
+  }
+
   .hero {height:415px}
   .hero-copy {top:100px}
   .hero-kicker {font-size:16px}
   .hero-subtitle {font-size:17px}
   .score-shell {padding:17px}
+
+  .hero-title {
+    font-size:clamp(16px,5.2vw,30px);
+    text-shadow:
+      -1px -1px 0 #00eaff,
+      -2px -2px 0 #00eaff,
+      1px 1px 0 #ff4389,
+      2px 2px 0 #ff4389,
+      3px 3px 0 #ff4389;
+  }
 }
+
 @media(max-width:420px) {
-  .game {padding:17px 8px;min-height:220px}
-  .game-image {width:62px;height:62px}
-  .game-image img {width:46px;height:46px}
+  .game {
+    padding:17px 8px;
+    min-height:220px;
+  }
+
+  .game-image {
+    width:62px;
+    height:62px;
+  }
+
+  .game-image img {
+    width:46px;
+    height:46px;
+  }
+
   .game h3 {font-size:9px}
   .game p {font-size:18px}
-  .game .play {font-size:9px;padding:10px}
-  .hero-title {font-size:16px}
+  .game .play {
+    font-size:9px;
+    padding:10px;
+  }
+
+  .hero-title {
+    font-size:clamp(12px,4vw,16px);
+    letter-spacing:-.3px;
+  }
 }
+
 @media(prefers-reduced-motion:reduce) {
   .hero-title .letter {animation:none}
   .game {transition:none}
@@ -418,10 +571,14 @@ th:not(:first-child) {text-align:center}
   <canvas id="scene" aria-hidden="true"></canvas>
 
   <div class="hero-copy">
-    <h1 class="hero-title" id="waveTitle">
+    <h1 class="hero-title"
+        id="waveTitle"
+        aria-label="Hudson vs Noah">
       HUDSON VS NOAH
     </h1>
+
     <p class="hero-kicker">THE DAILY GAMES</p>
+
     <div class="hero-subtitle">
       8 games · 2 players · <strong>1 winner</strong>
     </div>
@@ -438,7 +595,9 @@ th:not(:first-child) {text-align:center}
 <section id="games">
   <div class="eyebrow">◈ CHOOSE YOUR GAME ◈</div>
   <h2 class="section-heading">TODAY'S LINEUP</h2>
-  <p class="intro">Pick a game. Play it. Drop your score.</p>
+  <p class="intro">
+    Pick a game. Play it. Drop your score.
+  </p>
   <div class="games" id="gameGrid"></div>
 </section>
 
@@ -447,6 +606,7 @@ th:not(:first-child) {text-align:center}
 <section id="scores">
   <div class="eyebrow">✦ HIGH SCORES ✦</div>
   <h2 class="section-heading">THE LEADERBOARD</h2>
+
   <p class="intro">
     One day. Eight games. Whoever wins more takes it.
   </p>
@@ -461,13 +621,17 @@ th:not(:first-child) {text-align:center}
           <button id="loginBtn" class="auth-button">
             SIGN IN WITH GOOGLE
           </button>
-          <button id="logoutBtn" class="auth-button"
+
+          <button id="logoutBtn"
+                  class="auth-button"
                   style="display:none">
             SIGN OUT
           </button>
+
           <div class="auth-status" id="authStatus">
             Sign in to enter your scores.
           </div>
+
           <div class="uid" id="uidDisplay"></div>
         </div>
 
@@ -498,7 +662,8 @@ th:not(:first-child) {text-align:center}
           ▼ SAVE SCORE ▼
         </button>
 
-        <div id="feedback" class="feedback"
+        <div id="feedback"
+             class="feedback"
              role="status"></div>
       </div>
 
@@ -512,6 +677,7 @@ th:not(:first-child) {text-align:center}
             <div class="win-num" id="hudsonWins">0</div>
             <small>GAME WINS</small>
           </div>
+
           <div class="win-box">
             <label>NOAH</label>
             <div class="win-num" id="noahWins">0</div>
@@ -557,11 +723,14 @@ th:not(:first-child) {text-align:center}
 </footer>
 
 <script>
-// PIXEL OCEAN & BOAT ANIMATION
+/* ======================================
+   PIXEL OCEAN + BOAT
+   ====================================== */
 
-const canvas = document.getElementById("scene");
-const ctx = canvas.getContext("2d",{alpha:false});
-const reduceMotion = matchMedia(
+const canvas=document.getElementById("scene");
+const ctx=canvas.getContext("2d",{alpha:false});
+
+const reduceMotion=window.matchMedia(
   "(prefers-reduced-motion: reduce)"
 );
 
@@ -576,14 +745,17 @@ function resizeScene() {
   canvas.height=H;
   ctx.imageSmoothingEnabled=false;
 }
+
 window.addEventListener("resize",resizeScene);
 resizeScene();
 
 function rect(x,y,w,h,c) {
   ctx.fillStyle=c;
   ctx.fillRect(
-    Math.round(x),Math.round(y),
-    Math.round(w),Math.round(h)
+    Math.round(x),
+    Math.round(y),
+    Math.round(w),
+    Math.round(h)
   );
 }
 
@@ -595,10 +767,10 @@ function waveY(x,t) {
 }
 
 function cloud(x,y,s) {
-  rect(x+4*s,y,19*s,4*s,"#ecfbff");
-  rect(x+s,y+4*s,28*s,5*s,"#ecfbff");
-  rect(x+8*s,y-4*s,13*s,4*s,"#ecfbff");
-  rect(x,y+8*s,32*s,4*s,"#ecfbff");
+  rect(x+4*s,y,19*s,4*s,"#f4ffff");
+  rect(x+s,y+4*s,28*s,5*s,"#f4ffff");
+  rect(x+8*s,y-4*s,13*s,4*s,"#f4ffff");
+  rect(x,y+8*s,32*s,4*s,"#f4ffff");
 }
 
 function drawBoat(t) {
@@ -606,22 +778,28 @@ function drawBoat(t) {
   const surface=waveY(cx,t);
 
   ctx.save();
-  ctx.translate(Math.round(cx),Math.round(surface+1));
+  ctx.translate(
+    Math.round(cx),
+    Math.round(surface+1)
+  );
+
   ctx.scale(.55,.55);
   ctx.translate(-30,-22);
 
-  // Mast and flag
+  // Mast
   rect(35,-16,2,32,"#17374a");
-  rect(37,-15,12,3,"#ff709b");
+
+  // Pink flag
+  rect(37,-15,12,3,"#ff4389");
   rect(37,-12,9,3,"#e34e83");
 
   // Cabin
-  rect(18,1,28,13,"#e4f0e9");
-  rect(21,-4,22,5,"#d0e9e6");
+  rect(18,1,28,13,"#f0f8f5");
+  rect(21,-4,22,5,"#d9f5f3");
 
   // Windows
-  rect(23,4,8,6,"#5bb6d2");
-  rect(34,4,8,6,"#5bb6d2");
+  rect(23,4,8,6,"#5bd5ec");
+  rect(34,4,8,6,"#5bd5ec");
   rect(24,5,5,4,"#173c58");
   rect(35,5,5,4,"#173c58");
 
@@ -630,7 +808,7 @@ function drawBoat(t) {
   rect(26,-8,3,4,"#d36e6d");
 
   // Rails
-  rect(6,12,49,2,"#d9ddcf");
+  rect(6,12,49,2,"#e7eee9");
   rect(10,8,2,6,"#18394b");
   rect(52,8,2,6,"#18394b");
 
@@ -639,64 +817,75 @@ function drawBoat(t) {
   rect(8,21,45,4,"#102d43");
   rect(13,25,35,2,"#092139");
 
-  // Details
-  rect(6,14,49,2,"#e7c494");
+  // Gold hull details
+  rect(6,14,49,2,"#ffe28f");
   rect(16,19,5,2,"#e1c08b");
   rect(39,19,5,2,"#e1c08b");
 
   ctx.restore();
 
-  rect(cx-25,surface+1,8,1,"#d7f8f9");
-  rect(cx+18,surface+1,8,1,"#d7f8f9");
+  // Foam beside boat
+  rect(cx-25,surface+1,8,1,"#e7ffff");
+  rect(cx+18,surface+1,8,1,"#e7ffff");
 }
 
 function drawScene(time) {
   const t=reduceMotion.matches?0:time*.001;
 
-  ctx.fillStyle="#bceaf4";
+  ctx.fillStyle="#c7f4ff";
   ctx.fillRect(0,0,W,H);
 
-  rect(0,0,W,H*.54,"#a6e2f2");
+  // Sky
+  rect(0,0,W,H*.54,"#a9ebfa");
 
+  // Clouds
   cloud(W*.08,27,1.15);
   cloud(W*.75,20,1.65);
   cloud(W*.87,53,.55);
 
+  // Horizon
   for(let x=0;x<W;x+=8) {
     const y=waveY(x,t);
     if(y>0) {
-      rect(x,H*.69,8,
-        Math.max(0,y-H*.69),"#a0dae5");
+      rect(
+        x,H*.69,8,
+        Math.max(0,y-H*.69),
+        "#a0e4f3"
+      );
     }
   }
 
+  // Ocean surface
   for(let x=0;x<W;x++) {
     const y=Math.round(waveY(x,t));
-    rect(x,y,1,H-y,"#092a46");
-    rect(x,y,1,2,"#e2f7f6");
-    rect(x,y+2,1,2,"#68bcd1");
+    rect(x,y,1,H-y,"#093354");
+    rect(x,y,1,2,"#f0ffff");
+    rect(x,y+2,1,2,"#5be5f5");
   }
 
+  // Underwater layers
   for(let x=0;x<W;x+=4) {
     const y=waveY(x,t);
     rect(x,y+12,4,H-y-12,"#082541");
   }
 
+  // Animated highlights
   for(let j=0;j<11;j++) {
     const x=((j*47+t*(j%2?3:-4)+W*8)%W);
     const y=H*.85+(j%4)*7;
-    rect(x,y,10+(j%3)*5,1,"#275c79");
+    rect(x,y,10+(j%3)*5,1,"#367d9c");
   }
 
   drawBoat(t);
 
-  if(!reduceMotion.matches)
+  if(!reduceMotion.matches) {
     requestAnimationFrame(drawScene);
+  }
 }
 
 requestAnimationFrame(drawScene);
 
-// Wave effect for title
+// Letter-by-letter wave
 const title=document.getElementById("waveTitle");
 const original=title.textContent.trim();
 title.textContent="";
@@ -711,10 +900,9 @@ title.textContent="";
 </script>
 
 <script type="module">
-
-// ======================================
-// FIREBASE REALTIME DATABASE
-// ======================================
+/* ======================================
+   FIREBASE REALTIME DATABASE
+   ====================================== */
 
 import {initializeApp} from
 "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
@@ -723,6 +911,8 @@ import {
   getAuth,
   GoogleAuthProvider,
   signInWithPopup,
+  signInWithRedirect,
+  getRedirectResult,
   signOut,
   onAuthStateChanged
 } from
@@ -736,8 +926,8 @@ import {
 } from
 "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
 
-// YOUR FIREBASE PROJECT
-const firebaseConfig = {
+// Firebase configuration
+const firebaseConfig={
   apiKey:"AIzaSyDqfUuUIWKZ76ds5obBF-aaFqaMwNscYh8",
   authDomain:"hudson-noah-game-hub.firebaseapp.com",
   databaseURL:"https://hudson-noah-game-hub-default-rtdb.firebaseio.com",
@@ -747,17 +937,16 @@ const firebaseConfig = {
   appId:"1:264833341126:web:74f47208502a291bace9c7"
 };
 
-// IMPORTANT:
-// Replace these after Hudson and Noah sign in.
-// The same UIDs must appear in Firebase Rules.
+// Authorized Firebase users
+// Add Noah's UID once available.
 const playerUIDs={
   Hudson:"jTgzNimxj4XXVk8Zqr7FQfvEnTp1",
   Noah:"NOAH_FIREBASE_UID"
 };
 
-// ======================================
-// GAMES
-// ======================================
+/* ======================================
+   GAME INFORMATION
+   ====================================== */
 
 const games=[
   {
@@ -766,7 +955,7 @@ const games=[
     description:"Find the rarest answers and dive deeper.",
     url:"https://krillion.io",
     domain:"krillion.io",
-    color:"#5beaff",
+    color:"#31edff",
     direction:"higher",
     fallback:"K"
   },
@@ -776,7 +965,7 @@ const games=[
     description:"Test how well you know the map.",
     url:"https://maptap.gg",
     domain:"maptap.gg",
-    color:"#9bf0a3",
+    color:"#89ffad",
     direction:"lower",
     fallback:"M"
   },
@@ -786,7 +975,7 @@ const games=[
     description:"Figure out the daily hidden connection.",
     url:"https://hookeddailygame.com/",
     domain:"hookeddailygame.com",
-    color:"#ff94ab",
+    color:"#ff79a6",
     direction:"lower",
     fallback:"H"
   },
@@ -796,7 +985,7 @@ const games=[
     description:"Group the words into the right categories.",
     url:"https://www.nytimes.com/games/connections",
     domain:"nytimes.com",
-    color:"#c5a8ff",
+    color:"#cba7ff",
     direction:"lower",
     fallback:"C"
   },
@@ -806,7 +995,7 @@ const games=[
     description:"Guess the place from almost nothing.",
     url:"https://farflung.game",
     domain:"farflung.game",
-    color:"#ffd28a",
+    color:"#ffda7a",
     direction:"lower",
     fallback:"F"
   },
@@ -816,7 +1005,7 @@ const games=[
     description:"Build the right word from the clues.",
     url:"https://kabloom.io",
     domain:"kabloom.io",
-    color:"#e1a1ff",
+    color:"#e9a0ff",
     direction:"higher",
     fallback:"K"
   },
@@ -826,7 +1015,7 @@ const games=[
     description:"Find the mystery country using heat clues.",
     url:"https://globle-game.com/game",
     domain:"globle-game.com",
-    color:"#8be7dc",
+    color:"#67ffe3",
     direction:"lower",
     fallback:"G"
   },
@@ -836,15 +1025,15 @@ const games=[
     description:"Put objects in order from smallest to largest.",
     url:"https://magnitudle.com/size-it-up",
     domain:"magnitudle.com",
-    color:"#ffc57d",
+    color:"#ffc36d",
     direction:"higher",
     fallback:"S"
   }
 ];
 
-// ======================================
-// INITIALIZE FIREBASE
-// ======================================
+/* ======================================
+   INITIALIZE FIREBASE
+   ====================================== */
 
 const app=initializeApp(firebaseConfig);
 const auth=getAuth(app);
@@ -860,9 +1049,9 @@ let day=getDay();
 let unsubscribe=null;
 let synced=false;
 
-// ======================================
-// DATE FUNCTIONS
-// ======================================
+/* ======================================
+   DATES (EASTERN TIME)
+   ====================================== */
 
 function getDay() {
   const parts=new Intl.DateTimeFormat(
@@ -891,9 +1080,9 @@ function displayDate() {
   ).format(new Date()).toUpperCase();
 }
 
-// ======================================
-// GAME CARDS
-// ======================================
+/* ======================================
+   RENDER GAME CARDS
+   ====================================== */
 
 function renderCards() {
   $("gameGrid").innerHTML=games.map(g=>`
@@ -925,24 +1114,29 @@ function renderCards() {
     ).join("");
 }
 
-// ======================================
-// PLAYER AUTHENTICATION
-// ======================================
+/* ======================================
+   AUTHENTICATION
+   ====================================== */
 
 function setPlayer(name) {
   player=name;
-
   $("saveBtn").disabled=!name||!synced;
-
   fillScore();
 }
 
 $("loginBtn").addEventListener("click",async()=>{
+  $("authStatus").textContent="SIGNING IN...";
+
   try {
     await signInWithPopup(auth,provider);
   } catch(error) {
-    $("authStatus").textContent=
-      "LOGIN FAILED: "+error.message;
+    if(error.code==="auth/popup-blocked") {
+      $("authStatus").textContent=
+        "POPUP BLOCKED. CHECK BROWSER SETTINGS.";
+    } else {
+      $("authStatus").textContent=
+        "LOGIN FAILED: "+error.message;
+    }
   }
 });
 
@@ -972,12 +1166,13 @@ onAuthStateChanged(auth,user=>{
     $("authStatus").textContent=
       "SIGN IN TO SUBMIT SCORES";
     $("uidDisplay").textContent="";
-  } else if(found) {
+  }
+  else if(found) {
     $("authStatus").textContent=
       "SIGNED IN AS "+found.toUpperCase();
-
     $("uidDisplay").textContent="";
-  } else {
+  }
+  else {
     $("authStatus").textContent=
       "ACCOUNT NOT YET APPROVED. COPY YOUR UID:";
 
@@ -985,9 +1180,9 @@ onAuthStateChanged(auth,user=>{
   }
 });
 
-// ======================================
-// LIVE DATABASE CONNECTION
-// ======================================
+/* ======================================
+   REALTIME SCORE CONNECTION
+   ====================================== */
 
 function subscribe() {
   if(unsubscribe) unsubscribe();
@@ -998,9 +1193,7 @@ function subscribe() {
   $("syncStatus").textContent=
     "CONNECTING TO LIVE LEADERBOARD...";
 
-  const databaseRef=ref(
-    db,"dailyScores/"+day
-  );
+  const databaseRef=ref(db,"dailyScores/"+day);
 
   unsubscribe=onValue(
     databaseRef,
@@ -1025,7 +1218,6 @@ function subscribe() {
 
       scores=updated;
       synced=true;
-
       $("saveBtn").disabled=!player;
 
       renderScores();
@@ -1043,16 +1235,16 @@ function subscribe() {
   );
 }
 
-// ======================================
-// SCORE SUBMISSION
-// ======================================
+/* ======================================
+   SAVE SCORES
+   ====================================== */
 
 async function saveScore() {
   const game=$("gameSelect").value;
   const raw=$("scoreInput").value.trim();
   const feedback=$("feedback");
 
-  feedback.style.color="#ffe18d";
+  feedback.style.color="#ffe76a";
 
   if(
     !currentUser||
@@ -1097,7 +1289,7 @@ async function saveScore() {
     if(getDay()!==day) {
       updateDay();
       throw new Error(
-        "NEW DAY STARTED. SUBMIT YOUR SCORE AGAIN."
+        "NEW DAY STARTED. SUBMIT AGAIN."
       );
     }
 
@@ -1106,24 +1298,23 @@ async function saveScore() {
       score
     );
 
-    feedback.style.color="#a8eeb9";
-    feedback.textContent=
-      "✓ SCORE SAVED & SYNCED";
-
-  } catch(error) {
-    feedback.style.color="#ff94ab";
+    feedback.style.color="#a8ffca";
+    feedback.textContent="✓ SCORE SAVED & SYNCED";
+  }
+  catch(error) {
+    feedback.style.color="#ff79a6";
     feedback.textContent=
       "SAVE FAILED: "+error.message;
-
-  } finally {
+  }
+  finally {
     button.disabled=!player||!synced;
     button.textContent="▼ SAVE SCORE ▼";
   }
 }
 
-// ======================================
-// LEADERBOARD
-// ======================================
+/* ======================================
+   FILL CURRENT SCORE
+   ====================================== */
 
 function fillScore() {
   const game=$("gameSelect").value;
@@ -1132,6 +1323,10 @@ function fillScore() {
   $("scoreInput").value=
     current===undefined?"":current;
 }
+
+/* ======================================
+   DETERMINE WINNER
+   ====================================== */
 
 function winnerOf(game) {
   const entry=scores[game.id]||{};
@@ -1152,6 +1347,10 @@ function winnerOf(game) {
 
   return hudsonWon?"HK":"NB";
 }
+
+/* ======================================
+   RENDER LEADERBOARD
+   ====================================== */
 
 function renderScores() {
   let hk=0;
@@ -1204,16 +1403,15 @@ function renderScores() {
     $("champion").textContent="IT'S A TIE!";
   }
   else {
-    $("champion").textContent=
-      "STILL PLAYING...";
+    $("champion").textContent="STILL PLAYING...";
   }
 
   fillScore();
 }
 
-// ======================================
-// DAILY RESET
-// ======================================
+/* ======================================
+   DAILY RESET
+   ====================================== */
 
 function updateDay() {
   $("topDate").textContent=displayDate();
@@ -1224,15 +1422,14 @@ function updateDay() {
   if(today!==day) {
     day=today;
     scores={};
-
     renderScores();
     subscribe();
   }
 }
 
-// ======================================
-// EVENT LISTENERS
-// ======================================
+/* ======================================
+   BUTTON EVENT LISTENERS
+   ====================================== */
 
 $("gameSelect").addEventListener(
   "change",fillScore
@@ -1251,9 +1448,9 @@ $("scoreInput").addEventListener(
   }
 );
 
-// ======================================
-// START WEBSITE
-// ======================================
+/* ======================================
+   INITIALIZE WEBSITE
+   ====================================== */
 
 renderCards();
 updateDay();
