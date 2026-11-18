@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#061729">
 <title>Hudson vs Noah | Daily Game Hub</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
 
 <style>
@@ -17,23 +18,29 @@
   --pink:#ff4389;
   --yellow:#ffe76a;
 }
+
 * {box-sizing:border-box}
+
 html {
   scroll-behavior:smooth;
   -webkit-text-size-adjust:100%;
 }
+
 body {
   margin:0;
   background:var(--dark);
   color:var(--white);
   font:22px 'VT323',monospace;
 }
-button,input,select {font:inherit}
+
+button,input,select,textarea {font:inherit}
 button {cursor:pointer}
 button:disabled {opacity:.5;cursor:not-allowed}
 a {color:inherit;text-decoration:none}
+[hidden] {display:none!important}
 
 /* NAVIGATION */
+
 .topbar {
   height:42px;
   background:#082239;
@@ -44,15 +51,18 @@ a {color:inherit;text-decoration:none}
   padding:0 max(18px,calc((100% - 980px)/2));
   font-size:19px;
 }
+
 .topbar a {color:#84f5ff}
 
 /* HERO */
+
 .hero {
   height:430px;
   position:relative;
   overflow:hidden;
   background:#bceaf4;
 }
+
 .hero canvas {
   position:absolute;
   inset:0;
@@ -61,6 +71,7 @@ a {color:inherit;text-decoration:none}
   image-rendering:pixelated;
   display:block;
 }
+
 .hero-copy {
   position:absolute;
   z-index:2;
@@ -70,44 +81,50 @@ a {color:inherit;text-decoration:none}
   text-align:center;
   pointer-events:none;
 }
+
 .hero-title {
   margin:0 0 22px;
   white-space:nowrap;
   font:clamp(17px,4.6vw,45px)/1.8
     'Press Start 2P',monospace;
-  color:#ffffff;
+  color:white;
   text-shadow:
     -2px -2px 0 #00eaff,
     -3px -3px 0 #00eaff,
     2px 2px 0 #ff4389,
     3px 3px 0 #ff4389,
     4px 4px 0 #ff4389;
-  filter:none;
 }
+
 .hero-title .letter {
   display:inline-block;
   animation:title-ripple 3.2s ease-in-out infinite;
   animation-delay:calc(var(--i)*-.115s);
 }
+
 @keyframes title-ripple {
   0%,27%,72%,100% {transform:translateY(0)}
   48% {transform:translateY(-4px)}
   61% {transform:translateY(2px)}
 }
+
 .hero-kicker {
   color:#007fa5;
   letter-spacing:5px;
   font-size:20px;
   margin:0 0 16px;
 }
+
 .hero-subtitle {
   color:#12394f;
   font-size:21px;
 }
+
 .hero-subtitle strong {
   color:#007eab;
   font-weight:normal;
 }
+
 .dive-link {
   position:absolute;
   z-index:4;
@@ -124,17 +141,23 @@ a {color:inherit;text-decoration:none}
   font:11px 'Press Start 2P';
   box-shadow:4px 4px #020b13;
 }
+
 .dive-link:hover {background:#153653}
 
-/* OCEAN */
+/* UNDERWATER */
+
 .ocean {
   position:relative;
   background:linear-gradient(
-    180deg,#091b30,#082a49 48%,#061729
+    180deg,
+    #091b30,
+    #082a49 48%,
+    #061729
   );
   padding:62px 0 85px;
   overflow:hidden;
 }
+
 .ocean:before {
   content:"";
   position:absolute;
@@ -146,24 +169,28 @@ a {color:inherit;text-decoration:none}
     rgba(49,240,255,.065) 86px 89px
   );
 }
+
 .container {
   position:relative;
   max-width:980px;
   padding:0 18px;
   margin:auto;
 }
+
 .eyebrow {
   text-align:center;
   color:#65edff;
   font-size:18px;
   letter-spacing:4px;
 }
+
 .section-heading {
   text-align:center;
   font:clamp(13px,2.7vw,23px)/1.7
     'Press Start 2P';
   margin:15px 0 9px;
 }
+
 .intro {
   text-align:center;
   color:#d1e9f5;
@@ -171,12 +198,14 @@ a {color:inherit;text-decoration:none}
   margin:0 0 30px;
 }
 
-/* GAME CARDS */
+/* GAME GRID */
+
 .games {
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
   gap:15px;
 }
+
 .game {
   --c:#31f0ff;
   min-height:225px;
@@ -190,10 +219,12 @@ a {color:inherit;text-decoration:none}
   text-align:center;
   transition:transform .15s,background .15s;
 }
+
 .game:hover {
   transform:translateY(-4px);
   background:#164461;
 }
+
 .game-image {
   width:72px;
   height:72px;
@@ -205,21 +236,25 @@ a {color:inherit;text-decoration:none}
   margin-bottom:17px;
   image-rendering:pixelated;
 }
+
 .game-image img {
   width:55px;
   height:55px;
   object-fit:contain;
 }
+
 .fallback {
   display:none;
   font:24px 'Press Start 2P';
   color:#12405a;
 }
+
 .game h3 {
   font:12px/1.6 'Press Start 2P';
   margin:0;
   color:white;
 }
+
 .game p {
   color:#d0e8f4;
   font-size:20px;
@@ -228,7 +263,8 @@ a {color:inherit;text-decoration:none}
   flex:1;
 }
 
-/* CSS PLAY TRIANGLE: NEVER AN EMOJI */
+/* CSS TRIANGLE: NO IOS EMOJI */
+
 .game .play {
   display:inline-flex;
   align-items:center;
@@ -240,6 +276,7 @@ a {color:inherit;text-decoration:none}
   padding:11px 14px;
   box-shadow:3px 3px #041323;
 }
+
 .play-triangle {
   display:inline-block;
   width:0;
@@ -250,7 +287,6 @@ a {color:inherit;text-decoration:none}
   flex-shrink:0;
 }
 
-/* DIVIDERS */
 .depth {
   text-align:center;
   color:#5fa6c3;
@@ -259,6 +295,7 @@ a {color:inherit;text-decoration:none}
 }
 
 /* LEADERBOARD */
+
 .score-shell {
   margin-top:25px;
   border:2px solid var(--cyan);
@@ -266,27 +303,32 @@ a {color:inherit;text-decoration:none}
   padding:25px;
   box-shadow:5px 5px #010c18;
 }
+
 .score-grid {
   display:grid;
   grid-template-columns:1fr 1.3fr;
   gap:30px;
 }
+
 .panel-title {
   font:13px/1.6 'Press Start 2P';
   color:var(--cyan);
   margin:0 0 15px;
 }
+
 .sub {
   color:#c0d9e9;
   font-size:20px;
   margin:0 0 18px;
 }
+
 .field-label {
   display:block;
   color:var(--yellow);
   font-size:20px;
   margin:16px 0 6px;
 }
+
 .field {
   width:100%;
   padding:11px;
@@ -296,7 +338,9 @@ a {color:inherit;text-decoration:none}
   border-radius:0;
   outline:none;
 }
+
 .field:focus {border-color:var(--cyan)}
+
 .save {
   display:block;
   width:100%;
@@ -308,6 +352,7 @@ a {color:inherit;text-decoration:none}
   font:11px 'Press Start 2P';
   box-shadow:3px 3px #7c3154;
 }
+
 .feedback {
   min-height:28px;
   font-size:19px;
@@ -316,13 +361,15 @@ a {color:inherit;text-decoration:none}
   overflow-wrap:anywhere;
 }
 
-/* GOOGLE SIGN-IN */
+/* LOGIN */
+
 .auth-box {
   background:#0b3452;
   border:2px solid #4798b7;
   padding:15px;
   margin-bottom:22px;
 }
+
 .auth-button {
   width:100%;
   background:var(--cyan);
@@ -331,12 +378,14 @@ a {color:inherit;text-decoration:none}
   padding:12px;
   font:10px/1.7 'Press Start 2P';
 }
+
 .auth-status {
   margin:12px 0 0;
   color:#c7eafa;
   font-size:18px;
   overflow-wrap:anywhere;
 }
+
 .uid {
   color:var(--yellow);
   font-size:16px;
@@ -344,77 +393,249 @@ a {color:inherit;text-decoration:none}
   user-select:all;
 }
 
-/* DAILY WIN COUNTERS */
+/* WINS */
+
 .wins {
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:12px;
   margin:18px 0 22px;
 }
+
 .win-box {
   background:#0e314c;
   border:2px solid #438fa8;
   padding:13px;
   text-align:center;
 }
+
 .win-box label {
   color:#d5f3ff;
   font:10px 'Press Start 2P';
 }
+
 .win-num {
   color:var(--yellow);
   font:30px 'Press Start 2P';
   margin:16px 0 6px;
 }
+
 .win-box small {
   font-size:18px;
   color:#c1e1f0;
 }
 
-/* SCORE TABLE */
 .table-wrap {overflow-x:auto}
+
 table {
   width:100%;
   border-collapse:collapse;
 }
+
 th {
   text-align:left;
   color:var(--cyan);
   font-size:18px;
   border-bottom:2px solid #4596b5;
 }
+
 td {
   font-size:20px;
   border-bottom:1px dashed #326987;
 }
+
 td,th {padding:9px 5px}
+
 td:not(:first-child),
 th:not(:first-child) {text-align:center}
+
 .won {color:var(--yellow)}
 .waiting {color:#85b4cc}
 
-/* DAILY CHAMPION */
 .champ {
   text-align:center;
   border:2px dashed #459ab8;
   padding:15px;
   margin-top:24px;
 }
+
 .champ small {
   font-size:18px;
   letter-spacing:2px;
 }
+
 .champ div {
   font:12px/1.7 'Press Start 2P';
   color:var(--yellow);
   margin-top:10px;
 }
+
 .sync {
   text-align:center;
   color:#b0d6e8;
   font-size:17px;
   margin-top:16px;
 }
+
+/* PRIVATE CHAT */
+
+.chat-shell {
+  margin-top:25px;
+  border:2px solid #ff79a6;
+  background:#081f35;
+  padding:24px;
+  box-shadow:5px 5px #010c18;
+}
+
+.chat-heading {
+  color:#ff79a6;
+}
+
+.chat-topline {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-bottom:12px;
+}
+
+.chat-private {
+  border:1px solid #548ba7;
+  color:#c8e8f7;
+  padding:5px 10px;
+  font-size:17px;
+}
+
+.chat-status {
+  color:#a5c9db;
+  font-size:18px;
+  margin:0 0 15px;
+}
+
+.chat-window {
+  height:390px;
+  overflow-y:auto;
+  overscroll-behavior:contain;
+  background:#051727;
+  border:2px solid #397c9c;
+  padding:18px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.chat-empty {
+  color:#90b3c9;
+  text-align:center;
+  margin:auto;
+  font-size:21px;
+}
+
+.chat-message {
+  max-width:86%;
+  min-width:100px;
+  align-self:flex-start;
+}
+
+.chat-message.mine {
+  align-self:flex-end;
+}
+
+.chat-meta {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:#b6d9e9;
+  font-size:16px;
+  margin-bottom:5px;
+}
+
+.chat-message.mine .chat-meta {
+  justify-content:flex-end;
+}
+
+.chat-name {
+  color:var(--cyan);
+}
+
+.chat-message.noah .chat-name {
+  color:#ff92ba;
+}
+
+.chat-bubble {
+  border:2px solid #327b9c;
+  background:#10344d;
+  padding:11px 13px;
+  color:#f1fbff;
+  font-size:21px;
+  line-height:1.15;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+  box-shadow:3px 3px #020d19;
+}
+
+.chat-message.noah .chat-bubble {
+  border-color:#ad547d;
+  background:#48283f;
+}
+
+.chat-message.mine .chat-bubble {
+  border-color:#57cce2;
+}
+
+.chat-compose {
+  display:flex;
+  gap:10px;
+  align-items:stretch;
+  margin-top:16px;
+}
+
+.chat-input {
+  flex:1;
+  min-width:0;
+  min-height:60px;
+  max-height:160px;
+  resize:vertical;
+  background:#061729;
+  color:white;
+  border:2px solid #529fbd;
+  border-radius:0;
+  padding:12px;
+  outline:none;
+  font-size:21px;
+}
+
+.chat-input:focus {
+  border-color:var(--cyan);
+}
+
+.chat-send {
+  flex-shrink:0;
+  padding:12px 20px;
+  border:2px solid #ffb0c8;
+  background:#ff4389;
+  color:#061729;
+  font:10px/1.7 'Press Start 2P';
+  box-shadow:3px 3px #67213d;
+}
+
+.chat-note {
+  color:#9dbecf;
+  font-size:17px;
+  margin:12px 0 0;
+}
+
+.chat-feedback {
+  color:#ff9bb7;
+  font-size:18px;
+  min-height:22px;
+  margin-top:8px;
+  overflow-wrap:anywhere;
+}
+
+/* FOOTER */
+
 .footer {
   text-align:center;
   border-top:2px solid #173952;
@@ -424,6 +645,7 @@ th:not(:first-child) {text-align:center}
 }
 
 /* MOBILE */
+
 @media(max-width:700px) {
   .games {
     grid-template-columns:repeat(2,minmax(0,1fr));
@@ -434,6 +656,7 @@ th:not(:first-child) {text-align:center}
   .hero-kicker {font-size:16px}
   .hero-subtitle {font-size:17px}
   .score-shell {padding:17px}
+  .chat-shell {padding:16px}
   .hero-title {
     font-size:clamp(16px,5.2vw,30px);
     text-shadow:
@@ -443,15 +666,24 @@ th:not(:first-child) {text-align:center}
       3px 3px 0 #ff4389;
   }
 }
+
 @media(max-width:420px) {
-  .game {padding:17px 8px;min-height:220px}
+  .game {
+    padding:17px 8px;
+    min-height:220px;
+  }
   .game-image {width:62px;height:62px}
   .game-image img {width:46px;height:46px}
   .game h3 {font-size:9px}
   .game p {font-size:18px}
   .game .play {font-size:9px;padding:10px}
   .hero-title {font-size:clamp(12px,4vw,16px)}
+  .chat-window {height:350px;padding:12px}
+  .chat-message {max-width:92%}
+  .chat-send {padding:10px;font-size:9px}
+  .chat-input {font-size:18px}
 }
+
 @media(prefers-reduced-motion:reduce) {
   .hero-title .letter {animation:none}
   .game {transition:none}
@@ -492,6 +724,8 @@ th:not(:first-child) {text-align:center}
 <main class="ocean">
 <div class="container">
 
+<!-- GAMES -->
+
 <section id="games">
   <div class="eyebrow">◈ CHOOSE YOUR GAME ◈</div>
   <h2 class="section-heading">TODAY'S LINEUP</h2>
@@ -502,6 +736,8 @@ th:not(:first-child) {text-align:center}
 </section>
 
 <div class="depth">▼ ▼ ▼</div>
+
+<!-- LEADERBOARD -->
 
 <section id="scores">
   <div class="eyebrow">✦ HIGH SCORES ✦</div>
@@ -520,15 +756,17 @@ th:not(:first-child) {text-align:center}
           <button id="loginBtn" class="auth-button">
             SIGN IN WITH GOOGLE
           </button>
+
           <button
             id="logoutBtn"
             class="auth-button"
-            style="display:none"
+            hidden
           >
             SIGN OUT
           </button>
+
           <div class="auth-status" id="authStatus">
-            Sign in to submit scores.
+            Sign in to submit scores and chat.
           </div>
           <div class="uid" id="uidDisplay"></div>
         </div>
@@ -620,6 +858,77 @@ th:not(:first-child) {text-align:center}
   </div>
 </section>
 
+<div class="depth">▼ ▼ ▼</div>
+
+<!-- PRIVATE CHAT -->
+
+<section id="chat">
+  <div class="eyebrow">◈ BELOW THE SURFACE ◈</div>
+  <h2 class="section-heading">THE CHAT</h2>
+  <p class="intro">
+    Talk trash. Share wins. Settle the score.
+  </p>
+
+  <div class="chat-shell">
+    <div class="chat-topline">
+      <h3 class="panel-title chat-heading"
+          style="margin:0">
+        HUDSON × NOAH
+      </h3>
+      <span class="chat-private">
+        PRIVATE CHAT
+      </span>
+    </div>
+
+    <p class="chat-status" id="chatStatus">
+      Sign in to view your conversation.
+    </p>
+
+    <div
+      class="chat-window"
+      id="chatWindow"
+      role="log"
+      aria-label="Hudson and Noah messages"
+    >
+      <div class="chat-empty" id="chatEmpty">
+        SIGN IN TO OPEN CHAT
+      </div>
+    </div>
+
+    <form id="chatForm" class="chat-compose">
+      <textarea
+        id="chatInput"
+        class="chat-input"
+        placeholder="Type a message..."
+        rows="2"
+        maxlength="500"
+        disabled
+        aria-label="Chat message"
+      ></textarea>
+
+      <button
+        id="chatSend"
+        class="chat-send"
+        type="submit"
+        disabled
+      >
+        SEND
+      </button>
+    </form>
+
+    <p class="chat-note">
+      Press Enter to send. Shift + Enter for a new line.
+      Messages are saved in Firebase.
+    </p>
+
+    <div
+      id="chatFeedback"
+      class="chat-feedback"
+      role="status"
+    ></div>
+  </div>
+</section>
+
 <div class="depth">▼ END OF DIVE ▼</div>
 
 </div>
@@ -631,7 +940,7 @@ th:not(:first-child) {text-align:center}
 
 <script>
 /* ======================================
-   ANIMATED PIXEL OCEAN AND BOAT
+   PIXEL OCEAN AND BOAT
    ====================================== */
 
 const canvas=document.getElementById("scene");
@@ -653,6 +962,7 @@ function resizeScene() {
   canvas.height=H;
   ctx.imageSmoothingEnabled=false;
 }
+
 window.addEventListener("resize",resizeScene);
 resizeScene();
 
@@ -692,7 +1002,7 @@ function drawBoat(t) {
   ctx.scale(.55,.55);
   ctx.translate(-30,-22);
 
-  // Mast and pink flag
+  // Mast and flag
   rect(35,-16,2,32,"#17374a");
   rect(37,-15,12,3,"#ff4389");
   rect(37,-12,9,3,"#e34e83");
@@ -739,7 +1049,6 @@ function drawScene(time) {
   ctx.fillStyle="#c7f4ff";
   ctx.fillRect(0,0,W,H);
 
-  // Sky
   rect(0,0,W,H*.54,"#a9ebfa");
 
   cloud(W*.08,27,1.15);
@@ -749,6 +1058,7 @@ function drawScene(time) {
   // Horizon
   for(let x=0;x<W;x+=8) {
     const y=waveY(x,t);
+
     if(y>0) {
       rect(
         x,H*.69,8,
@@ -758,21 +1068,21 @@ function drawScene(time) {
     }
   }
 
-  // Ocean
+  // Water
   for(let x=0;x<W;x++) {
     const y=Math.round(waveY(x,t));
+
     rect(x,y,1,H-y,"#093354");
     rect(x,y,1,2,"#f0ffff");
     rect(x,y+2,1,2,"#5be5f5");
   }
 
-  // Underwater layers
   for(let x=0;x<W;x+=4) {
     const y=waveY(x,t);
     rect(x,y+12,4,H-y-12,"#082541");
   }
 
-  // Moving highlights
+  // Water reflections
   for(let j=0;j<11;j++) {
     const x=((j*47+t*(j%2?3:-4)+W*8)%W);
     const y=H*.85+(j%4)*7;
@@ -785,9 +1095,10 @@ function drawScene(time) {
     requestAnimationFrame(drawScene);
   }
 }
+
 requestAnimationFrame(drawScene);
 
-// Letter wave animation
+// Rippling title
 const title=document.getElementById("waveTitle");
 const original=title.textContent.trim();
 title.textContent="";
@@ -803,7 +1114,7 @@ title.textContent="";
 
 <script type="module">
 /* ======================================
-   FIREBASE IMPORTS
+   FIREBASE
    ====================================== */
 
 import {initializeApp} from
@@ -822,13 +1133,11 @@ import {
   getDatabase,
   ref,
   set,
-  onValue
+  push,
+  onValue,
+  serverTimestamp
 } from
 "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
-
-/* ======================================
-   FIREBASE CONFIGURATION
-   ====================================== */
 
 const firebaseConfig={
   apiKey:"AIzaSyDqfUuUIWKZ76ds5obBF-aaFqaMwNscYh8",
@@ -840,15 +1149,14 @@ const firebaseConfig={
   appId:"1:264833341126:web:74f47208502a291bace9c7"
 };
 
-// Add Noah's UID once available.
-// Keep Firebase rules in sync with these values.
+// Both authorized players
 const playerUIDs={
   Hudson:"jTgzNimxj4XXVk8Zqr7FQfvEnTp1",
   Noah:"9z0DZkm6dLStYQjGekWRMeIbeKx2"
 };
 
 /* ======================================
-   GAMES — REQUESTED ORDER
+   NINE DAILY GAMES
    ====================================== */
 
 const games=[
@@ -877,7 +1185,7 @@ const games=[
     direction:"higher",
     fallback:"M",
     label:"DAILY POINTS",
-    help:"Enter your overall daily score out of 1,000. Higher wins.",
+    help:"Enter your daily score out of 1,000. Higher wins.",
     min:0,
     max:1000,
     integer:false
@@ -885,14 +1193,14 @@ const games=[
   {
     id:"chainle",
     name:"CHAINLE",
-    description:"Connect the clues across five word rounds.",
+    description:"Connect clues across five word rounds.",
     url:"https://chainle.io/",
     domain:"chainle.io",
     color:"#f8b667",
     direction:"higher",
     fallback:"C",
-    label:"TOTAL POINTS (OUT OF 5000)",
-    help:"Enter your final daily score across five rounds, from 0 to 5,000. Higher wins.",
+    label:"POINTS OUT OF 5000",
+    help:"Enter your final score from 0 to 5,000. Higher wins.",
     min:0,
     max:5000,
     integer:true
@@ -907,7 +1215,7 @@ const games=[
     direction:"lower",
     fallback:"G",
     label:"COUNTRY GUESSES",
-    help:"Enter the number of guesses it took to find the mystery country. Fewer wins.",
+    help:"Enter your number of guesses. Fewer wins.",
     min:1,
     max:1000000,
     integer:true
@@ -922,7 +1230,7 @@ const games=[
     direction:"higher",
     fallback:"F",
     label:"DISTANCE / POINTS",
-    help:"Enter your final result. Both players must use the same score type and units. Higher wins.",
+    help:"Enter the final result using the same scoring units as the other player. Higher wins.",
     min:0,
     max:1000000000,
     integer:false
@@ -937,7 +1245,7 @@ const games=[
     direction:"higher",
     fallback:"K",
     label:"QUESTIONS CLEARED",
-    help:"Enter how many of the seven questions you completed (0–7). Higher wins.",
+    help:"Enter questions cleared from 0 to 7. Higher wins.",
     min:0,
     max:7,
     integer:true
@@ -951,8 +1259,8 @@ const games=[
     color:"#ffc36d",
     direction:"higher",
     fallback:"S",
-    label:"TOTAL POINTS",
-    help:"Enter your total score across five rounds out of 500. Higher wins.",
+    label:"POINTS OUT OF 500",
+    help:"Enter your total points out of 500. Higher wins.",
     min:0,
     max:500,
     integer:false
@@ -967,7 +1275,7 @@ const games=[
     direction:"higher",
     fallback:"H",
     label:"TOTAL CATCH WEIGHT (LBS)",
-    help:"Enter your final total catch weight in pounds. Heavier catch wins!",
+    help:"Enter total catch weight in pounds. Higher wins.",
     min:0,
     max:1000000000,
     integer:false
@@ -975,14 +1283,14 @@ const games=[
   {
     id:"connections",
     name:"CONNECTIONS",
-    description:"Group the words into the right categories.",
+    description:"Group words into the right categories.",
     url:"https://www.nytimes.com/games/connections",
     domain:"nytimes.com",
     color:"#cba7ff",
     direction:"lower",
     fallback:"C",
     label:"MISTAKES",
-    help:"Enter 0–3 if you solved it. Enter 4 if you failed. Fewer mistakes wins.",
+    help:"Enter 0 to 3 for a solve, or 4 if you failed. Fewer mistakes wins.",
     min:0,
     max:4,
     integer:true
@@ -990,25 +1298,31 @@ const games=[
 ];
 
 /* ======================================
-   INITIALIZE FIREBASE
+   FIREBASE INITIALIZATION
    ====================================== */
 
 const app=initializeApp(firebaseConfig);
 const auth=getAuth(app);
 const db=getDatabase(app);
 const provider=new GoogleAuthProvider();
+
 const $=id=>document.getElementById(id);
 
 let currentUser=null;
 let player="";
 let scores={};
 let day=getDay();
-let unsubscribe=null;
+
+let unsubscribeScores=null;
+let unsubscribeChat=null;
+
 let synced=false;
 let saving=false;
+let chatReady=false;
+let sending=false;
 
 /* ======================================
-   EASTERN TIME DATES
+   DATES
    ====================================== */
 
 function getDay() {
@@ -1038,8 +1352,24 @@ function displayDate() {
   ).format(new Date()).toUpperCase();
 }
 
+function messageTime(timestamp) {
+  if(typeof timestamp!=="number") {
+    return "SENDING...";
+  }
+
+  return new Intl.DateTimeFormat(
+    "en-US",{
+      timeZone:"America/New_York",
+      month:"short",
+      day:"numeric",
+      hour:"numeric",
+      minute:"2-digit"
+    }
+  ).format(new Date(timestamp));
+}
+
 /* ======================================
-   GAME CARDS
+   RENDER GAME CARDS
    ====================================== */
 
 function renderCards() {
@@ -1065,10 +1395,8 @@ function renderCards() {
       <p>${g.description}</p>
 
       <span class="play">
-        <span
-          class="play-triangle"
-          aria-hidden="true"
-        ></span>
+        <span class="play-triangle"
+              aria-hidden="true"></span>
         PLAY
       </span>
     </a>
@@ -1082,7 +1410,86 @@ function renderCards() {
 }
 
 /* ======================================
-   SCORE INPUT SETTINGS
+   PLAYER AND AUTHENTICATION
+   ====================================== */
+
+function updateSaveButton() {
+  $("saveBtn").disabled=
+    !player||!synced||saving;
+}
+
+function updateChatControls() {
+  const allowed=!!player&&chatReady&&!sending;
+
+  $("chatInput").disabled=!allowed;
+  $("chatSend").disabled=!allowed;
+}
+
+function setPlayer(name) {
+  player=name;
+  updateSaveButton();
+  updateChatControls();
+  fillScore();
+}
+
+$("loginBtn").addEventListener("click",async()=>{
+  $("authStatus").textContent="SIGNING IN...";
+
+  try {
+    await signInWithPopup(auth,provider);
+  }
+  catch(error) {
+    $("authStatus").textContent=
+      "LOGIN FAILED: "+error.message;
+  }
+});
+
+$("logoutBtn").addEventListener("click",async()=>{
+  try {
+    await signOut(auth);
+  }
+  catch(error) {
+    $("authStatus").textContent=error.message;
+  }
+});
+
+onAuthStateChanged(auth,user=>{
+  currentUser=user;
+
+  const found=user
+    ?Object.keys(playerUIDs).find(
+      name=>playerUIDs[name]===user.uid
+    )
+    :null;
+
+  setPlayer(found||"");
+
+  $("loginBtn").hidden=!!user;
+  $("logoutBtn").hidden=!user;
+
+  if(!user) {
+    $("authStatus").textContent=
+      "SIGN IN TO SUBMIT SCORES AND CHAT";
+    $("uidDisplay").textContent="";
+  }
+  else if(found) {
+    $("authStatus").textContent=
+      "SIGNED IN AS "+found.toUpperCase();
+    $("uidDisplay").textContent="";
+  }
+  else {
+    $("authStatus").textContent=
+      "ACCOUNT NOT APPROVED. YOUR UID:";
+
+    $("uidDisplay").textContent=user.uid;
+  }
+
+  // Chat is restricted to both approved accounts.
+  startChat();
+});
+
+/* ======================================
+   SCORE INPUTS
    ====================================== */
 
 function selectedGame() {
@@ -1093,6 +1500,7 @@ function selectedGame() {
 
 function fillScore() {
   const g=selectedGame();
+
   const current=g
     ?scores[g.id]?.[player]
     :undefined;
@@ -1116,87 +1524,14 @@ function fillScore() {
 }
 
 /* ======================================
-   AUTHENTICATION
+   LIVE SCORE LISTENER
    ====================================== */
 
-function updateSaveButton() {
-  $("saveBtn").disabled=
-    !player||!synced||saving;
-}
-
-function setPlayer(name) {
-  player=name;
-  updateSaveButton();
-  fillScore();
-}
-
-$("loginBtn").addEventListener(
-  "click",
-  async()=>{
-    $("authStatus").textContent="SIGNING IN...";
-
-    try {
-      await signInWithPopup(auth,provider);
-    }
-    catch(error) {
-      $("authStatus").textContent=
-        "LOGIN FAILED: "+error.message;
-    }
+function subscribeScores() {
+  if(unsubscribeScores) {
+    unsubscribeScores();
+    unsubscribeScores=null;
   }
-);
-
-$("logoutBtn").addEventListener(
-  "click",
-  async()=>{
-    try {
-      await signOut(auth);
-    }
-    catch(error) {
-      $("authStatus").textContent=error.message;
-    }
-  }
-);
-
-onAuthStateChanged(auth,user=>{
-  currentUser=user;
-
-  const found=user
-    ?Object.keys(playerUIDs).find(
-      name=>playerUIDs[name]===user.uid
-    )
-    :null;
-
-  setPlayer(found||"");
-
-  $("loginBtn").style.display=
-    user?"none":"block";
-
-  $("logoutBtn").style.display=
-    user?"block":"none";
-
-  if(!user) {
-    $("authStatus").textContent=
-      "SIGN IN TO SUBMIT SCORES";
-    $("uidDisplay").textContent="";
-  }
-  else if(found) {
-    $("authStatus").textContent=
-      "SIGNED IN AS "+found.toUpperCase();
-    $("uidDisplay").textContent="";
-  }
-  else {
-    $("authStatus").textContent=
-      "ACCOUNT NOT YET APPROVED. COPY YOUR UID:";
-    $("uidDisplay").textContent=user.uid;
-  }
-});
-
-/* ======================================
-   REALTIME DATABASE CONNECTION
-   ====================================== */
-
-function subscribe() {
-  if(unsubscribe) unsubscribe();
 
   synced=false;
   updateSaveButton();
@@ -1206,7 +1541,7 @@ function subscribe() {
 
   const databaseRef=ref(db,"dailyScores/"+day);
 
-  unsubscribe=onValue(
+  unsubscribeScores=onValue(
     databaseRef,
     snapshot=>{
       const data=snapshot.val()||{};
@@ -1314,7 +1649,8 @@ async function saveScore() {
     );
 
     feedback.style.color="#a8ffca";
-    feedback.textContent="✓ SCORE SAVED & SYNCED";
+    feedback.textContent=
+      "SCORE SAVED & SYNCED";
   }
   catch(error) {
     feedback.style.color="#ff79a6";
@@ -1329,7 +1665,7 @@ async function saveScore() {
 }
 
 /* ======================================
-   DETERMINE GAME WINNER
+   GAME WINNERS
    ====================================== */
 
 function winnerOf(g) {
@@ -1340,16 +1676,12 @@ function winnerOf(g) {
   if(h===undefined||n===undefined) return null;
   if(h===n) return "TIE";
 
-  const hudsonWon=g.direction==="higher"
-    ?h>n
-    :h<n;
-
-  return hudsonWon?"HK":"NB";
+  return (
+    g.direction==="higher"
+      ?h>n
+      :h<n
+  )?"HK":"NB";
 }
-
-/* ======================================
-   RENDER LEADERBOARD
-   ====================================== */
 
 function renderScores() {
   let hk=0;
@@ -1366,11 +1698,9 @@ function renderScores() {
 
     const value=v=>{
       if(v===undefined) return "—";
-
       if(g.id==="connections"&&v===4) {
         return "DNF (4)";
       }
-
       return v;
     };
 
@@ -1418,7 +1748,212 @@ function renderScores() {
 }
 
 /* ======================================
-   DAILY RESET
+   PRIVATE FIREBASE CHAT
+   ====================================== */
+
+function startChat() {
+  if(unsubscribeChat) {
+    unsubscribeChat();
+    unsubscribeChat=null;
+  }
+
+  chatReady=false;
+  updateChatControls();
+
+  const windowEl=$("chatWindow");
+  windowEl.replaceChildren();
+
+  if(!currentUser||!player) {
+    $("chatStatus").textContent=
+      "Sign in as Hudson or Noah to view messages.";
+
+    const empty=document.createElement("div");
+    empty.className="chat-empty";
+    empty.textContent="PRIVATE CHAT — SIGN IN";
+    windowEl.appendChild(empty);
+
+    return;
+  }
+
+  $("chatStatus").textContent=
+    "CONNECTING TO PRIVATE CHAT...";
+
+  unsubscribeChat=onValue(
+    ref(db,"chat/messages"),
+    snapshot=>{
+      const data=snapshot.val()||{};
+
+      const messages=Object.entries(data)
+        .map(([id,value])=>({
+          id,
+          ...value
+        }))
+        .filter(m=>
+          (m.name==="Hudson"||m.name==="Noah") &&
+          typeof m.text==="string" &&
+          m.text.length<=500
+        )
+        .sort((a,b)=>
+          (a.createdAt||0)-(b.createdAt||0) ||
+          a.id.localeCompare(b.id)
+        );
+
+      renderChat(messages);
+
+      chatReady=true;
+      updateChatControls();
+
+      $("chatStatus").textContent=
+        "LIVE CONNECTION • CHAT HISTORY SAVED";
+    },
+    error=>{
+      chatReady=false;
+      updateChatControls();
+
+      $("chatStatus").textContent=
+        "CHAT ERROR: "+error.message;
+    }
+  );
+}
+
+function renderChat(messages) {
+  const windowEl=$("chatWindow");
+
+  const nearBottom=
+    windowEl.scrollHeight -
+    windowEl.scrollTop -
+    windowEl.clientHeight < 90;
+
+  const firstRender=
+    windowEl.querySelector(".chat-empty")!==null;
+
+  windowEl.replaceChildren();
+
+  if(messages.length===0) {
+    const empty=document.createElement("div");
+    empty.className="chat-empty";
+    empty.textContent=
+      "NO MESSAGES YET. START THE CONVERSATION!";
+    windowEl.appendChild(empty);
+    return;
+  }
+
+  messages.forEach(message=>{
+    const mine=message.name===player;
+
+    const wrapper=document.createElement("div");
+    wrapper.className=
+      "chat-message "+
+      message.name.toLowerCase()+
+      (mine?" mine":"");
+
+    const meta=document.createElement("div");
+    meta.className="chat-meta";
+
+    const name=document.createElement("span");
+    name.className="chat-name";
+    name.textContent=message.name.toUpperCase();
+
+    const timestamp=document.createElement("span");
+    timestamp.textContent=messageTime(message.createdAt);
+
+    meta.appendChild(name);
+    meta.appendChild(timestamp);
+
+    const bubble=document.createElement("div");
+    bubble.className="chat-bubble";
+
+    // textContent prevents user messages from
+    // executing HTML or JavaScript.
+    bubble.textContent=message.text;
+
+    wrapper.appendChild(meta);
+    wrapper.appendChild(bubble);
+    windowEl.appendChild(wrapper);
+  });
+
+  if(nearBottom||firstRender) {
+    windowEl.scrollTop=windowEl.scrollHeight;
+  }
+}
+
+async function sendMessage() {
+  if(sending) return;
+
+  const input=$("chatInput");
+  const feedback=$("chatFeedback");
+  const message=input.value.trim();
+
+  feedback.textContent="";
+
+  if(
+    !currentUser||
+    !player||
+    currentUser.uid!==playerUIDs[player]
+  ) {
+    feedback.textContent=
+      "SIGN IN WITH YOUR APPROVED ACCOUNT";
+    return;
+  }
+
+  if(!chatReady) {
+    feedback.textContent="CHAT NOT CONNECTED";
+    return;
+  }
+
+  if(!message) return;
+
+  if(message.length>500) {
+    feedback.textContent=
+      "MAXIMUM 500 CHARACTERS PER MESSAGE";
+    return;
+  }
+
+  sending=true;
+  updateChatControls();
+
+  try {
+    const newMessage=push(ref(db,"chat/messages"));
+
+    await set(newMessage,{
+      uid:currentUser.uid,
+      name:player,
+      text:message,
+      createdAt:serverTimestamp()
+    });
+
+    input.value="";
+    feedback.textContent="";
+  }
+  catch(error) {
+    feedback.textContent=
+      "MESSAGE FAILED: "+error.message;
+  }
+  finally {
+    sending=false;
+    updateChatControls();
+    if(player) input.focus();
+  }
+}
+
+/* ======================================
+   CHAT EVENTS
+   ====================================== */
+
+$("chatForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  sendMessage();
+});
+
+$("chatInput").addEventListener("keydown",e=>{
+  if(e.key==="Enter"&&!e.shiftKey&&!e.isComposing) {
+    e.preventDefault();
+    sendMessage();
+  }
+});
+
+/* ======================================
+   DAY UPDATE
    ====================================== */
 
 function updateDay() {
@@ -1431,12 +1966,12 @@ function updateDay() {
     day=today;
     scores={};
     renderScores();
-    subscribe();
+    subscribeScores();
   }
 }
 
 /* ======================================
-   EVENT LISTENERS
+   SCORE EVENTS
    ====================================== */
 
 $("gameSelect").addEventListener(
@@ -1457,15 +1992,20 @@ $("scoreInput").addEventListener(
 );
 
 /* ======================================
-   INITIALIZE WEBSITE
+   START WEBSITE
    ====================================== */
 
 renderCards();
 updateDay();
 renderScores();
-subscribe();
+subscribeScores();
+updateChatControls();
 
 setInterval(updateDay,60000);
+
+document.addEventListener("visibilitychange",()=>{
+  if(!document.hidden) updateDay();
+});
 
 </script>
 </body>
