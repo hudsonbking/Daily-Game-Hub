@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#061729">
 <title>Hudson vs Noah | Daily Game Hub</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
 
 <style>
@@ -18,7 +19,7 @@
   --yellow:#ffe76a;
 }
 
-* { box-sizing:border-box; }
+* {box-sizing:border-box}
 
 html {
   scroll-behavior:smooth;
@@ -38,16 +39,12 @@ button:disabled {opacity:.5;cursor:not-allowed}
 a {color:inherit;text-decoration:none}
 [hidden] {display:none!important}
 
-/* ======================================
-   TOP NAVIGATION
-   ====================================== */
+/* NAVIGATION */
 
 .topbar {
   height:42px;
-  position:relative;
-  z-index:12;
   background:#082239;
-  border-bottom:2px solid #286f70;
+  border-bottom:2px solid #2598b7;
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -68,238 +65,11 @@ a {color:inherit;text-decoration:none}
   white-space:nowrap;
 }
 
-.nav-links a:hover {color:#fff}
-
-/* ======================================
-   CHRISTMAS GARLAND
-   ====================================== */
-
-/* Garland hangs beneath the top navigation
-   without interfering with the buttons. */
-
-.christmas-garland {
-  position:absolute;
-  top:100%;
-  left:0;
-  right:0;
-  height:27px;
-  pointer-events:none;
-  z-index:13;
-  overflow:visible;
+.nav-links a:hover {
+  color:#ffffff;
 }
 
-/* Dark green branch running across the top */
-
-.garland-branch {
-  position:absolute;
-  top:0;
-  left:0;
-  right:0;
-  height:5px;
-  background:repeating-linear-gradient(
-    90deg,
-    #174e39 0 14px,
-    #267048 14px 23px,
-    #113f31 23px 32px
-  );
-  border-bottom:2px solid #0a3329;
-}
-
-/* Each evergreen sprig is a cluster of pixels */
-
-.garland-sprig {
-  position:absolute;
-  top:2px;
-  width:24px;
-  height:19px;
-  transform:translateX(-50%);
-  image-rendering:pixelated;
-}
-
-.garland-sprig:before {
-  content:"";
-  position:absolute;
-  inset:0;
-  background:#205f42;
-  clip-path:polygon(
-    42% 0,
-    58% 0,
-    58% 20%,
-    75% 20%,
-    75% 35%,
-    100% 35%,
-    100% 55%,
-    79% 55%,
-    79% 75%,
-    58% 75%,
-    58% 100%,
-    42% 100%,
-    42% 75%,
-    21% 75%,
-    21% 55%,
-    0 55%,
-    0 35%,
-    25% 35%,
-    25% 20%,
-    42% 20%
-  );
-}
-
-.garland-sprig:after {
-  content:"";
-  position:absolute;
-  top:3px;
-  left:5px;
-  width:14px;
-  height:12px;
-  background:#3b9562;
-  clip-path:polygon(
-    35% 0,
-    65% 0,
-    65% 25%,
-    100% 25%,
-    100% 50%,
-    65% 50%,
-    65% 100%,
-    35% 100%,
-    35% 50%,
-    0 50%,
-    0 25%,
-    35% 25%
-  );
-}
-
-/* Small pixel berries */
-
-.garland-berry {
-  position:absolute;
-  width:5px;
-  height:5px;
-  top:9px;
-  background:#dc5360;
-  box-shadow:
-    5px 2px #b6374d,
-    2px -4px #ff8b8c;
-}
-
-/* Hanging pixel wreath */
-
-.pixel-wreath {
-  position:absolute;
-  top:11px;
-  left:50%;
-  width:54px;
-  height:54px;
-  transform:translateX(-50%);
-  image-rendering:pixelated;
-  filter:drop-shadow(2px 3px 0 #143b44);
-}
-
-.wreath-hanger {
-  position:absolute;
-  left:50%;
-  top:2px;
-  height:11px;
-  width:3px;
-  transform:translateX(-50%);
-  background:#b88d4b;
-}
-
-.wreath-ring {
-  position:absolute;
-  inset:7px 6px 4px;
-  background:#1d6844;
-  clip-path:polygon(
-    25% 0,75% 0,
-    75% 12%,88% 12%,
-    88% 25%,100% 25%,
-    100% 75%,88% 75%,
-    88% 88%,75% 88%,
-    75% 100%,25% 100%,
-    25% 88%,12% 88%,
-    12% 75%,0 75%,
-    0 25%,12% 25%,
-    12% 12%,25% 12%
-  );
-}
-
-.wreath-hole {
-  position:absolute;
-  left:18px;
-  top:19px;
-  width:18px;
-  height:17px;
-  background:#a9ebfa;
-  clip-path:polygon(
-    25% 0,75% 0,
-    75% 25%,100% 25%,
-    100% 75%,75% 75%,
-    75% 100%,25% 100%,
-    25% 75%,0 75%,
-    0 25%,25% 25%
-  );
-}
-
-.wreath-leaf {
-  position:absolute;
-  width:8px;
-  height:7px;
-  background:#4ba66c;
-}
-
-.wreath-leaf.a {left:10px;top:16px}
-.wreath-leaf.b {left:27px;top:11px}
-.wreath-leaf.c {left:35px;top:28px}
-.wreath-leaf.d {left:15px;top:37px}
-
-.wreath-berry {
-  position:absolute;
-  width:5px;
-  height:5px;
-  background:#ec5c6c;
-}
-
-.wreath-berry.a {left:14px;top:14px}
-.wreath-berry.b {left:36px;top:21px}
-.wreath-berry.c {left:28px;top:39px}
-
-/* Pixel red bow */
-
-.wreath-bow {
-  position:absolute;
-  left:18px;
-  top:0;
-  width:19px;
-  height:11px;
-}
-
-.wreath-bow:before {
-  content:"";
-  position:absolute;
-  inset:0;
-  background:#ed5068;
-  clip-path:polygon(
-    0 10%,35% 30%,50% 45%,
-    65% 30%,100% 10%,
-    100% 90%,65% 70%,
-    50% 55%,35% 70%,
-    0 90%
-  );
-}
-
-.wreath-bow:after {
-  content:"";
-  position:absolute;
-  top:3px;
-  left:7px;
-  width:5px;
-  height:5px;
-  background:#ff9a9e;
-}
-
-/* ======================================
-   HERO / ORIGINAL KRILLION THEME
-   ====================================== */
+/* HERO */
 
 .hero {
   height:430px;
@@ -389,9 +159,7 @@ a {color:inherit;text-decoration:none}
 
 .dive-link:hover {background:#153653}
 
-/* ======================================
-   OCEAN
-   ====================================== */
+/* UNDERWATER */
 
 .ocean {
   position:relative;
@@ -445,9 +213,7 @@ a {color:inherit;text-decoration:none}
   margin:0 0 30px;
 }
 
-/* ======================================
-   GAME GRID
-   ====================================== */
+/* GAME GRID */
 
 .games {
   display:grid;
@@ -458,7 +224,7 @@ a {color:inherit;text-decoration:none}
 .game {
   --c:#31f0ff;
   min-height:225px;
-  padding:27px 12px 18px;
+  padding:22px 12px 18px;
   border:2px solid var(--c);
   background:#0c2945;
   box-shadow:4px 4px #010f20;
@@ -466,124 +232,12 @@ a {color:inherit;text-decoration:none}
   flex-direction:column;
   align-items:center;
   text-align:center;
-  position:relative;
-  isolation:isolate;
   transition:transform .15s,background .15s;
 }
 
 .game:hover {
   transform:translateY(-4px);
   background:#164461;
-}
-
-/* ======================================
-   THICK PIXEL SNOWCAPS
-   ====================================== */
-
-.game-snow {
-  position:absolute;
-  top:-3px;
-  left:-3px;
-  right:-3px;
-  height:22px;
-  pointer-events:none;
-  z-index:3;
-}
-
-/* Uneven, chunky white snow with soft
-   light-blue underside */
-
-.snowcap {
-  position:absolute;
-  left:0;
-  right:0;
-  top:0;
-  height:13px;
-  background:#f7ffff;
-  clip-path:polygon(
-    0 0,
-    100% 0,
-    100% 70%,
-    94% 70%,
-    94% 95%,
-    87% 95%,
-    87% 60%,
-    76% 60%,
-    76% 100%,
-    69% 100%,
-    69% 72%,
-    56% 72%,
-    56% 85%,
-    45% 85%,
-    45% 68%,
-    35% 68%,
-    35% 100%,
-    28% 100%,
-    28% 68%,
-    17% 68%,
-    17% 90%,
-    9% 90%,
-    9% 70%,
-    0 70%
-  );
-}
-
-.snowcap:after {
-  content:"";
-  position:absolute;
-  top:6px;
-  left:0;
-  right:0;
-  height:7px;
-  background:#cbeefa;
-  opacity:.7;
-  clip-path:polygon(
-    0 50%,100% 50%,100% 100%,0 100%
-  );
-}
-
-/* Individual icicles at staggered lengths */
-
-.icicle {
-  position:absolute;
-  top:9px;
-  width:5px;
-  background:linear-gradient(
-    90deg,#e8faff 0 60%,#7bd0e7 60% 100%
-  );
-  clip-path:polygon(
-    0 0,
-    100% 0,
-    100% 65%,
-    65% 65%,
-    65% 100%,
-    35% 100%,
-    35% 65%,
-    0 65%
-  );
-}
-
-.icicle.i1 {left:13%;height:14px}
-.icicle.i2 {left:32%;height:23px}
-.icicle.i3 {left:49%;height:10px}
-.icicle.i4 {left:73%;height:19px}
-.icicle.i5 {left:92%;height:12px}
-
-/* Small icy glints on the sides */
-
-.game:after {
-  content:"";
-  position:absolute;
-  right:7px;
-  top:36px;
-  width:4px;
-  height:4px;
-  background:#ebffff;
-  box-shadow:
-    -9px 12px #8ddcf0,
-    -3px 33px #d7f8ff;
-  opacity:.75;
-  pointer-events:none;
 }
 
 .game-image {
@@ -624,7 +278,7 @@ a {color:inherit;text-decoration:none}
   flex:1;
 }
 
-/* PLAY button uses a CSS triangle */
+/* CSS TRIANGLE — NO EMOJI */
 
 .game .play {
   display:inline-flex;
@@ -655,11 +309,7 @@ a {color:inherit;text-decoration:none}
   margin:65px 0 52px;
 }
 
-.holiday-divider {color:#fbdc88}
-
-/* ======================================
-   LEADERBOARD
-   ====================================== */
+/* LEADERBOARD */
 
 .score-shell {
   margin-top:25px;
@@ -667,7 +317,6 @@ a {color:inherit;text-decoration:none}
   background:#081f35;
   padding:25px;
   box-shadow:5px 5px #010c18;
-  position:relative;
 }
 
 .score-grid {
@@ -727,9 +376,7 @@ a {color:inherit;text-decoration:none}
   overflow-wrap:anywhere;
 }
 
-/* ======================================
-   GOOGLE SIGN IN
-   ====================================== */
+/* LOGIN */
 
 .auth-box {
   background:#0b3452;
@@ -761,9 +408,7 @@ a {color:inherit;text-decoration:none}
   user-select:all;
 }
 
-/* ======================================
-   GAME WINS
-   ====================================== */
+/* WINS */
 
 .wins {
   display:grid;
@@ -795,10 +440,6 @@ a {color:inherit;text-decoration:none}
   color:#c1e1f0;
 }
 
-/* ======================================
-   SCORE TABLE
-   ====================================== */
-
 .table-wrap {overflow-x:auto}
 
 table {
@@ -826,10 +467,6 @@ th:not(:first-child) {text-align:center}
 .won {color:var(--yellow)}
 .waiting {color:#85b4cc}
 
-/* ======================================
-   DAILY CHAMPION
-   ====================================== */
-
 .champ {
   text-align:center;
   border:2px dashed #459ab8;
@@ -855,9 +492,7 @@ th:not(:first-child) {text-align:center}
   margin-top:16px;
 }
 
-/* ======================================
-   PRIVATE CHAT
-   ====================================== */
+/* PRIVATE CHAT */
 
 .chat-shell {
   margin-top:25px;
@@ -865,7 +500,6 @@ th:not(:first-child) {text-align:center}
   background:#081f35;
   padding:24px;
   box-shadow:5px 5px #010c18;
-  position:relative;
 }
 
 .chat-heading {color:#ff79a6}
@@ -1007,43 +641,7 @@ th:not(:first-child) {text-align:center}
   overflow-wrap:anywhere;
 }
 
-/* Decorative pixel holiday trim */
-
-.score-shell:before,
-.chat-shell:before {
-  content:"";
-  position:absolute;
-  top:-3px;
-  left:0;
-  right:0;
-  height:5px;
-  background:repeating-linear-gradient(
-    90deg,
-    #f6ffff 0 18px,
-    #d74e65 18px 26px,
-    #f6ffff 26px 44px,
-    #3daa88 44px 52px
-  );
-  pointer-events:none;
-}
-
-/* ======================================
-   FALLING PIXEL SNOW
-   ====================================== */
-
-.snow-overlay {
-  position:fixed;
-  inset:0;
-  width:100%;
-  height:100%;
-  z-index:11;
-  pointer-events:none;
-  image-rendering:pixelated;
-}
-
-/* ======================================
-   FOOTER
-   ====================================== */
+/* FOOTER */
 
 .footer {
   text-align:center;
@@ -1053,9 +651,7 @@ th:not(:first-child) {text-align:center}
   font-size:20px;
 }
 
-/* ======================================
-   MOBILE
-   ====================================== */
+/* MOBILE */
 
 @media(max-width:700px) {
   .games {
@@ -1085,10 +681,9 @@ th:not(:first-child) {text-align:center}
 
 @media(max-width:420px) {
   .game {
-    padding:24px 8px 17px;
+    padding:17px 8px;
     min-height:220px;
   }
-
   .game-image {width:62px;height:62px}
   .game-image img {width:46px;height:46px}
   .game h3 {font-size:9px}
@@ -1101,13 +696,6 @@ th:not(:first-child) {text-align:center}
   .chat-input {font-size:18px}
   .topbar {font-size:15px;padding:0 10px}
   .nav-links {gap:10px}
-
-  .pixel-wreath {
-    width:42px;
-    height:42px;
-    transform:translateX(-50%) scale(.8);
-    transform-origin:top center;
-  }
 }
 
 @media(prefers-reduced-motion:reduce) {
@@ -1120,9 +708,7 @@ th:not(:first-child) {text-align:center}
 
 <body>
 
-<!-- ======================================
-     NAVIGATION AND CHRISTMAS GARLAND
-     ====================================== -->
+<!-- UPDATED NAVIGATION -->
 
 <nav class="topbar">
   <a href="#top">H + N</a>
@@ -1132,36 +718,7 @@ th:not(:first-child) {text-align:center}
     <a href="#scores">SCORES ↓</a>
     <a href="#chat">CHAT ↓</a>
   </div>
-
-  <div
-    class="christmas-garland"
-    id="christmasGarland"
-    aria-hidden="true"
-  >
-    <div class="garland-branch"></div>
-    <div class="wreath-hanger"></div>
-
-    <div class="pixel-wreath">
-      <div class="wreath-ring"></div>
-      <div class="wreath-hole"></div>
-
-      <span class="wreath-leaf a"></span>
-      <span class="wreath-leaf b"></span>
-      <span class="wreath-leaf c"></span>
-      <span class="wreath-leaf d"></span>
-
-      <span class="wreath-berry a"></span>
-      <span class="wreath-berry b"></span>
-      <span class="wreath-berry c"></span>
-
-      <div class="wreath-bow"></div>
-    </div>
-  </div>
 </nav>
-
-<!-- ======================================
-     HERO
-     ====================================== -->
 
 <section class="hero" id="top">
   <canvas id="scene" aria-hidden="true"></canvas>
@@ -1175,9 +732,7 @@ th:not(:first-child) {text-align:center}
       HUDSON VS NOAH
     </h1>
 
-    <p class="hero-kicker">
-      THE DAILY GAMES
-    </p>
+    <p class="hero-kicker">THE DAILY GAMES</p>
 
     <div class="hero-subtitle">
       9 games · 2 players · <strong>1 winner</strong>
@@ -1192,43 +747,24 @@ th:not(:first-child) {text-align:center}
 <main class="ocean">
 <div class="container">
 
-<!-- ======================================
-     GAMES
-     ====================================== -->
+<!-- GAMES -->
 
 <section id="games">
-  <div class="eyebrow">
-    ◈ CHOOSE YOUR GAME ◈
-  </div>
-
-  <h2 class="section-heading">
-    TODAY'S LINEUP
-  </h2>
-
+  <div class="eyebrow">◈ CHOOSE YOUR GAME ◈</div>
+  <h2 class="section-heading">TODAY'S LINEUP</h2>
   <p class="intro">
     Pick a game. Play it. Drop your score.
   </p>
-
   <div class="games" id="gameGrid"></div>
 </section>
 
-<div class="depth holiday-divider">
-  ✦ ▼ ✦ ▼ ✦
-</div>
+<div class="depth">▼ ▼ ▼</div>
 
-<!-- ======================================
-     LEADERBOARD
-     ====================================== -->
+<!-- LEADERBOARD -->
 
 <section id="scores">
-  <div class="eyebrow">
-    ✦ HIGH SCORES ✦
-  </div>
-
-  <h2 class="section-heading">
-    THE LEADERBOARD
-  </h2>
-
+  <div class="eyebrow">✦ HIGH SCORES ✦</div>
+  <h2 class="section-heading">THE LEADERBOARD</h2>
   <p class="intro">
     One day. Nine games. Whoever wins more takes it.
   </p>
@@ -1237,9 +773,7 @@ th:not(:first-child) {text-align:center}
     <div class="score-grid">
 
       <div>
-        <h3 class="panel-title">
-          LOG A SCORE
-        </h3>
+        <h3 class="panel-title">LOG A SCORE</h3>
 
         <div class="auth-box">
           <button id="loginBtn" class="auth-button">
@@ -1257,7 +791,6 @@ th:not(:first-child) {text-align:center}
           <div class="auth-status" id="authStatus">
             Sign in to submit scores and chat.
           </div>
-
           <div class="uid" id="uidDisplay"></div>
         </div>
 
@@ -1269,7 +802,6 @@ th:not(:first-child) {text-align:center}
         <label for="gameSelect" class="field-label">
           GAME
         </label>
-
         <select id="gameSelect" class="field"></select>
 
         <label
@@ -1305,26 +837,18 @@ th:not(:first-child) {text-align:center}
       </div>
 
       <div>
-        <h3 class="panel-title">
-          TODAY'S STANDINGS
-        </h3>
-
+        <h3 class="panel-title">TODAY'S STANDINGS</h3>
         <p id="boardDate" class="sub"></p>
 
         <div class="wins">
           <div class="win-box">
             <label>HUDSON</label>
-            <div class="win-num" id="hudsonWins">
-              0
-            </div>
+            <div class="win-num" id="hudsonWins">0</div>
             <small>GAME WINS</small>
           </div>
-
           <div class="win-box">
             <label>NOAH</label>
-            <div class="win-num" id="noahWins">
-              0
-            </div>
+            <div class="win-num" id="noahWins">0</div>
             <small>GAME WINS</small>
           </div>
         </div>
@@ -1339,16 +863,13 @@ th:not(:first-child) {text-align:center}
                 <th>WIN</th>
               </tr>
             </thead>
-
             <tbody id="scoreRows"></tbody>
           </table>
         </div>
 
         <div class="champ">
           <small>★ DAILY CHAMPION ★</small>
-          <div id="champion">
-            STILL PLAYING...
-          </div>
+          <div id="champion">STILL PLAYING...</div>
         </div>
 
         <div class="sync" id="syncStatus">
@@ -1360,33 +881,21 @@ th:not(:first-child) {text-align:center}
   </div>
 </section>
 
-<div class="depth holiday-divider">
-  ✦ ▼ ✦ ▼ ✦
-</div>
+<div class="depth">▼ ▼ ▼</div>
 
-<!-- ======================================
-     PRIVATE CHAT
-     ====================================== -->
+<!-- PRIVATE CHAT -->
 
 <section id="chat">
-  <div class="eyebrow">
-    ◈ BELOW THE SURFACE ◈
-  </div>
-
-  <h2 class="section-heading">
-    THE CHAT
-  </h2>
-
+  <div class="eyebrow">◈ BELOW THE SURFACE ◈</div>
+  <h2 class="section-heading">THE CHAT</h2>
   <p class="intro">
     Talk trash. Share wins. Settle the score.
   </p>
 
   <div class="chat-shell">
     <div class="chat-topline">
-      <h3
-        class="panel-title chat-heading"
-        style="margin:0"
-      >
+      <h3 class="panel-title chat-heading"
+          style="margin:0">
         HUDSON × NOAH
       </h3>
 
@@ -1444,9 +953,7 @@ th:not(:first-child) {text-align:center}
   </div>
 </section>
 
-<div class="depth holiday-divider">
-  ✦ END OF DIVE ✦
-</div>
+<div class="depth">▼ END OF DIVE ▼</div>
 
 </div>
 </main>
@@ -1455,17 +962,9 @@ th:not(:first-child) {text-align:center}
   HUDSON KING × NOAH BONN · SEE YOU TOMORROW
 </footer>
 
-<!-- Snow does not block links or taps -->
-
-<canvas
-  id="snowOverlay"
-  class="snow-overlay"
-  aria-hidden="true"
-></canvas>
-
 <script>
 /* ======================================
-   ORIGINAL PIXEL OCEAN AND BOAT
+   PIXEL OCEAN AND BOAT
    ====================================== */
 
 const canvas=document.getElementById("scene");
@@ -1481,10 +980,8 @@ const pixel=4;
 
 function resizeScene() {
   const r=canvas.getBoundingClientRect();
-
   W=Math.ceil(r.width/pixel);
   H=Math.ceil(r.height/pixel);
-
   canvas.width=W;
   canvas.height=H;
   ctx.imageSmoothingEnabled=false;
@@ -1495,7 +992,6 @@ resizeScene();
 
 function rect(x,y,w,h,c) {
   ctx.fillStyle=c;
-
   ctx.fillRect(
     Math.round(x),
     Math.round(y),
@@ -1523,21 +1019,19 @@ function drawBoat(t) {
   const surface=waveY(cx,t);
 
   ctx.save();
-
   ctx.translate(
     Math.round(cx),
     Math.round(surface+1)
   );
-
   ctx.scale(.55,.55);
   ctx.translate(-30,-22);
 
-  // Original mast and flag
+  // Mast and pink flag
   rect(35,-16,2,32,"#17374a");
   rect(37,-15,12,3,"#ff4389");
   rect(37,-12,9,3,"#e34e83");
 
-  // Original cabin
+  // Cabin
   rect(18,1,28,13,"#f0f8f5");
   rect(21,-4,22,5,"#d9f5f3");
 
@@ -1579,10 +1073,8 @@ function drawScene(time) {
   ctx.fillStyle="#c7f4ff";
   ctx.fillRect(0,0,W,H);
 
-  // Sky
   rect(0,0,W,H*.54,"#a9ebfa");
 
-  // Clouds
   cloud(W*.08,27,1.15);
   cloud(W*.75,20,1.65);
   cloud(W*.87,53,.55);
@@ -1590,7 +1082,6 @@ function drawScene(time) {
   // Horizon
   for(let x=0;x<W;x+=8) {
     const y=waveY(x,t);
-
     if(y>0) {
       rect(
         x,H*.69,8,
@@ -1600,16 +1091,14 @@ function drawScene(time) {
     }
   }
 
-  // Moving water
+  // Water
   for(let x=0;x<W;x++) {
     const y=Math.round(waveY(x,t));
-
     rect(x,y,1,H-y,"#093354");
     rect(x,y,1,2,"#f0ffff");
     rect(x,y+2,1,2,"#5be5f5");
   }
 
-  // Underwater
   for(let x=0;x<W;x+=4) {
     const y=waveY(x,t);
     rect(x,y+12,4,H-y-12,"#082541");
@@ -1619,7 +1108,6 @@ function drawScene(time) {
   for(let j=0;j<11;j++) {
     const x=((j*47+t*(j%2?3:-4)+W*8)%W);
     const y=H*.85+(j%4)*7;
-
     rect(x,y,10+(j%3)*5,1,"#367d9c");
   }
 
@@ -1632,25 +1120,23 @@ function drawScene(time) {
 
 requestAnimationFrame(drawScene);
 
-// Animated text
+// Wave title
 const title=document.getElementById("waveTitle");
 const original=title.textContent.trim();
 title.textContent="";
 
 [...original].forEach((ch,i)=>{
   const span=document.createElement("span");
-
   span.className="letter";
   span.style.setProperty("--i",i);
   span.textContent=ch===" "?"\u00a0":ch;
-
   title.appendChild(span);
 });
 </script>
 
 <script type="module">
 /* ======================================
-   FIREBASE IMPORTS
+   FIREBASE
    ====================================== */
 
 import {initializeApp} from
@@ -1675,10 +1161,6 @@ import {
 } from
 "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
 
-/* ======================================
-   FIREBASE CONFIG
-   ====================================== */
-
 const firebaseConfig={
   apiKey:"AIzaSyDqfUuUIWKZ76ds5obBF-aaFqaMwNscYh8",
   authDomain:"hudson-noah-game-hub.firebaseapp.com",
@@ -1695,7 +1177,7 @@ const playerUIDs={
 };
 
 /* ======================================
-   NINE GAMES
+   NINE DAILY GAMES
    ====================================== */
 
 const games=[
@@ -1819,7 +1301,7 @@ const games=[
 ];
 
 /* ======================================
-   INITIALIZATION
+   FIREBASE INITIALIZATION
    ====================================== */
 
 const app=initializeApp(firebaseConfig);
@@ -1843,7 +1325,7 @@ let chatReady=false;
 let sending=false;
 
 /* ======================================
-   EASTERN DATES
+   DATE FUNCTIONS
    ====================================== */
 
 function getDay() {
@@ -1874,7 +1356,9 @@ function displayDate() {
 }
 
 function messageTime(timestamp) {
-  if(typeof timestamp!=="number") return "SENDING...";
+  if(typeof timestamp!=="number") {
+    return "SENDING...";
+  }
 
   return new Intl.DateTimeFormat(
     "en-US",{
@@ -1888,7 +1372,7 @@ function messageTime(timestamp) {
 }
 
 /* ======================================
-   GAME CARDS WITH SNOW AND ICICLES
+   GAME CARDS
    ====================================== */
 
 function renderCards() {
@@ -1900,15 +1384,6 @@ function renderCards() {
       rel="noopener noreferrer"
       style="--c:${g.color}"
     >
-      <div class="game-snow" aria-hidden="true">
-        <span class="snowcap"></span>
-        <span class="icicle i1"></span>
-        <span class="icicle i2"></span>
-        <span class="icicle i3"></span>
-        <span class="icicle i4"></span>
-        <span class="icicle i5"></span>
-      </div>
-
       <div class="game-image">
         <img
           src="https://www.google.com/s2/favicons?domain=${g.domain}&sz=128"
@@ -1965,8 +1440,7 @@ $("loginBtn").addEventListener("click",async()=>{
 
   try {
     await signInWithPopup(auth,provider);
-  }
-  catch(error) {
+  } catch(error) {
     $("authStatus").textContent=
       "LOGIN FAILED: "+error.message;
   }
@@ -1975,8 +1449,7 @@ $("loginBtn").addEventListener("click",async()=>{
 $("logoutBtn").addEventListener("click",async()=>{
   try {
     await signOut(auth);
-  }
-  catch(error) {
+  } catch(error) {
     $("authStatus").textContent=error.message;
   }
 });
@@ -1998,19 +1471,16 @@ onAuthStateChanged(auth,user=>{
   if(!user) {
     $("authStatus").textContent=
       "SIGN IN TO SUBMIT SCORES AND CHAT";
-
     $("uidDisplay").textContent="";
   }
   else if(found) {
     $("authStatus").textContent=
       "SIGNED IN AS "+found.toUpperCase();
-
     $("uidDisplay").textContent="";
   }
   else {
     $("authStatus").textContent=
       "ACCOUNT NOT APPROVED. YOUR UID:";
-
     $("uidDisplay").textContent=user.uid;
   }
 
@@ -2164,7 +1634,6 @@ async function saveScore() {
   try {
     if(getDay()!==day) {
       updateDay();
-
       throw new Error(
         "NEW DAY STARTED. SUBMIT AGAIN."
       );
@@ -2227,26 +1696,21 @@ function renderScores() {
 
     const value=v=>{
       if(v===undefined) return "—";
-
       if(g.id==="connections"&&v===4) {
         return "DNF (4)";
       }
-
       return v;
     };
 
     return `
       <tr>
         <td>${g.name}</td>
-
         <td class="${winner==="HK"?"won":""}">
           ${value(entry.Hudson)}
         </td>
-
         <td class="${winner==="NB"?"won":""}">
           ${value(entry.Noah)}
         </td>
-
         <td class="${winner?"won":"waiting"}">
           ${winner||"..."}
         </td>
@@ -2304,7 +1768,6 @@ function startChat() {
     const empty=document.createElement("div");
     empty.className="chat-empty";
     empty.textContent="PRIVATE CHAT — SIGN IN";
-
     windowEl.appendChild(empty);
     return;
   }
@@ -2368,7 +1831,6 @@ function renderChat(messages) {
     empty.className="chat-empty";
     empty.textContent=
       "NO MESSAGES YET. START THE CONVERSATION!";
-
     windowEl.appendChild(empty);
     return;
   }
@@ -2536,151 +1998,5 @@ document.addEventListener("visibilitychange",()=>{
 });
 
 </script>
-
-<script>
-/* ======================================
-   CHRISTMAS GARLAND AND FALLING SNOW
-   ====================================== */
-
-(function () {
-
-  /* ------------------------------------
-     Pixel evergreen garland
-     ------------------------------------ */
-
-  const garland=document.getElementById(
-    "christmasGarland"
-  );
-
-  // Repeat evergreen branches across
-  // the entire width of the navigation.
-
-  const sprigCount=36;
-
-  for(let i=0;i<sprigCount;i++) {
-    const sprig=document.createElement("span");
-
-    sprig.className="garland-sprig";
-    sprig.style.left=
-      ((i+.5)/sprigCount*100)+"%";
-
-    sprig.style.top=
-      (i%3===0?1:i%3===1?3:0)+"px";
-
-    garland.appendChild(sprig);
-  }
-
-  // Scatter little red berry clusters.
-  // They remain pixelated, not emojis.
-
-  for(let i=0;i<14;i++) {
-    const berry=document.createElement("span");
-
-    berry.className="garland-berry";
-    berry.style.left=
-      ((i+.6)/14*100)+"%";
-
-    berry.style.top=
-      (i%2===0?8:12)+"px";
-
-    garland.appendChild(berry);
-  }
-
-  /* ------------------------------------
-     Snowfall animation
-     ------------------------------------ */
-
-  const snow=document.getElementById("snowOverlay");
-  const snowCtx=snow.getContext("2d");
-
-  const reduced=window.matchMedia(
-    "(prefers-reduced-motion: reduce)"
-  );
-
-  let flakes=[];
-  let width=0;
-  let height=0;
-  let lastFrame=0;
-
-  function resizeSnow() {
-    width=window.innerWidth;
-    height=window.innerHeight;
-
-    snow.width=width;
-    snow.height=height;
-
-    snowCtx.imageSmoothingEnabled=false;
-
-    const count=Math.min(
-      105,
-      Math.max(
-        35,
-        Math.floor(width*height/12500)
-      )
-    );
-
-    flakes=Array.from(
-      {length:count},
-      (_,i)=>({
-        x:Math.random()*width,
-        y:Math.random()*height,
-        size:i%6===0?4:i%3===0?3:2,
-        speed:.45+Math.random()*.8,
-        drift:(Math.random()-.5)*.55
-      })
-    );
-
-    drawSnow(true);
-  }
-
-  function drawSnow(still=false) {
-    snowCtx.clearRect(0,0,width,height);
-
-    snowCtx.fillStyle="rgba(245,252,255,.87)";
-
-    for(const flake of flakes) {
-      snowCtx.fillRect(
-        Math.round(flake.x),
-        Math.round(flake.y),
-        flake.size,
-        flake.size
-      );
-
-      if(!still) {
-        flake.y+=flake.speed;
-        flake.x+=flake.drift;
-
-        if(flake.y>height) {
-          flake.y=-5;
-          flake.x=Math.random()*width;
-        }
-
-        if(flake.x>width) flake.x=0;
-        if(flake.x<0) flake.x=width;
-      }
-    }
-  }
-
-  function animateSnow(t) {
-    if(reduced.matches) return;
-
-    if(t-lastFrame>28) {
-      drawSnow();
-      lastFrame=t;
-    }
-
-    requestAnimationFrame(animateSnow);
-  }
-
-  window.addEventListener("resize",resizeSnow);
-
-  resizeSnow();
-
-  if(!reduced.matches) {
-    requestAnimationFrame(animateSnow);
-  }
-})();
-</script>
-
 </body>
 </html>
