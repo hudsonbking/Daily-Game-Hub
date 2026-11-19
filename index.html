@@ -6,57 +6,49 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#061729">
 <title>Hudson vs Noah | Daily Game Hub</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
 
 <style>
-:root {
+:root{
   --dark:#061729;
   --deep:#091c33;
   --cyan:#31f0ff;
   --white:#f5fdff;
   --pink:#ff4389;
   --yellow:#ffe76a;
+  --sky-hole:#a9ebfa;
+  --hero-ink:#ffffff;
+  --hero-outline:#00eaff;
+  --hero-shadow:#ff4389;
+  --hero-secondary:#12394f;
+  --hero-accent:#007eab;
 }
-
-* {box-sizing:border-box}
-
-html {
-  scroll-behavior:smooth;
-  -webkit-text-size-adjust:100%;
-}
-
-body {
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
   margin:0;
   background:var(--dark);
   color:var(--white);
   font:22px 'VT323',monospace;
 }
-
-button,input,select,textarea {font:inherit}
-button {cursor:pointer}
-button:disabled {opacity:.5;cursor:not-allowed}
-a {color:inherit;text-decoration:none}
-[hidden] {display:none!important}
-
-::selection {
-  background:#ffe76a;
-  color:#061729;
-}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+button:disabled{opacity:.5;cursor:not-allowed}
+a{color:inherit;text-decoration:none}
+[hidden]{display:none!important}
+::selection{background:#ffe76a;color:#061729}
 
 /* ======================================
-   CENTERED TOP NAVIGATION
+   CENTERED NAVIGATION
    ====================================== */
-
-.topbar {
+.topbar{
   position:relative;
   z-index:30;
   background:#082239;
   border-bottom:2px solid #286f70;
 }
-
-.topbar-inner {
-  width:min(100%,980px);
+.topbar-inner{
+  max-width:980px;
   min-height:46px;
   margin:auto;
   padding:0 18px;
@@ -65,31 +57,26 @@ a {color:inherit;text-decoration:none}
   align-items:center;
   gap:14px;
 }
-
-.brand {
+.brand{
   justify-self:start;
   color:#84f5ff;
   white-space:nowrap;
   font-size:19px;
 }
-
-.top-date {
+.top-date{
   justify-self:center;
+  color:white;
   text-align:center;
   white-space:nowrap;
-  color:white;
   font-size:19px;
 }
-
-.nav-links {
+.nav-links{
   justify-self:end;
   display:flex;
   align-items:center;
-  gap:19px;
+  gap:18px;
 }
-
-.nav-links a,
-.nav-settings {
+.nav-links a,.nav-settings{
   color:#84f5ff;
   white-space:nowrap;
   background:none;
@@ -97,230 +84,165 @@ a {color:inherit;text-decoration:none}
   padding:4px 0;
   font-size:19px;
 }
-
-.nav-links a:hover,
-.nav-settings:hover {
-  color:#fff;
-}
-
-.nav-settings[aria-expanded="true"] {
-  color:var(--yellow);
-}
+.nav-links a:hover,.nav-settings:hover{color:white}
+.nav-settings[aria-expanded=true]{color:var(--yellow)}
 
 /* ======================================
-   PIXEL CHRISTMAS GARLAND
+   EVERGREEN GARLAND & WREATH
    ====================================== */
-
-.christmas-garland {
+.christmas-garland{
   position:absolute;
-  left:0;
-  right:0;
-  top:100%;
-  height:24px;
+  left:0;right:0;top:100%;
+  height:25px;
   pointer-events:none;
   z-index:31;
-  overflow:visible;
 }
-
-.garland-branch {
+.garland-branch{
   position:absolute;
-  top:0;
-  left:0;
-  right:0;
+  left:0;right:0;top:0;
   height:5px;
   background:repeating-linear-gradient(
-    90deg,
-    #174e39 0 14px,
-    #267048 14px 23px,
-    #113f31 23px 32px
+    90deg,#174e39 0 14px,#267048 14px 23px,#113f31 23px 32px
   );
   border-bottom:2px solid #0a3329;
 }
-
-.garland-sprig {
+.garland-sprig{
   position:absolute;
   top:2px;
-  width:24px;
-  height:18px;
+  width:24px;height:18px;
   transform:translateX(-50%);
   background:#246e49;
   clip-path:polygon(
-    42% 0,58% 0,
-    58% 20%,75% 20%,
-    75% 35%,100% 35%,
-    100% 55%,79% 55%,
-    79% 75%,58% 75%,
-    58% 100%,42% 100%,
-    42% 75%,21% 75%,
-    21% 55%,0 55%,
-    0 35%,25% 35%,
-    25% 20%,42% 20%
+    42% 0,58% 0,58% 20%,75% 20%,75% 35%,
+    100% 35%,100% 55%,79% 55%,79% 75%,
+    58% 75%,58% 100%,42% 100%,42% 75%,
+    21% 75%,21% 55%,0 55%,0 35%,
+    25% 35%,25% 20%,42% 20%
   );
 }
-
-.garland-sprig:after {
+.garland-sprig:after{
   content:"";
   position:absolute;
-  left:6px;
-  top:3px;
-  width:12px;
-  height:11px;
+  left:6px;top:3px;
+  width:12px;height:11px;
   background:#48a670;
   clip-path:polygon(
-    35% 0,65% 0,
-    65% 30%,100% 30%,
-    100% 55%,65% 55%,
-    65% 100%,35% 100%,
-    35% 55%,0 55%,
-    0 30%,35% 30%
+    35% 0,65% 0,65% 30%,100% 30%,100% 55%,
+    65% 55%,65% 100%,35% 100%,35% 55%,
+    0 55%,0 30%,35% 30%
   );
 }
-
-.garland-berry {
+.garland-berry{
   position:absolute;
-  top:9px;
-  width:5px;
-  height:5px;
+  width:5px;height:5px;
   background:#e95d70;
   box-shadow:5px 2px #af3248,2px -4px #ff9e9f;
 }
-
-.pixel-wreath {
+.pixel-wreath{
   position:absolute;
-  left:50%;
-  top:12px;
-  width:48px;
-  height:48px;
+  left:50%;top:12px;
+  width:50px;height:50px;
   transform:translateX(-50%);
   image-rendering:pixelated;
-  pointer-events:none;
 }
-
-.wreath-ring {
+.wreath-ring{
   position:absolute;
   inset:4px;
   background:#1e714a;
   border:6px solid #52a972;
-  box-shadow:
-    0 0 0 3px #164e37,
-    3px 3px 0 3px #133b39;
+  box-shadow:0 0 0 3px #164e37,3px 3px 0 3px #133b39;
   clip-path:polygon(
-    25% 0,75% 0,
-    75% 12%,88% 12%,
-    88% 25%,100% 25%,
-    100% 75%,88% 75%,
-    88% 88%,75% 88%,
-    75% 100%,25% 100%,
-    25% 88%,12% 88%,
-    12% 75%,0 75%,
-    0 25%,12% 25%,
-    12% 12%,25% 12%
+    25% 0,75% 0,75% 12%,88% 12%,88% 25%,
+    100% 25%,100% 75%,88% 75%,88% 88%,
+    75% 88%,75% 100%,25% 100%,25% 88%,
+    12% 88%,12% 75%,0 75%,0 25%,
+    12% 25%,12% 12%,25% 12%
   );
 }
-
-.wreath-hole {
+.wreath-hole{
   position:absolute;
-  left:17px;
-  top:17px;
-  width:14px;
-  height:14px;
-  background:#a9ebfa;
+  left:17px;top:17px;
+  width:16px;height:16px;
+  background:var(--sky-hole);
+  clip-path:polygon(
+    25% 0,75% 0,75% 25%,100% 25%,100% 75%,
+    75% 75%,75% 100%,25% 100%,25% 75%,
+    0 75%,0 25%,25% 25%
+  );
 }
-
-.wreath-bow {
+.wreath-bow{
   position:absolute;
-  top:0;
-  left:15px;
-  width:18px;
-  height:10px;
+  top:0;left:16px;
+  width:18px;height:10px;
   background:#ed536b;
   clip-path:polygon(
-    0 0,50% 35%,100% 0,
-    100% 100%,50% 65%,0 100%
+    0 0,50% 35%,100% 0,100% 100%,50% 65%,0 100%
   );
 }
-
-.wreath-berry {
+.wreath-berry{
   position:absolute;
-  width:5px;
-  height:5px;
+  width:5px;height:5px;
   background:#ff7580;
 }
-
-.wreath-berry.one {left:8px;top:18px}
-.wreath-berry.two {right:8px;top:25px}
-.wreath-berry.three {left:24px;bottom:5px}
+.wreath-berry.one{left:8px;top:18px}
+.wreath-berry.two{right:8px;top:25px}
+.wreath-berry.three{left:24px;bottom:5px}
 
 /* ======================================
    SETTINGS PANEL
    ====================================== */
-
-.settings-panel {
+.settings-panel{
   position:relative;
   z-index:20;
   background:#071b30;
   border-bottom:2px solid #58adbd;
   box-shadow:0 8px 22px #03111f;
 }
-
-.settings-inner {
+.settings-inner{
   max-width:980px;
   margin:auto;
   padding:29px 18px 25px;
 }
-
-.settings-header {
+.settings-header{
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap:15px;
 }
-
-.settings-title {
+.settings-title{
   color:var(--cyan);
   margin:0;
   font:13px/1.7 'Press Start 2P';
 }
-
-.close-settings {
+.close-settings{
   color:#ff9ebd;
   background:#102d46;
   border:2px solid #6b9cb3;
   padding:7px 11px;
-  font-size:20px;
 }
-
-.settings-description {
+.settings-description{
   color:#c7e5f1;
   margin:12px 0 20px;
   font-size:21px;
 }
-
-.scene-grid {
+.scene-grid{
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
   gap:12px;
 }
-
-.scene-choice {
+.scene-choice{
   background:#0d2944;
   border:2px solid #416c8c;
   padding:8px;
   color:white;
   text-align:left;
-  transition:transform .12s;
 }
-
-.scene-choice:hover {
-  transform:translateY(-2px);
-}
-
-.scene-choice.active {
+.scene-choice:hover{border-color:#a7dfec}
+.scene-choice.active{
   border-color:var(--yellow);
   box-shadow:3px 3px #b58b4f;
 }
-
-.scene-preview {
+.scene-preview{
   display:block;
   height:63px;
   position:relative;
@@ -328,51 +250,37 @@ a {color:inherit;text-decoration:none}
   background:var(--preview-sky);
   border:2px solid #244c6b;
 }
-
-.scene-preview:before {
+.scene-preview:before{
   content:"";
   position:absolute;
-  top:43%;
-  left:0;
-  right:0;
+  top:43%;left:0;right:0;
   height:7px;
   background:var(--preview-light);
 }
-
-.scene-preview:after {
+.scene-preview:after{
   content:"";
   position:absolute;
-  top:53%;
-  left:0;
-  right:0;
-  bottom:0;
+  top:53%;left:0;right:0;bottom:0;
   background:var(--preview-water);
   border-top:3px solid var(--preview-foam);
   clip-path:polygon(
-    0 0,14% 0,14% 5%,
-    30% 5%,30% 0,
-    46% 0,46% 5%,
-    66% 5%,66% 0,
-    82% 0,82% 6%,
-    100% 6%,100% 100%,
-    0 100%
+    0 0,14% 0,14% 5%,30% 5%,30% 0,
+    46% 0,46% 5%,66% 5%,66% 0,
+    82% 0,82% 6%,100% 6%,100% 100%,0 100%
   );
 }
-
-.scene-name {
+.scene-name{
   display:block;
   margin-top:11px;
   font:9px/1.7 'Press Start 2P';
 }
-
-.scene-detail {
+.scene-detail{
   display:block;
   color:#bcd7e4;
   margin-top:5px;
   font-size:17px;
 }
-
-.setting-row {
+.setting-row{
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -382,38 +290,32 @@ a {color:inherit;text-decoration:none}
   margin-top:21px;
   padding-top:18px;
 }
-
-.snow-toggle {
+.snow-toggle{
   border:2px solid #69bed0;
   background:#153b55;
   color:white;
   padding:9px 15px;
-  min-width:135px;
 }
-
-.snow-toggle.on {
+.snow-toggle.on{
   background:#275b54;
   border-color:#84edce;
 }
-
-.settings-footnote {
+.settings-footnote{
   font-size:17px;
   color:#a7cde0;
   margin-top:13px;
 }
 
 /* ======================================
-   ORIGINAL HERO
+   BOAT & SKY
    ====================================== */
-
-.hero {
+.hero{
   height:430px;
   position:relative;
   overflow:hidden;
   background:#bceaf4;
 }
-
-.hero canvas {
+.hero canvas{
   position:absolute;
   inset:0;
   width:100%;
@@ -421,65 +323,55 @@ a {color:inherit;text-decoration:none}
   image-rendering:pixelated;
   display:block;
 }
-
-.hero-copy {
+.hero-copy{
   position:absolute;
   z-index:2;
-  top:88px;
-  left:12px;
-  right:12px;
+  top:88px;left:12px;right:12px;
   text-align:center;
   pointer-events:none;
 }
-
-.hero-title {
+.hero-title{
   margin:0 0 22px;
   white-space:nowrap;
-  font:clamp(17px,4.6vw,45px)/1.8
-    'Press Start 2P',monospace;
-  color:white;
+  font:clamp(17px,4.6vw,45px)/1.8 'Press Start 2P',monospace;
+  color:var(--hero-ink);
   text-shadow:
-    -2px -2px 0 #00eaff,
-    -3px -3px 0 #00eaff,
-    2px 2px 0 #ff4389,
-    3px 3px 0 #ff4389,
-    4px 4px 0 #ff4389;
+    -2px -2px 0 var(--hero-outline),
+    -3px -3px 0 var(--hero-outline),
+    2px 2px 0 var(--hero-shadow),
+    3px 3px 0 var(--hero-shadow),
+    4px 4px 0 var(--hero-shadow);
 }
-
-.hero-title .letter {
+.hero-title .letter{
   display:inline-block;
   animation:title-ripple 3.2s ease-in-out infinite;
   animation-delay:calc(var(--i)*-.115s);
 }
-
-@keyframes title-ripple {
-  0%,27%,72%,100% {transform:translateY(0)}
-  48% {transform:translateY(-4px)}
-  61% {transform:translateY(2px)}
+@keyframes title-ripple{
+  0%,27%,72%,100%{transform:translateY(0)}
+  48%{transform:translateY(-4px)}
+  61%{transform:translateY(2px)}
 }
-
-.hero-kicker {
-  color:#007fa5;
+.hero-kicker{
+  color:var(--hero-accent);
   letter-spacing:5px;
   font-size:20px;
   margin:0 0 16px;
+  text-shadow:0 1px 0 var(--hero-outline);
 }
-
-.hero-subtitle {
-  color:#12394f;
+.hero-subtitle{
+  color:var(--hero-secondary);
   font-size:21px;
+  text-shadow:0 1px 0 var(--hero-outline);
 }
-
-.hero-subtitle strong {
-  color:#007eab;
+.hero-subtitle strong{
+  color:var(--hero-accent);
   font-weight:normal;
 }
-
-.dive-link {
+.dive-link{
   position:absolute;
   z-index:4;
-  bottom:19px;
-  left:50%;
+  bottom:19px;left:50%;
   transform:translateX(-50%);
   width:min(390px,calc(100% - 38px));
   padding:14px 5px;
@@ -491,56 +383,44 @@ a {color:inherit;text-decoration:none}
   font:11px 'Press Start 2P';
   box-shadow:4px 4px #020b13;
 }
-
-.dive-link:hover {background:#153653}
+.dive-link:hover{background:#153653}
 
 /* ======================================
-   OCEAN
+   UNDERWATER SECTION
    ====================================== */
-
-.ocean {
+.ocean{
   position:relative;
-  background:linear-gradient(
-    180deg,#091b30,#082a49 48%,#061729
-  );
+  background:linear-gradient(180deg,#091b30,#082a49 48%,#061729);
   padding:62px 0 85px;
   overflow:hidden;
 }
-
-.ocean:before {
+.ocean:before{
   content:"";
   position:absolute;
   inset:0;
   pointer-events:none;
   background:repeating-linear-gradient(
-    180deg,
-    transparent 0 85px,
-    rgba(49,240,255,.065) 86px 89px
+    180deg,transparent 0 85px,rgba(49,240,255,.065) 86px 89px
   );
 }
-
-.container {
+.container{
   position:relative;
   max-width:980px;
   padding:0 18px;
   margin:auto;
 }
-
-.eyebrow {
+.eyebrow{
   text-align:center;
   color:#65edff;
   font-size:18px;
   letter-spacing:4px;
 }
-
-.section-heading {
+.section-heading{
   text-align:center;
-  font:clamp(13px,2.7vw,23px)/1.7
-    'Press Start 2P';
+  font:clamp(13px,2.7vw,23px)/1.7 'Press Start 2P';
   margin:15px 0 9px;
 }
-
-.intro {
+.intro{
   text-align:center;
   color:#d1e9f5;
   font-size:23px;
@@ -548,21 +428,63 @@ a {color:inherit;text-decoration:none}
 }
 
 /* ======================================
-   GAME CARDS
+   SHARED SNOW BORDERS + FESTIVE BULBS
    ====================================== */
+.frosted-box{
+  position:relative;
+  isolation:isolate;
+}
+.frosted-box:before{
+  content:"";
+  position:absolute;
+  top:-3px;left:-3px;right:-3px;
+  height:14px;
+  z-index:5;
+  pointer-events:none;
+  background:#f3fdff;
+  clip-path:polygon(
+    0 0,100% 0,100% 55%,
+    96% 55%,96% 90%,
+    88% 90%,88% 65%,
+    77% 65%,77% 100%,
+    69% 100%,69% 60%,
+    57% 60%,57% 85%,
+    44% 85%,44% 65%,
+    33% 65%,33% 100%,
+    26% 100%,26% 65%,
+    17% 65%,17% 95%,
+    9% 95%,9% 60%,
+    0 60%
+  );
+}
+.frosted-box:after{
+  content:"";
+  position:absolute;
+  top:10px;left:6px;right:6px;
+  height:8px;
+  pointer-events:none;
+  z-index:5;
+  background:repeating-linear-gradient(
+    90deg,
+    transparent 0 19px,
+    #e95467 19px 24px,
+    transparent 24px 43px,
+    #45d18c 43px 48px,
+    transparent 48px 70px
+  );
+  filter:drop-shadow(0 0 3px rgba(255,218,170,.55));
+}
 
-.games {
+/* Game cards */
+.games{
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
   gap:15px;
 }
-
-.game {
+.game{
   --c:#31f0ff;
-  position:relative;
-  isolation:isolate;
   min-height:225px;
-  padding:27px 12px 18px;
+  padding:29px 12px 18px;
   border:2px solid var(--c);
   background:#0c2945;
   box-shadow:4px 4px #010f20;
@@ -572,81 +494,12 @@ a {color:inherit;text-decoration:none}
   text-align:center;
   transition:transform .15s,background .15s;
 }
-
-.game:hover {
+.game:hover{
   transform:translateY(-4px);
   background:#164461;
 }
-
-.game-snow {
-  position:absolute;
-  top:-3px;
-  left:-3px;
-  right:-3px;
-  height:30px;
-  pointer-events:none;
-  z-index:3;
-}
-
-.snowcap {
-  position:absolute;
-  left:0;
-  right:0;
-  top:0;
-  height:13px;
-  background:#f7ffff;
-  clip-path:polygon(
-    0 0,100% 0,100% 70%,
-    94% 70%,94% 95%,
-    87% 95%,87% 60%,
-    76% 60%,76% 100%,
-    69% 100%,69% 72%,
-    56% 72%,56% 85%,
-    45% 85%,45% 68%,
-    35% 68%,35% 100%,
-    28% 100%,28% 68%,
-    17% 68%,17% 90%,
-    9% 90%,9% 70%,
-    0 70%
-  );
-}
-
-.snowcap-shadow {
-  position:absolute;
-  top:8px;
-  left:3px;
-  width:94%;
-  height:3px;
-  background:#b5e7f3;
-  opacity:.8;
-}
-
-.icicle {
-  position:absolute;
-  top:9px;
-  width:5px;
-  background:linear-gradient(
-    90deg,
-    #e8faff 0 60%,
-    #7bd0e7 60% 100%
-  );
-  clip-path:polygon(
-    0 0,100% 0,
-    100% 65%,65% 65%,
-    65% 100%,35% 100%,
-    35% 65%,0 65%
-  );
-}
-
-.icicle.i1 {left:13%;height:14px}
-.icicle.i2 {left:32%;height:23px}
-.icicle.i3 {left:49%;height:10px}
-.icicle.i4 {left:73%;height:19px}
-.icicle.i5 {left:92%;height:12px}
-
-.game-image {
-  width:72px;
-  height:72px;
+.game-image{
+  width:72px;height:72px;
   background:#e6faff;
   border:3px solid #5c91a7;
   display:flex;
@@ -655,56 +508,46 @@ a {color:inherit;text-decoration:none}
   margin-bottom:17px;
   image-rendering:pixelated;
 }
-
-.game-image img {
-  width:55px;
-  height:55px;
+.game-image img{
+  width:55px;height:55px;
   object-fit:contain;
 }
-
-.fallback {
+.fallback{
   display:none;
   font:24px 'Press Start 2P';
   color:#12405a;
 }
-
-.game h3 {
+.game h3{
   font:12px/1.6 'Press Start 2P';
   margin:0;
   color:white;
 }
-
-.game p {
+.game p{
   color:#d0e8f4;
   font-size:20px;
   line-height:1.08;
   margin:11px 0 19px;
   flex:1;
 }
-
-.game .play {
+.game .play{
   display:inline-flex;
   align-items:center;
   justify-content:center;
   gap:9px;
   background:var(--c);
   color:#06192b;
-  font:10px 'Press Start 2P',monospace;
+  font:10px 'Press Start 2P';
   padding:11px 14px;
   box-shadow:3px 3px #041323;
 }
-
-.play-triangle {
+.play-triangle{
   display:inline-block;
-  width:0;
-  height:0;
+  width:0;height:0;
   border-top:6px solid transparent;
   border-bottom:6px solid transparent;
   border-left:10px solid #06192b;
-  flex-shrink:0;
 }
-
-.depth {
+.depth{
   text-align:center;
   color:#fbdc88;
   letter-spacing:5px;
@@ -712,44 +555,37 @@ a {color:inherit;text-decoration:none}
 }
 
 /* ======================================
-   LEADERBOARD
+   SCORES
    ====================================== */
-
-.score-shell {
-  position:relative;
+.score-shell{
   margin-top:25px;
   border:2px solid var(--cyan);
   background:#081f35;
-  padding:25px;
+  padding:28px 25px 25px;
   box-shadow:5px 5px #010c18;
 }
-
-.score-grid {
+.score-grid{
   display:grid;
   grid-template-columns:1fr 1.3fr;
   gap:30px;
 }
-
-.panel-title {
+.panel-title{
   font:13px/1.6 'Press Start 2P';
   color:var(--cyan);
   margin:0 0 15px;
 }
-
-.sub {
+.sub{
   color:#c0d9e9;
   font-size:20px;
   margin:0 0 18px;
 }
-
-.field-label {
+.field-label{
   display:block;
   color:var(--yellow);
   font-size:20px;
   margin:16px 0 6px;
 }
-
-.field {
+.field{
   width:100%;
   padding:11px;
   border:2px solid #529fbd;
@@ -758,10 +594,8 @@ a {color:inherit;text-decoration:none}
   border-radius:0;
   outline:none;
 }
-
-.field:focus {border-color:var(--cyan)}
-
-.save {
+.field:focus{border-color:var(--cyan)}
+.save{
   display:block;
   width:100%;
   margin-top:22px;
@@ -772,23 +606,20 @@ a {color:inherit;text-decoration:none}
   font:11px 'Press Start 2P';
   box-shadow:3px 3px #7c3154;
 }
-
-.feedback {
+.feedback{
   min-height:28px;
   font-size:19px;
   margin-top:13px;
   color:#a8ffca;
   overflow-wrap:anywhere;
 }
-
-.auth-box {
+.auth-box{
   background:#0b3452;
   border:2px solid #4798b7;
   padding:15px;
   margin-bottom:22px;
 }
-
-.auth-button {
+.auth-button{
   width:100%;
   background:var(--cyan);
   color:#061729;
@@ -796,97 +627,76 @@ a {color:inherit;text-decoration:none}
   padding:12px;
   font:10px/1.7 'Press Start 2P';
 }
-
-.auth-status {
+.auth-status{
   margin:12px 0 0;
   color:#c7eafa;
   font-size:18px;
   overflow-wrap:anywhere;
 }
-
-.uid {
+.uid{
   color:var(--yellow);
   font-size:16px;
   overflow-wrap:anywhere;
   user-select:all;
 }
-
-.wins {
+.wins{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:12px;
   margin:18px 0 22px;
 }
-
-.win-box {
+.win-box{
   background:#0e314c;
   border:2px solid #438fa8;
   padding:13px;
   text-align:center;
 }
-
-.win-box label {
+.win-box label{
   color:#d5f3ff;
   font:10px 'Press Start 2P';
 }
-
-.win-num {
+.win-num{
   color:var(--yellow);
   font:30px 'Press Start 2P';
   margin:16px 0 6px;
 }
-
-.win-box small {
+.win-box small{
   font-size:18px;
   color:#c1e1f0;
 }
-
-.table-wrap {overflow-x:auto}
-
-table {
-  width:100%;
-  border-collapse:collapse;
-}
-
-th {
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse}
+th{
   text-align:left;
   color:var(--cyan);
   font-size:18px;
   border-bottom:2px solid #4596b5;
 }
-
-td {
+td{
   font-size:20px;
   border-bottom:1px dashed #326987;
 }
-
-td,th {padding:9px 5px}
-
+td,th{padding:9px 5px}
 td:not(:first-child),
-th:not(:first-child) {text-align:center}
-
-.won {color:var(--yellow)}
-.waiting {color:#85b4cc}
-
-.champ {
+th:not(:first-child){text-align:center}
+.won{color:var(--yellow)}
+.waiting{color:#85b4cc}
+.champ{
   text-align:center;
   border:2px dashed #459ab8;
   padding:15px;
   margin-top:24px;
 }
-
-.champ small {
+.champ small{
   font-size:18px;
   letter-spacing:2px;
 }
-
-.champ div {
+.champ div{
   font:12px/1.7 'Press Start 2P';
   color:var(--yellow);
   margin-top:10px;
 }
-
-.sync {
+.sync{
   text-align:center;
   color:#b0d6e8;
   font-size:17px;
@@ -894,21 +704,17 @@ th:not(:first-child) {text-align:center}
 }
 
 /* ======================================
-   CHAT
+   PRIVATE CHAT
    ====================================== */
-
-.chat-shell {
-  position:relative;
+.chat-shell{
   margin-top:25px;
   border:2px solid #ff79a6;
   background:#081f35;
-  padding:24px;
+  padding:28px 24px 24px;
   box-shadow:5px 5px #010c18;
 }
-
-.chat-heading {color:#ff79a6}
-
-.chat-topline {
+.chat-heading{color:#ff79a6}
+.chat-topline{
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -916,21 +722,18 @@ th:not(:first-child) {text-align:center}
   flex-wrap:wrap;
   margin-bottom:12px;
 }
-
-.chat-private {
+.chat-private{
   border:1px solid #548ba7;
   color:#c8e8f7;
   padding:5px 10px;
   font-size:17px;
 }
-
-.chat-status {
+.chat-status{
   color:#a5c9db;
   font-size:18px;
   margin:0 0 15px;
 }
-
-.chat-window {
+.chat-window{
   height:410px;
   overflow-y:auto;
   overscroll-behavior:contain;
@@ -941,23 +744,19 @@ th:not(:first-child) {text-align:center}
   flex-direction:column;
   gap:14px;
 }
-
-.chat-empty {
+.chat-empty{
   color:#90b3c9;
   text-align:center;
   margin:auto;
   font-size:21px;
 }
-
-.chat-message {
+.chat-message{
   max-width:86%;
   min-width:100px;
   align-self:flex-start;
 }
-
-.chat-message.mine {align-self:flex-end}
-
-.chat-meta {
+.chat-message.mine{align-self:flex-end}
+.chat-meta{
   display:flex;
   align-items:center;
   gap:10px;
@@ -965,15 +764,12 @@ th:not(:first-child) {text-align:center}
   font-size:16px;
   margin-bottom:5px;
 }
-
-.chat-message.mine .chat-meta {
+.chat-message.mine .chat-meta{
   justify-content:flex-end;
 }
-
-.chat-name {color:var(--cyan)}
-.chat-message.noah .chat-name {color:#ff92ba}
-
-.chat-bubble {
+.chat-name{color:var(--cyan)}
+.chat-message.noah .chat-name{color:#ff92ba}
+.chat-bubble{
   border:2px solid #327b9c;
   background:#10344d;
   padding:11px 13px;
@@ -984,25 +780,19 @@ th:not(:first-child) {text-align:center}
   overflow-wrap:anywhere;
   word-break:break-word;
   box-shadow:3px 3px #020d19;
-
-  /* Allow mouse and touch text selection */
   user-select:text;
   -webkit-user-select:text;
   -webkit-touch-callout:default;
   cursor:text;
 }
-
-.chat-message.noah .chat-bubble {
+.chat-message.noah .chat-bubble{
   border-color:#ad547d;
   background:#48283f;
 }
-
-.chat-message.mine .chat-bubble {
+.chat-message.mine .chat-bubble{
   border-color:#57cce2;
 }
-
-.quoted-message {
-  display:block;
+.quoted-message{
   background:rgba(3,13,24,.5);
   border-left:4px solid #ffe287;
   padding:7px 10px;
@@ -1010,48 +800,39 @@ th:not(:first-child) {text-align:center}
   color:#d5eefa;
   font-size:18px;
   white-space:pre-wrap;
-  overflow-wrap:anywhere;
 }
-
-.quote-author {
+.quote-author{
+  display:block;
   color:#ffe287;
   font-size:16px;
-  display:block;
   margin-bottom:3px;
 }
-
-.message-actions {
+.message-actions{
   display:flex;
-  justify-content:flex-start;
-  margin-top:6px;
   gap:9px;
+  margin-top:6px;
 }
-
-.chat-message.mine .message-actions {
+.chat-message.mine .message-actions{
   justify-content:flex-end;
 }
-
-.reply-button {
+.reply-button{
   background:none;
   border:1px solid #487e9d;
   color:#a5eaff;
   font-size:16px;
   padding:3px 9px;
 }
-
-.reply-button:hover {
+.reply-button:hover{
   color:white;
   border-color:var(--cyan);
 }
-
-.reply-preview {
+.reply-preview{
   background:#0b314a;
   border:2px solid #d7b16f;
   margin-top:14px;
   padding:10px 13px;
 }
-
-.reply-preview-head {
+.reply-preview-head{
   display:flex;
   justify-content:space-between;
   gap:10px;
@@ -1059,31 +840,27 @@ th:not(:first-child) {text-align:center}
   color:#ffe287;
   font-size:19px;
 }
-
-.reply-preview-text {
+.reply-preview-text{
   color:#d6eaf5;
   font-size:18px;
   margin-top:6px;
   overflow-wrap:anywhere;
   white-space:pre-wrap;
 }
-
-.cancel-reply {
+.cancel-reply{
   color:#ff9ab9;
   background:none;
   border:0;
   font-size:23px;
   padding:0 5px;
 }
-
-.chat-compose {
+.chat-compose{
   display:flex;
   gap:10px;
   align-items:stretch;
   margin-top:16px;
 }
-
-.chat-input {
+.chat-input{
   flex:1;
   min-width:0;
   min-height:60px;
@@ -1097,10 +874,8 @@ th:not(:first-child) {text-align:center}
   outline:none;
   font-size:21px;
 }
-
-.chat-input:focus {border-color:var(--cyan)}
-
-.chat-send {
+.chat-input:focus{border-color:var(--cyan)}
+.chat-send{
   flex-shrink:0;
   padding:12px 20px;
   border:2px solid #ffb0c8;
@@ -1109,14 +884,12 @@ th:not(:first-child) {text-align:center}
   font:10px/1.7 'Press Start 2P';
   box-shadow:3px 3px #67213d;
 }
-
-.chat-note {
+.chat-note{
   color:#9dbecf;
   font-size:17px;
   margin:12px 0 0;
 }
-
-.chat-feedback {
+.chat-feedback{
   color:#ff9bb7;
   font-size:18px;
   min-height:22px;
@@ -1124,29 +897,10 @@ th:not(:first-child) {text-align:center}
   overflow-wrap:anywhere;
 }
 
-.score-shell:before,
-.chat-shell:before {
-  content:"";
-  position:absolute;
-  top:-3px;
-  left:0;
-  right:0;
-  height:5px;
-  background:repeating-linear-gradient(
-    90deg,
-    #f6ffff 0 18px,
-    #d74e65 18px 26px,
-    #f6ffff 26px 44px,
-    #3daa88 44px 52px
-  );
-  pointer-events:none;
-}
-
 /* ======================================
-   SNOW
+   SNOWFALL OVERLAY
    ====================================== */
-
-.snow-overlay {
+.snow-overlay{
   position:fixed;
   inset:0;
   width:100%;
@@ -1155,10 +909,7 @@ th:not(:first-child) {text-align:center}
   z-index:25;
   image-rendering:pixelated;
 }
-
-/* FOOTER */
-
-.footer {
+.footer{
   text-align:center;
   border-top:2px solid #173952;
   color:#9fc9de;
@@ -1169,83 +920,65 @@ th:not(:first-child) {text-align:center}
 /* ======================================
    MOBILE
    ====================================== */
-
-@media(max-width:700px) {
-  .games {
-    grid-template-columns:repeat(2,minmax(0,1fr));
-  }
-
-  .score-grid {grid-template-columns:1fr}
-  .scene-grid {grid-template-columns:repeat(2,minmax(0,1fr))}
-  .hero {height:415px}
-  .hero-copy {top:100px}
-  .hero-kicker {font-size:16px}
-  .hero-subtitle {font-size:17px}
-  .score-shell {padding:17px}
-  .chat-shell {padding:16px}
-
-  .hero-title {
+@media(max-width:700px){
+  .games{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .score-grid{grid-template-columns:1fr}
+  .scene-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hero{height:415px}
+  .hero-copy{top:100px}
+  .hero-kicker{font-size:16px}
+  .hero-subtitle{font-size:17px}
+  .score-shell{padding:25px 17px 17px}
+  .chat-shell{padding:25px 16px 16px}
+  .hero-title{
     font-size:clamp(16px,5.2vw,30px);
     text-shadow:
-      -1px -1px 0 #00eaff,
-      -2px -2px 0 #00eaff,
-      2px 2px 0 #ff4389,
-      3px 3px 0 #ff4389;
+      -1px -1px 0 var(--hero-outline),
+      -2px -2px 0 var(--hero-outline),
+      2px 2px 0 var(--hero-shadow),
+      3px 3px 0 var(--hero-shadow);
   }
-
-  .topbar-inner {gap:8px}
-  .nav-links {gap:12px}
-  .brand,.top-date,.nav-links a,.nav-settings {
-    font-size:16px;
-  }
+  .brand,.top-date,.nav-links a,.nav-settings{font-size:16px}
+  .nav-links{gap:12px}
 }
-
-@media(max-width:480px) {
-  .topbar-inner {
+@media(max-width:480px){
+  .topbar-inner{
     padding:7px 10px;
     min-height:55px;
     grid-template-columns:1fr auto;
-    grid-template-areas:
-      "brand date"
-      "links links";
+    grid-template-areas:"brand date" "links links";
     row-gap:3px;
   }
-
-  .brand {grid-area:brand}
-  .top-date {grid-area:date}
-
-  .nav-links {
+  .brand{grid-area:brand}
+  .top-date{grid-area:date}
+  .nav-links{
     grid-area:links;
     justify-self:center;
     gap:20px;
   }
-
-  .brand,.top-date,.nav-links a,.nav-settings {
-    font-size:16px;
-  }
-
-  .game {
-    padding:24px 8px 17px;
+  .game{
+    padding:29px 8px 17px;
     min-height:220px;
   }
-
-  .game-image {width:62px;height:62px}
-  .game-image img {width:46px;height:46px}
-  .game h3 {font-size:9px}
-  .game p {font-size:18px}
-  .game .play {font-size:9px;padding:10px}
-  .hero-title {font-size:clamp(12px,4vw,16px)}
-  .chat-window {height:350px;padding:12px}
-  .chat-message {max-width:94%}
-  .chat-send {padding:10px;font-size:9px}
-  .chat-input {font-size:18px}
-  .pixel-wreath {transform:translateX(-50%) scale(.8);transform-origin:top center}
+  .game-image{width:62px;height:62px}
+  .game-image img{width:46px;height:46px}
+  .game h3{font-size:9px}
+  .game p{font-size:18px}
+  .game .play{font-size:9px;padding:10px}
+  .hero-title{font-size:clamp(12px,4vw,16px)}
+  .chat-window{height:350px;padding:12px}
+  .chat-message{max-width:94%}
+  .chat-send{padding:10px;font-size:9px}
+  .chat-input{font-size:18px}
+  .pixel-wreath{
+    transform:translateX(-50%) scale(.8);
+    transform-origin:top center;
+  }
 }
-
-@media(prefers-reduced-motion:reduce) {
-  .hero-title .letter {animation:none}
-  .game,.scene-choice {transition:none}
-  html {scroll-behavior:auto}
+@media(prefers-reduced-motion:reduce){
+  .hero-title .letter{animation:none}
+  .game{transition:none}
+  html{scroll-behavior:auto}
 }
 </style>
 </head>
@@ -1255,13 +988,10 @@ th:not(:first-child) {text-align:center}
 <!-- ======================================
      NAVIGATION
      ====================================== -->
-
 <nav class="topbar">
   <div class="topbar-inner">
     <a href="#top" class="brand">H + N</a>
-
     <span class="top-date" id="topDate"></span>
-
     <div class="nav-links">
       <a href="#scores">SCORES ↓</a>
       <a href="#chat">CHAT ↓</a>
@@ -1271,17 +1001,16 @@ th:not(:first-child) {text-align:center}
         class="nav-settings"
         aria-controls="settingsPanel"
         aria-expanded="false"
-      >
-        SETTINGS ⚙
-      </button>
+      >SETTINGS ⚙</button>
     </div>
   </div>
 
-  <div class="christmas-garland"
-       id="christmasGarland"
-       aria-hidden="true">
+  <div
+    class="christmas-garland"
+    id="christmasGarland"
+    aria-hidden="true"
+  >
     <div class="garland-branch"></div>
-
     <div class="pixel-wreath">
       <span class="wreath-ring"></span>
       <span class="wreath-hole"></span>
@@ -1296,7 +1025,6 @@ th:not(:first-child) {text-align:center}
 <!-- ======================================
      SETTINGS
      ====================================== -->
-
 <section
   id="settingsPanel"
   class="settings-panel"
@@ -1305,41 +1033,30 @@ th:not(:first-child) {text-align:center}
 >
   <div class="settings-inner">
     <div class="settings-header">
-      <h2 class="settings-title">
-        ◈ SCENE SETTINGS
-      </h2>
-
+      <h2 class="settings-title">◈ SCENE SETTINGS</h2>
       <button
         type="button"
         class="close-settings"
         id="closeSettings"
         aria-label="Close settings"
-      >
-        ×
-      </button>
+      >×</button>
     </div>
-
     <p class="settings-description">
-      Change the sky and ocean as you dive deeper.
-      The original boat and waves stay with you.
+      Change the ocean and sky as you dive deeper.
+      Your boat and waves stay the same.
     </p>
-
-    <div id="sceneChoices" class="scene-grid"></div>
-
+    <div class="scene-grid" id="sceneChoices"></div>
     <div class="setting-row">
       <span>PIXEL SNOWFALL</span>
       <button
-        id="snowToggle"
-        class="snow-toggle on"
         type="button"
+        class="snow-toggle on"
+        id="snowToggle"
         aria-pressed="true"
-      >
-        SNOW: ON
-      </button>
+      >SNOW: ON</button>
     </div>
-
     <p class="settings-footnote">
-      Your scene and snow preference are saved on this device.
+      Your scene and snow preferences are saved on this device.
     </p>
   </div>
 </section>
@@ -1347,26 +1064,19 @@ th:not(:first-child) {text-align:center}
 <!-- ======================================
      HERO
      ====================================== -->
-
 <section class="hero" id="top">
   <canvas id="scene" aria-hidden="true"></canvas>
-
   <div class="hero-copy">
     <h1
       class="hero-title"
       id="waveTitle"
       aria-label="Hudson vs Noah"
-    >
-      HUDSON VS NOAH
-    </h1>
-
+    >HUDSON VS NOAH</h1>
     <p class="hero-kicker">THE DAILY GAMES</p>
-
     <div class="hero-subtitle">
       9 games · 2 players · <strong>1 winner</strong>
     </div>
   </div>
-
   <a class="dive-link" href="#games">
     ▼ BEGIN DESCENT ▼
   </a>
@@ -1376,15 +1086,12 @@ th:not(:first-child) {text-align:center}
 <div class="container">
 
 <!-- ======================================
-     GAMES
+     DAILY GAMES
      ====================================== -->
-
 <section id="games">
   <div class="eyebrow">◈ CHOOSE YOUR GAME ◈</div>
   <h2 class="section-heading">TODAY'S LINEUP</h2>
-  <p class="intro">
-    Pick a game. Play it. Drop your score.
-  </p>
+  <p class="intro">Pick a game. Play it. Drop your score.</p>
   <div class="games" id="gameGrid"></div>
 </section>
 
@@ -1393,38 +1100,31 @@ th:not(:first-child) {text-align:center}
 <!-- ======================================
      LEADERBOARD
      ====================================== -->
-
 <section id="scores">
   <div class="eyebrow">✦ HIGH SCORES ✦</div>
   <h2 class="section-heading">THE LEADERBOARD</h2>
-
   <p class="intro">
     One day. Nine games. Whoever wins more takes it.
   </p>
 
-  <div class="score-shell">
+  <div class="score-shell frosted-box">
     <div class="score-grid">
-
       <div>
         <h3 class="panel-title">LOG A SCORE</h3>
 
         <div class="auth-box">
-          <button id="loginBtn" class="auth-button">
-            SIGN IN WITH GOOGLE
-          </button>
-
+          <button
+            id="loginBtn"
+            class="auth-button"
+          >SIGN IN WITH GOOGLE</button>
           <button
             id="logoutBtn"
             class="auth-button"
             hidden
-          >
-            SIGN OUT
-          </button>
-
+          >SIGN OUT</button>
           <div class="auth-status" id="authStatus">
             Sign in to submit scores and chat.
           </div>
-
           <div class="uid" id="uidDisplay"></div>
         </div>
 
@@ -1433,55 +1133,50 @@ th:not(:first-child) {text-align:center}
           Enter the result shown by each game.
         </p>
 
-        <label for="gameSelect" class="field-label">
-          GAME
-        </label>
-
-        <select id="gameSelect" class="field"></select>
+        <label class="field-label" for="gameSelect">GAME</label>
+        <select class="field" id="gameSelect"></select>
 
         <label
-          for="scoreInput"
           class="field-label"
+          for="scoreInput"
           id="scoreLabel"
-        >
-          SCORE
-        </label>
+        >SCORE</label>
 
         <p class="sub" id="scoreHelp">
           Select a game to see how scoring works.
         </p>
 
         <input
-          id="scoreInput"
           class="field"
+          id="scoreInput"
           type="number"
           min="0"
           step="any"
           placeholder="Enter score"
         >
 
-        <button id="saveBtn" class="save" disabled>
-          ▼ SAVE SCORE ▼
-        </button>
+        <button
+          id="saveBtn"
+          class="save"
+          disabled
+        >▼ SAVE SCORE ▼</button>
 
         <div
-          id="feedback"
           class="feedback"
+          id="feedback"
           role="status"
         ></div>
       </div>
 
       <div>
         <h3 class="panel-title">TODAY'S STANDINGS</h3>
-        <p id="boardDate" class="sub"></p>
-
+        <p class="sub" id="boardDate"></p>
         <div class="wins">
           <div class="win-box">
             <label>HUDSON</label>
             <div class="win-num" id="hudsonWins">0</div>
             <small>GAME WINS</small>
           </div>
-
           <div class="win-box">
             <label>NOAH</label>
             <div class="win-num" id="noahWins">0</div>
@@ -1507,12 +1202,8 @@ th:not(:first-child) {text-align:center}
           <small>★ DAILY CHAMPION ★</small>
           <div id="champion">STILL PLAYING...</div>
         </div>
-
-        <div class="sync" id="syncStatus">
-          CONNECTING...
-        </div>
+        <div class="sync" id="syncStatus">CONNECTING...</div>
       </div>
-
     </div>
   </div>
 </section>
@@ -1522,27 +1213,18 @@ th:not(:first-child) {text-align:center}
 <!-- ======================================
      PRIVATE CHAT
      ====================================== -->
-
 <section id="chat">
   <div class="eyebrow">◈ BELOW THE SURFACE ◈</div>
   <h2 class="section-heading">THE CHAT</h2>
+  <p class="intro">Talk trash. Share wins. Settle the score.</p>
 
-  <p class="intro">
-    Talk trash. Share wins. Settle the score.
-  </p>
-
-  <div class="chat-shell">
+  <div class="chat-shell frosted-box">
     <div class="chat-topline">
       <h3
         class="panel-title chat-heading"
         style="margin:0"
-      >
-        HUDSON × NOAH
-      </h3>
-
-      <span class="chat-private">
-        PRIVATE CHAT
-      </span>
+      >HUDSON × NOAH</h3>
+      <span class="chat-private">PRIVATE CHAT</span>
     </div>
 
     <p class="chat-status" id="chatStatus">
@@ -1555,12 +1237,9 @@ th:not(:first-child) {text-align:center}
       role="log"
       aria-label="Hudson and Noah messages"
     >
-      <div class="chat-empty">
-        SIGN IN TO OPEN CHAT
-      </div>
+      <div class="chat-empty">SIGN IN TO OPEN CHAT</div>
     </div>
 
-    <!-- Visible when replying to a message -->
     <div
       class="reply-preview"
       id="replyPreview"
@@ -1570,17 +1249,14 @@ th:not(:first-child) {text-align:center}
         <span id="replyTitle">REPLYING TO...</span>
         <button
           type="button"
-          class="cancel-reply"
           id="cancelReply"
+          class="cancel-reply"
           aria-label="Cancel reply"
-        >
-          ×
-        </button>
+        >×</button>
       </div>
-
       <div
-        id="replyText"
         class="reply-preview-text"
+        id="replyText"
       ></div>
     </div>
 
@@ -1588,39 +1264,34 @@ th:not(:first-child) {text-align:center}
       <textarea
         id="chatInput"
         class="chat-input"
-        placeholder="Type a message..."
         rows="2"
         maxlength="500"
-        disabled
+        placeholder="Type a message..."
         aria-label="Chat message"
+        disabled
       ></textarea>
-
       <button
         id="chatSend"
         class="chat-send"
         type="submit"
         disabled
-      >
-        SEND
-      </button>
+      >SEND</button>
     </form>
 
     <p class="chat-note">
-      Select any message text to copy it.
-      Click REPLY to quote a message or selected text.
-      Enter sends; Shift + Enter adds a new line.
+      Select chat text to copy it. Use REPLY to
+      quote a message or selection. Enter sends;
+      Shift + Enter adds a new line.
     </p>
-
     <div
-      id="chatFeedback"
       class="chat-feedback"
+      id="chatFeedback"
       role="status"
     ></div>
   </div>
 </section>
 
 <div class="depth">✦ END OF DIVE ✦</div>
-
 </div>
 </main>
 
@@ -1636,29 +1307,21 @@ th:not(:first-child) {text-align:center}
 
 <script>
 /* ======================================
-   SAVED APPEARANCE SETTINGS
+   APPEARANCE SETTINGS
    ====================================== */
-
-function readPreference(key,fallback) {
-  try {
-    return localStorage.getItem(key) || fallback;
-  } catch(e) {
-    return fallback;
-  }
+function readPreference(key,fallback){
+  try{return localStorage.getItem(key)||fallback}
+  catch(e){return fallback}
 }
-
-function savePreference(key,value) {
-  try {
-    localStorage.setItem(key,value);
-  } catch(e) {}
+function savePreference(key,value){
+  try{localStorage.setItem(key,value)}
+  catch(e){}
 }
 
 /*
-  Six original pixel-art scene palettes.
-  Original Surface replicates the existing
-  ocean and sky colors.
+  Each theme has its own title contrast
+  settings as well as ocean colors.
 */
-
 const SCENES={
   surface:{
     name:"SURFACE",
@@ -1672,9 +1335,13 @@ const SCENES={
     edge:"#5be5f5",
     reflection:"#367d9c",
     cloud:"#f4ffff",
-    celestial:null
+    celestial:null,
+    ink:"#ffffff",
+    outline:"#007da8",
+    shadow:"#ed4f90",
+    secondary:"#12394f",
+    accent:"#005f81"
   },
-
   sunrise:{
     name:"GOLDEN HOUR",
     description:"Warm morning light",
@@ -1687,9 +1354,13 @@ const SCENES={
     edge:"#ffa977",
     reflection:"#e9a86c",
     cloud:"#fff0d5",
-    celestial:"sun"
+    celestial:"sun",
+    ink:"#fffafa",
+    outline:"#804762",
+    shadow:"#a74759",
+    secondary:"#4b244a",
+    accent:"#6a284b"
   },
-
   twilight:{
     name:"TWILIGHT",
     description:"Purple sunset",
@@ -1702,9 +1373,13 @@ const SCENES={
     edge:"#aa92dc",
     reflection:"#906db7",
     cloud:"#e4c4df",
-    celestial:"sunset"
+    celestial:"sunset",
+    ink:"#ffffff",
+    outline:"#263266",
+    shadow:"#ec6ca9",
+    secondary:"#201d50",
+    accent:"#231b65"
   },
-
   midnight:{
     name:"MIDNIGHT",
     description:"Stars and moon",
@@ -1717,12 +1392,16 @@ const SCENES={
     edge:"#587ab5",
     reflection:"#355a85",
     cloud:"#405273",
-    celestial:"moon"
+    celestial:"moon",
+    ink:"#ffffff",
+    outline:"#124d75",
+    shadow:"#d04b9c",
+    secondary:"#f0f9ff",
+    accent:"#ffe4a8"
   },
-
   abyss:{
     name:"DEEP DIVE",
-    description:"Dark, glowing waters",
+    description:"Dark glowing waters",
     sky:"#0a1935",
     skyLow:"#112a53",
     horizon:"#1a4568",
@@ -1732,9 +1411,13 @@ const SCENES={
     edge:"#218caa",
     reflection:"#17617b",
     cloud:"#173759",
-    celestial:"stars"
+    celestial:"stars",
+    ink:"#ffffff",
+    outline:"#075b75",
+    shadow:"#dd4191",
+    secondary:"#d8f8ff",
+    accent:"#9af3f2"
   },
-
   arctic:{
     name:"ARCTIC",
     description:"Frozen pale-blue sea",
@@ -1747,122 +1430,91 @@ const SCENES={
     edge:"#a2e7f5",
     reflection:"#84b5ce",
     cloud:"#ffffff",
-    celestial:null
+    celestial:null,
+    ink:"#ffffff",
+    outline:"#356180",
+    shadow:"#cc4a87",
+    secondary:"#183a5a",
+    accent:"#175573"
   }
 };
 
-let activeScene=readPreference(
-  "hnScene","surface"
-);
+let activeScene=readPreference("hnScene","surface");
+if(!SCENES[activeScene])activeScene="surface";
+let snowEnabled=readPreference("hnSnow","on")!=="off";
 
-if(!SCENES[activeScene]) {
-  activeScene="surface";
-}
+const settingsButton=document.getElementById("settingsButton");
+const settingsPanel=document.getElementById("settingsPanel");
 
-let snowEnabled=readPreference(
-  "hnSnow","on"
-)!=="off";
-
-/* ======================================
-   SETTINGS INTERFACE
-   ====================================== */
-
-const settingsButton=document.getElementById(
-  "settingsButton"
-);
-
-const settingsPanel=document.getElementById(
-  "settingsPanel"
-);
-
-function openSettings(open) {
+function openSettings(open){
   settingsPanel.hidden=!open;
-  settingsButton.setAttribute(
-    "aria-expanded",
-    String(open)
-  );
-
-  if(open) {
+  settingsButton.setAttribute("aria-expanded",String(open));
+  if(open){
     settingsPanel.scrollIntoView({
-      behavior:"smooth",
-      block:"start"
+      behavior:"smooth",block:"start"
     });
   }
 }
-
 settingsButton.addEventListener("click",()=>{
   openSettings(settingsPanel.hidden);
 });
-
 document.getElementById("closeSettings")
-  .addEventListener("click",()=>{
-    openSettings(false);
-    settingsButton.focus();
-  });
-
+.addEventListener("click",()=>{
+  openSettings(false);
+  settingsButton.focus();
+});
 document.addEventListener("keydown",e=>{
-  if(e.key==="Escape"&&!settingsPanel.hidden) {
+  if(e.key==="Escape"&&!settingsPanel.hidden){
     openSettings(false);
     settingsButton.focus();
   }
 });
 
-const sceneChoices=document.getElementById(
-  "sceneChoices"
-);
+function applySceneColors(){
+  const s=SCENES[activeScene];
+  const root=document.documentElement;
 
-function renderSceneChoices() {
+  root.style.setProperty("--sky-hole",s.sky);
+  root.style.setProperty("--hero-ink",s.ink);
+  root.style.setProperty("--hero-outline",s.outline);
+  root.style.setProperty("--hero-shadow",s.shadow);
+  root.style.setProperty("--hero-secondary",s.secondary);
+  root.style.setProperty("--hero-accent",s.accent);
+}
+
+const sceneChoices=document.getElementById("sceneChoices");
+
+function renderSceneChoices(){
   sceneChoices.replaceChildren();
 
-  Object.entries(SCENES).forEach(([id,scene])=>{
+  Object.entries(SCENES).forEach(([id,s])=>{
     const button=document.createElement("button");
-
     button.type="button";
-    button.className=
-      "scene-choice"+
-      (id===activeScene?" active":"");
+    button.className="scene-choice"+(id===activeScene?" active":"");
+    button.setAttribute("aria-pressed",String(id===activeScene));
 
-    button.setAttribute(
-      "aria-pressed",
-      String(id===activeScene)
-    );
-
-    button.style.setProperty(
-      "--preview-sky",
-      scene.sky
-    );
-
-    button.style.setProperty(
-      "--preview-light",
-      scene.horizon
-    );
-
-    button.style.setProperty(
-      "--preview-water",
-      scene.water
-    );
-
-    button.style.setProperty(
-      "--preview-foam",
-      scene.foam
-    );
+    button.style.setProperty("--preview-sky",s.sky);
+    button.style.setProperty("--preview-light",s.horizon);
+    button.style.setProperty("--preview-water",s.water);
+    button.style.setProperty("--preview-foam",s.foam);
 
     const preview=document.createElement("span");
     preview.className="scene-preview";
 
     const name=document.createElement("span");
     name.className="scene-name";
-    name.textContent=scene.name;
+    name.textContent=s.name;
 
     const detail=document.createElement("span");
     detail.className="scene-detail";
-    detail.textContent=scene.description;
+    detail.textContent=s.description;
 
     button.append(preview,name,detail);
 
     button.addEventListener("click",()=>{
       activeScene=id;
       savePreference("hnScene",id);
+      applySceneColors();
       renderSceneChoices();
       drawScene(performance.now());
     });
@@ -1870,119 +1522,78 @@ function renderSceneChoices() {
     sceneChoices.appendChild(button);
   });
 }
-
+applySceneColors();
 renderSceneChoices();
 
-const snowToggle=document.getElementById(
-  "snowToggle"
-);
+const snowToggle=document.getElementById("snowToggle");
 
-function updateSnowToggle() {
-  snowToggle.textContent=
-    "SNOW: "+(snowEnabled?"ON":"OFF");
-
-  snowToggle.classList.toggle(
-    "on",snowEnabled
-  );
-
-  snowToggle.setAttribute(
-    "aria-pressed",
-    String(snowEnabled)
-  );
-
-  document.getElementById(
-    "snowOverlay"
-  ).style.display=snowEnabled?"block":"none";
+function updateSnowToggle(){
+  snowToggle.textContent="SNOW: "+(snowEnabled?"ON":"OFF");
+  snowToggle.classList.toggle("on",snowEnabled);
+  snowToggle.setAttribute("aria-pressed",String(snowEnabled));
+  document.getElementById("snowOverlay").style.display=
+    snowEnabled?"block":"none";
 }
-
 snowToggle.addEventListener("click",()=>{
   snowEnabled=!snowEnabled;
-  savePreference(
-    "hnSnow",
-    snowEnabled?"on":"off"
-  );
+  savePreference("hnSnow",snowEnabled?"on":"off");
   updateSnowToggle();
 });
-
 updateSnowToggle();
 
 /* ======================================
-   ORIGINAL ANIMATED OCEAN AND BOAT
+   ORIGINAL PIXEL BOAT & MOVING WAVES
    ====================================== */
-
 const canvas=document.getElementById("scene");
 const ctx=canvas.getContext("2d",{alpha:false});
-
 const reduceMotion=window.matchMedia(
   "(prefers-reduced-motion: reduce)"
 );
 
-let W=0;
-let H=0;
-
+let W=0,H=0;
 const pixel=4;
 
-function resizeScene() {
+function resizeScene(){
   const r=canvas.getBoundingClientRect();
-
   W=Math.ceil(r.width/pixel);
   H=Math.ceil(r.height/pixel);
-
   canvas.width=W;
   canvas.height=H;
-
   ctx.imageSmoothingEnabled=false;
-
-  if(reduceMotion.matches) {
-    drawScene(0);
-  }
 }
-
 window.addEventListener("resize",resizeScene);
 resizeScene();
 
-function rect(x,y,w,h,c) {
+function rect(x,y,w,h,c){
   ctx.fillStyle=c;
-
-  ctx.fillRect(
-    Math.round(x),
-    Math.round(y),
-    Math.round(w),
-    Math.round(h)
-  );
+  ctx.fillRect(Math.round(x),Math.round(y),
+               Math.round(w),Math.round(h));
 }
 
-function waveY(x,t) {
+function waveY(x,t){
   return H*.77
     +Math.sin(x*.042+t*.9)*2.5
     +Math.sin(x*.016-t*.52)*3.5
     +Math.sin(x*.078+t*.36)*1.1;
 }
 
-function cloud(x,y,s,color) {
+function cloud(x,y,s,color){
   rect(x+4*s,y,19*s,4*s,color);
   rect(x+s,y+4*s,28*s,5*s,color);
   rect(x+8*s,y-4*s,13*s,4*s,color);
   rect(x,y+8*s,32*s,4*s,color);
 }
 
-/* Original small boat */
-
-function drawBoat(t) {
+function drawBoat(t){
   const cx=W*.5;
   const surface=waveY(cx,t);
 
   ctx.save();
-
-  ctx.translate(
-    Math.round(cx),
-    Math.round(surface+1)
-  );
-
+  ctx.translate(Math.round(cx),Math.round(surface+1));
   ctx.scale(.55,.55);
   ctx.translate(-30,-22);
 
-  // Mast and pink flag
+  // Original mast & flag
   rect(35,-16,2,32,"#17374a");
   rect(37,-15,12,3,"#ff4389");
   rect(37,-12,9,3,"#e34e83");
@@ -2018,302 +1629,188 @@ function drawBoat(t) {
 
   ctx.restore();
 
-  // Foam
-  const scene=SCENES[activeScene];
-
-  rect(cx-25,surface+1,8,1,scene.foam);
-  rect(cx+18,surface+1,8,1,scene.foam);
+  const s=SCENES[activeScene];
+  rect(cx-25,surface+1,8,1,s.foam);
+  rect(cx+18,surface+1,8,1,s.foam);
 }
 
-/* Decorative stars for night scenes */
+const stars=Array.from({length:65},(_,i)=>({
+  x:(i*67+23)%997/997,
+  y:(i*37+11)%131/131,
+  size:i%7===0?2:1
+}));
 
-const stars=Array.from(
-  {length:65},
-  (_,i)=>({
-    x:(i*67+23)%997/997,
-    y:(i*37+11)%131/131,
-    size:i%7===0?2:1
-  })
-);
-
-function drawSkyDetails(scene,t) {
-  if(
-    scene.celestial==="moon" ||
-    scene.celestial==="stars"
-  ) {
-    stars.forEach(s=>{
-      const x=s.x*W;
-      const y=s.y*H*.62;
-
-      rect(
-        x,y,
-        s.size,s.size,
-        scene.celestial==="moon"
-          ?"#c9dbed"
-          :"#76dbe6"
-      );
+function drawSkyDetails(s,t){
+  if(s.celestial==="moon"||s.celestial==="stars"){
+    stars.forEach(st=>{
+      rect(st.x*W,st.y*H*.62,st.size,st.size,
+        s.celestial==="moon"?"#c9dbed":"#76dbe6");
     });
   }
-
-  if(scene.celestial==="moon") {
-    const x=W*.78;
-    const y=H*.23;
-
+  if(s.celestial==="moon"){
+    const x=W*.78,y=H*.23;
     rect(x-6,y-8,12,16,"#fff0c9");
     rect(x-9,y-5,18,10,"#fff0c9");
-    rect(x+2,y-8,8,13,scene.sky);
+    rect(x+2,y-8,8,13,s.sky);
   }
-
-  if(
-    scene.celestial==="sun" ||
-    scene.celestial==="sunset"
-  ) {
+  if(s.celestial==="sun"||s.celestial==="sunset"){
     const x=W*.78;
-    const y=scene.celestial==="sun"
-      ?H*.28
-      :H*.53;
-
+    const y=s.celestial==="sun"?H*.28:H*.53;
     rect(x-8,y-8,16,16,"#ffe2a1");
     rect(x-11,y-5,22,10,"#ffe2a1");
   }
-
-  if(scene.celestial==="stars") {
-    // A faint glowing horizon at depth
-    for(let i=0;i<5;i++) {
-      rect(
-        W*(.12+i*.19),
-        H*.65+(i%2)*3,
-        9,1,
-        "#358ca5"
-      );
+  if(s.celestial==="stars"){
+    for(let i=0;i<5;i++){
+      rect(W*(.12+i*.19),H*.65+(i%2)*3,
+        9,1,"#358ca5");
     }
   }
 }
 
-function drawScene(time) {
+function drawScene(time){
   const t=reduceMotion.matches?0:time*.001;
   const s=SCENES[activeScene];
 
   ctx.fillStyle=s.skyLow;
   ctx.fillRect(0,0,W,H);
 
-  // Original sky, recolored for selected scene
   rect(0,0,W,H*.54,s.sky);
 
-  // Clouds
   cloud(W*.08,27,1.15,s.cloud);
   cloud(W*.75,20,1.65,s.cloud);
   cloud(W*.87,53,.55,s.cloud);
 
   drawSkyDetails(s,t);
 
-  // Original moving horizon
-  for(let x=0;x<W;x+=8) {
+  for(let x=0;x<W;x+=8){
     const y=waveY(x,t);
-
-    if(y>0) {
-      rect(
-        x,H*.69,8,
-        Math.max(0,y-H*.69),
-        s.horizon
-      );
+    if(y>0){
+      rect(x,H*.69,8,
+        Math.max(0,y-H*.69),s.horizon);
     }
   }
 
-  // Original animated surface waves
-  for(let x=0;x<W;x++) {
+  for(let x=0;x<W;x++){
     const y=Math.round(waveY(x,t));
-
     rect(x,y,1,H-y,s.water);
     rect(x,y,1,2,s.foam);
     rect(x,y+2,1,2,s.edge);
   }
 
-  // Original underwater region
-  for(let x=0;x<W;x+=4) {
+  for(let x=0;x<W;x+=4){
     const y=waveY(x,t);
     rect(x,y+12,4,H-y-12,s.deep);
   }
 
-  // Original moving water reflections
-  for(let j=0;j<11;j++) {
-    const x=(
-      (j*47+t*(j%2?3:-4)+W*8)%W
-    );
+  for(let j=0;j<11;j++){
+    const x=((j*47+t*(j%2?3:-4)+W*8)%W);
     const y=H*.85+(j%4)*7;
-
-    rect(
-      x,y,
-      10+(j%3)*5,
-      1,
-      s.reflection
-    );
+    rect(x,y,10+(j%3)*5,1,s.reflection);
   }
 
   drawBoat(t);
 
-  if(!reduceMotion.matches) {
+  if(!reduceMotion.matches){
     requestAnimationFrame(drawScene);
   }
 }
-
 requestAnimationFrame(drawScene);
 
-/* Original rippling title */
-
-const waveTitle=document.getElementById(
-  "waveTitle"
-);
-
+/* Animated wave title */
+const waveTitle=document.getElementById("waveTitle");
 const original=waveTitle.textContent.trim();
 waveTitle.textContent="";
-
 [...original].forEach((ch,i)=>{
   const span=document.createElement("span");
-
   span.className="letter";
   span.style.setProperty("--i",i);
   span.textContent=ch===" "?"\u00a0":ch;
-
   waveTitle.appendChild(span);
 });
 
 /* ======================================
-   PIXEL SNOW
+   FALLING PIXEL SNOW
    ====================================== */
-
-(function () {
-  const snow=document.getElementById(
-    "snowOverlay"
-  );
-
+(function(){
+  const snow=document.getElementById("snowOverlay");
   const snowCtx=snow.getContext("2d");
-  let flakes=[];
-  let width=0;
-  let height=0;
-  let lastFrame=0;
+  let flakes=[],width=0,height=0,lastFrame=0;
 
-  function resizeSnow() {
+  function resizeSnow(){
     width=window.innerWidth;
     height=window.innerHeight;
-
     snow.width=width;
     snow.height=height;
-
     snowCtx.imageSmoothingEnabled=false;
 
-    const count=Math.min(
-      120,
-      Math.max(
-        45,
-        Math.floor(width*height/10500)
-      )
-    );
+    const count=Math.min(120,
+      Math.max(45,Math.floor(width*height/10500)));
 
-    flakes=Array.from(
-      {length:count},
-      (_,i)=>({
-        x:Math.random()*width,
-        y:Math.random()*height,
-        size:i%6===0?4:i%3===0?3:2,
-        speed:.45+Math.random()*.85,
-        drift:(Math.random()-.5)*.6
-      })
-    );
-
+    flakes=Array.from({length:count},(_,i)=>({
+      x:Math.random()*width,
+      y:Math.random()*height,
+      size:i%6===0?4:i%3===0?3:2,
+      speed:.45+Math.random()*.85,
+      drift:(Math.random()-.5)*.6
+    }));
     paintSnow(true);
   }
 
-  function paintSnow(still=false) {
-    snowCtx.clearRect(
-      0,0,width,height
-    );
+  function paintSnow(still=false){
+    snowCtx.clearRect(0,0,width,height);
+    snowCtx.fillStyle="rgba(245,252,255,.9)";
 
-    snowCtx.fillStyle=
-      "rgba(245,252,255,.9)";
-
-    for(const f of flakes) {
+    for(const f of flakes){
       snowCtx.fillRect(
-        Math.round(f.x),
-        Math.round(f.y),
-        f.size,
-        f.size
+        Math.round(f.x),Math.round(f.y),f.size,f.size
       );
 
-      if(!still) {
+      if(!still){
         f.y+=f.speed;
         f.x+=f.drift;
-
-        if(f.y>height) {
+        if(f.y>height){
           f.y=-5;
           f.x=Math.random()*width;
         }
-
-        if(f.x>width) f.x=0;
-        if(f.x<0) f.x=width;
+        if(f.x>width)f.x=0;
+        if(f.x<0)f.x=width;
       }
     }
   }
 
-  function animateSnow(t) {
-    if(reduceMotion.matches) return;
-
-    if(t-lastFrame>28) {
-      if(snowEnabled) {
-        paintSnow();
-      }
-
+  function animateSnow(t){
+    if(reduceMotion.matches)return;
+    if(t-lastFrame>28){
+      if(snowEnabled)paintSnow();
       lastFrame=t;
     }
-
     requestAnimationFrame(animateSnow);
   }
 
-  window.addEventListener(
-    "resize",resizeSnow
-  );
-
+  window.addEventListener("resize",resizeSnow);
   resizeSnow();
-
-  if(!reduceMotion.matches) {
+  if(!reduceMotion.matches){
     requestAnimationFrame(animateSnow);
   }
 })();
 
 /* ======================================
-   PIXEL EVERGREEN GARLAND
+   EVERGREEN GARLAND
    ====================================== */
-
-(function () {
-  const garland=document.getElementById(
-    "christmasGarland"
-  );
-
-  const count=36;
-
-  for(let i=0;i<count;i++) {
+(function(){
+  const garland=document.getElementById("christmasGarland");
+  for(let i=0;i<36;i++){
     const sprig=document.createElement("span");
-
     sprig.className="garland-sprig";
-    sprig.style.left=
-      ((i+.5)/count*100)+"%";
-
-    sprig.style.top=
-      (i%3===0?1:i%3===1?3:0)+"px";
-
+    sprig.style.left=((i+.5)/36*100)+"%";
+    sprig.style.top=(i%3===0?1:i%3===1?3:0)+"px";
     garland.appendChild(sprig);
   }
-
-  for(let i=0;i<14;i++) {
+  for(let i=0;i<14;i++){
     const berry=document.createElement("span");
-
     berry.className="garland-berry";
-    berry.style.left=
-      ((i+.6)/14*100)+"%";
-
-    berry.style.top=
-      (i%2===0?8:12)+"px";
-
+    berry.style.left=((i+.6)/14*100)+"%";
+    berry.style.top=(i%2===0?8:12)+"px";
     garland.appendChild(berry);
   }
 })();
@@ -2321,9 +1818,8 @@ waveTitle.textContent="";
 
 <script type="module">
 /* ======================================
-   FIREBASE IMPORTS
+   FIREBASE
    ====================================== */
-
 import {initializeApp} from
 "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
 
@@ -2346,10 +1842,6 @@ import {
 } from
 "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
 
-/* ======================================
-   FIREBASE CONFIG
-   ====================================== */
-
 const firebaseConfig={
   apiKey:"AIzaSyDqfUuUIWKZ76ds5obBF-aaFqaMwNscYh8",
   authDomain:"hudson-noah-game-hub.firebaseapp.com",
@@ -2366,9 +1858,8 @@ const playerUIDs={
 };
 
 /* ======================================
-   NINE DAILY GAMES
+   NINE GAMES — FINAL ORDER
    ====================================== */
-
 const games=[
   {
     id:"krillion",
@@ -2432,7 +1923,7 @@ const games=[
     direction:"higher",
     fallback:"F",
     label:"DISTANCE / POINTS",
-    help:"Enter the final result using the same scoring units as the other player. Higher wins.",
+    help:"Use the same score units as the other player. Higher wins.",
     min:0,max:1000000000,integer:false
   },
   {
@@ -2475,29 +1966,27 @@ const games=[
     min:0,max:1000000000,integer:false
   },
   {
-    id:"connections",
-    name:"CONNECTIONS",
-    description:"Group words into the right categories.",
-    url:"https://www.nytimes.com/games/connections",
-    domain:"nytimes.com",
-    color:"#cba7ff",
-    direction:"lower",
-    fallback:"C",
-    label:"MISTAKES",
-    help:"Enter 0 to 3 for a solve, or 4 if you failed. Fewer mistakes wins.",
-    min:0,max:4,integer:true
+    id:"extraplot",
+    name:"EXTRAPLOT",
+    description:"Draw where the chart goes next.",
+    url:"https://guessdash.com/extraplot?utm_source=wordleverse.net",
+    domain:"guessdash.com",
+    color:"#b9a5ff",
+    direction:"higher",
+    fallback:"E",
+    label:"POINTS OUT OF 5000",
+    help:"Enter your final ExtraPlot score from 0 to 5,000. Higher wins.",
+    min:0,max:5000,integer:true
   }
 ];
 
 /* ======================================
-   FIREBASE INITIALIZATION
+   INITIALIZE DATABASE
    ====================================== */
-
 const app=initializeApp(firebaseConfig);
 const auth=getAuth(app);
 const db=getDatabase(app);
 const provider=new GoogleAuthProvider();
-
 const $=id=>document.getElementById(id);
 
 let currentUser=null;
@@ -2507,98 +1996,56 @@ let day=getDay();
 
 let unsubscribeScores=null;
 let unsubscribeChat=null;
-
 let synced=false;
 let saving=false;
 let chatReady=false;
 let sending=false;
 
-/*
-  Replies are encoded in the existing
-  text string so no Firebase schema
-  or Rules changes are required.
-
-  Format:
-  ↪ Noah: quoted text
-
-  response text
-*/
-
 const REPLY_MARKER="\u21AA ";
-
 let replyDraft=null;
 let selectedChatText=null;
 
 /* ======================================
-   DATE FUNCTIONS
+   EASTERN TIME
    ====================================== */
+function getDay(){
+  const parts=new Intl.DateTimeFormat("en-US",{
+    timeZone:"America/New_York",
+    year:"numeric",month:"2-digit",day:"2-digit"
+  }).formatToParts(new Date());
 
-function getDay() {
-  const parts=new Intl.DateTimeFormat(
-    "en-US",{
-      timeZone:"America/New_York",
-      year:"numeric",
-      month:"2-digit",
-      day:"2-digit"
-    }
-  ).formatToParts(new Date());
-
-  const p=type=>
-    parts.find(x=>x.type===type).value;
-
+  const p=type=>parts.find(x=>x.type===type).value;
   return `${p("year")}-${p("month")}-${p("day")}`;
 }
 
-function displayDate() {
-  return new Intl.DateTimeFormat(
-    "en-US",{
-      timeZone:"America/New_York",
-      weekday:"short",
-      month:"short",
-      day:"numeric"
-    }
-  ).format(new Date()).toUpperCase();
+function displayDate(){
+  return new Intl.DateTimeFormat("en-US",{
+    timeZone:"America/New_York",
+    weekday:"short",month:"short",day:"numeric"
+  }).format(new Date()).toUpperCase();
 }
 
-function messageTime(timestamp) {
-  if(typeof timestamp!=="number") {
-    return "SENDING...";
-  }
-
-  return new Intl.DateTimeFormat(
-    "en-US",{
-      timeZone:"America/New_York",
-      month:"short",
-      day:"numeric",
-      hour:"numeric",
-      minute:"2-digit"
-    }
-  ).format(new Date(timestamp));
+function messageTime(timestamp){
+  if(typeof timestamp!=="number")return "SENDING...";
+  return new Intl.DateTimeFormat("en-US",{
+    timeZone:"America/New_York",
+    month:"short",day:"numeric",
+    hour:"numeric",minute:"2-digit"
+  }).format(new Date(timestamp));
 }
 
 /* ======================================
    GAME CARDS
    ====================================== */
-
-function renderCards() {
+function renderCards(){
   $("gameGrid").innerHTML=games.map(g=>`
     <a
-      class="game"
+      class="game frosted-box"
       href="${g.url}"
       target="_blank"
       rel="noopener noreferrer"
       style="--c:${g.color}"
     >
-      <div class="game-snow" aria-hidden="true">
-        <span class="snowcap"></span>
-        <span class="snowcap-shadow"></span>
-        <span class="icicle i1"></span>
-        <span class="icicle i2"></span>
-        <span class="icicle i3"></span>
-        <span class="icicle i4"></span>
-        <span class="icicle i5"></span>
-      </div>
-
       <div class="game-image">
         <img
           src="https://www.google.com/s2/favicons?domain=${g.domain}&sz=128"
@@ -2608,15 +2055,10 @@ function renderCards() {
         >
         <span class="fallback">${g.fallback}</span>
       </div>
-
       <h3>${g.name}</h3>
       <p>${g.description}</p>
-
       <span class="play">
-        <span
-          class="play-triangle"
-          aria-hidden="true"
-        ></span>
+        <span class="play-triangle" aria-hidden="true"></span>
         PLAY
       </span>
     </a>
@@ -2632,20 +2074,17 @@ function renderCards() {
 /* ======================================
    AUTHENTICATION
    ====================================== */
-
-function updateSaveButton() {
-  $("saveBtn").disabled=
-    !player||!synced||saving;
+function updateSaveButton(){
+  $("saveBtn").disabled=!player||!synced||saving;
 }
 
-function updateChatControls() {
+function updateChatControls(){
   const allowed=!!player&&chatReady&&!sending;
-
   $("chatInput").disabled=!allowed;
   $("chatSend").disabled=!allowed;
 }
 
-function setPlayer(name) {
+function setPlayer(name){
   player=name;
   updateSaveButton();
   updateChatControls();
@@ -2654,21 +2093,17 @@ function setPlayer(name) {
 
 $("loginBtn").addEventListener("click",async()=>{
   $("authStatus").textContent="SIGNING IN...";
-
-  try {
+  try{
     await signInWithPopup(auth,provider);
-  }
-  catch(error) {
-    $("authStatus").textContent=
-      "LOGIN FAILED: "+error.message;
+  }catch(error){
+    $("authStatus").textContent="LOGIN FAILED: "+error.message;
   }
 });
 
 $("logoutBtn").addEventListener("click",async()=>{
-  try {
+  try{
     await signOut(auth);
-  }
-  catch(error) {
+  }catch(error){
     $("authStatus").textContent=error.message;
   }
 });
@@ -2677,34 +2112,22 @@ onAuthStateChanged(auth,user=>{
   currentUser=user;
 
   const found=user
-    ?Object.keys(playerUIDs).find(
-      name=>playerUIDs[name]===user.uid
-    )
+    ?Object.keys(playerUIDs).find(name=>playerUIDs[name]===user.uid)
     :null;
 
   setPlayer(found||"");
-
   $("loginBtn").hidden=!!user;
   $("logoutBtn").hidden=!user;
-
   clearReply();
 
-  if(!user) {
-    $("authStatus").textContent=
-      "SIGN IN TO SUBMIT SCORES AND CHAT";
-
+  if(!user){
+    $("authStatus").textContent="SIGN IN TO SUBMIT SCORES AND CHAT";
     $("uidDisplay").textContent="";
-  }
-  else if(found) {
-    $("authStatus").textContent=
-      "SIGNED IN AS "+found.toUpperCase();
-
+  }else if(found){
+    $("authStatus").textContent="SIGNED IN AS "+found.toUpperCase();
     $("uidDisplay").textContent="";
-  }
-  else {
-    $("authStatus").textContent=
-      "ACCOUNT NOT APPROVED. YOUR UID:";
-
+  }else{
+    $("authStatus").textContent="ACCOUNT NOT APPROVED. YOUR UID:";
     $("uidDisplay").textContent=user.uid;
   }
 
@@ -2712,55 +2135,39 @@ onAuthStateChanged(auth,user=>{
 });
 
 /* ======================================
-   SCORE INPUTS
+   SCORE INPUT
    ====================================== */
-
-function selectedGame() {
-  return games.find(
-    g=>g.id===$("gameSelect").value
-  );
+function selectedGame(){
+  return games.find(g=>g.id===$("gameSelect").value);
 }
 
-function fillScore() {
+function fillScore(){
   const g=selectedGame();
+  const current=g?scores[g.id]?.[player]:undefined;
 
-  const current=g
-    ?scores[g.id]?.[player]
-    :undefined;
-
-  $("scoreInput").value=
-    current===undefined?"":current;
-
-  $("scoreLabel").textContent=
-    g?g.label:"SCORE";
-
-  $("scoreHelp").textContent=
-    g?g.help:
+  $("scoreInput").value=current===undefined?"":current;
+  $("scoreLabel").textContent=g?g.label:"SCORE";
+  $("scoreHelp").textContent=g?g.help:
     "Select a game to see how scoring works.";
 
   $("scoreInput").min=g?g.min:0;
   $("scoreInput").max=g?g.max:1000000000;
   $("scoreInput").step=g?.integer?1:"any";
-
-  $("scoreInput").placeholder=
-    g?g.label:"Enter score";
+  $("scoreInput").placeholder=g?g.label:"Enter score";
 }
 
 /* ======================================
-   LIVE SCORES
+   LIVE FIREBASE SCORES
    ====================================== */
-
-function subscribeScores() {
-  if(unsubscribeScores) {
+function subscribeScores(){
+  if(unsubscribeScores){
     unsubscribeScores();
     unsubscribeScores=null;
   }
 
   synced=false;
   updateSaveButton();
-
-  $("syncStatus").textContent=
-    "CONNECTING TO LIVE LEADERBOARD...";
+  $("syncStatus").textContent="CONNECTING TO LIVE LEADERBOARD...";
 
   unsubscribeScores=onValue(
     ref(db,"dailyScores/"+day),
@@ -2770,14 +2177,9 @@ function subscribeScores() {
 
       games.forEach(g=>{
         updated[g.id]={};
-
         ["Hudson","Noah"].forEach(name=>{
           const value=data[g.id]?.[name];
-
-          if(
-            typeof value==="number" &&
-            Number.isFinite(value)
-          ) {
+          if(typeof value==="number"&&Number.isFinite(value)){
             updated[g.id][name]=value;
           }
         });
@@ -2785,19 +2187,14 @@ function subscribeScores() {
 
       scores=updated;
       synced=true;
-
       renderScores();
       updateSaveButton();
-
-      $("syncStatus").textContent=
-        "● LIVE SCORES CONNECTED";
+      $("syncStatus").textContent="● LIVE SCORES CONNECTED";
     },
     error=>{
       synced=false;
       updateSaveButton();
-
-      $("syncStatus").textContent=
-        "LIVE SYNC ERROR: "+error.message;
+      $("syncStatus").textContent="LIVE SYNC ERROR: "+error.message;
     }
   );
 }
@@ -2805,45 +2202,32 @@ function subscribeScores() {
 /* ======================================
    SAVE SCORE
    ====================================== */
-
-async function saveScore() {
-  if(saving) return;
+async function saveScore(){
+  if(saving)return;
 
   const g=selectedGame();
   const raw=$("scoreInput").value.trim();
   const feedback=$("feedback");
-
   feedback.style.color="#ffe76a";
 
-  if(
-    !currentUser||
-    !player||
-    currentUser.uid!==playerUIDs[player]
-  ) {
-    feedback.textContent=
-      "SIGN IN WITH YOUR APPROVED ACCOUNT";
+  if(!currentUser||!player||
+     currentUser.uid!==playerUIDs[player]){
+    feedback.textContent="SIGN IN WITH YOUR APPROVED ACCOUNT";
     return;
   }
-
-  if(!synced) {
+  if(!synced){
     feedback.textContent="WAIT FOR LIVE CONNECTION";
     return;
   }
-
-  if(!g) {
+  if(!g){
     feedback.textContent="SELECT A GAME FIRST";
     return;
   }
 
   const score=Number(raw);
-
-  if(
-    raw===""||
-    !Number.isFinite(score)||
-    score<g.min||
-    score>g.max||
-    (g.integer&&!Number.isInteger(score))
-  ) {
+  if(raw===""||!Number.isFinite(score)||
+     score<g.min||score>g.max||
+     (g.integer&&!Number.isInteger(score))){
     feedback.textContent=
       `ENTER A VALID RESULT (${g.min}–${g.max})`;
     return;
@@ -2853,32 +2237,23 @@ async function saveScore() {
   updateSaveButton();
   $("saveBtn").textContent="SAVING...";
 
-  try {
-    if(getDay()!==day) {
+  try{
+    if(getDay()!==day){
       updateDay();
-
-      throw new Error(
-        "NEW DAY STARTED. SUBMIT AGAIN."
-      );
+      throw new Error("NEW DAY STARTED. SUBMIT AGAIN.");
     }
 
     await set(
-      ref(
-        db,
-        `dailyScores/${day}/${g.id}/${player}`
-      ),
+      ref(db,`dailyScores/${day}/${g.id}/${player}`),
       score
     );
 
     feedback.style.color="#a8ffca";
     feedback.textContent="SCORE SAVED & SYNCED";
-  }
-  catch(error) {
+  }catch(error){
     feedback.style.color="#ff79a6";
-    feedback.textContent=
-      "SAVE FAILED: "+error.message;
-  }
-  finally {
+    feedback.textContent="SAVE FAILED: "+error.message;
+  }finally{
     saving=false;
     $("saveBtn").textContent="▼ SAVE SCORE ▼";
     updateSaveButton();
@@ -2886,46 +2261,30 @@ async function saveScore() {
 }
 
 /* ======================================
-   GAME WINNERS
+   DAILY WINNERS
    ====================================== */
-
-function winnerOf(g) {
+function winnerOf(g){
   const entry=scores[g.id]||{};
   const h=entry.Hudson;
   const n=entry.Noah;
 
-  if(h===undefined||n===undefined) return null;
-  if(h===n) return "TIE";
-
-  return (
-    g.direction==="higher"
-      ?h>n
-      :h<n
-  )?"HK":"NB";
+  if(h===undefined||n===undefined)return null;
+  if(h===n)return "TIE";
+  return (g.direction==="higher"?h>n:h<n)?"HK":"NB";
 }
 
-function renderScores() {
-  let hk=0;
-  let nb=0;
-  let completed=0;
+function renderScores(){
+  let hk=0,nb=0,completed=0;
 
   $("scoreRows").innerHTML=games.map(g=>{
     const entry=scores[g.id]||{};
     const winner=winnerOf(g);
 
-    if(winner!==null) completed++;
-    if(winner==="HK") hk++;
-    if(winner==="NB") nb++;
+    if(winner!==null)completed++;
+    if(winner==="HK")hk++;
+    if(winner==="NB")nb++;
 
-    const value=v=>{
-      if(v===undefined) return "—";
-
-      if(g.id==="connections"&&v===4) {
-        return "DNF (4)";
-      }
-
-      return v;
-    };
+    const value=v=>v===undefined?"—":v;
 
     return `
       <tr>
@@ -2946,168 +2305,106 @@ function renderScores() {
   $("hudsonWins").textContent=hk;
   $("noahWins").textContent=nb;
 
-  if(hk>nb) {
+  if(hk>nb){
     $("champion").textContent=
-      completed===games.length
-        ?"HUDSON WINS!"
-        :"HUDSON LEADS";
-  }
-  else if(nb>hk) {
+      completed===games.length?"HUDSON WINS!":"HUDSON LEADS";
+  }else if(nb>hk){
     $("champion").textContent=
-      completed===games.length
-        ?"NOAH WINS!"
-        :"NOAH LEADS";
-  }
-  else if(completed===games.length) {
+      completed===games.length?"NOAH WINS!":"NOAH LEADS";
+  }else if(completed===games.length){
     $("champion").textContent="IT'S A TIE!";
-  }
-  else {
+  }else{
     $("champion").textContent="STILL PLAYING...";
   }
 
-  if(document.activeElement!==$("scoreInput")) {
+  if(document.activeElement!==$("scoreInput")){
     fillScore();
   }
 }
 
 /* ======================================
-   REPLY SUPPORT
+   CHAT REPLIES
    ====================================== */
-
-function parseChatText(raw) {
-  if(!raw.startsWith(REPLY_MARKER)) {
-    return {
-      quoted:null,
-      content:raw
-    };
+function parseChatText(raw){
+  if(!raw.startsWith(REPLY_MARKER)){
+    return {quoted:null,content:raw};
   }
-
   const split=raw.indexOf("\n\n");
-
-  if(split<0) {
-    return {
-      quoted:null,
-      content:raw
-    };
-  }
-
-  const quote=raw.slice(
-    REPLY_MARKER.length,
-    split
-  );
+  if(split<0)return {quoted:null,content:raw};
 
   return {
-    quoted:quote,
+    quoted:raw.slice(REPLY_MARKER.length,split),
     content:raw.slice(split+2)
   };
 }
 
-function clearReply() {
+function clearReply(){
   replyDraft=null;
-
   $("replyPreview").hidden=true;
   $("replyTitle").textContent="";
   $("replyText").textContent="";
 }
 
-function getSelectedTextForMessage(id,bubble) {
+function selectedTextInBubble(id,bubble){
   const selection=window.getSelection();
+  if(!selection||selection.isCollapsed)return "";
 
-  if(!selection||selection.isCollapsed) {
-    return "";
-  }
+  if(!bubble.contains(selection.anchorNode)||
+     !bubble.contains(selection.focusNode))return "";
 
-  if(!bubble.contains(selection.anchorNode) ||
-     !bubble.contains(selection.focusNode)) {
-    return "";
-  }
-
-  const chosen=selection.toString().trim();
-
-  if(chosen) {
-    selectedChatText={
-      id,
-      text:chosen
-    };
-  }
-
-  return chosen;
+  const value=selection.toString().trim();
+  if(value)selectedChatText={id,text:value};
+  return value;
 }
 
-function beginReply(message,bubble) {
+function beginReply(message,bubble){
   const parsed=parseChatText(message.text);
-
-  const selected=getSelectedTextForMessage(
-    message.id,
-    bubble
-  );
-
-  const quote=selected ||
-    (
-      selectedChatText?.id===message.id
-        ?selectedChatText.text
-        :parsed.content
-    );
+  const selected=selectedTextInBubble(message.id,bubble);
+  const quote=selected||
+    (selectedChatText?.id===message.id
+      ?selectedChatText.text
+      :parsed.content);
 
   replyDraft={
     name:message.name,
-    quote:quote
-      .replace(/\s+/g," ")
-      .trim()
-      .slice(0,120)
+    quote:quote.replace(/\s+/g," ").trim().slice(0,120)
   };
 
   selectedChatText=null;
-
   $("replyPreview").hidden=false;
-
   $("replyTitle").textContent=
     "REPLYING TO "+message.name.toUpperCase();
-
   $("replyText").textContent=replyDraft.quote;
-
-  $("chatInput").scrollIntoView({
-    behavior:"smooth",
-    block:"nearest"
-  });
-
   $("chatInput").focus();
 }
 
-$("cancelReply").addEventListener(
-  "click",clearReply
-);
+$("cancelReply").addEventListener("click",clearReply);
 
 /* ======================================
-   PRIVATE CHAT
+   LIVE CHAT
    ====================================== */
-
-function startChat() {
-  if(unsubscribeChat) {
+function startChat(){
+  if(unsubscribeChat){
     unsubscribeChat();
     unsubscribeChat=null;
   }
 
   chatReady=false;
   updateChatControls();
-
   const windowEl=$("chatWindow");
   windowEl.replaceChildren();
 
-  if(!currentUser||!player) {
+  if(!currentUser||!player){
     $("chatStatus").textContent=
       "Sign in as Hudson or Noah to view messages.";
-
     const empty=document.createElement("div");
     empty.className="chat-empty";
     empty.textContent="PRIVATE CHAT — SIGN IN";
-
     windowEl.appendChild(empty);
     return;
   }
 
-  $("chatStatus").textContent=
-    "CONNECTING TO PRIVATE CHAT...";
+  $("chatStatus").textContent="CONNECTING TO PRIVATE CHAT...";
 
   unsubscribeChat=onValue(
     ref(db,"chat/messages"),
@@ -3115,70 +2412,54 @@ function startChat() {
       const data=snapshot.val()||{};
 
       const messages=Object.entries(data)
-        .map(([id,value])=>({
-          id,
-          ...value
-        }))
+        .map(([id,value])=>({id,...value}))
         .filter(m=>
-          (m.name==="Hudson"||m.name==="Noah") &&
-          typeof m.text==="string" &&
-          m.text.length<=500
+          (m.name==="Hudson"||m.name==="Noah")&&
+          typeof m.text==="string"&&m.text.length<=500
         )
         .sort((a,b)=>
-          (a.createdAt||0)-(b.createdAt||0) ||
+          (a.createdAt||0)-(b.createdAt||0)||
           a.id.localeCompare(b.id)
         );
 
       renderChat(messages);
-
       chatReady=true;
       updateChatControls();
-
       $("chatStatus").textContent=
         "LIVE CONNECTION • CHAT HISTORY SAVED";
     },
     error=>{
       chatReady=false;
       updateChatControls();
-
-      $("chatStatus").textContent=
-        "CHAT ERROR: "+error.message;
+      $("chatStatus").textContent="CHAT ERROR: "+error.message;
     }
   );
 }
 
-function renderChat(messages) {
+function renderChat(messages){
   const windowEl=$("chatWindow");
 
   const nearBottom=
-    windowEl.scrollHeight-
-    windowEl.scrollTop-
+    windowEl.scrollHeight-windowEl.scrollTop-
     windowEl.clientHeight<90;
 
   const firstRender=
     windowEl.querySelector(".chat-empty")!==null;
 
-  // Preserve an active text selection so
-  // Firebase updates don't interrupt copying.
-  const currentSelection=window.getSelection();
-
-  if(
-    currentSelection &&
-    !currentSelection.isCollapsed &&
-    windowEl.contains(currentSelection.anchorNode)
-  ) {
+  // Avoid interrupting an active text selection.
+  const selection=window.getSelection();
+  if(selection&&!selection.isCollapsed&&
+     windowEl.contains(selection.anchorNode)){
     return;
   }
 
   windowEl.replaceChildren();
 
-  if(messages.length===0) {
+  if(messages.length===0){
     const empty=document.createElement("div");
-
     empty.className="chat-empty";
     empty.textContent=
       "NO MESSAGES YET. START THE CONVERSATION!";
-
     windowEl.appendChild(empty);
     return;
   }
@@ -3187,10 +2468,8 @@ function renderChat(messages) {
     const mine=message.name===player;
 
     const wrapper=document.createElement("div");
-
     wrapper.className=
-      "chat-message "+
-      message.name.toLowerCase()+
+      "chat-message "+message.name.toLowerCase()+
       (mine?" mine":"");
 
     const meta=document.createElement("div");
@@ -3201,24 +2480,19 @@ function renderChat(messages) {
     name.textContent=message.name.toUpperCase();
 
     const timestamp=document.createElement("span");
-    timestamp.textContent=
-      messageTime(message.createdAt);
-
+    timestamp.textContent=messageTime(message.createdAt);
     meta.append(name,timestamp);
 
     const bubble=document.createElement("div");
     bubble.className="chat-bubble";
-
     const parsed=parseChatText(message.text);
 
-    if(parsed.quoted) {
+    if(parsed.quoted){
       const quote=document.createElement("div");
       quote.className="quoted-message";
-
       const quoteAuthor=document.createElement("span");
       quoteAuthor.className="quote-author";
       quoteAuthor.textContent="↪ "+parsed.quoted;
-
       quote.appendChild(quoteAuthor);
       bubble.appendChild(quote);
     }
@@ -3227,29 +2501,12 @@ function renderChat(messages) {
     body.textContent=parsed.content;
     bubble.appendChild(body);
 
-    // Capture selections made with mouse,
-    // keyboard, or touch inside the bubble.
     const rememberSelection=()=>{
-      getSelectedTextForMessage(
-        message.id,
-        bubble
-      );
+      selectedTextInBubble(message.id,bubble);
     };
-
-    bubble.addEventListener(
-      "mouseup",
-      rememberSelection
-    );
-
-    bubble.addEventListener(
-      "keyup",
-      rememberSelection
-    );
-
-    bubble.addEventListener(
-      "touchend",
-      rememberSelection
-    );
+    bubble.addEventListener("mouseup",rememberSelection);
+    bubble.addEventListener("keyup",rememberSelection);
+    bubble.addEventListener("touchend",rememberSelection);
 
     const actions=document.createElement("div");
     actions.className="message-actions";
@@ -3258,81 +2515,62 @@ function renderChat(messages) {
     reply.type="button";
     reply.className="reply-button";
     reply.textContent="↪ REPLY";
-
     reply.addEventListener("click",()=>{
       beginReply(message,bubble);
     });
 
     actions.appendChild(reply);
-
     wrapper.append(meta,bubble,actions);
     windowEl.appendChild(wrapper);
   });
 
-  if(nearBottom||firstRender) {
+  if(nearBottom||firstRender){
     windowEl.scrollTop=windowEl.scrollHeight;
   }
 }
 
 /* ======================================
-   SEND MESSAGE / REPLY
+   SEND MESSAGE
    ====================================== */
-
-async function sendMessage() {
-  if(sending) return;
+async function sendMessage(){
+  if(sending)return;
 
   const input=$("chatInput");
   const feedback=$("chatFeedback");
-
   const plainMessage=input.value.trim();
-
   feedback.textContent="";
 
-  if(
-    !currentUser||
-    !player||
-    currentUser.uid!==playerUIDs[player]
-  ) {
-    feedback.textContent=
-      "SIGN IN WITH YOUR APPROVED ACCOUNT";
+  if(!currentUser||!player||
+     currentUser.uid!==playerUIDs[player]){
+    feedback.textContent="SIGN IN WITH YOUR APPROVED ACCOUNT";
     return;
   }
-
-  if(!chatReady) {
+  if(!chatReady){
     feedback.textContent="CHAT NOT CONNECTED";
     return;
   }
-
-  if(!plainMessage) return;
+  if(!plainMessage)return;
 
   let message=plainMessage;
 
-  if(replyDraft) {
-    const quoteHeader=
-      REPLY_MARKER+
-      replyDraft.name+": "+
-      replyDraft.quote;
-
+  if(replyDraft){
     message=
-      quoteHeader+"\n\n"+plainMessage;
+      REPLY_MARKER+replyDraft.name+": "+
+      replyDraft.quote+"\n\n"+plainMessage;
   }
 
-  if(message.length>500) {
+  if(message.length>500){
     feedback.textContent=
-      "MESSAGE TOO LONG. "+message.length+
-      "/500 CHARACTERS INCLUDING QUOTED TEXT.";
+      "MESSAGE TOO LONG: "+message.length+
+      "/500 CHARACTERS INCLUDING QUOTED TEXT";
     return;
   }
 
   sending=true;
   updateChatControls();
 
-  try {
-    const newMessage=push(
-      ref(db,"chat/messages")
-    );
-
-    // Same four fields as existing Firebase rules.
+  try{
+    const newMessage=push(ref(db,"chat/messages"));
     await set(newMessage,{
       uid:currentUser.uid,
       name:player,
@@ -3343,81 +2581,52 @@ async function sendMessage() {
     input.value="";
     clearReply();
     feedback.textContent="";
-  }
-  catch(error) {
-    feedback.textContent=
-      "MESSAGE FAILED: "+error.message;
-  }
-  finally {
+  }catch(error){
+    feedback.textContent="MESSAGE FAILED: "+error.message;
+  }finally{
     sending=false;
     updateChatControls();
-
-    if(player) input.focus();
+    if(player)input.focus();
   }
 }
 
 /* ======================================
-   CHAT AND SCORE EVENTS
+   EVENTS & DAILY RESET
    ====================================== */
+$("chatForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  sendMessage();
+});
 
-$("chatForm").addEventListener(
-  "submit",e=>{
+$("chatInput").addEventListener("keydown",e=>{
+  if(e.key==="Enter"&&!e.shiftKey&&!e.isComposing){
     e.preventDefault();
     sendMessage();
   }
-);
+});
 
-$("chatInput").addEventListener(
-  "keydown",e=>{
-    if(
-      e.key==="Enter" &&
-      !e.shiftKey &&
-      !e.isComposing
-    ) {
-      e.preventDefault();
-      sendMessage();
-    }
+$("gameSelect").addEventListener("change",fillScore);
+$("saveBtn").addEventListener("click",saveScore);
+
+$("scoreInput").addEventListener("keydown",e=>{
+  if(e.key==="Enter"){
+    e.preventDefault();
+    saveScore();
   }
-);
+});
 
-$("gameSelect").addEventListener(
-  "change",fillScore
-);
-
-$("saveBtn").addEventListener(
-  "click",saveScore
-);
-
-$("scoreInput").addEventListener(
-  "keydown",e=>{
-    if(e.key==="Enter") {
-      e.preventDefault();
-      saveScore();
-    }
-  }
-);
-
-/* ======================================
-   DAILY DATE UPDATES
-   ====================================== */
-
-function updateDay() {
+function updateDay(){
   $("topDate").textContent=displayDate();
   $("boardDate").textContent=displayDate();
 
   const today=getDay();
-
-  if(today!==day) {
+  if(today!==day){
     day=today;
     scores={};
     renderScores();
     subscribeScores();
   }
 }
-
-/* ======================================
-   START WEBSITE
-   ====================================== */
 
 renderCards();
 updateDay();
@@ -3427,14 +2636,9 @@ updateChatControls();
 
 setInterval(updateDay,60000);
 
-document.addEventListener(
-  "visibilitychange",()=>{
-    if(!document.hidden) {
-      updateDay();
-    }
-  }
-);
-
+document.addEventListener("visibilitychange",()=>{
+  if(!document.hidden)updateDay();
+});
 </script>
 
 </body>
