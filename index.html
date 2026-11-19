@@ -6,7 +6,6 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#061729">
 <title>Hudson vs Noah | Daily Game Hub</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
 
 <style>
@@ -17,6 +16,8 @@
   --white:#f5fdff;
   --pink:#ff4389;
   --yellow:#ffe76a;
+  --red:#e44e67;
+  --green:#45c991;
 }
 
 * {box-sizing:border-box}
@@ -39,12 +40,16 @@ button:disabled {opacity:.5;cursor:not-allowed}
 a {color:inherit;text-decoration:none}
 [hidden] {display:none!important}
 
-/* NAVIGATION */
+/* ======================================
+   TOP NAVIGATION
+   ====================================== */
 
 .topbar {
   height:42px;
+  position:relative;
+  z-index:7;
   background:#082239;
-  border-bottom:2px solid #2598b7;
+  border-bottom:2px solid var(--red);
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -65,11 +70,54 @@ a {color:inherit;text-decoration:none}
   white-space:nowrap;
 }
 
-.nav-links a:hover {
-  color:#ffffff;
+.nav-links a:hover {color:white}
+
+/* Christmas lights */
+
+.holiday-lights {
+  position:absolute;
+  top:100%;
+  left:0;
+  right:0;
+  height:15px;
+  display:flex;
+  justify-content:space-around;
+  overflow:hidden;
+  pointer-events:none;
+  z-index:8;
 }
 
-/* HERO */
+.holiday-light {
+  width:7px;
+  height:10px;
+  border:1px solid #183b4c;
+  background:var(--bulb);
+  box-shadow:0 0 7px var(--bulb);
+  animation:light-glow 2s ease-in-out infinite alternate;
+  animation-delay:var(--delay);
+}
+
+.holiday-light:before {
+  content:"";
+  display:block;
+  width:5px;
+  height:3px;
+  background:#123343;
+  position:relative;
+  left:0;
+  top:-3px;
+}
+
+@keyframes light-glow {
+  to {
+    opacity:.45;
+    box-shadow:0 0 2px var(--bulb);
+  }
+}
+
+/* ======================================
+   HERO
+   ====================================== */
 
 .hero {
   height:430px;
@@ -101,7 +149,7 @@ a {color:inherit;text-decoration:none}
   margin:0 0 22px;
   white-space:nowrap;
   font:clamp(17px,4.6vw,45px)/1.8
-    'Press Start 2P',monospace;
+       'Press Start 2P',monospace;
   color:white;
   text-shadow:
     -2px -2px 0 #00eaff,
@@ -140,6 +188,19 @@ a {color:inherit;text-decoration:none}
   font-weight:normal;
 }
 
+/* Winter edition ribbon */
+
+.winter-label {
+  display:inline-block;
+  margin:0 0 12px;
+  border:2px solid #e65f79;
+  background:#174b60;
+  padding:7px 10px;
+  color:#fff4d6;
+  font:9px/1.6 'Press Start 2P',monospace;
+  box-shadow:3px 3px 0 #164a57;
+}
+
 .dive-link {
   position:absolute;
   z-index:4;
@@ -159,7 +220,9 @@ a {color:inherit;text-decoration:none}
 
 .dive-link:hover {background:#153653}
 
-/* UNDERWATER */
+/* ======================================
+   UNDERWATER WORLD
+   ====================================== */
 
 .ocean {
   position:relative;
@@ -202,7 +265,7 @@ a {color:inherit;text-decoration:none}
 .section-heading {
   text-align:center;
   font:clamp(13px,2.7vw,23px)/1.7
-    'Press Start 2P';
+       'Press Start 2P';
   margin:15px 0 9px;
 }
 
@@ -213,7 +276,9 @@ a {color:inherit;text-decoration:none}
   margin:0 0 30px;
 }
 
-/* GAME GRID */
+/* ======================================
+   GAME CARDS
+   ====================================== */
 
 .games {
   display:grid;
@@ -232,12 +297,42 @@ a {color:inherit;text-decoration:none}
   flex-direction:column;
   align-items:center;
   text-align:center;
+  position:relative;
   transition:transform .15s,background .15s;
 }
 
 .game:hover {
   transform:translateY(-4px);
   background:#164461;
+}
+
+/* Pixel snow on the top of each card */
+
+.game:before {
+  content:"";
+  position:absolute;
+  top:-2px;
+  left:-2px;
+  right:-2px;
+  height:7px;
+  pointer-events:none;
+  background:linear-gradient(
+    90deg,
+    #e8fbff 0 17%,
+    transparent 17% 24%,
+    #f9ffff 24% 58%,
+    transparent 58% 66%,
+    #e8fbff 66% 100%
+  );
+  clip-path:polygon(
+    0 0,100% 0,100% 65%,
+    88% 65%,88% 100%,
+    76% 100%,76% 65%,
+    50% 65%,50% 100%,
+    39% 100%,39% 65%,
+    13% 65%,13% 100%,
+    0 100%
+  );
 }
 
 .game-image {
@@ -278,7 +373,7 @@ a {color:inherit;text-decoration:none}
   flex:1;
 }
 
-/* CSS TRIANGLE — NO EMOJI */
+/* Black triangle, not an iOS emoji */
 
 .game .play {
   display:inline-flex;
@@ -309,7 +404,14 @@ a {color:inherit;text-decoration:none}
   margin:65px 0 52px;
 }
 
-/* LEADERBOARD */
+.holiday-divider {
+  color:#fbdc88;
+  letter-spacing:7px;
+}
+
+/* ======================================
+   LEADERBOARD
+   ====================================== */
 
 .score-shell {
   margin-top:25px;
@@ -317,6 +419,7 @@ a {color:inherit;text-decoration:none}
   background:#081f35;
   padding:25px;
   box-shadow:5px 5px #010c18;
+  position:relative;
 }
 
 .score-grid {
@@ -376,7 +479,7 @@ a {color:inherit;text-decoration:none}
   overflow-wrap:anywhere;
 }
 
-/* LOGIN */
+/* Sign in */
 
 .auth-box {
   background:#0b3452;
@@ -408,7 +511,7 @@ a {color:inherit;text-decoration:none}
   user-select:all;
 }
 
-/* WINS */
+/* Game win totals */
 
 .wins {
   display:grid;
@@ -439,6 +542,8 @@ a {color:inherit;text-decoration:none}
   font-size:18px;
   color:#c1e1f0;
 }
+
+/* Score table */
 
 .table-wrap {overflow-x:auto}
 
@@ -492,7 +597,9 @@ th:not(:first-child) {text-align:center}
   margin-top:16px;
 }
 
-/* PRIVATE CHAT */
+/* ======================================
+   PRIVATE CHAT
+   ====================================== */
 
 .chat-shell {
   margin-top:25px;
@@ -500,6 +607,7 @@ th:not(:first-child) {text-align:center}
   background:#081f35;
   padding:24px;
   box-shadow:5px 5px #010c18;
+  position:relative;
 }
 
 .chat-heading {color:#ff79a6}
@@ -641,6 +749,40 @@ th:not(:first-child) {text-align:center}
   overflow-wrap:anywhere;
 }
 
+/* Candy cane trim on main panels */
+
+.score-shell:before,
+.chat-shell:before {
+  content:"";
+  position:absolute;
+  top:-3px;
+  left:0;
+  right:0;
+  height:5px;
+  background:repeating-linear-gradient(
+    90deg,
+    #f6ffff 0 18px,
+    #d74e65 18px 26px,
+    #f6ffff 26px 44px,
+    #3daa88 44px 52px
+  );
+  pointer-events:none;
+}
+
+/* ======================================
+   PIXEL SNOW OVERLAY
+   ====================================== */
+
+.snow-overlay {
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:10;
+  pointer-events:none;
+  image-rendering:pixelated;
+}
+
 /* FOOTER */
 
 .footer {
@@ -651,7 +793,9 @@ th:not(:first-child) {text-align:center}
   font-size:20px;
 }
 
-/* MOBILE */
+/* ======================================
+   MOBILE
+   ====================================== */
 
 @media(max-width:700px) {
   .games {
@@ -684,12 +828,14 @@ th:not(:first-child) {text-align:center}
     padding:17px 8px;
     min-height:220px;
   }
+
   .game-image {width:62px;height:62px}
   .game-image img {width:46px;height:46px}
   .game h3 {font-size:9px}
   .game p {font-size:18px}
   .game .play {font-size:9px;padding:10px}
   .hero-title {font-size:clamp(12px,4vw,16px)}
+  .winter-label {font-size:8px}
   .chat-window {height:350px;padding:12px}
   .chat-message {max-width:92%}
   .chat-send {padding:10px;font-size:9px}
@@ -701,6 +847,7 @@ th:not(:first-child) {text-align:center}
 @media(prefers-reduced-motion:reduce) {
   .hero-title .letter {animation:none}
   .game {transition:none}
+  .holiday-light {animation:none}
   html {scroll-behavior:auto}
 }
 </style>
@@ -708,9 +855,17 @@ th:not(:first-child) {text-align:center}
 
 <body>
 
-<!-- UPDATED NAVIGATION -->
+<!-- ======================================
+     TOP NAVIGATION
+     ====================================== -->
 
 <nav class="topbar">
+  <div
+    class="holiday-lights"
+    aria-hidden="true"
+    id="holidayLights"
+  ></div>
+
   <a href="#top">H + N</a>
   <span id="topDate"></span>
 
@@ -719,6 +874,10 @@ th:not(:first-child) {text-align:center}
     <a href="#chat">CHAT ↓</a>
   </div>
 </nav>
+
+<!-- ======================================
+     HERO
+     ====================================== -->
 
 <section class="hero" id="top">
   <canvas id="scene" aria-hidden="true"></canvas>
@@ -734,6 +893,10 @@ th:not(:first-child) {text-align:center}
 
     <p class="hero-kicker">THE DAILY GAMES</p>
 
+    <div class="winter-label">
+      * WINTER EDITION *
+    </div>
+
     <div class="hero-subtitle">
       9 games · 2 players · <strong>1 winner</strong>
     </div>
@@ -747,24 +910,33 @@ th:not(:first-child) {text-align:center}
 <main class="ocean">
 <div class="container">
 
-<!-- GAMES -->
+<!-- ======================================
+     GAME GRID
+     ====================================== -->
 
 <section id="games">
   <div class="eyebrow">◈ CHOOSE YOUR GAME ◈</div>
   <h2 class="section-heading">TODAY'S LINEUP</h2>
+
   <p class="intro">
     Pick a game. Play it. Drop your score.
   </p>
+
   <div class="games" id="gameGrid"></div>
 </section>
 
-<div class="depth">▼ ▼ ▼</div>
+<div class="depth holiday-divider">
+  ✦ ▼ ✦ ▼ ✦
+</div>
 
-<!-- LEADERBOARD -->
+<!-- ======================================
+     LEADERBOARD
+     ====================================== -->
 
 <section id="scores">
   <div class="eyebrow">✦ HIGH SCORES ✦</div>
   <h2 class="section-heading">THE LEADERBOARD</h2>
+
   <p class="intro">
     One day. Nine games. Whoever wins more takes it.
   </p>
@@ -791,6 +963,7 @@ th:not(:first-child) {text-align:center}
           <div class="auth-status" id="authStatus">
             Sign in to submit scores and chat.
           </div>
+
           <div class="uid" id="uidDisplay"></div>
         </div>
 
@@ -802,6 +975,7 @@ th:not(:first-child) {text-align:center}
         <label for="gameSelect" class="field-label">
           GAME
         </label>
+
         <select id="gameSelect" class="field"></select>
 
         <label
@@ -846,6 +1020,7 @@ th:not(:first-child) {text-align:center}
             <div class="win-num" id="hudsonWins">0</div>
             <small>GAME WINS</small>
           </div>
+
           <div class="win-box">
             <label>NOAH</label>
             <div class="win-num" id="noahWins">0</div>
@@ -881,21 +1056,28 @@ th:not(:first-child) {text-align:center}
   </div>
 </section>
 
-<div class="depth">▼ ▼ ▼</div>
+<div class="depth holiday-divider">
+  ✦ ▼ ✦ ▼ ✦
+</div>
 
-<!-- PRIVATE CHAT -->
+<!-- ======================================
+     PRIVATE CHAT
+     ====================================== -->
 
 <section id="chat">
   <div class="eyebrow">◈ BELOW THE SURFACE ◈</div>
   <h2 class="section-heading">THE CHAT</h2>
+
   <p class="intro">
     Talk trash. Share wins. Settle the score.
   </p>
 
   <div class="chat-shell">
     <div class="chat-topline">
-      <h3 class="panel-title chat-heading"
-          style="margin:0">
+      <h3
+        class="panel-title chat-heading"
+        style="margin:0"
+      >
         HUDSON × NOAH
       </h3>
 
@@ -953,10 +1135,19 @@ th:not(:first-child) {text-align:center}
   </div>
 </section>
 
-<div class="depth">▼ END OF DIVE ▼</div>
+<div class="depth holiday-divider">
+  ✦ END OF DIVE ✦
+</div>
 
 </div>
 </main>
+
+<!-- Decorative snowfall: never blocks clicks -->
+<canvas
+  id="snowOverlay"
+  class="snow-overlay"
+  aria-hidden="true"
+></canvas>
 
 <footer class="footer">
   HUDSON KING × NOAH BONN · SEE YOU TOMORROW
@@ -964,7 +1155,7 @@ th:not(:first-child) {text-align:center}
 
 <script>
 /* ======================================
-   PIXEL OCEAN AND BOAT
+   PIXEL OCEAN & FESTIVE BOAT
    ====================================== */
 
 const canvas=document.getElementById("scene");
@@ -980,8 +1171,10 @@ const pixel=4;
 
 function resizeScene() {
   const r=canvas.getBoundingClientRect();
+
   W=Math.ceil(r.width/pixel);
   H=Math.ceil(r.height/pixel);
+
   canvas.width=W;
   canvas.height=H;
   ctx.imageSmoothingEnabled=false;
@@ -1019,15 +1212,19 @@ function drawBoat(t) {
   const surface=waveY(cx,t);
 
   ctx.save();
+
   ctx.translate(
     Math.round(cx),
     Math.round(surface+1)
   );
+
   ctx.scale(.55,.55);
   ctx.translate(-30,-22);
 
-  // Mast and pink flag
+  // Mast
   rect(35,-16,2,32,"#17374a");
+
+  // Pink flag
   rect(37,-15,12,3,"#ff4389");
   rect(37,-12,9,3,"#e34e83");
 
@@ -1060,9 +1257,25 @@ function drawBoat(t) {
   rect(16,19,5,2,"#e1c08b");
   rect(39,19,5,2,"#e1c08b");
 
+  // Small Christmas lights on boat
+  [
+    [12,"#f6ec8c"],
+    [21,"#ff627d"],
+    [30,"#74f7d5"],
+    [39,"#f6ec8c"],
+    [48,"#ff627d"]
+  ].forEach(([x,c])=>{
+    rect(x,12,3,3,c);
+  });
+
+  // Tiny pixel wreath on the cabin
+  rect(29,4,5,5,"#1a965f");
+  rect(30,5,3,3,"#0d4860");
+  rect(31,8,2,2,"#e55c70");
+
   ctx.restore();
 
-  // Foam
+  // Foam beside the boat
   rect(cx-25,surface+1,8,1,"#e7ffff");
   rect(cx+18,surface+1,8,1,"#e7ffff");
 }
@@ -1073,8 +1286,10 @@ function drawScene(time) {
   ctx.fillStyle="#c7f4ff";
   ctx.fillRect(0,0,W,H);
 
+  // Sky
   rect(0,0,W,H*.54,"#a9ebfa");
 
+  // Clouds
   cloud(W*.08,27,1.15);
   cloud(W*.75,20,1.65);
   cloud(W*.87,53,.55);
@@ -1082,6 +1297,7 @@ function drawScene(time) {
   // Horizon
   for(let x=0;x<W;x+=8) {
     const y=waveY(x,t);
+
     if(y>0) {
       rect(
         x,H*.69,8,
@@ -1091,23 +1307,26 @@ function drawScene(time) {
     }
   }
 
-  // Water
+  // Ocean
   for(let x=0;x<W;x++) {
     const y=Math.round(waveY(x,t));
+
     rect(x,y,1,H-y,"#093354");
     rect(x,y,1,2,"#f0ffff");
     rect(x,y+2,1,2,"#5be5f5");
   }
 
+  // Underwater layers
   for(let x=0;x<W;x+=4) {
     const y=waveY(x,t);
     rect(x,y+12,4,H-y-12,"#082541");
   }
 
-  // Reflections
+  // Moving water reflections
   for(let j=0;j<11;j++) {
     const x=((j*47+t*(j%2?3:-4)+W*8)%W);
     const y=H*.85+(j%4)*7;
+
     rect(x,y,10+(j%3)*5,1,"#367d9c");
   }
 
@@ -1120,16 +1339,18 @@ function drawScene(time) {
 
 requestAnimationFrame(drawScene);
 
-// Wave title
+// Animated title
 const title=document.getElementById("waveTitle");
 const original=title.textContent.trim();
 title.textContent="";
 
 [...original].forEach((ch,i)=>{
   const span=document.createElement("span");
+
   span.className="letter";
   span.style.setProperty("--i",i);
-  span.textContent=ch===" "?"\u00a0":ch;
+  span.textContent=ch===" "?"?"\u00a0":ch;
+
   title.appendChild(span);
 });
 </script>
@@ -1634,6 +1855,7 @@ async function saveScore() {
   try {
     if(getDay()!==day) {
       updateDay();
+
       throw new Error(
         "NEW DAY STARTED. SUBMIT AGAIN."
       );
@@ -1696,9 +1918,11 @@ function renderScores() {
 
     const value=v=>{
       if(v===undefined) return "—";
+
       if(g.id==="connections"&&v===4) {
         return "DNF (4)";
       }
+
       return v;
     };
 
@@ -1931,7 +2155,7 @@ async function sendMessage() {
 }
 
 /* ======================================
-   EVENTS
+   EVENT LISTENERS
    ====================================== */
 
 $("chatForm").addEventListener("submit",e=>{
@@ -1982,7 +2206,7 @@ function updateDay() {
 }
 
 /* ======================================
-   START
+   START WEBSITE
    ====================================== */
 
 renderCards();
@@ -1998,5 +2222,132 @@ document.addEventListener("visibilitychange",()=>{
 });
 
 </script>
+
+<script>
+/* ======================================
+   CHRISTMAS PIXEL SNOW & LIGHTS
+
+   Decorative only.
+   Does not affect Firebase or gameplay.
+   ====================================== */
+
+(function () {
+  const lights=document.getElementById("holidayLights");
+
+  const bulbs=[
+    "#ff657c",
+    "#ffe18d",
+    "#77f5d5",
+    "#87dfff"
+  ];
+
+  for(let i=0;i<24;i++) {
+    const bulb=document.createElement("span");
+    bulb.className="holiday-light";
+
+    bulb.style.setProperty(
+      "--bulb",
+      bulbs[i%bulbs.length]
+    );
+
+    bulb.style.setProperty(
+      "--delay",
+      (i%5)*-.38+"s"
+    );
+
+    lights.appendChild(bulb);
+  }
+
+  const snow=document.getElementById("snowOverlay");
+  const snowCtx=snow.getContext("2d");
+
+  const reduced=window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  );
+
+  let flakes=[];
+  let width=0;
+  let height=0;
+  let last=0;
+
+  function resizeSnow() {
+    width=window.innerWidth;
+    height=window.innerHeight;
+
+    snow.width=width;
+    snow.height=height;
+
+    snowCtx.imageSmoothingEnabled=false;
+
+    const count=Math.min(
+      110,
+      Math.max(
+        32,
+        Math.floor(width*height/11000)
+      )
+    );
+
+    flakes=Array.from(
+      {length:count},
+      (_,i)=>({
+        x:Math.random()*width,
+        y:Math.random()*height,
+        size:i%5===0?4:i%3===0?3:2,
+        speed:.3+Math.random()*.65,
+        drift:(Math.random()-.5)*.5
+      })
+    );
+
+    drawSnow(true);
+  }
+
+  function drawSnow(still=false) {
+    snowCtx.clearRect(0,0,width,height);
+    snowCtx.fillStyle="rgba(246,253,255,.83)";
+
+    for(const f of flakes) {
+      snowCtx.fillRect(
+        Math.round(f.x),
+        Math.round(f.y),
+        f.size,
+        f.size
+      );
+
+      if(!still) {
+        f.y+=f.speed;
+        f.x+=f.drift;
+
+        if(f.y>height) {
+          f.y=-5;
+          f.x=Math.random()*width;
+        }
+
+        if(f.x>width) f.x=0;
+        if(f.x<0) f.x=width;
+      }
+    }
+  }
+
+  function animate(t) {
+    if(reduced.matches) return;
+
+    if(t-last>28) {
+      drawSnow();
+      last=t;
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  window.addEventListener("resize",resizeSnow);
+
+  resizeSnow();
+
+  if(!reduced.matches) {
+    requestAnimationFrame(animate);
+  }
+})();
+</script>
+
 </body>
 </html>
