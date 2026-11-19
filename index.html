@@ -17,11 +17,11 @@
   --pink:#ff4389;
   --yellow:#ffe76a;
   --sky-hole:#a9ebfa;
-  --hero-ink:#ffffff;
-  --hero-outline:#00eaff;
-  --hero-shadow:#ff4389;
+  --hero-ink:#fff;
+  --hero-outline:#007da8;
+  --hero-shadow:#ed4f90;
   --hero-secondary:#12394f;
-  --hero-accent:#007eab;
+  --hero-accent:#005f81;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
@@ -38,9 +38,9 @@ a{color:inherit;text-decoration:none}
 [hidden]{display:none!important}
 ::selection{background:#ffe76a;color:#061729}
 
-/* ======================================
-   CENTERED NAVIGATION
-   ====================================== */
+/* ==================================
+   NAVIGATION
+   ================================== */
 .topbar{
   position:relative;
   z-index:30;
@@ -60,21 +60,20 @@ a{color:inherit;text-decoration:none}
 .brand{
   justify-self:start;
   color:#84f5ff;
-  white-space:nowrap;
   font-size:19px;
+  white-space:nowrap;
 }
 .top-date{
   justify-self:center;
-  color:white;
   text-align:center;
-  white-space:nowrap;
   font-size:19px;
+  white-space:nowrap;
 }
 .nav-links{
   justify-self:end;
   display:flex;
   align-items:center;
-  gap:18px;
+  gap:15px;
 }
 .nav-links a,.nav-settings{
   color:#84f5ff;
@@ -84,12 +83,12 @@ a{color:inherit;text-decoration:none}
   padding:4px 0;
   font-size:19px;
 }
-.nav-links a:hover,.nav-settings:hover{color:white}
+.nav-links a:hover,.nav-settings:hover{color:#fff}
 .nav-settings[aria-expanded=true]{color:var(--yellow)}
 
-/* ======================================
-   EVERGREEN GARLAND & WREATH
-   ====================================== */
+/* ==================================
+   CHRISTMAS GARLAND
+   ================================== */
 .christmas-garland{
   position:absolute;
   left:0;right:0;top:100%;
@@ -102,7 +101,8 @@ a{color:inherit;text-decoration:none}
   left:0;right:0;top:0;
   height:5px;
   background:repeating-linear-gradient(
-    90deg,#174e39 0 14px,#267048 14px 23px,#113f31 23px 32px
+    90deg,#174e39 0 14px,#267048 14px 23px,
+    #113f31 23px 32px
   );
   border-bottom:2px solid #0a3329;
 }
@@ -126,11 +126,6 @@ a{color:inherit;text-decoration:none}
   left:6px;top:3px;
   width:12px;height:11px;
   background:#48a670;
-  clip-path:polygon(
-    35% 0,65% 0,65% 30%,100% 30%,100% 55%,
-    65% 55%,65% 100%,35% 100%,35% 55%,
-    0 55%,0 30%,35% 30%
-  );
 }
 .garland-berry{
   position:absolute;
@@ -140,7 +135,7 @@ a{color:inherit;text-decoration:none}
 }
 .pixel-wreath{
   position:absolute;
-  left:50%;top:12px;
+  top:12px;left:50%;
   width:50px;height:50px;
   transform:translateX(-50%);
   image-rendering:pixelated;
@@ -150,7 +145,7 @@ a{color:inherit;text-decoration:none}
   inset:4px;
   background:#1e714a;
   border:6px solid #52a972;
-  box-shadow:0 0 0 3px #164e37,3px 3px 0 3px #133b39;
+  box-shadow:0 0 0 3px #164e37;
   clip-path:polygon(
     25% 0,75% 0,75% 12%,88% 12%,88% 25%,
     100% 25%,100% 75%,88% 75%,88% 88%,
@@ -188,9 +183,9 @@ a{color:inherit;text-decoration:none}
 .wreath-berry.two{right:8px;top:25px}
 .wreath-berry.three{left:24px;bottom:5px}
 
-/* ======================================
-   SETTINGS PANEL
-   ====================================== */
+/* ==================================
+   SCENE SETTINGS
+   ================================== */
 .settings-panel{
   position:relative;
   z-index:20;
@@ -205,13 +200,13 @@ a{color:inherit;text-decoration:none}
 }
 .settings-header{
   display:flex;
-  align-items:center;
   justify-content:space-between;
+  align-items:center;
   gap:15px;
 }
 .settings-title{
-  color:var(--cyan);
   margin:0;
+  color:var(--cyan);
   font:13px/1.7 'Press Start 2P';
 }
 .close-settings{
@@ -263,11 +258,6 @@ a{color:inherit;text-decoration:none}
   top:53%;left:0;right:0;bottom:0;
   background:var(--preview-water);
   border-top:3px solid var(--preview-foam);
-  clip-path:polygon(
-    0 0,14% 0,14% 5%,30% 5%,30% 0,
-    46% 0,46% 5%,66% 5%,66% 0,
-    82% 0,82% 6%,100% 6%,100% 100%,0 100%
-  );
 }
 .scene-name{
   display:block;
@@ -282,8 +272,8 @@ a{color:inherit;text-decoration:none}
 }
 .setting-row{
   display:flex;
-  align-items:center;
   justify-content:space-between;
+  align-items:center;
   gap:15px;
   flex-wrap:wrap;
   border-top:1px dashed #3c7894;
@@ -301,14 +291,14 @@ a{color:inherit;text-decoration:none}
   border-color:#84edce;
 }
 .settings-footnote{
-  font-size:17px;
   color:#a7cde0;
+  font-size:17px;
   margin-top:13px;
 }
 
-/* ======================================
-   BOAT & SKY
-   ====================================== */
+/* ==================================
+   HERO AND BOAT
+   ================================== */
 .hero{
   height:430px;
   position:relative;
@@ -321,19 +311,18 @@ a{color:inherit;text-decoration:none}
   width:100%;
   height:100%;
   image-rendering:pixelated;
-  display:block;
 }
 .hero-copy{
   position:absolute;
-  z-index:2;
   top:88px;left:12px;right:12px;
+  z-index:2;
   text-align:center;
   pointer-events:none;
 }
 .hero-title{
   margin:0 0 22px;
   white-space:nowrap;
-  font:clamp(17px,4.6vw,45px)/1.8 'Press Start 2P',monospace;
+  font:clamp(17px,4.6vw,45px)/1.8 'Press Start 2P';
   color:var(--hero-ink);
   text-shadow:
     -2px -2px 0 var(--hero-outline),
@@ -357,12 +346,10 @@ a{color:inherit;text-decoration:none}
   letter-spacing:5px;
   font-size:20px;
   margin:0 0 16px;
-  text-shadow:0 1px 0 var(--hero-outline);
 }
 .hero-subtitle{
   color:var(--hero-secondary);
   font-size:21px;
-  text-shadow:0 1px 0 var(--hero-outline);
 }
 .hero-subtitle strong{
   color:var(--hero-accent);
@@ -385,12 +372,14 @@ a{color:inherit;text-decoration:none}
 }
 .dive-link:hover{background:#153653}
 
-/* ======================================
-   UNDERWATER SECTION
-   ====================================== */
+/* ==================================
+   UNDERWATER SECTIONS
+   ================================== */
 .ocean{
   position:relative;
-  background:linear-gradient(180deg,#091b30,#082a49 48%,#061729);
+  background:linear-gradient(
+    180deg,#091b30,#082a49 48%,#061729
+  );
   padding:62px 0 85px;
   overflow:hidden;
 }
@@ -400,7 +389,8 @@ a{color:inherit;text-decoration:none}
   inset:0;
   pointer-events:none;
   background:repeating-linear-gradient(
-    180deg,transparent 0 85px,rgba(49,240,255,.065) 86px 89px
+    180deg,transparent 0 85px,
+    rgba(49,240,255,.065) 86px 89px
   );
 }
 .container{
@@ -426,10 +416,16 @@ a{color:inherit;text-decoration:none}
   font-size:23px;
   margin:0 0 30px;
 }
+.depth{
+  text-align:center;
+  color:#fbdc88;
+  letter-spacing:5px;
+  margin:65px 0 52px;
+}
 
-/* ======================================
-   SHARED SNOW BORDERS + FESTIVE BULBS
-   ====================================== */
+/* ==================================
+   PIXEL SNOW BORDERS
+   ================================== */
 .frosted-box{
   position:relative;
   isolation:isolate;
@@ -443,18 +439,14 @@ a{color:inherit;text-decoration:none}
   pointer-events:none;
   background:#f3fdff;
   clip-path:polygon(
-    0 0,100% 0,100% 55%,
-    96% 55%,96% 90%,
-    88% 90%,88% 65%,
-    77% 65%,77% 100%,
-    69% 100%,69% 60%,
-    57% 60%,57% 85%,
-    44% 85%,44% 65%,
-    33% 65%,33% 100%,
-    26% 100%,26% 65%,
-    17% 65%,17% 95%,
-    9% 95%,9% 60%,
-    0 60%
+    0 0,100% 0,100% 55%,96% 55%,
+    96% 90%,88% 90%,88% 65%,
+    77% 65%,77% 100%,69% 100%,
+    69% 60%,57% 60%,57% 85%,
+    44% 85%,44% 65%,33% 65%,
+    33% 100%,26% 100%,26% 65%,
+    17% 65%,17% 95%,9% 95%,
+    9% 60%,0 60%
   );
 }
 .frosted-box:after{
@@ -475,7 +467,9 @@ a{color:inherit;text-decoration:none}
   filter:drop-shadow(0 0 3px rgba(255,218,170,.55));
 }
 
-/* Game cards */
+/* ==================================
+   NINE GAME CARDS
+   ================================== */
 .games{
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
@@ -547,16 +541,10 @@ a{color:inherit;text-decoration:none}
   border-bottom:6px solid transparent;
   border-left:10px solid #06192b;
 }
-.depth{
-  text-align:center;
-  color:#fbdc88;
-  letter-spacing:5px;
-  margin:65px 0 52px;
-}
 
-/* ======================================
-   SCORES
-   ====================================== */
+/* ==================================
+   LEADERBOARD
+   ================================== */
 .score-shell{
   margin-top:25px;
   border:2px solid var(--cyan);
@@ -677,8 +665,9 @@ td{
   border-bottom:1px dashed #326987;
 }
 td,th{padding:9px 5px}
-td:not(:first-child),
-th:not(:first-child){text-align:center}
+td:not(:first-child),th:not(:first-child){
+  text-align:center;
+}
 .won{color:var(--yellow)}
 .waiting{color:#85b4cc}
 .champ{
@@ -703,14 +692,176 @@ th:not(:first-child){text-align:center}
   margin-top:16px;
 }
 
-/* ======================================
+/* ==================================
+   WINNER CELEBRATION
+   ================================== */
+.celebration{
+  position:fixed;
+  inset:0;
+  z-index:75;
+  pointer-events:none;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.celebration-card{
+  padding:25px 24px;
+  width:min(550px,calc(100% - 36px));
+  border:3px solid #ffe76a;
+  background:#092943;
+  box-shadow:
+    7px 7px #031020,
+    0 0 40px rgba(255,230,106,.3);
+  text-align:center;
+  animation:celebration-pop .5s steps(5,end) both;
+}
+.celebration-spark{
+  color:#ffe76a;
+  font-size:28px;
+  letter-spacing:10px;
+}
+.celebration-title{
+  color:#ffe76a;
+  font:clamp(12px,3vw,22px)/1.9 'Press Start 2P';
+  margin:14px 0;
+}
+.celebration-sub{
+  color:#e1faff;
+  font-size:26px;
+}
+@keyframes celebration-pop{
+  from{opacity:0;transform:scale(.75) translateY(20px)}
+  to{opacity:1;transform:scale(1) translateY(0)}
+}
+.confetti-canvas{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:74;
+  pointer-events:none;
+  image-rendering:pixelated;
+}
+.win-ribbon{
+  margin-top:18px;
+  border:2px solid #e6be6a;
+  background:#17334c;
+  padding:14px;
+  text-align:center;
+  color:#ffe8a6;
+  font-size:22px;
+}
+.win-ribbon strong{
+  font:11px/1.6 'Press Start 2P';
+  display:block;
+  margin-bottom:8px;
+}
+
+/* ==================================
+   SHARED AQUARIUM
+   ================================== */
+.aquarium-shell{
+  margin-top:25px;
+  padding:27px 24px 24px;
+  background:#081f35;
+  border:2px solid #6be7dc;
+  box-shadow:5px 5px #010c18;
+}
+.aquarium-topline{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  align-items:center;
+  flex-wrap:wrap;
+  margin-bottom:13px;
+}
+.aquarium-status{
+  color:#b3e1e8;
+  font-size:19px;
+  margin:0 0 14px;
+}
+.fish-total{
+  color:#ffe76a;
+  border:1px solid #477f94;
+  padding:5px 10px;
+  font-size:20px;
+}
+.tank-frame{
+  position:relative;
+  height:320px;
+  border:5px solid #367da0;
+  outline:2px solid #92e8f1;
+  background:#082d4f;
+  overflow:hidden;
+  box-shadow:inset 0 0 30px rgba(0,12,35,.5);
+}
+.tank-frame:before{
+  content:"";
+  position:absolute;
+  top:0;left:0;right:0;
+  height:4px;
+  background:#a5ecf5;
+  pointer-events:none;
+  z-index:2;
+}
+.tank-frame canvas{
+  display:block;
+  width:100%;
+  height:100%;
+  image-rendering:pixelated;
+}
+.aquarium-bottom{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:16px;
+}
+.aquarium-info{
+  color:#c6e9f4;
+  font-size:19px;
+}
+.fish-collection{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  margin-top:18px;
+}
+.fish-chip{
+  border:1px solid #477e99;
+  background:#10344c;
+  padding:5px 11px;
+  color:#e9faff;
+  font-size:18px;
+}
+.fish-chip .fish-color{
+  display:inline-block;
+  width:10px;
+  height:10px;
+  margin-right:7px;
+  background:var(--fish-color);
+  box-shadow:2px 2px #031b30;
+}
+.fish-empty{
+  color:#9fbfd0;
+  font-size:20px;
+  margin:9px 0;
+}
+.aquarium-note{
+  font-size:18px;
+  color:#a5c6d6;
+  margin:17px 0 0;
+}
+
+/* ==================================
    PRIVATE CHAT
-   ====================================== */
+   ================================== */
 .chat-shell{
   margin-top:25px;
-  border:2px solid #ff79a6;
-  background:#081f35;
   padding:28px 24px 24px;
+  background:#081f35;
+  border:2px solid #ff79a6;
   box-shadow:5px 5px #010c18;
 }
 .chat-heading{color:#ff79a6}
@@ -758,8 +909,8 @@ th:not(:first-child){text-align:center}
 .chat-message.mine{align-self:flex-end}
 .chat-meta{
   display:flex;
-  align-items:center;
   gap:10px;
+  align-items:center;
   color:#b6d9e9;
   font-size:16px;
   margin-bottom:5px;
@@ -778,7 +929,6 @@ th:not(:first-child){text-align:center}
   line-height:1.15;
   white-space:pre-wrap;
   overflow-wrap:anywhere;
-  word-break:break-word;
   box-shadow:3px 3px #020d19;
   user-select:text;
   -webkit-user-select:text;
@@ -797,15 +947,9 @@ th:not(:first-child){text-align:center}
   border-left:4px solid #ffe287;
   padding:7px 10px;
   margin-bottom:10px;
-  color:#d5eefa;
   font-size:18px;
-  white-space:pre-wrap;
-}
-.quote-author{
-  display:block;
-  color:#ffe287;
-  font-size:16px;
-  margin-bottom:3px;
+  color:#d5eefa;
+  overflow-wrap:anywhere;
 }
 .message-actions{
   display:flex;
@@ -819,12 +963,8 @@ th:not(:first-child){text-align:center}
   background:none;
   border:1px solid #487e9d;
   color:#a5eaff;
-  font-size:16px;
   padding:3px 9px;
-}
-.reply-button:hover{
-  color:white;
-  border-color:var(--cyan);
+  font-size:16px;
 }
 .reply-preview{
   background:#0b314a;
@@ -835,8 +975,8 @@ th:not(:first-child){text-align:center}
 .reply-preview-head{
   display:flex;
   justify-content:space-between;
-  gap:10px;
   align-items:center;
+  gap:10px;
   color:#ffe287;
   font-size:19px;
 }
@@ -845,19 +985,16 @@ th:not(:first-child){text-align:center}
   font-size:18px;
   margin-top:6px;
   overflow-wrap:anywhere;
-  white-space:pre-wrap;
 }
 .cancel-reply{
-  color:#ff9ab9;
   background:none;
   border:0;
+  color:#ff9ab9;
   font-size:23px;
-  padding:0 5px;
 }
 .chat-compose{
   display:flex;
   gap:10px;
-  align-items:stretch;
   margin-top:16px;
 }
 .chat-input{
@@ -869,7 +1006,6 @@ th:not(:first-child){text-align:center}
   background:#061729;
   color:white;
   border:2px solid #529fbd;
-  border-radius:0;
   padding:12px;
   outline:none;
   font-size:21px;
@@ -881,7 +1017,7 @@ th:not(:first-child){text-align:center}
   border:2px solid #ffb0c8;
   background:#ff4389;
   color:#061729;
-  font:10px/1.7 'Press Start 2P';
+  font:10px 'Press Start 2P';
   box-shadow:3px 3px #67213d;
 }
 .chat-note{
@@ -894,12 +1030,7 @@ th:not(:first-child){text-align:center}
   font-size:18px;
   min-height:22px;
   margin-top:8px;
-  overflow-wrap:anywhere;
 }
-
-/* ======================================
-   SNOWFALL OVERLAY
-   ====================================== */
 .snow-overlay{
   position:fixed;
   inset:0;
@@ -917,9 +1048,9 @@ th:not(:first-child){text-align:center}
   font-size:20px;
 }
 
-/* ======================================
+/* ==================================
    MOBILE
-   ====================================== */
+   ================================== */
 @media(max-width:700px){
   .games{grid-template-columns:repeat(2,minmax(0,1fr))}
   .score-grid{grid-template-columns:1fr}
@@ -928,8 +1059,9 @@ th:not(:first-child){text-align:center}
   .hero-copy{top:100px}
   .hero-kicker{font-size:16px}
   .hero-subtitle{font-size:17px}
-  .score-shell{padding:25px 17px 17px}
-  .chat-shell{padding:25px 16px 16px}
+  .score-shell,.aquarium-shell,.chat-shell{
+    padding:27px 16px 17px;
+  }
   .hero-title{
     font-size:clamp(16px,5.2vw,30px);
     text-shadow:
@@ -938,7 +1070,9 @@ th:not(:first-child){text-align:center}
       2px 2px 0 var(--hero-shadow),
       3px 3px 0 var(--hero-shadow);
   }
-  .brand,.top-date,.nav-links a,.nav-settings{font-size:16px}
+  .brand,.top-date,.nav-links a,.nav-settings{
+    font-size:16px;
+  }
   .nav-links{gap:12px}
 }
 @media(max-width:480px){
@@ -946,7 +1080,9 @@ th:not(:first-child){text-align:center}
     padding:7px 10px;
     min-height:55px;
     grid-template-columns:1fr auto;
-    grid-template-areas:"brand date" "links links";
+    grid-template-areas:
+      "brand date"
+      "links links";
     row-gap:3px;
   }
   .brand{grid-area:brand}
@@ -954,7 +1090,10 @@ th:not(:first-child){text-align:center}
   .nav-links{
     grid-area:links;
     justify-self:center;
-    gap:20px;
+    gap:13px;
+  }
+  .brand,.top-date,.nav-links a,.nav-settings{
+    font-size:16px;
   }
   .game{
     padding:29px 8px 17px;
@@ -970,6 +1109,7 @@ th:not(:first-child){text-align:center}
   .chat-message{max-width:94%}
   .chat-send{padding:10px;font-size:9px}
   .chat-input{font-size:18px}
+  .tank-frame{height:255px}
   .pixel-wreath{
     transform:translateX(-50%) scale(.8);
     transform-origin:top center;
@@ -985,15 +1125,14 @@ th:not(:first-child){text-align:center}
 
 <body>
 
-<!-- ======================================
-     NAVIGATION
-     ====================================== -->
+<!-- NAVIGATION -->
 <nav class="topbar">
   <div class="topbar-inner">
     <a href="#top" class="brand">H + N</a>
     <span class="top-date" id="topDate"></span>
     <div class="nav-links">
       <a href="#scores">SCORES ↓</a>
+      <a href="#aquarium">FISH ↓</a>
       <a href="#chat">CHAT ↓</a>
       <button
         type="button"
@@ -1004,7 +1143,6 @@ th:not(:first-child){text-align:center}
       >SETTINGS ⚙</button>
     </div>
   </div>
-
   <div
     class="christmas-garland"
     id="christmasGarland"
@@ -1022,9 +1160,7 @@ th:not(:first-child){text-align:center}
   </div>
 </nav>
 
-<!-- ======================================
-     SETTINGS
-     ====================================== -->
+<!-- SETTINGS -->
 <section
   id="settingsPanel"
   class="settings-panel"
@@ -1042,28 +1178,26 @@ th:not(:first-child){text-align:center}
       >×</button>
     </div>
     <p class="settings-description">
-      Change the ocean and sky as you dive deeper.
-      Your boat and waves stay the same.
+      Change the sky and ocean as you dive deeper.
+      The boat and waves stay with you.
     </p>
     <div class="scene-grid" id="sceneChoices"></div>
     <div class="setting-row">
       <span>PIXEL SNOWFALL</span>
       <button
-        type="button"
-        class="snow-toggle on"
         id="snowToggle"
+        class="snow-toggle on"
+        type="button"
         aria-pressed="true"
       >SNOW: ON</button>
     </div>
     <p class="settings-footnote">
-      Your scene and snow preferences are saved on this device.
+      Your appearance settings are saved on this device.
     </p>
   </div>
 </section>
 
-<!-- ======================================
-     HERO
-     ====================================== -->
+<!-- HERO -->
 <section class="hero" id="top">
   <canvas id="scene" aria-hidden="true"></canvas>
   <div class="hero-copy">
@@ -1085,9 +1219,7 @@ th:not(:first-child){text-align:center}
 <main class="ocean">
 <div class="container">
 
-<!-- ======================================
-     DAILY GAMES
-     ====================================== -->
+<!-- GAMES -->
 <section id="games">
   <div class="eyebrow">◈ CHOOSE YOUR GAME ◈</div>
   <h2 class="section-heading">TODAY'S LINEUP</h2>
@@ -1097,9 +1229,7 @@ th:not(:first-child){text-align:center}
 
 <div class="depth">✦ ▼ ✦ ▼ ✦</div>
 
-<!-- ======================================
-     LEADERBOARD
-     ====================================== -->
+<!-- LEADERBOARD -->
 <section id="scores">
   <div class="eyebrow">✦ HIGH SCORES ✦</div>
   <h2 class="section-heading">THE LEADERBOARD</h2>
@@ -1111,7 +1241,6 @@ th:not(:first-child){text-align:center}
     <div class="score-grid">
       <div>
         <h3 class="panel-title">LOG A SCORE</h3>
-
         <div class="auth-box">
           <button
             id="loginBtn"
@@ -1133,7 +1262,9 @@ th:not(:first-child){text-align:center}
           Enter the result shown by each game.
         </p>
 
-        <label class="field-label" for="gameSelect">GAME</label>
+        <label class="field-label" for="gameSelect">
+          GAME
+        </label>
         <select class="field" id="gameSelect"></select>
 
         <label
@@ -1141,11 +1272,9 @@ th:not(:first-child){text-align:center}
           for="scoreInput"
           id="scoreLabel"
         >SCORE</label>
-
         <p class="sub" id="scoreHelp">
           Select a game to see how scoring works.
         </p>
-
         <input
           class="field"
           id="scoreInput"
@@ -1154,16 +1283,14 @@ th:not(:first-child){text-align:center}
           step="any"
           placeholder="Enter score"
         >
-
         <button
           id="saveBtn"
           class="save"
           disabled
         >▼ SAVE SCORE ▼</button>
-
         <div
-          class="feedback"
           id="feedback"
+          class="feedback"
           role="status"
         ></div>
       </div>
@@ -1171,6 +1298,7 @@ th:not(:first-child){text-align:center}
       <div>
         <h3 class="panel-title">TODAY'S STANDINGS</h3>
         <p class="sub" id="boardDate"></p>
+
         <div class="wins">
           <div class="win-box">
             <label>HUDSON</label>
@@ -1202,7 +1330,15 @@ th:not(:first-child){text-align:center}
           <small>★ DAILY CHAMPION ★</small>
           <div id="champion">STILL PLAYING...</div>
         </div>
-        <div class="sync" id="syncStatus">CONNECTING...</div>
+
+        <div class="win-ribbon" id="winRibbon" hidden>
+          <strong id="winRibbonTitle">DAILY VICTORY!</strong>
+          <span id="winRibbonText"></span>
+        </div>
+
+        <div class="sync" id="syncStatus">
+          CONNECTING...
+        </div>
       </div>
     </div>
   </div>
@@ -1210,13 +1346,69 @@ th:not(:first-child){text-align:center}
 
 <div class="depth">✦ ▼ ✦ ▼ ✦</div>
 
-<!-- ======================================
-     PRIVATE CHAT
-     ====================================== -->
+<!-- SHARED AQUARIUM -->
+<section id="aquarium">
+  <div class="eyebrow">◈ THE DEEP BLUE ◈</div>
+  <h2 class="section-heading">OUR AQUARIUM</h2>
+  <p class="intro">
+    Finish all nine games together. Catch a new fish.
+  </p>
+
+  <div class="aquarium-shell frosted-box">
+    <div class="aquarium-topline">
+      <h3
+        class="panel-title"
+        style="margin:0"
+      >HUDSON × NOAH'S TANK</h3>
+      <span class="fish-total" id="fishTotal">
+        0 FISH
+      </span>
+    </div>
+
+    <p class="aquarium-status" id="aquariumStatus">
+      CONNECTING TO OUR AQUARIUM...
+    </p>
+
+    <div
+      class="tank-frame"
+      role="img"
+      aria-label="Pixel art aquarium with collectible fish"
+    >
+      <canvas id="tankCanvas"></canvas>
+    </div>
+
+    <div class="aquarium-bottom">
+      <div class="aquarium-info" id="tankMessage">
+        One fish for every completed day.
+      </div>
+      <div class="aquarium-info" id="tankProgress">
+        TODAY: 0 / 9 GAMES
+      </div>
+    </div>
+
+    <div class="fish-collection" id="fishCollection">
+      <p class="fish-empty">
+        No fish yet. Finish a full day to collect one!
+      </p>
+    </div>
+
+    <p class="aquarium-note">
+      Both players must submit all nine game scores.
+      Each completed day adds one permanent fish to
+      your shared Firebase collection.
+    </p>
+  </div>
+</section>
+
+<div class="depth">✦ ▼ ✦ ▼ ✦</div>
+
+<!-- PRIVATE CHAT -->
 <section id="chat">
   <div class="eyebrow">◈ BELOW THE SURFACE ◈</div>
   <h2 class="section-heading">THE CHAT</h2>
-  <p class="intro">Talk trash. Share wins. Settle the score.</p>
+  <p class="intro">
+    Talk trash. Share wins. Settle the score.
+  </p>
 
   <div class="chat-shell frosted-box">
     <div class="chat-topline">
@@ -1237,7 +1429,9 @@ th:not(:first-child){text-align:center}
       role="log"
       aria-label="Hudson and Noah messages"
     >
-      <div class="chat-empty">SIGN IN TO OPEN CHAT</div>
+      <div class="chat-empty">
+        SIGN IN TO OPEN CHAT
+      </div>
     </div>
 
     <div
@@ -1249,8 +1443,8 @@ th:not(:first-child){text-align:center}
         <span id="replyTitle">REPLYING TO...</span>
         <button
           type="button"
-          id="cancelReply"
           class="cancel-reply"
+          id="cancelReply"
           aria-label="Cancel reply"
         >×</button>
       </div>
@@ -1279,9 +1473,8 @@ th:not(:first-child){text-align:center}
     </form>
 
     <p class="chat-note">
-      Select chat text to copy it. Use REPLY to
-      quote a message or selection. Enter sends;
-      Shift + Enter adds a new line.
+      Select text to copy it, or click REPLY to quote
+      a message. Enter sends; Shift + Enter adds a new line.
     </p>
     <div
       class="chat-feedback"
@@ -1305,10 +1498,37 @@ th:not(:first-child){text-align:center}
   aria-hidden="true"
 ></canvas>
 
+<canvas
+  id="confettiCanvas"
+  class="confetti-canvas"
+  aria-hidden="true"
+  hidden
+></canvas>
+
+<div
+  id="celebration"
+  class="celebration"
+  aria-live="polite"
+  hidden
+>
+  <div class="celebration-card">
+    <div class="celebration-spark">✦ ★ ✦</div>
+    <div
+      id="celebrationTitle"
+      class="celebration-title"
+    >HUDSON WINS!</div>
+    <div
+      id="celebrationSubtitle"
+      class="celebration-sub"
+    >9 games completed. A fish has been unlocked!</div>
+  </div>
+</div>
+
+<!-- ==================================
+     PIXEL ART, SKY SETTINGS, AQUARIUM
+     AND CELEBRATION
+     ================================== -->
 <script>
-/* ======================================
-   APPEARANCE SETTINGS
-   ====================================== */
 function readPreference(key,fallback){
   try{return localStorage.getItem(key)||fallback}
   catch(e){return fallback}
@@ -1318,123 +1538,71 @@ function savePreference(key,value){
   catch(e){}
 }
 
-/*
-  Each theme has its own title contrast
-  settings as well as ocean colors.
-*/
 const SCENES={
   surface:{
-    name:"SURFACE",
-    description:"Original blue sky",
-    sky:"#a9ebfa",
-    skyLow:"#c7f4ff",
-    horizon:"#a0e4f3",
-    water:"#093354",
-    deep:"#082541",
-    foam:"#f0ffff",
-    edge:"#5be5f5",
-    reflection:"#367d9c",
-    cloud:"#f4ffff",
-    celestial:null,
-    ink:"#ffffff",
-    outline:"#007da8",
-    shadow:"#ed4f90",
-    secondary:"#12394f",
+    name:"SURFACE",description:"Original blue sky",
+    sky:"#a9ebfa",skyLow:"#c7f4ff",
+    horizon:"#a0e4f3",water:"#093354",
+    deep:"#082541",foam:"#f0ffff",
+    edge:"#5be5f5",reflection:"#367d9c",
+    cloud:"#f4ffff",celestial:null,
+    ink:"#fff",outline:"#007da8",
+    shadow:"#ed4f90",secondary:"#12394f",
     accent:"#005f81"
   },
   sunrise:{
-    name:"GOLDEN HOUR",
-    description:"Warm morning light",
-    sky:"#ffc49a",
-    skyLow:"#ffe6ba",
-    horizon:"#f5a787",
-    water:"#245579",
-    deep:"#143453",
-    foam:"#ffe9c8",
-    edge:"#ffa977",
-    reflection:"#e9a86c",
-    cloud:"#fff0d5",
-    celestial:"sun",
-    ink:"#fffafa",
-    outline:"#804762",
-    shadow:"#a74759",
-    secondary:"#4b244a",
+    name:"GOLDEN HOUR",description:"Warm morning light",
+    sky:"#ffc49a",skyLow:"#ffe6ba",
+    horizon:"#f5a787",water:"#245579",
+    deep:"#143453",foam:"#ffe9c8",
+    edge:"#ffa977",reflection:"#e9a86c",
+    cloud:"#fff0d5",celestial:"sun",
+    ink:"#fff",outline:"#804762",
+    shadow:"#a74759",secondary:"#4b244a",
     accent:"#6a284b"
   },
   twilight:{
-    name:"TWILIGHT",
-    description:"Purple sunset",
-    sky:"#9986c5",
-    skyLow:"#e3a0a5",
-    horizon:"#bc7fbe",
-    water:"#273b70",
-    deep:"#171f50",
-    foam:"#dcb7f5",
-    edge:"#aa92dc",
-    reflection:"#906db7",
-    cloud:"#e4c4df",
-    celestial:"sunset",
-    ink:"#ffffff",
-    outline:"#263266",
-    shadow:"#ec6ca9",
-    secondary:"#201d50",
+    name:"TWILIGHT",description:"Purple sunset",
+    sky:"#9986c5",skyLow:"#e3a0a5",
+    horizon:"#bc7fbe",water:"#273b70",
+    deep:"#171f50",foam:"#dcb7f5",
+    edge:"#aa92dc",reflection:"#906db7",
+    cloud:"#e4c4df",celestial:"sunset",
+    ink:"#fff",outline:"#263266",
+    shadow:"#ec6ca9",secondary:"#201d50",
     accent:"#231b65"
   },
   midnight:{
-    name:"MIDNIGHT",
-    description:"Stars and moon",
-    sky:"#182946",
-    skyLow:"#304469",
-    horizon:"#456187",
-    water:"#102747",
-    deep:"#091931",
-    foam:"#9abfee",
-    edge:"#587ab5",
-    reflection:"#355a85",
-    cloud:"#405273",
-    celestial:"moon",
-    ink:"#ffffff",
-    outline:"#124d75",
-    shadow:"#d04b9c",
-    secondary:"#f0f9ff",
+    name:"MIDNIGHT",description:"Stars and moon",
+    sky:"#182946",skyLow:"#304469",
+    horizon:"#456187",water:"#102747",
+    deep:"#091931",foam:"#9abfee",
+    edge:"#587ab5",reflection:"#355a85",
+    cloud:"#405273",celestial:"moon",
+    ink:"#fff",outline:"#124d75",
+    shadow:"#d04b9c",secondary:"#f0f9ff",
     accent:"#ffe4a8"
   },
   abyss:{
-    name:"DEEP DIVE",
-    description:"Dark glowing waters",
-    sky:"#0a1935",
-    skyLow:"#112a53",
-    horizon:"#1a4568",
-    water:"#082542",
-    deep:"#041528",
-    foam:"#58d6dc",
-    edge:"#218caa",
-    reflection:"#17617b",
-    cloud:"#173759",
-    celestial:"stars",
-    ink:"#ffffff",
-    outline:"#075b75",
-    shadow:"#dd4191",
-    secondary:"#d8f8ff",
+    name:"DEEP DIVE",description:"Dark glowing waters",
+    sky:"#0a1935",skyLow:"#112a53",
+    horizon:"#1a4568",water:"#082542",
+    deep:"#041528",foam:"#58d6dc",
+    edge:"#218caa",reflection:"#17617b",
+    cloud:"#173759",celestial:"stars",
+    ink:"#fff",outline:"#075b75",
+    shadow:"#dd4191",secondary:"#d8f8ff",
     accent:"#9af3f2"
   },
   arctic:{
-    name:"ARCTIC",
-    description:"Frozen pale-blue sea",
-    sky:"#c9e7ef",
-    skyLow:"#e3f5fb",
-    horizon:"#b0d8e5",
-    water:"#416e8e",
-    deep:"#234d71",
-    foam:"#ffffff",
-    edge:"#a2e7f5",
-    reflection:"#84b5ce",
-    cloud:"#ffffff",
-    celestial:null,
-    ink:"#ffffff",
-    outline:"#356180",
-    shadow:"#cc4a87",
-    secondary:"#183a5a",
+    name:"ARCTIC",description:"Frozen pale-blue sea",
+    sky:"#c9e7ef",skyLow:"#e3f5fb",
+    horizon:"#b0d8e5",water:"#416e8e",
+    deep:"#234d71",foam:"#fff",
+    edge:"#a2e7f5",reflection:"#84b5ce",
+    cloud:"#fff",celestial:null,
+    ink:"#fff",outline:"#356180",
+    shadow:"#cc4a87",secondary:"#183a5a",
     accent:"#175573"
   }
 };
@@ -1442,13 +1610,34 @@ const SCENES={
 let activeScene=readPreference("hnScene","surface");
 if(!SCENES[activeScene])activeScene="surface";
 let snowEnabled=readPreference("hnSnow","on")!=="off";
+let boatChampion=null;
 
+const prefersReducedMotion=window.matchMedia(
+  "(prefers-reduced-motion: reduce)"
+);
+
+function applyScene(){
+  const s=SCENES[activeScene];
+  const root=document.documentElement;
+  root.style.setProperty("--sky-hole",s.sky);
+  root.style.setProperty("--hero-ink",s.ink);
+  root.style.setProperty("--hero-outline",s.outline);
+  root.style.setProperty("--hero-shadow",s.shadow);
+  root.style.setProperty("--hero-secondary",s.secondary);
+  root.style.setProperty("--hero-accent",s.accent);
+}
+applyScene();
+
+/* SETTINGS */
 const settingsButton=document.getElementById("settingsButton");
 const settingsPanel=document.getElementById("settingsPanel");
+const sceneChoices=document.getElementById("sceneChoices");
 
 function openSettings(open){
   settingsPanel.hidden=!open;
-  settingsButton.setAttribute("aria-expanded",String(open));
+  settingsButton.setAttribute(
+    "aria-expanded",String(open)
+  );
   if(open){
     settingsPanel.scrollIntoView({
       behavior:"smooth",block:"start"
@@ -1459,40 +1648,23 @@ settingsButton.addEventListener("click",()=>{
   openSettings(settingsPanel.hidden);
 });
 document.getElementById("closeSettings")
-.addEventListener("click",()=>{
-  openSettings(false);
-  settingsButton.focus();
-});
+  .addEventListener("click",()=>openSettings(false));
 document.addEventListener("keydown",e=>{
   if(e.key==="Escape"&&!settingsPanel.hidden){
     openSettings(false);
-    settingsButton.focus();
   }
 });
 
-function applySceneColors(){
-  const s=SCENES[activeScene];
-  const root=document.documentElement;
-
-  root.style.setProperty("--sky-hole",s.sky);
-  root.style.setProperty("--hero-ink",s.ink);
-  root.style.setProperty("--hero-outline",s.outline);
-  root.style.setProperty("--hero-shadow",s.shadow);
-  root.style.setProperty("--hero-secondary",s.secondary);
-  root.style.setProperty("--hero-accent",s.accent);
-}
-
-const sceneChoices=document.getElementById("sceneChoices");
-
 function renderSceneChoices(){
   sceneChoices.replaceChildren();
-
   Object.entries(SCENES).forEach(([id,s])=>{
     const button=document.createElement("button");
     button.type="button";
-    button.className="scene-choice"+(id===activeScene?" active":"");
-    button.setAttribute("aria-pressed",String(id===activeScene));
-
+    button.className="scene-choice"+
+      (id===activeScene?" active":"");
+    button.setAttribute(
+      "aria-pressed",String(id===activeScene)
+    );
     button.style.setProperty("--preview-sky",s.sky);
     button.style.setProperty("--preview-light",s.horizon);
     button.style.setProperty("--preview-water",s.water);
@@ -1500,100 +1672,97 @@ function renderSceneChoices(){
 
     const preview=document.createElement("span");
     preview.className="scene-preview";
-
     const name=document.createElement("span");
     name.className="scene-name";
     name.textContent=s.name;
-
     const detail=document.createElement("span");
     detail.className="scene-detail";
     detail.textContent=s.description;
 
     button.append(preview,name,detail);
-
     button.addEventListener("click",()=>{
       activeScene=id;
       savePreference("hnScene",id);
-      applySceneColors();
+      applyScene();
       renderSceneChoices();
-      drawScene(performance.now());
+      if(prefersReducedMotion.matches){
+        drawScene(0);
+      }
     });
-
     sceneChoices.appendChild(button);
   });
 }
-applySceneColors();
 renderSceneChoices();
 
 const snowToggle=document.getElementById("snowToggle");
-
 function updateSnowToggle(){
   snowToggle.textContent="SNOW: "+(snowEnabled?"ON":"OFF");
   snowToggle.classList.toggle("on",snowEnabled);
-  snowToggle.setAttribute("aria-pressed",String(snowEnabled));
+  snowToggle.setAttribute(
+    "aria-pressed",String(snowEnabled)
+  );
   document.getElementById("snowOverlay").style.display=
     snowEnabled?"block":"none";
 }
 snowToggle.addEventListener("click",()=>{
   snowEnabled=!snowEnabled;
-  savePreference("hnSnow",snowEnabled?"on":"off");
+  savePreference(
+    "hnSnow",snowEnabled?"on":"off"
+  );
   updateSnowToggle();
 });
 updateSnowToggle();
 
-/* ======================================
-   ORIGINAL PIXEL BOAT & MOVING WAVES
-   ====================================== */
-const canvas=document.getElementById("scene");
-const ctx=canvas.getContext("2d",{alpha:false});
-const reduceMotion=window.matchMedia(
-  "(prefers-reduced-motion: reduce)"
-);
-
-let W=0,H=0;
+/* ==================================
+   ORIGINAL PIXEL BOAT & WAVES
+   ================================== */
+const sceneCanvas=document.getElementById("scene");
+const ctx=sceneCanvas.getContext("2d",{alpha:false});
 const pixel=4;
+let W=0,H=0;
 
 function resizeScene(){
-  const r=canvas.getBoundingClientRect();
+  const r=sceneCanvas.getBoundingClientRect();
   W=Math.ceil(r.width/pixel);
   H=Math.ceil(r.height/pixel);
-  canvas.width=W;
-  canvas.height=H;
+  sceneCanvas.width=W;
+  sceneCanvas.height=H;
   ctx.imageSmoothingEnabled=false;
+  if(prefersReducedMotion.matches)drawScene(0);
 }
 window.addEventListener("resize",resizeScene);
-resizeScene();
 
 function rect(x,y,w,h,c){
   ctx.fillStyle=c;
-  ctx.fillRect(Math.round(x),Math.round(y),
-               Math.round(w),Math.round(h));
+  ctx.fillRect(
+    Math.round(x),Math.round(y),
+    Math.round(w),Math.round(h)
+  );
 }
-
 function waveY(x,t){
   return H*.77
     +Math.sin(x*.042+t*.9)*2.5
     +Math.sin(x*.016-t*.52)*3.5
     +Math.sin(x*.078+t*.36)*1.1;
 }
-
-function cloud(x,y,s,color){
-  rect(x+4*s,y,19*s,4*s,color);
-  rect(x+s,y+4*s,28*s,5*s,color);
-  rect(x+8*s,y-4*s,13*s,4*s,color);
-  rect(x,y+8*s,32*s,4*s,color);
+function cloud(x,y,s,c){
+  rect(x+4*s,y,19*s,4*s,c);
+  rect(x+s,y+4*s,28*s,5*s,c);
+  rect(x+8*s,y-4*s,13*s,4*s,c);
+  rect(x,y+8*s,32*s,4*s,c);
 }
-
 function drawBoat(t){
   const cx=W*.5;
   const surface=waveY(cx,t);
 
   ctx.save();
-  ctx.translate(Math.round(cx),Math.round(surface+1));
+  ctx.translate(
+    Math.round(cx),Math.round(surface+1)
+  );
   ctx.scale(.55,.55);
   ctx.translate(-30,-22);
 
-  // Original mast & flag
+  // Mast and pink flag
   rect(35,-16,2,32,"#17374a");
   rect(37,-15,12,3,"#ff4389");
   rect(37,-12,9,3,"#e34e83");
@@ -1601,8 +1770,6 @@ function drawBoat(t){
   // Cabin
   rect(18,1,28,13,"#f0f8f5");
   rect(21,-4,22,5,"#d9f5f3");
-
-  // Windows
   rect(23,4,8,6,"#5bd5ec");
   rect(34,4,8,6,"#5bd5ec");
   rect(24,5,5,4,"#173c58");
@@ -1621,11 +1788,20 @@ function drawBoat(t){
   rect(4,14,53,7,"#173b50");
   rect(8,21,45,4,"#102d43");
   rect(13,25,35,2,"#092139");
-
-  // Gold details
   rect(6,14,49,2,"#ffe28f");
   rect(16,19,5,2,"#e1c08b");
   rect(39,19,5,2,"#e1c08b");
+
+  // Daily winner's crown: decorative
+  if(boatChampion){
+    const crownX=boatChampion==="Hudson"?21:
+      boatChampion==="Noah"?39:30;
+    rect(crownX-5,-13,10,3,"#ffd85b");
+    rect(crownX-4,-18,3,5,"#ffd85b");
+    rect(crownX-1,-21,3,8,"#fff2a3");
+    rect(crownX+2,-18,3,5,"#ffd85b");
+    rect(crownX-5,-11,10,2,"#a97527");
+  }
 
   ctx.restore();
 
@@ -1640,11 +1816,13 @@ const stars=Array.from({length:65},(_,i)=>({
   size:i%7===0?2:1
 }));
 
-function drawSkyDetails(s,t){
+function skyDetails(s){
   if(s.celestial==="moon"||s.celestial==="stars"){
     stars.forEach(st=>{
-      rect(st.x*W,st.y*H*.62,st.size,st.size,
-        s.celestial==="moon"?"#c9dbed":"#76dbe6");
+      rect(
+        st.x*W,st.y*H*.62,st.size,st.size,
+        s.celestial==="moon"?"#c9dbed":"#76dbe6"
+      );
     });
   }
   if(s.celestial==="moon"){
@@ -1659,34 +1837,25 @@ function drawSkyDetails(s,t){
     rect(x-8,y-8,16,16,"#ffe2a1");
     rect(x-11,y-5,22,10,"#ffe2a1");
   }
-  if(s.celestial==="stars"){
-    for(let i=0;i<5;i++){
-      rect(W*(.12+i*.19),H*.65+(i%2)*3,
-        9,1,"#358ca5");
-    }
-  }
 }
 
 function drawScene(time){
-  const t=reduceMotion.matches?0:time*.001;
+  const t=prefersReducedMotion.matches?0:time*.001;
   const s=SCENES[activeScene];
 
   ctx.fillStyle=s.skyLow;
   ctx.fillRect(0,0,W,H);
-
   rect(0,0,W,H*.54,s.sky);
 
   cloud(W*.08,27,1.15,s.cloud);
   cloud(W*.75,20,1.65,s.cloud);
   cloud(W*.87,53,.55,s.cloud);
-
-  drawSkyDetails(s,t);
+  skyDetails(s);
 
   for(let x=0;x<W;x+=8){
     const y=waveY(x,t);
     if(y>0){
-      rect(x,H*.69,8,
-        Math.max(0,y-H*.69),s.horizon);
+      rect(x,H*.69,8,Math.max(0,y-H*.69),s.horizon);
     }
   }
 
@@ -1710,17 +1879,17 @@ function drawScene(time){
 
   drawBoat(t);
 
-  if(!reduceMotion.matches){
+  if(!prefersReducedMotion.matches){
     requestAnimationFrame(drawScene);
   }
 }
+resizeScene();
 requestAnimationFrame(drawScene);
 
-/* Animated wave title */
 const waveTitle=document.getElementById("waveTitle");
-const original=waveTitle.textContent.trim();
+const originalTitle=waveTitle.textContent.trim();
 waveTitle.textContent="";
-[...original].forEach((ch,i)=>{
+[...originalTitle].forEach((ch,i)=>{
   const span=document.createElement("span");
   span.className="letter";
   span.style.setProperty("--i",i);
@@ -1728,24 +1897,24 @@ waveTitle.textContent="";
   waveTitle.appendChild(span);
 });
 
-/* ======================================
-   FALLING PIXEL SNOW
-   ====================================== */
+/* ==================================
+   PIXEL SNOW
+   ================================== */
 (function(){
   const snow=document.getElementById("snowOverlay");
-  const snowCtx=snow.getContext("2d");
+  const sctx=snow.getContext("2d");
   let flakes=[],width=0,height=0,lastFrame=0;
 
-  function resizeSnow(){
+  function resize(){
     width=window.innerWidth;
     height=window.innerHeight;
     snow.width=width;
     snow.height=height;
-    snowCtx.imageSmoothingEnabled=false;
+    sctx.imageSmoothingEnabled=false;
 
-    const count=Math.min(120,
-      Math.max(45,Math.floor(width*height/10500)));
-
+    const count=Math.min(
+      120,Math.max(45,Math.floor(width*height/10500))
+    );
     flakes=Array.from({length:count},(_,i)=>({
       x:Math.random()*width,
       y:Math.random()*height,
@@ -1753,18 +1922,17 @@ waveTitle.textContent="";
       speed:.45+Math.random()*.85,
       drift:(Math.random()-.5)*.6
     }));
-    paintSnow(true);
+    paint(true);
   }
 
-  function paintSnow(still=false){
-    snowCtx.clearRect(0,0,width,height);
-    snowCtx.fillStyle="rgba(245,252,255,.9)";
-
-    for(const f of flakes){
-      snowCtx.fillRect(
-        Math.round(f.x),Math.round(f.y),f.size,f.size
+  function paint(still=false){
+    sctx.clearRect(0,0,width,height);
+    sctx.fillStyle="rgba(245,252,255,.9)";
+    flakes.forEach(f=>{
+      sctx.fillRect(
+        Math.round(f.x),Math.round(f.y),
+        f.size,f.size
       );
-
       if(!still){
         f.y+=f.speed;
         f.x+=f.drift;
@@ -1775,28 +1943,27 @@ waveTitle.textContent="";
         if(f.x>width)f.x=0;
         if(f.x<0)f.x=width;
       }
-    }
+    });
   }
 
-  function animateSnow(t){
-    if(reduceMotion.matches)return;
+  function animate(t){
+    if(prefersReducedMotion.matches)return;
     if(t-lastFrame>28){
-      if(snowEnabled)paintSnow();
+      if(snowEnabled)paint();
       lastFrame=t;
     }
-    requestAnimationFrame(animateSnow);
+    requestAnimationFrame(animate);
   }
-
-  window.addEventListener("resize",resizeSnow);
-  resizeSnow();
-  if(!reduceMotion.matches){
-    requestAnimationFrame(animateSnow);
+  window.addEventListener("resize",resize);
+  resize();
+  if(!prefersReducedMotion.matches){
+    requestAnimationFrame(animate);
   }
 })();
 
-/* ======================================
-   EVERGREEN GARLAND
-   ====================================== */
+/* ==================================
+   PIXEL GARLAND
+   ================================== */
 (function(){
   const garland=document.getElementById("christmasGarland");
   for(let i=0;i<36;i++){
@@ -1814,12 +1981,337 @@ waveTitle.textContent="";
     garland.appendChild(berry);
   }
 })();
+
+/* ==================================
+   AQUARIUM — PIXEL FISH ART
+   ================================== */
+
+/*
+  Fish species are stored in Firebase.
+  Animation and positions are purely visual.
+*/
+
+const FISH_SPECIES={
+  clown:{
+    name:"CLOWNFISH",
+    color:"#ffab66",
+    accent:"#ffffff"
+  },
+  blue:{
+    name:"BLUE TANG",
+    color:"#54cfff",
+    accent:"#ffe26c"
+  },
+  pink:{
+    name:"PINK GUPPY",
+    color:"#ff82b9",
+    accent:"#ffd5e9"
+  },
+  gold:{
+    name:"GOLDFISH",
+    color:"#ffd56f",
+    accent:"#ff9b49"
+  },
+  mint:{
+    name:"MINT MINNOW",
+    color:"#8cffd5",
+    accent:"#3dc2a5"
+  },
+  violet:{
+    name:"VIOLET FIN",
+    color:"#c1a0ff",
+    accent:"#f1dfff"
+  },
+  coral:{
+    name:"CORAL DART",
+    color:"#ff8e88",
+    accent:"#ffe59c"
+  },
+  pearl:{
+    name:"PEARL FISH",
+    color:"#e2f5ff",
+    accent:"#8bb8f5"
+  }
+};
+
+const aquariumCanvas=document.getElementById("tankCanvas");
+const aq=aquariumCanvas.getContext("2d",{alpha:false});
+
+let aquariumFish=[];
+let tankW=0,tankH=0;
+
+/* Deterministic fish selection by date */
+function fishForDate(date){
+  let hash=17;
+  for(const ch of date){
+    hash=(hash*31+ch.charCodeAt(0))>>>0;
+  }
+  const species=Object.keys(FISH_SPECIES);
+  return species[hash%species.length];
+}
+
+function resizeTank(){
+  const rect=aquariumCanvas.getBoundingClientRect();
+  tankW=Math.max(1,Math.ceil(rect.width/3));
+  tankH=Math.max(1,Math.ceil(rect.height/3));
+  aquariumCanvas.width=tankW;
+  aquariumCanvas.height=tankH;
+  aq.imageSmoothingEnabled=false;
+}
+window.addEventListener("resize",resizeTank);
+
+/* Small colored squares form pixel fish */
+function fishPixel(x,y,w,h,c){
+  aq.fillStyle=c;
+  aq.fillRect(
+    Math.round(x),Math.round(y),
+    Math.round(w),Math.round(h)
+  );
+}
+
+function drawFish(x,y,scale,colors,flip,t){
+  aq.save();
+  aq.translate(Math.round(x),Math.round(y));
+  aq.scale(flip*scale,scale);
+
+  const wag=Math.round(Math.sin(t*5)*1.5);
+
+  // Tail
+  fishPixel(-14,-5+wag,6,5,colors.accent);
+  fishPixel(-16,-2+wag,8,5,colors.color);
+  fishPixel(-14,3+wag,6,5,colors.accent);
+
+  // Fins
+  fishPixel(-4,-9,8,4,colors.accent);
+  fishPixel(0,6,7,4,colors.accent);
+
+  // Body
+  fishPixel(-9,-6,16,13,colors.color);
+  fishPixel(-5,-8,12,2,colors.color);
+  fishPixel(7,-4,6,9,colors.color);
+  fishPixel(-9,-2,22,5,colors.color);
+
+  // Stripe
+  fishPixel(-2,-6,3,13,colors.accent);
+
+  // Eye
+  fishPixel(9,-2,2,2,"#09243c");
+
+  aq.restore();
+}
+
+function tankDecoration(t){
+  const w=tankW,h=tankH;
+
+  // Water
+  aq.fillStyle="#0a3656";
+  aq.fillRect(0,0,w,h);
+
+  // Light beams
+  for(let i=0;i<4;i++){
+    aq.fillStyle="rgba(119,224,245,.055)";
+    aq.beginPath();
+    aq.moveTo(w*(i*.3),0);
+    aq.lineTo(w*(i*.3+.08),0);
+    aq.lineTo(w*(i*.3+.23),h);
+    aq.lineTo(w*(i*.3+.1),h);
+    aq.fill();
+  }
+
+  // Sandy bottom
+  fishPixel(0,h-20,w,20,"#c3a875");
+  fishPixel(0,h-17,w,3,"#e5c58a");
+
+  // Little rocks
+  for(let i=0;i<12;i++){
+    const x=(i*67+13)%w;
+    const y=h-21;
+    fishPixel(x,y,8,5,"#52738d");
+    fishPixel(x+2,y-3,4,3,"#7295a4");
+  }
+
+  // Seaweed
+  for(let i=0;i<8;i++){
+    const base=(i+.5)*w/8;
+    const height=18+(i%4)*8;
+    for(let j=0;j<height;j+=4){
+      const bend=Math.sin(t*1.4+i+j*.09)*2.3;
+      fishPixel(
+        base+bend,
+        h-21-j,
+        3,6,
+        j%3===0?"#4fc09e":"#238b77"
+      );
+    }
+  }
+
+  // Pixel treasure chest
+  const cx=w*.5-13;
+  const cy=h-32;
+  fishPixel(cx,cy,26,13,"#79543f");
+  fishPixel(cx,cy-5,26,5,"#b98345");
+  fishPixel(cx+2,cy-7,22,3,"#e0b66b");
+  fishPixel(cx+11,cy-2,4,13,"#f6d17b");
+  fishPixel(cx+11,cy+2,4,4,"#5b3a20");
+
+  // Rising bubbles
+  for(let i=0;i<17;i++){
+    const px=(i*71+25)%w;
+    const speed=(i%4+1)*.4;
+    const py=(h-((t*12*speed+i*23)%h));
+    aq.strokeStyle="#6ac6db";
+    aq.lineWidth=1;
+    aq.strokeRect(px+Math.sin(t+i)*2,py,3,3);
+  }
+}
+
+/* Fish positions stay consistent for each entry */
+function visualFishFromEntries(entries){
+  aquariumFish=entries
+    .slice(-16)
+    .map(([date,entry],i)=>({
+      date,
+      species:entry.species,
+      phase:i*2.17,
+      speed:.45+(i%4)*.16,
+      yFraction:.2+(i%5)*.12,
+      direction:i%2===0?1:-1,
+      scale:1+(i%3)*.18
+    }));
+}
+
+function drawTank(time){
+  const t=prefersReducedMotion.matches?0:time*.001;
+  tankDecoration(t);
+
+  aquariumFish.forEach((f,i)=>{
+    const colors=FISH_SPECIES[f.species];
+    if(!colors)return;
+
+    const travel=t*f.speed*9+f.phase*19;
+    const path=(travel%(tankW+60));
+    const x=f.direction===1
+      ?path-30
+      :tankW+30-path;
+
+    const y=tankH*f.yFraction+
+      Math.sin(t*1.6+f.phase)*3;
+
+    drawFish(
+      x,y,f.scale,colors,
+      f.direction,t
+    );
+  });
+
+  if(!aquariumFish.length){
+    aq.fillStyle="#a7e9ee";
+    aq.font="10px monospace";
+    aq.textAlign="center";
+    aq.fillText(
+      "YOUR FIRST FISH IS WAITING...",
+      tankW/2,tankH*.42
+    );
+    aq.textAlign="left";
+  }
+
+  if(!prefersReducedMotion.matches){
+    requestAnimationFrame(drawTank);
+  }
+}
+
+resizeTank();
+requestAnimationFrame(drawTank);
+
+/* ==================================
+   PIXEL CONFETTI CELEBRATION
+   ================================== */
+const confettiCanvas=document.getElementById("confettiCanvas");
+const confettiCtx=confettiCanvas.getContext("2d");
+const celebration=document.getElementById("celebration");
+let confettiPieces=[];
+let celebrationTimer=null;
+
+function startCelebration(winner){
+  const title=document.getElementById("celebrationTitle");
+  const subtitle=document.getElementById(
+    "celebrationSubtitle"
+  );
+
+  title.textContent=winner==="Hudson"
+    ?"HUDSON WINS!"
+    :winner==="Noah"
+    ?"NOAH WINS!"
+    :"IT'S A TIE!";
+
+  subtitle.textContent=
+    "ALL 9 GAMES COMPLETE! A NEW FISH IS UNLOCKED.";
+
+  celebration.hidden=false;
+  confettiCanvas.hidden=false;
+
+  const width=window.innerWidth;
+  const height=window.innerHeight;
+
+  confettiCanvas.width=width;
+  confettiCanvas.height=height;
+
+  const colors=[
+    "#ffe76a","#ff4389","#31f0ff",
+    "#8cffd5","#ffffff","#cba7ff"
+  ];
+
+  confettiPieces=Array.from({length:150},(_,i)=>({
+    x:Math.random()*width,
+    y:-Math.random()*height*.6,
+    vx:(Math.random()-.5)*3,
+    vy:2.5+Math.random()*4,
+    size:4+Math.floor(Math.random()*3)*3,
+    color:colors[i%colors.length],
+    angle:Math.random()*6.3
+  }));
+
+  const started=performance.now();
+
+  function paint(now){
+    const elapsed=now-started;
+
+    confettiCtx.clearRect(0,0,width,height);
+    confettiPieces.forEach(p=>{
+      p.x+=p.vx+Math.sin(now*.003+p.angle)*.5;
+      p.y+=p.vy;
+      confettiCtx.fillStyle=p.color;
+      confettiCtx.fillRect(
+        Math.round(p.x),
+        Math.round(p.y),
+        p.size,p.size
+      );
+    });
+
+    if(elapsed<4300&&!prefersReducedMotion.matches){
+      requestAnimationFrame(paint);
+    }else{
+      confettiCanvas.hidden=true;
+    }
+  }
+
+  if(!prefersReducedMotion.matches){
+    requestAnimationFrame(paint);
+  }else{
+    confettiCanvas.hidden=true;
+  }
+
+  clearTimeout(celebrationTimer);
+  celebrationTimer=setTimeout(()=>{
+    celebration.hidden=true;
+    confettiCanvas.hidden=true;
+  },4500);
+}
 </script>
 
+<!-- ==================================
+     FIREBASE: SCORES, FISH & CHAT
+     ================================== -->
 <script type="module">
-/* ======================================
-   FIREBASE
-   ====================================== */
 import {initializeApp} from
 "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
 
@@ -1838,6 +2330,7 @@ import {
   set,
   push,
   onValue,
+  runTransaction,
   serverTimestamp
 } from
 "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
@@ -1857,132 +2350,100 @@ const playerUIDs={
   Noah:"9z0DZkm6dLStYQjGekWRMeIbeKx2"
 };
 
-/* ======================================
-   NINE GAMES — FINAL ORDER
-   ====================================== */
+/* ==================================
+   GAMES — NINE IN REQUESTED ORDER
+   ================================== */
 const games=[
   {
-    id:"krillion",
-    name:"KRILLION",
+    id:"krillion",name:"KRILLION",
     description:"Find the rarest answers and dive deeper.",
-    url:"https://krillion.io",
-    domain:"krillion.io",
-    color:"#31edff",
-    direction:"higher",
-    fallback:"K",
-    label:"TOTAL POINTS",
+    url:"https://krillion.io",domain:"krillion.io",
+    color:"#31edff",direction:"higher",
+    fallback:"K",label:"TOTAL POINTS",
     help:"Enter your final rarity points. Higher wins.",
     min:0,max:1000000000,integer:false
   },
   {
-    id:"maptap",
-    name:"MAPTAP",
+    id:"maptap",name:"MAPTAP",
     description:"Test how well you know the map.",
-    url:"https://maptap.gg",
-    domain:"maptap.gg",
-    color:"#89ffad",
-    direction:"higher",
-    fallback:"M",
-    label:"DAILY POINTS",
+    url:"https://maptap.gg",domain:"maptap.gg",
+    color:"#89ffad",direction:"higher",
+    fallback:"M",label:"DAILY POINTS",
     help:"Enter your daily score out of 1,000. Higher wins.",
     min:0,max:1000,integer:false
   },
   {
-    id:"chainle",
-    name:"CHAINLE",
+    id:"chainle",name:"CHAINLE",
     description:"Connect clues across five word rounds.",
-    url:"https://chainle.io/",
-    domain:"chainle.io",
-    color:"#f8b667",
-    direction:"higher",
-    fallback:"C",
-    label:"POINTS OUT OF 5000",
-    help:"Enter your final score from 0 to 5,000. Higher wins.",
+    url:"https://chainle.io/",domain:"chainle.io",
+    color:"#f8b667",direction:"higher",
+    fallback:"C",label:"POINTS OUT OF 5000",
+    help:"Enter a whole-number score from 0 to 5,000. Higher wins.",
     min:0,max:5000,integer:true
   },
   {
-    id:"globle",
-    name:"GLOBLE",
+    id:"globle",name:"GLOBLE",
     description:"Find the mystery country using heat clues.",
     url:"https://globle-game.com/game",
     domain:"globle-game.com",
-    color:"#67ffe3",
-    direction:"lower",
-    fallback:"G",
-    label:"COUNTRY GUESSES",
+    color:"#67ffe3",direction:"lower",
+    fallback:"G",label:"COUNTRY GUESSES",
     help:"Enter your number of guesses. Fewer wins.",
     min:1,max:1000000,integer:true
   },
   {
-    id:"farflung",
-    name:"FARFLUNG",
+    id:"farflung",name:"FARFLUNG",
     description:"Pin rare correct countries across five prompts.",
-    url:"https://farflung.game",
-    domain:"farflung.game",
-    color:"#ffda7a",
-    direction:"higher",
-    fallback:"F",
-    label:"DISTANCE / POINTS",
+    url:"https://farflung.game",domain:"farflung.game",
+    color:"#ffda7a",direction:"higher",
+    fallback:"F",label:"DISTANCE / POINTS",
     help:"Use the same score units as the other player. Higher wins.",
     min:0,max:1000000000,integer:false
   },
   {
-    id:"kabloom",
-    name:"KABLOOM",
+    id:"kabloom",name:"KABLOOM",
     description:"Complete seven questions without reusing answers.",
-    url:"https://kabloom.io",
-    domain:"kabloom.io",
-    color:"#e9a0ff",
-    direction:"higher",
-    fallback:"K",
-    label:"QUESTIONS CLEARED",
+    url:"https://kabloom.io",domain:"kabloom.io",
+    color:"#e9a0ff",direction:"higher",
+    fallback:"K",label:"QUESTIONS CLEARED",
     help:"Enter questions cleared from 0 to 7. Higher wins.",
     min:0,max:7,integer:true
   },
   {
-    id:"magnitudle",
-    name:"SIZE IT UP",
+    id:"magnitudle",name:"SIZE IT UP",
     description:"Estimate sizes across five rounds.",
     url:"https://magnitudle.com/size-it-up",
     domain:"magnitudle.com",
-    color:"#ffc36d",
-    direction:"higher",
-    fallback:"S",
-    label:"POINTS OUT OF 500",
+    color:"#ffc36d",direction:"higher",
+    fallback:"S",label:"POINTS OUT OF 500",
     help:"Enter your total points out of 500. Higher wins.",
     min:0,max:500,integer:false
   },
   {
-    id:"hooked",
-    name:"HOOKED",
+    id:"hooked",name:"HOOKED",
     description:"Catch rare answers across five trivia rounds.",
     url:"https://hookeddailygame.com/",
     domain:"hookeddailygame.com",
-    color:"#ff79a6",
-    direction:"higher",
-    fallback:"H",
-    label:"TOTAL CATCH WEIGHT (LBS)",
-    help:"Enter total catch weight in pounds. Higher wins.",
+    color:"#ff79a6",direction:"higher",
+    fallback:"H",label:"TOTAL CATCH WEIGHT (LBS)",
+    help:"Enter your catch weight in pounds. Higher wins.",
     min:0,max:1000000000,integer:false
   },
   {
-    id:"extraplot",
-    name:"EXTRAPLOT",
+    id:"extraplot",name:"EXTRAPLOT",
     description:"Draw where the chart goes next.",
     url:"https://guessdash.com/extraplot?utm_source=wordleverse.net",
     domain:"guessdash.com",
-    color:"#b9a5ff",
-    direction:"higher",
-    fallback:"E",
-    label:"POINTS OUT OF 5000",
-    help:"Enter your final ExtraPlot score from 0 to 5,000. Higher wins.",
+    color:"#b9a5ff",direction:"higher",
+    fallback:"E",label:"POINTS OUT OF 5000",
+    help:"Enter your total ExtraPlot points out of 5,000. Higher wins.",
     min:0,max:5000,integer:true
   }
 ];
 
-/* ======================================
-   INITIALIZE DATABASE
-   ====================================== */
+/* ==================================
+   FIREBASE STATE
+   ================================== */
 const app=initializeApp(firebaseConfig);
 const auth=getAuth(app);
 const db=getDatabase(app);
@@ -1996,35 +2457,41 @@ let day=getDay();
 
 let unsubscribeScores=null;
 let unsubscribeChat=null;
+let unsubscribeAquarium=null;
+
 let synced=false;
 let saving=false;
 let chatReady=false;
 let sending=false;
+let awardingFish=false;
+
+let fishRecords={};
+let completedDay=false;
+let completedGames=0;
 
 const REPLY_MARKER="\u21AA ";
 let replyDraft=null;
 let selectedChatText=null;
 
-/* ======================================
-   EASTERN TIME
-   ====================================== */
+/* ==================================
+   EASTERN DATES
+   ================================== */
 function getDay(){
   const parts=new Intl.DateTimeFormat("en-US",{
     timeZone:"America/New_York",
-    year:"numeric",month:"2-digit",day:"2-digit"
+    year:"numeric",
+    month:"2-digit",
+    day:"2-digit"
   }).formatToParts(new Date());
-
   const p=type=>parts.find(x=>x.type===type).value;
   return `${p("year")}-${p("month")}-${p("day")}`;
 }
-
 function displayDate(){
   return new Intl.DateTimeFormat("en-US",{
     timeZone:"America/New_York",
     weekday:"short",month:"short",day:"numeric"
   }).format(new Date()).toUpperCase();
 }
-
 function messageTime(timestamp){
   if(typeof timestamp!=="number")return "SENDING...";
   return new Intl.DateTimeFormat("en-US",{
@@ -2034,9 +2501,9 @@ function messageTime(timestamp){
   }).format(new Date(timestamp));
 }
 
-/* ======================================
-   GAME CARDS
-   ====================================== */
+/* ==================================
+   GAME GRID
+   ================================== */
 function renderCards(){
   $("gameGrid").innerHTML=games.map(g=>`
     <a
@@ -2071,35 +2538,32 @@ function renderCards(){
     ).join("");
 }
 
-/* ======================================
+/* ==================================
    AUTHENTICATION
-   ====================================== */
+   ================================== */
 function updateSaveButton(){
   $("saveBtn").disabled=!player||!synced||saving;
 }
-
 function updateChatControls(){
   const allowed=!!player&&chatReady&&!sending;
   $("chatInput").disabled=!allowed;
   $("chatSend").disabled=!allowed;
 }
-
 function setPlayer(name){
   player=name;
   updateSaveButton();
   updateChatControls();
   fillScore();
 }
-
 $("loginBtn").addEventListener("click",async()=>{
   $("authStatus").textContent="SIGNING IN...";
   try{
     await signInWithPopup(auth,provider);
   }catch(error){
-    $("authStatus").textContent="LOGIN FAILED: "+error.message;
+    $("authStatus").textContent=
+      "LOGIN FAILED: "+error.message;
   }
 });
-
 $("logoutBtn").addEventListener("click",async()=>{
   try{
     await signOut(auth);
@@ -2107,12 +2571,13 @@ $("logoutBtn").addEventListener("click",async()=>{
     $("authStatus").textContent=error.message;
   }
 });
-
 onAuthStateChanged(auth,user=>{
   currentUser=user;
 
   const found=user
-    ?Object.keys(playerUIDs).find(name=>playerUIDs[name]===user.uid)
+    ?Object.keys(playerUIDs).find(
+      name=>playerUIDs[name]===user.uid
+    )
     :null;
 
   setPlayer(found||"");
@@ -2121,31 +2586,38 @@ onAuthStateChanged(auth,user=>{
   clearReply();
 
   if(!user){
-    $("authStatus").textContent="SIGN IN TO SUBMIT SCORES AND CHAT";
+    $("authStatus").textContent=
+      "SIGN IN TO SUBMIT SCORES AND CHAT";
     $("uidDisplay").textContent="";
   }else if(found){
-    $("authStatus").textContent="SIGNED IN AS "+found.toUpperCase();
+    $("authStatus").textContent=
+      "SIGNED IN AS "+found.toUpperCase();
     $("uidDisplay").textContent="";
   }else{
-    $("authStatus").textContent="ACCOUNT NOT APPROVED. YOUR UID:";
+    $("authStatus").textContent=
+      "ACCOUNT NOT APPROVED. YOUR UID:";
     $("uidDisplay").textContent=user.uid;
   }
 
   startChat();
+  maybeAwardFish();
 });
 
-/* ======================================
+/* ==================================
    SCORE INPUT
-   ====================================== */
+   ================================== */
 function selectedGame(){
   return games.find(g=>g.id===$("gameSelect").value);
 }
-
 function fillScore(){
   const g=selectedGame();
   const current=g?scores[g.id]?.[player]:undefined;
 
-  $("scoreInput").value=current===undefined?"":current;
+  if(document.activeElement!==$("scoreInput")){
+    $("scoreInput").value=
+      current===undefined?"":current;
+  }
+
   $("scoreLabel").textContent=g?g.label:"SCORE";
   $("scoreHelp").textContent=g?g.help:
     "Select a game to see how scoring works.";
@@ -2156,18 +2628,16 @@ function fillScore(){
   $("scoreInput").placeholder=g?g.label:"Enter score";
 }
 
-/* ======================================
-   LIVE FIREBASE SCORES
-   ====================================== */
+/* ==================================
+   REALTIME SCORES
+   ================================== */
 function subscribeScores(){
-  if(unsubscribeScores){
-    unsubscribeScores();
-    unsubscribeScores=null;
-  }
+  if(unsubscribeScores)unsubscribeScores();
 
   synced=false;
   updateSaveButton();
-  $("syncStatus").textContent="CONNECTING TO LIVE LEADERBOARD...";
+  $("syncStatus").textContent=
+    "CONNECTING TO LIVE LEADERBOARD...";
 
   unsubscribeScores=onValue(
     ref(db,"dailyScores/"+day),
@@ -2178,9 +2648,9 @@ function subscribeScores(){
       games.forEach(g=>{
         updated[g.id]={};
         ["Hudson","Noah"].forEach(name=>{
-          const value=data[g.id]?.[name];
-          if(typeof value==="number"&&Number.isFinite(value)){
-            updated[g.id][name]=value;
+          const v=data[g.id]?.[name];
+          if(typeof v==="number"&&Number.isFinite(v)){
+            updated[g.id][name]=v;
           }
         });
       });
@@ -2189,19 +2659,23 @@ function subscribeScores(){
       synced=true;
       renderScores();
       updateSaveButton();
-      $("syncStatus").textContent="● LIVE SCORES CONNECTED";
+      $("syncStatus").textContent=
+        "● LIVE SCORES CONNECTED";
+
+      maybeAwardFish();
     },
     error=>{
       synced=false;
       updateSaveButton();
-      $("syncStatus").textContent="LIVE SYNC ERROR: "+error.message;
+      $("syncStatus").textContent=
+        "LIVE SYNC ERROR: "+error.message;
     }
   );
 }
 
-/* ======================================
-   SAVE SCORE
-   ====================================== */
+/* ==================================
+   SCORE SAVING
+   ================================== */
 async function saveScore(){
   if(saving)return;
 
@@ -2212,7 +2686,8 @@ async function saveScore(){
 
   if(!currentUser||!player||
      currentUser.uid!==playerUIDs[player]){
-    feedback.textContent="SIGN IN WITH YOUR APPROVED ACCOUNT";
+    feedback.textContent=
+      "SIGN IN WITH YOUR APPROVED ACCOUNT";
     return;
   }
   if(!synced){
@@ -2252,7 +2727,8 @@ async function saveScore(){
     feedback.textContent="SCORE SAVED & SYNCED";
   }catch(error){
     feedback.style.color="#ff79a6";
-    feedback.textContent="SAVE FAILED: "+error.message;
+    feedback.textContent=
+      "SAVE FAILED: "+error.message;
   }finally{
     saving=false;
     $("saveBtn").textContent="▼ SAVE SCORE ▼";
@@ -2260,29 +2736,37 @@ async function saveScore(){
   }
 }
 
-/* ======================================
-   DAILY WINNERS
-   ====================================== */
+/* ==================================
+   GAME WINNERS
+   ================================== */
 function winnerOf(g){
   const entry=scores[g.id]||{};
-  const h=entry.Hudson;
-  const n=entry.Noah;
-
+  const h=entry.Hudson,n=entry.Noah;
   if(h===undefined||n===undefined)return null;
   if(h===n)return "TIE";
   return (g.direction==="higher"?h>n:h<n)?"HK":"NB";
 }
+function calculateResults(){
+  let hk=0,nb=0,complete=0;
+  games.forEach(g=>{
+    const result=winnerOf(g);
+    if(result!==null)complete++;
+    if(result==="HK")hk++;
+    if(result==="NB")nb++;
+  });
+  return {
+    hk,nb,complete,
+    done:complete===games.length,
+    winner:hk>nb?"Hudson":nb>hk?"Noah":"Tie"
+  };
+}
 
 function renderScores(){
-  let hk=0,nb=0,completed=0;
+  const outcome=calculateResults();
 
   $("scoreRows").innerHTML=games.map(g=>{
     const entry=scores[g.id]||{};
     const winner=winnerOf(g);
-
-    if(winner!==null)completed++;
-    if(winner==="HK")hk++;
-    if(winner==="NB")nb++;
 
     const value=v=>v===undefined?"—":v;
 
@@ -2302,19 +2786,42 @@ function renderScores(){
     `;
   }).join("");
 
-  $("hudsonWins").textContent=hk;
-  $("noahWins").textContent=nb;
+  $("hudsonWins").textContent=outcome.hk;
+  $("noahWins").textContent=outcome.nb;
 
-  if(hk>nb){
-    $("champion").textContent=
-      completed===games.length?"HUDSON WINS!":"HUDSON LEADS";
-  }else if(nb>hk){
-    $("champion").textContent=
-      completed===games.length?"NOAH WINS!":"NOAH LEADS";
-  }else if(completed===games.length){
+  if(outcome.hk>outcome.nb){
+    $("champion").textContent=outcome.done
+      ?"HUDSON WINS!":"HUDSON LEADS";
+  }else if(outcome.nb>outcome.hk){
+    $("champion").textContent=outcome.done
+      ?"NOAH WINS!":"NOAH LEADS";
+  }else if(outcome.done){
     $("champion").textContent="IT'S A TIE!";
   }else{
     $("champion").textContent="STILL PLAYING...";
+  }
+
+  completedDay=outcome.done;
+  completedGames=outcome.complete;
+  $("tankProgress").textContent=
+    "TODAY: "+completedGames+" / 9 GAMES";
+
+  boatChampion=outcome.done
+    ?outcome.winner
+    :null;
+
+  $("winRibbon").hidden=!outcome.done;
+
+  if(outcome.done){
+    $("winRibbonTitle").textContent=
+      outcome.winner==="Tie"
+        ?"★ SHARED VICTORY ★"
+        :"★ "+outcome.winner.toUpperCase()+" WINS ★";
+
+    $("winRibbonText").textContent=
+      "All nine games complete. A new fish joins the tank!";
+
+    maybeCelebrate(outcome.winner);
   }
 
   if(document.activeElement!==$("scoreInput")){
@@ -2322,41 +2829,171 @@ function renderScores(){
   }
 }
 
-/* ======================================
-   CHAT REPLIES
-   ====================================== */
+/* Celebrate only once per day per device */
+function maybeCelebrate(winner){
+  const key="hnCelebrated_"+day;
+  try{
+    if(localStorage.getItem(key)==="yes")return;
+    localStorage.setItem(key,"yes");
+  }catch(e){
+    if(window._celebratedDay===day)return;
+    window._celebratedDay=day;
+  }
+  startCelebration(winner);
+}
+
+/* ==================================
+   SHARED AQUARIUM — FIREBASE
+   ================================== */
+
+function subscribeAquarium(){
+  if(unsubscribeAquarium)unsubscribeAquarium();
+
+  unsubscribeAquarium=onValue(
+    ref(db,"aquarium/days"),
+    snapshot=>{
+      fishRecords=snapshot.val()||{};
+
+      const entries=Object.entries(fishRecords)
+        .filter(([date,value])=>
+          value&&FISH_SPECIES[value.species]
+        )
+        .sort((a,b)=>a[0].localeCompare(b[0]));
+
+      visualFishFromEntries(entries);
+      renderAquariumCollection(entries);
+
+      $("aquariumStatus").textContent=
+        "● SHARED AQUARIUM SYNCED WITH FIREBASE";
+
+      maybeAwardFish();
+    },
+    error=>{
+      $("aquariumStatus").textContent=
+        "AQUARIUM SYNC ERROR: "+error.message;
+    }
+  );
+}
+
+function renderAquariumCollection(entries){
+  $("fishTotal").textContent=
+    entries.length+" "+(entries.length===1?"FISH":"FISH");
+
+  const list=$("fishCollection");
+  list.replaceChildren();
+
+  if(!entries.length){
+    const empty=document.createElement("p");
+    empty.className="fish-empty";
+    empty.textContent=
+      "No fish yet. Finish all nine games together!";
+    list.appendChild(empty);
+  }else{
+    entries.slice().reverse().slice(0,20)
+      .forEach(([date,record])=>{
+        const species=FISH_SPECIES[record.species];
+        const chip=document.createElement("span");
+        chip.className="fish-chip";
+        chip.title="Unlocked "+date;
+
+        const color=document.createElement("span");
+        color.className="fish-color";
+        color.style.setProperty(
+          "--fish-color",species.color
+        );
+
+        chip.appendChild(color);
+        chip.appendChild(
+          document.createTextNode(species.name)
+        );
+        list.appendChild(chip);
+      });
+  }
+
+  $("tankMessage").textContent=entries.length
+    ?"Latest catch: "+
+      FISH_SPECIES[entries[entries.length-1][1].species].name
+    :"One fish for every completed day.";
+}
+
+/*
+  A Firebase transaction stops both players
+  from awarding duplicate fish on the same day.
+
+  Firebase rules independently verify that
+  every one of the nine games has two scores.
+*/
+async function maybeAwardFish(){
+  if(
+    awardingFish||
+    !synced||
+    !completedDay||
+    !currentUser||
+    !player||
+    fishRecords[day]
+  )return;
+
+  awardingFish=true;
+
+  try{
+    const species=fishForDate(day);
+    const fishRef=ref(db,"aquarium/days/"+day);
+
+    const result=await runTransaction(
+      fishRef,
+      current=>{
+        if(current!==null)return;
+        return {
+          species,
+          awardedBy:currentUser.uid,
+          earnedAt:Date.now()
+        };
+      },
+      {applyLocally:false}
+    );
+
+    if(result.committed){
+      $("aquariumStatus").textContent=
+        "★ NEW FISH UNLOCKED: "+
+        FISH_SPECIES[species].name+"!";
+    }
+  }catch(error){
+    $("aquariumStatus").textContent=
+      "FISH UNLOCK ERROR: "+error.message;
+  }finally{
+    awardingFish=false;
+  }
+}
+
+/* ==================================
+   PRIVATE CHAT REPLIES
+   ================================== */
 function parseChatText(raw){
   if(!raw.startsWith(REPLY_MARKER)){
     return {quoted:null,content:raw};
   }
   const split=raw.indexOf("\n\n");
   if(split<0)return {quoted:null,content:raw};
-
   return {
     quoted:raw.slice(REPLY_MARKER.length,split),
     content:raw.slice(split+2)
   };
 }
-
 function clearReply(){
   replyDraft=null;
   $("replyPreview").hidden=true;
   $("replyTitle").textContent="";
   $("replyText").textContent="";
 }
-
 function selectedTextInBubble(id,bubble){
   const selection=window.getSelection();
   if(!selection||selection.isCollapsed)return "";
-
   if(!bubble.contains(selection.anchorNode)||
      !bubble.contains(selection.focusNode))return "";
-
   const value=selection.toString().trim();
   if(value)selectedChatText={id,text:value};
   return value;
 }
-
 function beginReply(message,bubble){
   const parsed=parseChatText(message.text);
   const selected=selectedTextInBubble(message.id,bubble);
@@ -2377,20 +3014,17 @@ function beginReply(message,bubble){
   $("replyText").textContent=replyDraft.quote;
   $("chatInput").focus();
 }
-
 $("cancelReply").addEventListener("click",clearReply);
 
-/* ======================================
-   LIVE CHAT
-   ====================================== */
+/* ==================================
+   REALTIME CHAT
+   ================================== */
 function startChat(){
-  if(unsubscribeChat){
-    unsubscribeChat();
-    unsubscribeChat=null;
-  }
+  if(unsubscribeChat)unsubscribeChat();
 
   chatReady=false;
   updateChatControls();
+
   const windowEl=$("chatWindow");
   windowEl.replaceChildren();
 
@@ -2404,13 +3038,13 @@ function startChat(){
     return;
   }
 
-  $("chatStatus").textContent="CONNECTING TO PRIVATE CHAT...";
+  $("chatStatus").textContent=
+    "CONNECTING TO PRIVATE CHAT...";
 
   unsubscribeChat=onValue(
     ref(db,"chat/messages"),
     snapshot=>{
       const data=snapshot.val()||{};
-
       const messages=Object.entries(data)
         .map(([id,value])=>({id,...value}))
         .filter(m=>
@@ -2431,31 +3065,30 @@ function startChat(){
     error=>{
       chatReady=false;
       updateChatControls();
-      $("chatStatus").textContent="CHAT ERROR: "+error.message;
+      $("chatStatus").textContent=
+        "CHAT ERROR: "+error.message;
     }
   );
 }
-
 function renderChat(messages){
   const windowEl=$("chatWindow");
-
   const nearBottom=
-    windowEl.scrollHeight-windowEl.scrollTop-
+    windowEl.scrollHeight-
+    windowEl.scrollTop-
     windowEl.clientHeight<90;
 
   const firstRender=
     windowEl.querySelector(".chat-empty")!==null;
 
-  // Avoid interrupting an active text selection.
   const selection=window.getSelection();
-  if(selection&&!selection.isCollapsed&&
-     windowEl.contains(selection.anchorNode)){
-    return;
-  }
+  if(
+    selection&&!selection.isCollapsed&&
+    windowEl.contains(selection.anchorNode)
+  )return;
 
   windowEl.replaceChildren();
 
-  if(messages.length===0){
+  if(!messages.length){
     const empty=document.createElement("div");
     empty.className="chat-empty";
     empty.textContent=
@@ -2490,10 +3123,7 @@ function renderChat(messages){
     if(parsed.quoted){
       const quote=document.createElement("div");
       quote.className="quoted-message";
-      const quoteAuthor=document.createElement("span");
-      quoteAuthor.className="quote-author";
-      quoteAuthor.textContent="↪ "+parsed.quoted;
-      quote.appendChild(quoteAuthor);
+      quote.textContent="↪ "+parsed.quoted;
       bubble.appendChild(quote);
     }
 
@@ -2501,16 +3131,15 @@ function renderChat(messages){
     body.textContent=parsed.content;
     bubble.appendChild(body);
 
-    const rememberSelection=()=>{
+    const remember=()=>{
       selectedTextInBubble(message.id,bubble);
     };
-    bubble.addEventListener("mouseup",rememberSelection);
-    bubble.addEventListener("keyup",rememberSelection);
-    bubble.addEventListener("touchend",rememberSelection);
+    bubble.addEventListener("mouseup",remember);
+    bubble.addEventListener("keyup",remember);
+    bubble.addEventListener("touchend",remember);
 
     const actions=document.createElement("div");
     actions.className="message-actions";
-
     const reply=document.createElement("button");
     reply.type="button";
     reply.className="reply-button";
@@ -2529,9 +3158,6 @@ function renderChat(messages){
   }
 }
 
-/* ======================================
-   SEND MESSAGE
-   ====================================== */
 async function sendMessage(){
   if(sending)return;
 
@@ -2542,7 +3168,8 @@ async function sendMessage(){
 
   if(!currentUser||!player||
      currentUser.uid!==playerUIDs[player]){
-    feedback.textContent="SIGN IN WITH YOUR APPROVED ACCOUNT";
+    feedback.textContent=
+      "SIGN IN WITH YOUR APPROVED ACCOUNT";
     return;
   }
   if(!chatReady){
@@ -2552,17 +3179,15 @@ async function sendMessage(){
   if(!plainMessage)return;
 
   let message=plainMessage;
-
   if(replyDraft){
-    message=
-      REPLY_MARKER+replyDraft.name+": "+
+    message=REPLY_MARKER+replyDraft.name+": "+
       replyDraft.quote+"\n\n"+plainMessage;
   }
 
   if(message.length>500){
     feedback.textContent=
       "MESSAGE TOO LONG: "+message.length+
-      "/500 CHARACTERS INCLUDING QUOTED TEXT";
+      "/500 CHARACTERS INCLUDING QUOTE";
     return;
   }
 
@@ -2582,7 +3207,8 @@ async function sendMessage(){
     clearReply();
     feedback.textContent="";
   }catch(error){
-    feedback.textContent="MESSAGE FAILED: "+error.message;
+    feedback.textContent=
+      "MESSAGE FAILED: "+error.message;
   }finally{
     sending=false;
     updateChatControls();
@@ -2590,24 +3216,21 @@ async function sendMessage(){
   }
 }
 
-/* ======================================
+/* ==================================
    EVENTS & DAILY RESET
-   ====================================== */
+   ================================== */
 $("chatForm").addEventListener("submit",e=>{
   e.preventDefault();
   sendMessage();
 });
-
 $("chatInput").addEventListener("keydown",e=>{
   if(e.key==="Enter"&&!e.shiftKey&&!e.isComposing){
     e.preventDefault();
     sendMessage();
   }
 });
-
 $("gameSelect").addEventListener("change",fillScore);
 $("saveBtn").addEventListener("click",saveScore);
-
 $("scoreInput").addEventListener("keydown",e=>{
   if(e.key==="Enter"){
     e.preventDefault();
@@ -2623,6 +3246,8 @@ function updateDay(){
   if(today!==day){
     day=today;
     scores={};
+    completedDay=false;
+    boatChampion=null;
     renderScores();
     subscribeScores();
   }
@@ -2632,14 +3257,13 @@ renderCards();
 updateDay();
 renderScores();
 subscribeScores();
+subscribeAquarium();
 updateChatControls();
 
 setInterval(updateDay,60000);
-
 document.addEventListener("visibilitychange",()=>{
   if(!document.hidden)updateDay();
 });
 </script>
-
 </body>
 </html>
