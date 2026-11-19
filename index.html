@@ -39,37 +39,372 @@ button:disabled {opacity:.5;cursor:not-allowed}
 a {color:inherit;text-decoration:none}
 [hidden] {display:none!important}
 
-/* NAVIGATION */
+::selection {
+  background:#ffe76a;
+  color:#061729;
+}
+
+/* ======================================
+   CENTERED TOP NAVIGATION
+   ====================================== */
 
 .topbar {
-  height:42px;
+  position:relative;
+  z-index:30;
   background:#082239;
-  border-bottom:2px solid #2598b7;
-  display:flex;
+  border-bottom:2px solid #286f70;
+}
+
+.topbar-inner {
+  width:min(100%,980px);
+  min-height:46px;
+  margin:auto;
+  padding:0 18px;
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
   align-items:center;
-  justify-content:space-between;
-  padding:0 max(18px,calc((100% - 980px)/2));
+  gap:14px;
+}
+
+.brand {
+  justify-self:start;
+  color:#84f5ff;
+  white-space:nowrap;
   font-size:19px;
 }
 
-.topbar a {color:#84f5ff}
+.top-date {
+  justify-self:center;
+  text-align:center;
+  white-space:nowrap;
+  color:white;
+  font-size:19px;
+}
 
 .nav-links {
+  justify-self:end;
   display:flex;
   align-items:center;
-  gap:20px;
+  gap:19px;
 }
 
-.nav-links a {
+.nav-links a,
+.nav-settings {
   color:#84f5ff;
   white-space:nowrap;
+  background:none;
+  border:0;
+  padding:4px 0;
+  font-size:19px;
 }
 
-.nav-links a:hover {
-  color:#ffffff;
+.nav-links a:hover,
+.nav-settings:hover {
+  color:#fff;
 }
 
-/* HERO */
+.nav-settings[aria-expanded="true"] {
+  color:var(--yellow);
+}
+
+/* ======================================
+   PIXEL CHRISTMAS GARLAND
+   ====================================== */
+
+.christmas-garland {
+  position:absolute;
+  left:0;
+  right:0;
+  top:100%;
+  height:24px;
+  pointer-events:none;
+  z-index:31;
+  overflow:visible;
+}
+
+.garland-branch {
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:5px;
+  background:repeating-linear-gradient(
+    90deg,
+    #174e39 0 14px,
+    #267048 14px 23px,
+    #113f31 23px 32px
+  );
+  border-bottom:2px solid #0a3329;
+}
+
+.garland-sprig {
+  position:absolute;
+  top:2px;
+  width:24px;
+  height:18px;
+  transform:translateX(-50%);
+  background:#246e49;
+  clip-path:polygon(
+    42% 0,58% 0,
+    58% 20%,75% 20%,
+    75% 35%,100% 35%,
+    100% 55%,79% 55%,
+    79% 75%,58% 75%,
+    58% 100%,42% 100%,
+    42% 75%,21% 75%,
+    21% 55%,0 55%,
+    0 35%,25% 35%,
+    25% 20%,42% 20%
+  );
+}
+
+.garland-sprig:after {
+  content:"";
+  position:absolute;
+  left:6px;
+  top:3px;
+  width:12px;
+  height:11px;
+  background:#48a670;
+  clip-path:polygon(
+    35% 0,65% 0,
+    65% 30%,100% 30%,
+    100% 55%,65% 55%,
+    65% 100%,35% 100%,
+    35% 55%,0 55%,
+    0 30%,35% 30%
+  );
+}
+
+.garland-berry {
+  position:absolute;
+  top:9px;
+  width:5px;
+  height:5px;
+  background:#e95d70;
+  box-shadow:5px 2px #af3248,2px -4px #ff9e9f;
+}
+
+.pixel-wreath {
+  position:absolute;
+  left:50%;
+  top:12px;
+  width:48px;
+  height:48px;
+  transform:translateX(-50%);
+  image-rendering:pixelated;
+  pointer-events:none;
+}
+
+.wreath-ring {
+  position:absolute;
+  inset:4px;
+  background:#1e714a;
+  border:6px solid #52a972;
+  box-shadow:
+    0 0 0 3px #164e37,
+    3px 3px 0 3px #133b39;
+  clip-path:polygon(
+    25% 0,75% 0,
+    75% 12%,88% 12%,
+    88% 25%,100% 25%,
+    100% 75%,88% 75%,
+    88% 88%,75% 88%,
+    75% 100%,25% 100%,
+    25% 88%,12% 88%,
+    12% 75%,0 75%,
+    0 25%,12% 25%,
+    12% 12%,25% 12%
+  );
+}
+
+.wreath-hole {
+  position:absolute;
+  left:17px;
+  top:17px;
+  width:14px;
+  height:14px;
+  background:#a9ebfa;
+}
+
+.wreath-bow {
+  position:absolute;
+  top:0;
+  left:15px;
+  width:18px;
+  height:10px;
+  background:#ed536b;
+  clip-path:polygon(
+    0 0,50% 35%,100% 0,
+    100% 100%,50% 65%,0 100%
+  );
+}
+
+.wreath-berry {
+  position:absolute;
+  width:5px;
+  height:5px;
+  background:#ff7580;
+}
+
+.wreath-berry.one {left:8px;top:18px}
+.wreath-berry.two {right:8px;top:25px}
+.wreath-berry.three {left:24px;bottom:5px}
+
+/* ======================================
+   SETTINGS PANEL
+   ====================================== */
+
+.settings-panel {
+  position:relative;
+  z-index:20;
+  background:#071b30;
+  border-bottom:2px solid #58adbd;
+  box-shadow:0 8px 22px #03111f;
+}
+
+.settings-inner {
+  max-width:980px;
+  margin:auto;
+  padding:29px 18px 25px;
+}
+
+.settings-header {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+}
+
+.settings-title {
+  color:var(--cyan);
+  margin:0;
+  font:13px/1.7 'Press Start 2P';
+}
+
+.close-settings {
+  color:#ff9ebd;
+  background:#102d46;
+  border:2px solid #6b9cb3;
+  padding:7px 11px;
+  font-size:20px;
+}
+
+.settings-description {
+  color:#c7e5f1;
+  margin:12px 0 20px;
+  font-size:21px;
+}
+
+.scene-grid {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+}
+
+.scene-choice {
+  background:#0d2944;
+  border:2px solid #416c8c;
+  padding:8px;
+  color:white;
+  text-align:left;
+  transition:transform .12s;
+}
+
+.scene-choice:hover {
+  transform:translateY(-2px);
+}
+
+.scene-choice.active {
+  border-color:var(--yellow);
+  box-shadow:3px 3px #b58b4f;
+}
+
+.scene-preview {
+  display:block;
+  height:63px;
+  position:relative;
+  overflow:hidden;
+  background:var(--preview-sky);
+  border:2px solid #244c6b;
+}
+
+.scene-preview:before {
+  content:"";
+  position:absolute;
+  top:43%;
+  left:0;
+  right:0;
+  height:7px;
+  background:var(--preview-light);
+}
+
+.scene-preview:after {
+  content:"";
+  position:absolute;
+  top:53%;
+  left:0;
+  right:0;
+  bottom:0;
+  background:var(--preview-water);
+  border-top:3px solid var(--preview-foam);
+  clip-path:polygon(
+    0 0,14% 0,14% 5%,
+    30% 5%,30% 0,
+    46% 0,46% 5%,
+    66% 5%,66% 0,
+    82% 0,82% 6%,
+    100% 6%,100% 100%,
+    0 100%
+  );
+}
+
+.scene-name {
+  display:block;
+  margin-top:11px;
+  font:9px/1.7 'Press Start 2P';
+}
+
+.scene-detail {
+  display:block;
+  color:#bcd7e4;
+  margin-top:5px;
+  font-size:17px;
+}
+
+.setting-row {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  flex-wrap:wrap;
+  border-top:1px dashed #3c7894;
+  margin-top:21px;
+  padding-top:18px;
+}
+
+.snow-toggle {
+  border:2px solid #69bed0;
+  background:#153b55;
+  color:white;
+  padding:9px 15px;
+  min-width:135px;
+}
+
+.snow-toggle.on {
+  background:#275b54;
+  border-color:#84edce;
+}
+
+.settings-footnote {
+  font-size:17px;
+  color:#a7cde0;
+  margin-top:13px;
+}
+
+/* ======================================
+   ORIGINAL HERO
+   ====================================== */
 
 .hero {
   height:430px;
@@ -159,15 +494,14 @@ a {color:inherit;text-decoration:none}
 
 .dive-link:hover {background:#153653}
 
-/* UNDERWATER */
+/* ======================================
+   OCEAN
+   ====================================== */
 
 .ocean {
   position:relative;
   background:linear-gradient(
-    180deg,
-    #091b30,
-    #082a49 48%,
-    #061729
+    180deg,#091b30,#082a49 48%,#061729
   );
   padding:62px 0 85px;
   overflow:hidden;
@@ -213,7 +547,9 @@ a {color:inherit;text-decoration:none}
   margin:0 0 30px;
 }
 
-/* GAME GRID */
+/* ======================================
+   GAME CARDS
+   ====================================== */
 
 .games {
   display:grid;
@@ -223,8 +559,10 @@ a {color:inherit;text-decoration:none}
 
 .game {
   --c:#31f0ff;
+  position:relative;
+  isolation:isolate;
   min-height:225px;
-  padding:22px 12px 18px;
+  padding:27px 12px 18px;
   border:2px solid var(--c);
   background:#0c2945;
   box-shadow:4px 4px #010f20;
@@ -239,6 +577,72 @@ a {color:inherit;text-decoration:none}
   transform:translateY(-4px);
   background:#164461;
 }
+
+.game-snow {
+  position:absolute;
+  top:-3px;
+  left:-3px;
+  right:-3px;
+  height:30px;
+  pointer-events:none;
+  z-index:3;
+}
+
+.snowcap {
+  position:absolute;
+  left:0;
+  right:0;
+  top:0;
+  height:13px;
+  background:#f7ffff;
+  clip-path:polygon(
+    0 0,100% 0,100% 70%,
+    94% 70%,94% 95%,
+    87% 95%,87% 60%,
+    76% 60%,76% 100%,
+    69% 100%,69% 72%,
+    56% 72%,56% 85%,
+    45% 85%,45% 68%,
+    35% 68%,35% 100%,
+    28% 100%,28% 68%,
+    17% 68%,17% 90%,
+    9% 90%,9% 70%,
+    0 70%
+  );
+}
+
+.snowcap-shadow {
+  position:absolute;
+  top:8px;
+  left:3px;
+  width:94%;
+  height:3px;
+  background:#b5e7f3;
+  opacity:.8;
+}
+
+.icicle {
+  position:absolute;
+  top:9px;
+  width:5px;
+  background:linear-gradient(
+    90deg,
+    #e8faff 0 60%,
+    #7bd0e7 60% 100%
+  );
+  clip-path:polygon(
+    0 0,100% 0,
+    100% 65%,65% 65%,
+    65% 100%,35% 100%,
+    35% 65%,0 65%
+  );
+}
+
+.icicle.i1 {left:13%;height:14px}
+.icicle.i2 {left:32%;height:23px}
+.icicle.i3 {left:49%;height:10px}
+.icicle.i4 {left:73%;height:19px}
+.icicle.i5 {left:92%;height:12px}
 
 .game-image {
   width:72px;
@@ -278,8 +682,6 @@ a {color:inherit;text-decoration:none}
   flex:1;
 }
 
-/* CSS TRIANGLE — NO EMOJI */
-
 .game .play {
   display:inline-flex;
   align-items:center;
@@ -304,14 +706,17 @@ a {color:inherit;text-decoration:none}
 
 .depth {
   text-align:center;
-  color:#5fa6c3;
+  color:#fbdc88;
   letter-spacing:5px;
   margin:65px 0 52px;
 }
 
-/* LEADERBOARD */
+/* ======================================
+   LEADERBOARD
+   ====================================== */
 
 .score-shell {
+  position:relative;
   margin-top:25px;
   border:2px solid var(--cyan);
   background:#081f35;
@@ -376,8 +781,6 @@ a {color:inherit;text-decoration:none}
   overflow-wrap:anywhere;
 }
 
-/* LOGIN */
-
 .auth-box {
   background:#0b3452;
   border:2px solid #4798b7;
@@ -407,8 +810,6 @@ a {color:inherit;text-decoration:none}
   overflow-wrap:anywhere;
   user-select:all;
 }
-
-/* WINS */
 
 .wins {
   display:grid;
@@ -492,9 +893,12 @@ th:not(:first-child) {text-align:center}
   margin-top:16px;
 }
 
-/* PRIVATE CHAT */
+/* ======================================
+   CHAT
+   ====================================== */
 
 .chat-shell {
+  position:relative;
   margin-top:25px;
   border:2px solid #ff79a6;
   background:#081f35;
@@ -527,7 +931,7 @@ th:not(:first-child) {text-align:center}
 }
 
 .chat-window {
-  height:390px;
+  height:410px;
   overflow-y:auto;
   overscroll-behavior:contain;
   background:#051727;
@@ -567,10 +971,7 @@ th:not(:first-child) {text-align:center}
 }
 
 .chat-name {color:var(--cyan)}
-
-.chat-message.noah .chat-name {
-  color:#ff92ba;
-}
+.chat-message.noah .chat-name {color:#ff92ba}
 
 .chat-bubble {
   border:2px solid #327b9c;
@@ -581,7 +982,14 @@ th:not(:first-child) {text-align:center}
   line-height:1.15;
   white-space:pre-wrap;
   overflow-wrap:anywhere;
+  word-break:break-word;
   box-shadow:3px 3px #020d19;
+
+  /* Allow mouse and touch text selection */
+  user-select:text;
+  -webkit-user-select:text;
+  -webkit-touch-callout:default;
+  cursor:text;
 }
 
 .chat-message.noah .chat-bubble {
@@ -591,6 +999,81 @@ th:not(:first-child) {text-align:center}
 
 .chat-message.mine .chat-bubble {
   border-color:#57cce2;
+}
+
+.quoted-message {
+  display:block;
+  background:rgba(3,13,24,.5);
+  border-left:4px solid #ffe287;
+  padding:7px 10px;
+  margin-bottom:10px;
+  color:#d5eefa;
+  font-size:18px;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+}
+
+.quote-author {
+  color:#ffe287;
+  font-size:16px;
+  display:block;
+  margin-bottom:3px;
+}
+
+.message-actions {
+  display:flex;
+  justify-content:flex-start;
+  margin-top:6px;
+  gap:9px;
+}
+
+.chat-message.mine .message-actions {
+  justify-content:flex-end;
+}
+
+.reply-button {
+  background:none;
+  border:1px solid #487e9d;
+  color:#a5eaff;
+  font-size:16px;
+  padding:3px 9px;
+}
+
+.reply-button:hover {
+  color:white;
+  border-color:var(--cyan);
+}
+
+.reply-preview {
+  background:#0b314a;
+  border:2px solid #d7b16f;
+  margin-top:14px;
+  padding:10px 13px;
+}
+
+.reply-preview-head {
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  align-items:center;
+  color:#ffe287;
+  font-size:19px;
+}
+
+.reply-preview-text {
+  color:#d6eaf5;
+  font-size:18px;
+  margin-top:6px;
+  overflow-wrap:anywhere;
+  white-space:pre-wrap;
+}
+
+.cancel-reply {
+  color:#ff9ab9;
+  background:none;
+  border:0;
+  font-size:23px;
+  padding:0 5px;
 }
 
 .chat-compose {
@@ -641,6 +1124,38 @@ th:not(:first-child) {text-align:center}
   overflow-wrap:anywhere;
 }
 
+.score-shell:before,
+.chat-shell:before {
+  content:"";
+  position:absolute;
+  top:-3px;
+  left:0;
+  right:0;
+  height:5px;
+  background:repeating-linear-gradient(
+    90deg,
+    #f6ffff 0 18px,
+    #d74e65 18px 26px,
+    #f6ffff 26px 44px,
+    #3daa88 44px 52px
+  );
+  pointer-events:none;
+}
+
+/* ======================================
+   SNOW
+   ====================================== */
+
+.snow-overlay {
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  z-index:25;
+  image-rendering:pixelated;
+}
+
 /* FOOTER */
 
 .footer {
@@ -651,7 +1166,9 @@ th:not(:first-child) {text-align:center}
   font-size:20px;
 }
 
-/* MOBILE */
+/* ======================================
+   MOBILE
+   ====================================== */
 
 @media(max-width:700px) {
   .games {
@@ -659,6 +1176,7 @@ th:not(:first-child) {text-align:center}
   }
 
   .score-grid {grid-template-columns:1fr}
+  .scene-grid {grid-template-columns:repeat(2,minmax(0,1fr))}
   .hero {height:415px}
   .hero-copy {top:100px}
   .hero-kicker {font-size:16px}
@@ -675,15 +1193,42 @@ th:not(:first-child) {text-align:center}
       3px 3px 0 #ff4389;
   }
 
+  .topbar-inner {gap:8px}
   .nav-links {gap:12px}
-  .topbar {font-size:17px}
+  .brand,.top-date,.nav-links a,.nav-settings {
+    font-size:16px;
+  }
 }
 
-@media(max-width:420px) {
+@media(max-width:480px) {
+  .topbar-inner {
+    padding:7px 10px;
+    min-height:55px;
+    grid-template-columns:1fr auto;
+    grid-template-areas:
+      "brand date"
+      "links links";
+    row-gap:3px;
+  }
+
+  .brand {grid-area:brand}
+  .top-date {grid-area:date}
+
+  .nav-links {
+    grid-area:links;
+    justify-self:center;
+    gap:20px;
+  }
+
+  .brand,.top-date,.nav-links a,.nav-settings {
+    font-size:16px;
+  }
+
   .game {
-    padding:17px 8px;
+    padding:24px 8px 17px;
     min-height:220px;
   }
+
   .game-image {width:62px;height:62px}
   .game-image img {width:46px;height:46px}
   .game h3 {font-size:9px}
@@ -691,16 +1236,15 @@ th:not(:first-child) {text-align:center}
   .game .play {font-size:9px;padding:10px}
   .hero-title {font-size:clamp(12px,4vw,16px)}
   .chat-window {height:350px;padding:12px}
-  .chat-message {max-width:92%}
+  .chat-message {max-width:94%}
   .chat-send {padding:10px;font-size:9px}
   .chat-input {font-size:18px}
-  .topbar {font-size:15px;padding:0 10px}
-  .nav-links {gap:10px}
+  .pixel-wreath {transform:translateX(-50%) scale(.8);transform-origin:top center}
 }
 
 @media(prefers-reduced-motion:reduce) {
   .hero-title .letter {animation:none}
-  .game {transition:none}
+  .game,.scene-choice {transition:none}
   html {scroll-behavior:auto}
 }
 </style>
@@ -708,17 +1252,101 @@ th:not(:first-child) {text-align:center}
 
 <body>
 
-<!-- UPDATED NAVIGATION -->
+<!-- ======================================
+     NAVIGATION
+     ====================================== -->
 
 <nav class="topbar">
-  <a href="#top">H + N</a>
-  <span id="topDate"></span>
+  <div class="topbar-inner">
+    <a href="#top" class="brand">H + N</a>
 
-  <div class="nav-links">
-    <a href="#scores">SCORES ↓</a>
-    <a href="#chat">CHAT ↓</a>
+    <span class="top-date" id="topDate"></span>
+
+    <div class="nav-links">
+      <a href="#scores">SCORES ↓</a>
+      <a href="#chat">CHAT ↓</a>
+      <button
+        type="button"
+        id="settingsButton"
+        class="nav-settings"
+        aria-controls="settingsPanel"
+        aria-expanded="false"
+      >
+        SETTINGS ⚙
+      </button>
+    </div>
+  </div>
+
+  <div class="christmas-garland"
+       id="christmasGarland"
+       aria-hidden="true">
+    <div class="garland-branch"></div>
+
+    <div class="pixel-wreath">
+      <span class="wreath-ring"></span>
+      <span class="wreath-hole"></span>
+      <span class="wreath-bow"></span>
+      <span class="wreath-berry one"></span>
+      <span class="wreath-berry two"></span>
+      <span class="wreath-berry three"></span>
+    </div>
   </div>
 </nav>
+
+<!-- ======================================
+     SETTINGS
+     ====================================== -->
+
+<section
+  id="settingsPanel"
+  class="settings-panel"
+  aria-label="Appearance settings"
+  hidden
+>
+  <div class="settings-inner">
+    <div class="settings-header">
+      <h2 class="settings-title">
+        ◈ SCENE SETTINGS
+      </h2>
+
+      <button
+        type="button"
+        class="close-settings"
+        id="closeSettings"
+        aria-label="Close settings"
+      >
+        ×
+      </button>
+    </div>
+
+    <p class="settings-description">
+      Change the sky and ocean as you dive deeper.
+      The original boat and waves stay with you.
+    </p>
+
+    <div id="sceneChoices" class="scene-grid"></div>
+
+    <div class="setting-row">
+      <span>PIXEL SNOWFALL</span>
+      <button
+        id="snowToggle"
+        class="snow-toggle on"
+        type="button"
+        aria-pressed="true"
+      >
+        SNOW: ON
+      </button>
+    </div>
+
+    <p class="settings-footnote">
+      Your scene and snow preference are saved on this device.
+    </p>
+  </div>
+</section>
+
+<!-- ======================================
+     HERO
+     ====================================== -->
 
 <section class="hero" id="top">
   <canvas id="scene" aria-hidden="true"></canvas>
@@ -747,7 +1375,9 @@ th:not(:first-child) {text-align:center}
 <main class="ocean">
 <div class="container">
 
-<!-- GAMES -->
+<!-- ======================================
+     GAMES
+     ====================================== -->
 
 <section id="games">
   <div class="eyebrow">◈ CHOOSE YOUR GAME ◈</div>
@@ -758,13 +1388,16 @@ th:not(:first-child) {text-align:center}
   <div class="games" id="gameGrid"></div>
 </section>
 
-<div class="depth">▼ ▼ ▼</div>
+<div class="depth">✦ ▼ ✦ ▼ ✦</div>
 
-<!-- LEADERBOARD -->
+<!-- ======================================
+     LEADERBOARD
+     ====================================== -->
 
 <section id="scores">
   <div class="eyebrow">✦ HIGH SCORES ✦</div>
   <h2 class="section-heading">THE LEADERBOARD</h2>
+
   <p class="intro">
     One day. Nine games. Whoever wins more takes it.
   </p>
@@ -791,6 +1424,7 @@ th:not(:first-child) {text-align:center}
           <div class="auth-status" id="authStatus">
             Sign in to submit scores and chat.
           </div>
+
           <div class="uid" id="uidDisplay"></div>
         </div>
 
@@ -802,6 +1436,7 @@ th:not(:first-child) {text-align:center}
         <label for="gameSelect" class="field-label">
           GAME
         </label>
+
         <select id="gameSelect" class="field"></select>
 
         <label
@@ -846,6 +1481,7 @@ th:not(:first-child) {text-align:center}
             <div class="win-num" id="hudsonWins">0</div>
             <small>GAME WINS</small>
           </div>
+
           <div class="win-box">
             <label>NOAH</label>
             <div class="win-num" id="noahWins">0</div>
@@ -881,21 +1517,26 @@ th:not(:first-child) {text-align:center}
   </div>
 </section>
 
-<div class="depth">▼ ▼ ▼</div>
+<div class="depth">✦ ▼ ✦ ▼ ✦</div>
 
-<!-- PRIVATE CHAT -->
+<!-- ======================================
+     PRIVATE CHAT
+     ====================================== -->
 
 <section id="chat">
   <div class="eyebrow">◈ BELOW THE SURFACE ◈</div>
   <h2 class="section-heading">THE CHAT</h2>
+
   <p class="intro">
     Talk trash. Share wins. Settle the score.
   </p>
 
   <div class="chat-shell">
     <div class="chat-topline">
-      <h3 class="panel-title chat-heading"
-          style="margin:0">
+      <h3
+        class="panel-title chat-heading"
+        style="margin:0"
+      >
         HUDSON × NOAH
       </h3>
 
@@ -917,6 +1558,30 @@ th:not(:first-child) {text-align:center}
       <div class="chat-empty">
         SIGN IN TO OPEN CHAT
       </div>
+    </div>
+
+    <!-- Visible when replying to a message -->
+    <div
+      class="reply-preview"
+      id="replyPreview"
+      hidden
+    >
+      <div class="reply-preview-head">
+        <span id="replyTitle">REPLYING TO...</span>
+        <button
+          type="button"
+          class="cancel-reply"
+          id="cancelReply"
+          aria-label="Cancel reply"
+        >
+          ×
+        </button>
+      </div>
+
+      <div
+        id="replyText"
+        class="reply-preview-text"
+      ></div>
     </div>
 
     <form id="chatForm" class="chat-compose">
@@ -941,8 +1606,9 @@ th:not(:first-child) {text-align:center}
     </form>
 
     <p class="chat-note">
-      Press Enter to send. Shift + Enter for a new line.
-      Messages are saved in Firebase.
+      Select any message text to copy it.
+      Click REPLY to quote a message or selected text.
+      Enter sends; Shift + Enter adds a new line.
     </p>
 
     <div
@@ -953,7 +1619,7 @@ th:not(:first-child) {text-align:center}
   </div>
 </section>
 
-<div class="depth">▼ END OF DIVE ▼</div>
+<div class="depth">✦ END OF DIVE ✦</div>
 
 </div>
 </main>
@@ -962,9 +1628,286 @@ th:not(:first-child) {text-align:center}
   HUDSON KING × NOAH BONN · SEE YOU TOMORROW
 </footer>
 
+<canvas
+  id="snowOverlay"
+  class="snow-overlay"
+  aria-hidden="true"
+></canvas>
+
 <script>
 /* ======================================
-   PIXEL OCEAN AND BOAT
+   SAVED APPEARANCE SETTINGS
+   ====================================== */
+
+function readPreference(key,fallback) {
+  try {
+    return localStorage.getItem(key) || fallback;
+  } catch(e) {
+    return fallback;
+  }
+}
+
+function savePreference(key,value) {
+  try {
+    localStorage.setItem(key,value);
+  } catch(e) {}
+}
+
+/*
+  Six original pixel-art scene palettes.
+  Original Surface replicates the existing
+  ocean and sky colors.
+*/
+
+const SCENES={
+  surface:{
+    name:"SURFACE",
+    description:"Original blue sky",
+    sky:"#a9ebfa",
+    skyLow:"#c7f4ff",
+    horizon:"#a0e4f3",
+    water:"#093354",
+    deep:"#082541",
+    foam:"#f0ffff",
+    edge:"#5be5f5",
+    reflection:"#367d9c",
+    cloud:"#f4ffff",
+    celestial:null
+  },
+
+  sunrise:{
+    name:"GOLDEN HOUR",
+    description:"Warm morning light",
+    sky:"#ffc49a",
+    skyLow:"#ffe6ba",
+    horizon:"#f5a787",
+    water:"#245579",
+    deep:"#143453",
+    foam:"#ffe9c8",
+    edge:"#ffa977",
+    reflection:"#e9a86c",
+    cloud:"#fff0d5",
+    celestial:"sun"
+  },
+
+  twilight:{
+    name:"TWILIGHT",
+    description:"Purple sunset",
+    sky:"#9986c5",
+    skyLow:"#e3a0a5",
+    horizon:"#bc7fbe",
+    water:"#273b70",
+    deep:"#171f50",
+    foam:"#dcb7f5",
+    edge:"#aa92dc",
+    reflection:"#906db7",
+    cloud:"#e4c4df",
+    celestial:"sunset"
+  },
+
+  midnight:{
+    name:"MIDNIGHT",
+    description:"Stars and moon",
+    sky:"#182946",
+    skyLow:"#304469",
+    horizon:"#456187",
+    water:"#102747",
+    deep:"#091931",
+    foam:"#9abfee",
+    edge:"#587ab5",
+    reflection:"#355a85",
+    cloud:"#405273",
+    celestial:"moon"
+  },
+
+  abyss:{
+    name:"DEEP DIVE",
+    description:"Dark, glowing waters",
+    sky:"#0a1935",
+    skyLow:"#112a53",
+    horizon:"#1a4568",
+    water:"#082542",
+    deep:"#041528",
+    foam:"#58d6dc",
+    edge:"#218caa",
+    reflection:"#17617b",
+    cloud:"#173759",
+    celestial:"stars"
+  },
+
+  arctic:{
+    name:"ARCTIC",
+    description:"Frozen pale-blue sea",
+    sky:"#c9e7ef",
+    skyLow:"#e3f5fb",
+    horizon:"#b0d8e5",
+    water:"#416e8e",
+    deep:"#234d71",
+    foam:"#ffffff",
+    edge:"#a2e7f5",
+    reflection:"#84b5ce",
+    cloud:"#ffffff",
+    celestial:null
+  }
+};
+
+let activeScene=readPreference(
+  "hnScene","surface"
+);
+
+if(!SCENES[activeScene]) {
+  activeScene="surface";
+}
+
+let snowEnabled=readPreference(
+  "hnSnow","on"
+)!=="off";
+
+/* ======================================
+   SETTINGS INTERFACE
+   ====================================== */
+
+const settingsButton=document.getElementById(
+  "settingsButton"
+);
+
+const settingsPanel=document.getElementById(
+  "settingsPanel"
+);
+
+function openSettings(open) {
+  settingsPanel.hidden=!open;
+  settingsButton.setAttribute(
+    "aria-expanded",
+    String(open)
+  );
+
+  if(open) {
+    settingsPanel.scrollIntoView({
+      behavior:"smooth",
+      block:"start"
+    });
+  }
+}
+
+settingsButton.addEventListener("click",()=>{
+  openSettings(settingsPanel.hidden);
+});
+
+document.getElementById("closeSettings")
+  .addEventListener("click",()=>{
+    openSettings(false);
+    settingsButton.focus();
+  });
+
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape"&&!settingsPanel.hidden) {
+    openSettings(false);
+    settingsButton.focus();
+  }
+});
+
+const sceneChoices=document.getElementById(
+  "sceneChoices"
+);
+
+function renderSceneChoices() {
+  sceneChoices.replaceChildren();
+
+  Object.entries(SCENES).forEach(([id,scene])=>{
+    const button=document.createElement("button");
+
+    button.type="button";
+    button.className=
+      "scene-choice"+
+      (id===activeScene?" active":"");
+
+    button.setAttribute(
+      "aria-pressed",
+      String(id===activeScene)
+    );
+
+    button.style.setProperty(
+      "--preview-sky",
+      scene.sky
+    );
+
+    button.style.setProperty(
+      "--preview-light",
+      scene.horizon
+    );
+
+    button.style.setProperty(
+      "--preview-water",
+      scene.water
+    );
+
+    button.style.setProperty(
+      "--preview-foam",
+      scene.foam
+    );
+
+    const preview=document.createElement("span");
+    preview.className="scene-preview";
+
+    const name=document.createElement("span");
+    name.className="scene-name";
+    name.textContent=scene.name;
+
+    const detail=document.createElement("span");
+    detail.className="scene-detail";
+    detail.textContent=scene.description;
+
+    button.append(preview,name,detail);
+
+    button.addEventListener("click",()=>{
+      activeScene=id;
+      savePreference("hnScene",id);
+      renderSceneChoices();
+      drawScene(performance.now());
+    });
+
+    sceneChoices.appendChild(button);
+  });
+}
+
+renderSceneChoices();
+
+const snowToggle=document.getElementById(
+  "snowToggle"
+);
+
+function updateSnowToggle() {
+  snowToggle.textContent=
+    "SNOW: "+(snowEnabled?"ON":"OFF");
+
+  snowToggle.classList.toggle(
+    "on",snowEnabled
+  );
+
+  snowToggle.setAttribute(
+    "aria-pressed",
+    String(snowEnabled)
+  );
+
+  document.getElementById(
+    "snowOverlay"
+  ).style.display=snowEnabled?"block":"none";
+}
+
+snowToggle.addEventListener("click",()=>{
+  snowEnabled=!snowEnabled;
+  savePreference(
+    "hnSnow",
+    snowEnabled?"on":"off"
+  );
+  updateSnowToggle();
+});
+
+updateSnowToggle();
+
+/* ======================================
+   ORIGINAL ANIMATED OCEAN AND BOAT
    ====================================== */
 
 const canvas=document.getElementById("scene");
@@ -976,15 +1919,23 @@ const reduceMotion=window.matchMedia(
 
 let W=0;
 let H=0;
+
 const pixel=4;
 
 function resizeScene() {
   const r=canvas.getBoundingClientRect();
+
   W=Math.ceil(r.width/pixel);
   H=Math.ceil(r.height/pixel);
+
   canvas.width=W;
   canvas.height=H;
+
   ctx.imageSmoothingEnabled=false;
+
+  if(reduceMotion.matches) {
+    drawScene(0);
+  }
 }
 
 window.addEventListener("resize",resizeScene);
@@ -992,6 +1943,7 @@ resizeScene();
 
 function rect(x,y,w,h,c) {
   ctx.fillStyle=c;
+
   ctx.fillRect(
     Math.round(x),
     Math.round(y),
@@ -1007,22 +1959,26 @@ function waveY(x,t) {
     +Math.sin(x*.078+t*.36)*1.1;
 }
 
-function cloud(x,y,s) {
-  rect(x+4*s,y,19*s,4*s,"#f4ffff");
-  rect(x+s,y+4*s,28*s,5*s,"#f4ffff");
-  rect(x+8*s,y-4*s,13*s,4*s,"#f4ffff");
-  rect(x,y+8*s,32*s,4*s,"#f4ffff");
+function cloud(x,y,s,color) {
+  rect(x+4*s,y,19*s,4*s,color);
+  rect(x+s,y+4*s,28*s,5*s,color);
+  rect(x+8*s,y-4*s,13*s,4*s,color);
+  rect(x,y+8*s,32*s,4*s,color);
 }
+
+/* Original small boat */
 
 function drawBoat(t) {
   const cx=W*.5;
   const surface=waveY(cx,t);
 
   ctx.save();
+
   ctx.translate(
     Math.round(cx),
     Math.round(surface+1)
   );
+
   ctx.scale(.55,.55);
   ctx.translate(-30,-22);
 
@@ -1063,52 +2019,135 @@ function drawBoat(t) {
   ctx.restore();
 
   // Foam
-  rect(cx-25,surface+1,8,1,"#e7ffff");
-  rect(cx+18,surface+1,8,1,"#e7ffff");
+  const scene=SCENES[activeScene];
+
+  rect(cx-25,surface+1,8,1,scene.foam);
+  rect(cx+18,surface+1,8,1,scene.foam);
+}
+
+/* Decorative stars for night scenes */
+
+const stars=Array.from(
+  {length:65},
+  (_,i)=>({
+    x:(i*67+23)%997/997,
+    y:(i*37+11)%131/131,
+    size:i%7===0?2:1
+  })
+);
+
+function drawSkyDetails(scene,t) {
+  if(
+    scene.celestial==="moon" ||
+    scene.celestial==="stars"
+  ) {
+    stars.forEach(s=>{
+      const x=s.x*W;
+      const y=s.y*H*.62;
+
+      rect(
+        x,y,
+        s.size,s.size,
+        scene.celestial==="moon"
+          ?"#c9dbed"
+          :"#76dbe6"
+      );
+    });
+  }
+
+  if(scene.celestial==="moon") {
+    const x=W*.78;
+    const y=H*.23;
+
+    rect(x-6,y-8,12,16,"#fff0c9");
+    rect(x-9,y-5,18,10,"#fff0c9");
+    rect(x+2,y-8,8,13,scene.sky);
+  }
+
+  if(
+    scene.celestial==="sun" ||
+    scene.celestial==="sunset"
+  ) {
+    const x=W*.78;
+    const y=scene.celestial==="sun"
+      ?H*.28
+      :H*.53;
+
+    rect(x-8,y-8,16,16,"#ffe2a1");
+    rect(x-11,y-5,22,10,"#ffe2a1");
+  }
+
+  if(scene.celestial==="stars") {
+    // A faint glowing horizon at depth
+    for(let i=0;i<5;i++) {
+      rect(
+        W*(.12+i*.19),
+        H*.65+(i%2)*3,
+        9,1,
+        "#358ca5"
+      );
+    }
+  }
 }
 
 function drawScene(time) {
   const t=reduceMotion.matches?0:time*.001;
+  const s=SCENES[activeScene];
 
-  ctx.fillStyle="#c7f4ff";
+  ctx.fillStyle=s.skyLow;
   ctx.fillRect(0,0,W,H);
 
-  rect(0,0,W,H*.54,"#a9ebfa");
+  // Original sky, recolored for selected scene
+  rect(0,0,W,H*.54,s.sky);
 
-  cloud(W*.08,27,1.15);
-  cloud(W*.75,20,1.65);
-  cloud(W*.87,53,.55);
+  // Clouds
+  cloud(W*.08,27,1.15,s.cloud);
+  cloud(W*.75,20,1.65,s.cloud);
+  cloud(W*.87,53,.55,s.cloud);
 
-  // Horizon
+  drawSkyDetails(s,t);
+
+  // Original moving horizon
   for(let x=0;x<W;x+=8) {
     const y=waveY(x,t);
+
     if(y>0) {
       rect(
         x,H*.69,8,
         Math.max(0,y-H*.69),
-        "#a0e4f3"
+        s.horizon
       );
     }
   }
 
-  // Water
+  // Original animated surface waves
   for(let x=0;x<W;x++) {
     const y=Math.round(waveY(x,t));
-    rect(x,y,1,H-y,"#093354");
-    rect(x,y,1,2,"#f0ffff");
-    rect(x,y+2,1,2,"#5be5f5");
+
+    rect(x,y,1,H-y,s.water);
+    rect(x,y,1,2,s.foam);
+    rect(x,y+2,1,2,s.edge);
   }
 
+  // Original underwater region
   for(let x=0;x<W;x+=4) {
     const y=waveY(x,t);
-    rect(x,y+12,4,H-y-12,"#082541");
+    rect(x,y+12,4,H-y-12,s.deep);
   }
 
-  // Reflections
+  // Original moving water reflections
   for(let j=0;j<11;j++) {
-    const x=((j*47+t*(j%2?3:-4)+W*8)%W);
+    const x=(
+      (j*47+t*(j%2?3:-4)+W*8)%W
+    );
     const y=H*.85+(j%4)*7;
-    rect(x,y,10+(j%3)*5,1,"#367d9c");
+
+    rect(
+      x,y,
+      10+(j%3)*5,
+      1,
+      s.reflection
+    );
   }
 
   drawBoat(t);
@@ -1120,23 +2159,169 @@ function drawScene(time) {
 
 requestAnimationFrame(drawScene);
 
-// Wave title
-const title=document.getElementById("waveTitle");
-const original=title.textContent.trim();
-title.textContent="";
+/* Original rippling title */
+
+const waveTitle=document.getElementById(
+  "waveTitle"
+);
+
+const original=waveTitle.textContent.trim();
+waveTitle.textContent="";
 
 [...original].forEach((ch,i)=>{
   const span=document.createElement("span");
+
   span.className="letter";
   span.style.setProperty("--i",i);
   span.textContent=ch===" "?"\u00a0":ch;
-  title.appendChild(span);
+
+  waveTitle.appendChild(span);
 });
+
+/* ======================================
+   PIXEL SNOW
+   ====================================== */
+
+(function () {
+  const snow=document.getElementById(
+    "snowOverlay"
+  );
+
+  const snowCtx=snow.getContext("2d");
+  let flakes=[];
+  let width=0;
+  let height=0;
+  let lastFrame=0;
+
+  function resizeSnow() {
+    width=window.innerWidth;
+    height=window.innerHeight;
+
+    snow.width=width;
+    snow.height=height;
+
+    snowCtx.imageSmoothingEnabled=false;
+
+    const count=Math.min(
+      120,
+      Math.max(
+        45,
+        Math.floor(width*height/10500)
+      )
+    );
+
+    flakes=Array.from(
+      {length:count},
+      (_,i)=>({
+        x:Math.random()*width,
+        y:Math.random()*height,
+        size:i%6===0?4:i%3===0?3:2,
+        speed:.45+Math.random()*.85,
+        drift:(Math.random()-.5)*.6
+      })
+    );
+
+    paintSnow(true);
+  }
+
+  function paintSnow(still=false) {
+    snowCtx.clearRect(
+      0,0,width,height
+    );
+
+    snowCtx.fillStyle=
+      "rgba(245,252,255,.9)";
+
+    for(const f of flakes) {
+      snowCtx.fillRect(
+        Math.round(f.x),
+        Math.round(f.y),
+        f.size,
+        f.size
+      );
+
+      if(!still) {
+        f.y+=f.speed;
+        f.x+=f.drift;
+
+        if(f.y>height) {
+          f.y=-5;
+          f.x=Math.random()*width;
+        }
+
+        if(f.x>width) f.x=0;
+        if(f.x<0) f.x=width;
+      }
+    }
+  }
+
+  function animateSnow(t) {
+    if(reduceMotion.matches) return;
+
+    if(t-lastFrame>28) {
+      if(snowEnabled) {
+        paintSnow();
+      }
+
+      lastFrame=t;
+    }
+
+    requestAnimationFrame(animateSnow);
+  }
+
+  window.addEventListener(
+    "resize",resizeSnow
+  );
+
+  resizeSnow();
+
+  if(!reduceMotion.matches) {
+    requestAnimationFrame(animateSnow);
+  }
+})();
+
+/* ======================================
+   PIXEL EVERGREEN GARLAND
+   ====================================== */
+
+(function () {
+  const garland=document.getElementById(
+    "christmasGarland"
+  );
+
+  const count=36;
+
+  for(let i=0;i<count;i++) {
+    const sprig=document.createElement("span");
+
+    sprig.className="garland-sprig";
+    sprig.style.left=
+      ((i+.5)/count*100)+"%";
+
+    sprig.style.top=
+      (i%3===0?1:i%3===1?3:0)+"px";
+
+    garland.appendChild(sprig);
+  }
+
+  for(let i=0;i<14;i++) {
+    const berry=document.createElement("span");
+
+    berry.className="garland-berry";
+    berry.style.left=
+      ((i+.6)/14*100)+"%";
+
+    berry.style.top=
+      (i%2===0?8:12)+"px";
+
+    garland.appendChild(berry);
+  }
+})();
 </script>
 
 <script type="module">
 /* ======================================
-   FIREBASE
+   FIREBASE IMPORTS
    ====================================== */
 
 import {initializeApp} from
@@ -1160,6 +2345,10 @@ import {
   serverTimestamp
 } from
 "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
+
+/* ======================================
+   FIREBASE CONFIG
+   ====================================== */
 
 const firebaseConfig={
   apiKey:"AIzaSyDqfUuUIWKZ76ds5obBF-aaFqaMwNscYh8",
@@ -1324,6 +2513,22 @@ let saving=false;
 let chatReady=false;
 let sending=false;
 
+/*
+  Replies are encoded in the existing
+  text string so no Firebase schema
+  or Rules changes are required.
+
+  Format:
+  ↪ Noah: quoted text
+
+  response text
+*/
+
+const REPLY_MARKER="\u21AA ";
+
+let replyDraft=null;
+let selectedChatText=null;
+
 /* ======================================
    DATE FUNCTIONS
    ====================================== */
@@ -1384,6 +2589,16 @@ function renderCards() {
       rel="noopener noreferrer"
       style="--c:${g.color}"
     >
+      <div class="game-snow" aria-hidden="true">
+        <span class="snowcap"></span>
+        <span class="snowcap-shadow"></span>
+        <span class="icicle i1"></span>
+        <span class="icicle i2"></span>
+        <span class="icicle i3"></span>
+        <span class="icicle i4"></span>
+        <span class="icicle i5"></span>
+      </div>
+
       <div class="game-image">
         <img
           src="https://www.google.com/s2/favicons?domain=${g.domain}&sz=128"
@@ -1398,8 +2613,10 @@ function renderCards() {
       <p>${g.description}</p>
 
       <span class="play">
-        <span class="play-triangle"
-              aria-hidden="true"></span>
+        <span
+          class="play-triangle"
+          aria-hidden="true"
+        ></span>
         PLAY
       </span>
     </a>
@@ -1440,7 +2657,8 @@ $("loginBtn").addEventListener("click",async()=>{
 
   try {
     await signInWithPopup(auth,provider);
-  } catch(error) {
+  }
+  catch(error) {
     $("authStatus").textContent=
       "LOGIN FAILED: "+error.message;
   }
@@ -1449,7 +2667,8 @@ $("loginBtn").addEventListener("click",async()=>{
 $("logoutBtn").addEventListener("click",async()=>{
   try {
     await signOut(auth);
-  } catch(error) {
+  }
+  catch(error) {
     $("authStatus").textContent=error.message;
   }
 });
@@ -1468,19 +2687,24 @@ onAuthStateChanged(auth,user=>{
   $("loginBtn").hidden=!!user;
   $("logoutBtn").hidden=!user;
 
+  clearReply();
+
   if(!user) {
     $("authStatus").textContent=
       "SIGN IN TO SUBMIT SCORES AND CHAT";
+
     $("uidDisplay").textContent="";
   }
   else if(found) {
     $("authStatus").textContent=
       "SIGNED IN AS "+found.toUpperCase();
+
     $("uidDisplay").textContent="";
   }
   else {
     $("authStatus").textContent=
       "ACCOUNT NOT APPROVED. YOUR UID:";
+
     $("uidDisplay").textContent=user.uid;
   }
 
@@ -1538,10 +2762,8 @@ function subscribeScores() {
   $("syncStatus").textContent=
     "CONNECTING TO LIVE LEADERBOARD...";
 
-  const databaseRef=ref(db,"dailyScores/"+day);
-
   unsubscribeScores=onValue(
-    databaseRef,
+    ref(db,"dailyScores/"+day),
     snapshot=>{
       const data=snapshot.val()||{};
       const updated={};
@@ -1634,6 +2856,7 @@ async function saveScore() {
   try {
     if(getDay()!==day) {
       updateDay();
+
       throw new Error(
         "NEW DAY STARTED. SUBMIT AGAIN."
       );
@@ -1696,9 +2919,11 @@ function renderScores() {
 
     const value=v=>{
       if(v===undefined) return "—";
+
       if(g.id==="connections"&&v===4) {
         return "DNF (4)";
       }
+
       return v;
     };
 
@@ -1746,6 +2971,114 @@ function renderScores() {
 }
 
 /* ======================================
+   REPLY SUPPORT
+   ====================================== */
+
+function parseChatText(raw) {
+  if(!raw.startsWith(REPLY_MARKER)) {
+    return {
+      quoted:null,
+      content:raw
+    };
+  }
+
+  const split=raw.indexOf("\n\n");
+
+  if(split<0) {
+    return {
+      quoted:null,
+      content:raw
+    };
+  }
+
+  const quote=raw.slice(
+    REPLY_MARKER.length,
+    split
+  );
+
+  return {
+    quoted:quote,
+    content:raw.slice(split+2)
+  };
+}
+
+function clearReply() {
+  replyDraft=null;
+
+  $("replyPreview").hidden=true;
+  $("replyTitle").textContent="";
+  $("replyText").textContent="";
+}
+
+function getSelectedTextForMessage(id,bubble) {
+  const selection=window.getSelection();
+
+  if(!selection||selection.isCollapsed) {
+    return "";
+  }
+
+  if(!bubble.contains(selection.anchorNode) ||
+     !bubble.contains(selection.focusNode)) {
+    return "";
+  }
+
+  const chosen=selection.toString().trim();
+
+  if(chosen) {
+    selectedChatText={
+      id,
+      text:chosen
+    };
+  }
+
+  return chosen;
+}
+
+function beginReply(message,bubble) {
+  const parsed=parseChatText(message.text);
+
+  const selected=getSelectedTextForMessage(
+    message.id,
+    bubble
+  );
+
+  const quote=selected ||
+    (
+      selectedChatText?.id===message.id
+        ?selectedChatText.text
+        :parsed.content
+    );
+
+  replyDraft={
+    name:message.name,
+    quote:quote
+      .replace(/\s+/g," ")
+      .trim()
+      .slice(0,120)
+  };
+
+  selectedChatText=null;
+
+  $("replyPreview").hidden=false;
+
+  $("replyTitle").textContent=
+    "REPLYING TO "+message.name.toUpperCase();
+
+  $("replyText").textContent=replyDraft.quote;
+
+  $("chatInput").scrollIntoView({
+    behavior:"smooth",
+    block:"nearest"
+  });
+
+  $("chatInput").focus();
+}
+
+$("cancelReply").addEventListener(
+  "click",clearReply
+);
+
+/* ======================================
    PRIVATE CHAT
    ====================================== */
 
@@ -1768,6 +3101,7 @@ function startChat() {
     const empty=document.createElement("div");
     empty.className="chat-empty";
     empty.textContent="PRIVATE CHAT — SIGN IN";
+
     windowEl.appendChild(empty);
     return;
   }
@@ -1817,20 +3151,34 @@ function renderChat(messages) {
   const windowEl=$("chatWindow");
 
   const nearBottom=
-    windowEl.scrollHeight -
-    windowEl.scrollTop -
-    windowEl.clientHeight < 90;
+    windowEl.scrollHeight-
+    windowEl.scrollTop-
+    windowEl.clientHeight<90;
 
   const firstRender=
     windowEl.querySelector(".chat-empty")!==null;
+
+  // Preserve an active text selection so
+  // Firebase updates don't interrupt copying.
+  const currentSelection=window.getSelection();
+
+  if(
+    currentSelection &&
+    !currentSelection.isCollapsed &&
+    windowEl.contains(currentSelection.anchorNode)
+  ) {
+    return;
+  }
 
   windowEl.replaceChildren();
 
   if(messages.length===0) {
     const empty=document.createElement("div");
+
     empty.className="chat-empty";
     empty.textContent=
       "NO MESSAGES YET. START THE CONVERSATION!";
+
     windowEl.appendChild(empty);
     return;
   }
@@ -1839,6 +3187,7 @@ function renderChat(messages) {
     const mine=message.name===player;
 
     const wrapper=document.createElement("div");
+
     wrapper.className=
       "chat-message "+
       message.name.toLowerCase()+
@@ -1852,17 +3201,71 @@ function renderChat(messages) {
     name.textContent=message.name.toUpperCase();
 
     const timestamp=document.createElement("span");
-    timestamp.textContent=messageTime(message.createdAt);
+    timestamp.textContent=
+      messageTime(message.createdAt);
 
-    meta.appendChild(name);
-    meta.appendChild(timestamp);
+    meta.append(name,timestamp);
 
     const bubble=document.createElement("div");
     bubble.className="chat-bubble";
-    bubble.textContent=message.text;
 
-    wrapper.appendChild(meta);
-    wrapper.appendChild(bubble);
+    const parsed=parseChatText(message.text);
+
+    if(parsed.quoted) {
+      const quote=document.createElement("div");
+      quote.className="quoted-message";
+
+      const quoteAuthor=document.createElement("span");
+      quoteAuthor.className="quote-author";
+      quoteAuthor.textContent="↪ "+parsed.quoted;
+
+      quote.appendChild(quoteAuthor);
+      bubble.appendChild(quote);
+    }
+
+    const body=document.createElement("span");
+    body.textContent=parsed.content;
+    bubble.appendChild(body);
+
+    // Capture selections made with mouse,
+    // keyboard, or touch inside the bubble.
+    const rememberSelection=()=>{
+      getSelectedTextForMessage(
+        message.id,
+        bubble
+      );
+    };
+
+    bubble.addEventListener(
+      "mouseup",
+      rememberSelection
+    );
+
+    bubble.addEventListener(
+      "keyup",
+      rememberSelection
+    );
+
+    bubble.addEventListener(
+      "touchend",
+      rememberSelection
+    );
+
+    const actions=document.createElement("div");
+    actions.className="message-actions";
+
+    const reply=document.createElement("button");
+    reply.type="button";
+    reply.className="reply-button";
+    reply.textContent="↪ REPLY";
+
+    reply.addEventListener("click",()=>{
+      beginReply(message,bubble);
+    });
+
+    actions.appendChild(reply);
+
+    wrapper.append(meta,bubble,actions);
     windowEl.appendChild(wrapper);
   });
 
@@ -1871,12 +3274,17 @@ function renderChat(messages) {
   }
 }
 
+/* ======================================
+   SEND MESSAGE / REPLY
+   ====================================== */
+
 async function sendMessage() {
   if(sending) return;
 
   const input=$("chatInput");
   const feedback=$("chatFeedback");
-  const message=input.value.trim();
+
+  const plainMessage=input.value.trim();
 
   feedback.textContent="";
 
@@ -1895,11 +3303,24 @@ async function sendMessage() {
     return;
   }
 
-  if(!message) return;
+  if(!plainMessage) return;
+
+  let message=plainMessage;
+
+  if(replyDraft) {
+    const quoteHeader=
+      REPLY_MARKER+
+      replyDraft.name+": "+
+      replyDraft.quote;
+
+    message=
+      quoteHeader+"\n\n"+plainMessage;
+  }
 
   if(message.length>500) {
     feedback.textContent=
-      "MAXIMUM 500 CHARACTERS PER MESSAGE";
+      "MESSAGE TOO LONG. "+message.length+
+      "/500 CHARACTERS INCLUDING QUOTED TEXT.";
     return;
   }
 
@@ -1907,8 +3328,11 @@ async function sendMessage() {
   updateChatControls();
 
   try {
-    const newMessage=push(ref(db,"chat/messages"));
+    const newMessage=push(
+      ref(db,"chat/messages")
+    );
 
+    // Same four fields as existing Firebase rules.
     await set(newMessage,{
       uid:currentUser.uid,
       name:player,
@@ -1917,6 +3341,7 @@ async function sendMessage() {
     });
 
     input.value="";
+    clearReply();
     feedback.textContent="";
   }
   catch(error) {
@@ -1926,25 +3351,34 @@ async function sendMessage() {
   finally {
     sending=false;
     updateChatControls();
+
     if(player) input.focus();
   }
 }
 
 /* ======================================
-   EVENTS
+   CHAT AND SCORE EVENTS
    ====================================== */
 
-$("chatForm").addEventListener("submit",e=>{
-  e.preventDefault();
-  sendMessage();
-});
-
-$("chatInput").addEventListener("keydown",e=>{
-  if(e.key==="Enter"&&!e.shiftKey&&!e.isComposing) {
+$("chatForm").addEventListener(
+  "submit",e=>{
     e.preventDefault();
     sendMessage();
   }
-});
+);
+
+$("chatInput").addEventListener(
+  "keydown",e=>{
+    if(
+      e.key==="Enter" &&
+      !e.shiftKey &&
+      !e.isComposing
+    ) {
+      e.preventDefault();
+      sendMessage();
+    }
+  }
+);
 
 $("gameSelect").addEventListener(
   "change",fillScore
@@ -1964,7 +3398,7 @@ $("scoreInput").addEventListener(
 );
 
 /* ======================================
-   DAILY DATE UPDATE
+   DAILY DATE UPDATES
    ====================================== */
 
 function updateDay() {
@@ -1982,7 +3416,7 @@ function updateDay() {
 }
 
 /* ======================================
-   START
+   START WEBSITE
    ====================================== */
 
 renderCards();
@@ -1993,10 +3427,15 @@ updateChatControls();
 
 setInterval(updateDay,60000);
 
-document.addEventListener("visibilitychange",()=>{
-  if(!document.hidden) updateDay();
-});
+document.addEventListener(
+  "visibilitychange",()=>{
+    if(!document.hidden) {
+      updateDay();
+    }
+  }
+);
 
 </script>
+
 </body>
 </html>
