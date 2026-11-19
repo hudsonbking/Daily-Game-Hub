@@ -6,7 +6,6 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#061729">
 <title>Hudson vs Noah | Daily Game Hub</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
 
 <style>
@@ -17,11 +16,9 @@
   --white:#f5fdff;
   --pink:#ff4389;
   --yellow:#ffe76a;
-  --amber:#ffdf9c;
-  --amber-glow:#ffbf63;
 }
 
-* {box-sizing:border-box}
+* { box-sizing:border-box; }
 
 html {
   scroll-behavior:smooth;
@@ -42,7 +39,7 @@ a {color:inherit;text-decoration:none}
 [hidden] {display:none!important}
 
 /* ======================================
-   NAVIGATION
+   TOP NAVIGATION
    ====================================== */
 
 .topbar {
@@ -50,7 +47,7 @@ a {color:inherit;text-decoration:none}
   position:relative;
   z-index:12;
   background:#082239;
-  border-bottom:2px solid #b98550;
+  border-bottom:2px solid #286f70;
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -71,82 +68,237 @@ a {color:inherit;text-decoration:none}
   white-space:nowrap;
 }
 
-.nav-links a:hover {color:white}
+.nav-links a:hover {color:#fff}
 
 /* ======================================
-   WARM WHITE CHRISTMAS LIGHTS
+   CHRISTMAS GARLAND
    ====================================== */
 
-.holiday-lights {
+/* Garland hangs beneath the top navigation
+   without interfering with the buttons. */
+
+.christmas-garland {
   position:absolute;
   top:100%;
   left:0;
   right:0;
-  height:19px;
-  display:flex;
-  align-items:flex-start;
-  justify-content:space-around;
+  height:27px;
   pointer-events:none;
   z-index:13;
+  overflow:visible;
 }
 
-.holiday-light {
-  position:relative;
-  width:7px;
-  height:10px;
-  margin-top:4px;
-  background:#ffdf9c;
-  border:1px solid #eabf75;
+/* Dark green branch running across the top */
+
+.garland-branch {
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:5px;
+  background:repeating-linear-gradient(
+    90deg,
+    #174e39 0 14px,
+    #267048 14px 23px,
+    #113f31 23px 32px
+  );
+  border-bottom:2px solid #0a3329;
+}
+
+/* Each evergreen sprig is a cluster of pixels */
+
+.garland-sprig {
+  position:absolute;
+  top:2px;
+  width:24px;
+  height:19px;
+  transform:translateX(-50%);
+  image-rendering:pixelated;
+}
+
+.garland-sprig:before {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:#205f42;
+  clip-path:polygon(
+    42% 0,
+    58% 0,
+    58% 20%,
+    75% 20%,
+    75% 35%,
+    100% 35%,
+    100% 55%,
+    79% 55%,
+    79% 75%,
+    58% 75%,
+    58% 100%,
+    42% 100%,
+    42% 75%,
+    21% 75%,
+    21% 55%,
+    0 55%,
+    0 35%,
+    25% 35%,
+    25% 20%,
+    42% 20%
+  );
+}
+
+.garland-sprig:after {
+  content:"";
+  position:absolute;
+  top:3px;
+  left:5px;
+  width:14px;
+  height:12px;
+  background:#3b9562;
+  clip-path:polygon(
+    35% 0,
+    65% 0,
+    65% 25%,
+    100% 25%,
+    100% 50%,
+    65% 50%,
+    65% 100%,
+    35% 100%,
+    35% 50%,
+    0 50%,
+    0 25%,
+    35% 25%
+  );
+}
+
+/* Small pixel berries */
+
+.garland-berry {
+  position:absolute;
+  width:5px;
+  height:5px;
+  top:9px;
+  background:#dc5360;
   box-shadow:
-    0 0 4px #fff4d8,
-    0 0 9px #ffd48c,
-    0 0 17px rgba(255,188,96,.75);
-  animation:warm-twinkle 3.6s ease-in-out infinite;
-  animation-delay:var(--delay);
+    5px 2px #b6374d,
+    2px -4px #ff8b8c;
 }
 
-.holiday-light:before {
+/* Hanging pixel wreath */
+
+.pixel-wreath {
+  position:absolute;
+  top:11px;
+  left:50%;
+  width:54px;
+  height:54px;
+  transform:translateX(-50%);
+  image-rendering:pixelated;
+  filter:drop-shadow(2px 3px 0 #143b44);
+}
+
+.wreath-hanger {
+  position:absolute;
+  left:50%;
+  top:2px;
+  height:11px;
+  width:3px;
+  transform:translateX(-50%);
+  background:#b88d4b;
+}
+
+.wreath-ring {
+  position:absolute;
+  inset:7px 6px 4px;
+  background:#1d6844;
+  clip-path:polygon(
+    25% 0,75% 0,
+    75% 12%,88% 12%,
+    88% 25%,100% 25%,
+    100% 75%,88% 75%,
+    88% 88%,75% 88%,
+    75% 100%,25% 100%,
+    25% 88%,12% 88%,
+    12% 75%,0 75%,
+    0 25%,12% 25%,
+    12% 12%,25% 12%
+  );
+}
+
+.wreath-hole {
+  position:absolute;
+  left:18px;
+  top:19px;
+  width:18px;
+  height:17px;
+  background:#a9ebfa;
+  clip-path:polygon(
+    25% 0,75% 0,
+    75% 25%,100% 25%,
+    100% 75%,75% 75%,
+    75% 100%,25% 100%,
+    25% 75%,0 75%,
+    0 25%,25% 25%
+  );
+}
+
+.wreath-leaf {
+  position:absolute;
+  width:8px;
+  height:7px;
+  background:#4ba66c;
+}
+
+.wreath-leaf.a {left:10px;top:16px}
+.wreath-leaf.b {left:27px;top:11px}
+.wreath-leaf.c {left:35px;top:28px}
+.wreath-leaf.d {left:15px;top:37px}
+
+.wreath-berry {
+  position:absolute;
+  width:5px;
+  height:5px;
+  background:#ec5c6c;
+}
+
+.wreath-berry.a {left:14px;top:14px}
+.wreath-berry.b {left:36px;top:21px}
+.wreath-berry.c {left:28px;top:39px}
+
+/* Pixel red bow */
+
+.wreath-bow {
+  position:absolute;
+  left:18px;
+  top:0;
+  width:19px;
+  height:11px;
+}
+
+.wreath-bow:before {
   content:"";
   position:absolute;
-  width:7px;
-  height:4px;
-  top:-5px;
-  left:-1px;
-  background:#294439;
-  border:1px solid #162c2b;
+  inset:0;
+  background:#ed5068;
+  clip-path:polygon(
+    0 10%,35% 30%,50% 45%,
+    65% 30%,100% 10%,
+    100% 90%,65% 70%,
+    50% 55%,35% 70%,
+    0 90%
+  );
 }
 
-.holiday-light:after {
+.wreath-bow:after {
   content:"";
   position:absolute;
-  top:-7px;
-  left:3px;
-  width:2px;
-  height:3px;
-  background:#355046;
-}
-
-@keyframes warm-twinkle {
-  0%,100% {
-    opacity:1;
-    background:#fff2ce;
-    box-shadow:
-      0 0 5px #fff5dc,
-      0 0 12px #ffd18a,
-      0 0 22px rgba(255,188,96,.78);
-  }
-
-  50% {
-    opacity:.72;
-    background:#eac18d;
-    box-shadow:
-      0 0 3px #ffdfab,
-      0 0 7px rgba(255,188,96,.45);
-  }
+  top:3px;
+  left:7px;
+  width:5px;
+  height:5px;
+  background:#ff9a9e;
 }
 
 /* ======================================
-   HERO — ORIGINAL KRILLION LOOK
+   HERO / ORIGINAL KRILLION THEME
    ====================================== */
 
 .hero {
@@ -187,7 +339,6 @@ a {color:inherit;text-decoration:none}
     2px 2px 0 #ff4389,
     3px 3px 0 #ff4389,
     4px 4px 0 #ff4389;
-  filter:none;
 }
 
 .hero-title .letter {
@@ -197,15 +348,9 @@ a {color:inherit;text-decoration:none}
 }
 
 @keyframes title-ripple {
-  0%,27%,72%,100% {
-    transform:translateY(0);
-  }
-  48% {
-    transform:translateY(-4px);
-  }
-  61% {
-    transform:translateY(2px);
-  }
+  0%,27%,72%,100% {transform:translateY(0)}
+  48% {transform:translateY(-4px)}
+  61% {transform:translateY(2px)}
 }
 
 .hero-kicker {
@@ -223,17 +368,6 @@ a {color:inherit;text-decoration:none}
 .hero-subtitle strong {
   color:#007eab;
   font-weight:normal;
-}
-
-.winter-label {
-  display:inline-block;
-  background:#174b60;
-  color:#fff0c8;
-  border:2px solid #d5a96d;
-  padding:6px 10px;
-  margin-bottom:12px;
-  font:9px/1.7 'Press Start 2P';
-  box-shadow:3px 3px #164a57;
 }
 
 .dive-link {
@@ -256,7 +390,7 @@ a {color:inherit;text-decoration:none}
 .dive-link:hover {background:#153653}
 
 /* ======================================
-   UNDERWATER SECTION
+   OCEAN
    ====================================== */
 
 .ocean {
@@ -312,7 +446,7 @@ a {color:inherit;text-decoration:none}
 }
 
 /* ======================================
-   GAME CARDS
+   GAME GRID
    ====================================== */
 
 .games {
@@ -323,9 +457,8 @@ a {color:inherit;text-decoration:none}
 
 .game {
   --c:#31f0ff;
-  position:relative;
   min-height:225px;
-  padding:22px 12px 18px;
+  padding:27px 12px 18px;
   border:2px solid var(--c);
   background:#0c2945;
   box-shadow:4px 4px #010f20;
@@ -333,6 +466,8 @@ a {color:inherit;text-decoration:none}
   flex-direction:column;
   align-items:center;
   text-align:center;
+  position:relative;
+  isolation:isolate;
   transition:transform .15s,background .15s;
 }
 
@@ -341,39 +476,113 @@ a {color:inherit;text-decoration:none}
   background:#164461;
 }
 
-/* Pixelated snow on game cards */
+/* ======================================
+   THICK PIXEL SNOWCAPS
+   ====================================== */
 
-.game:before {
+.game-snow {
+  position:absolute;
+  top:-3px;
+  left:-3px;
+  right:-3px;
+  height:22px;
+  pointer-events:none;
+  z-index:3;
+}
+
+/* Uneven, chunky white snow with soft
+   light-blue underside */
+
+.snowcap {
+  position:absolute;
+  left:0;
+  right:0;
+  top:0;
+  height:13px;
+  background:#f7ffff;
+  clip-path:polygon(
+    0 0,
+    100% 0,
+    100% 70%,
+    94% 70%,
+    94% 95%,
+    87% 95%,
+    87% 60%,
+    76% 60%,
+    76% 100%,
+    69% 100%,
+    69% 72%,
+    56% 72%,
+    56% 85%,
+    45% 85%,
+    45% 68%,
+    35% 68%,
+    35% 100%,
+    28% 100%,
+    28% 68%,
+    17% 68%,
+    17% 90%,
+    9% 90%,
+    9% 70%,
+    0 70%
+  );
+}
+
+.snowcap:after {
   content:"";
   position:absolute;
-  top:-2px;
-  left:-2px;
-  right:-2px;
-  height:8px;
+  top:6px;
+  left:0;
+  right:0;
+  height:7px;
+  background:#cbeefa;
+  opacity:.7;
+  clip-path:polygon(
+    0 50%,100% 50%,100% 100%,0 100%
+  );
+}
+
+/* Individual icicles at staggered lengths */
+
+.icicle {
+  position:absolute;
+  top:9px;
+  width:5px;
   background:linear-gradient(
-    90deg,
-    #eefbff 0 17%,
-    transparent 17% 23%,
-    #ffffff 23% 58%,
-    transparent 58% 64%,
-    #eefbff 64% 100%
+    90deg,#e8faff 0 60%,#7bd0e7 60% 100%
   );
   clip-path:polygon(
     0 0,
     100% 0,
     100% 65%,
-    88% 65%,
-    88% 100%,
-    76% 100%,
-    76% 65%,
-    50% 65%,
-    50% 100%,
-    39% 100%,
-    39% 65%,
-    13% 65%,
-    13% 100%,
-    0 100%
+    65% 65%,
+    65% 100%,
+    35% 100%,
+    35% 65%,
+    0 65%
   );
+}
+
+.icicle.i1 {left:13%;height:14px}
+.icicle.i2 {left:32%;height:23px}
+.icicle.i3 {left:49%;height:10px}
+.icicle.i4 {left:73%;height:19px}
+.icicle.i5 {left:92%;height:12px}
+
+/* Small icy glints on the sides */
+
+.game:after {
+  content:"";
+  position:absolute;
+  right:7px;
+  top:36px;
+  width:4px;
+  height:4px;
+  background:#ebffff;
+  box-shadow:
+    -9px 12px #8ddcf0,
+    -3px 33px #d7f8ff;
+  opacity:.75;
   pointer-events:none;
 }
 
@@ -415,7 +624,7 @@ a {color:inherit;text-decoration:none}
   flex:1;
 }
 
-/* Original non-emoji PLAY triangles */
+/* PLAY button uses a CSS triangle */
 
 .game .play {
   display:inline-flex;
@@ -446,21 +655,19 @@ a {color:inherit;text-decoration:none}
   margin:65px 0 52px;
 }
 
-.holiday-divider {
-  color:#fbdc88;
-}
+.holiday-divider {color:#fbdc88}
 
 /* ======================================
    LEADERBOARD
    ====================================== */
 
 .score-shell {
-  position:relative;
   margin-top:25px;
   border:2px solid var(--cyan);
   background:#081f35;
   padding:25px;
   box-shadow:5px 5px #010c18;
+  position:relative;
 }
 
 .score-grid {
@@ -520,7 +727,9 @@ a {color:inherit;text-decoration:none}
   overflow-wrap:anywhere;
 }
 
-/* Authentication */
+/* ======================================
+   GOOGLE SIGN IN
+   ====================================== */
 
 .auth-box {
   background:#0b3452;
@@ -552,7 +761,9 @@ a {color:inherit;text-decoration:none}
   user-select:all;
 }
 
-/* Win counters */
+/* ======================================
+   GAME WINS
+   ====================================== */
 
 .wins {
   display:grid;
@@ -584,7 +795,9 @@ a {color:inherit;text-decoration:none}
   color:#c1e1f0;
 }
 
-/* Score table */
+/* ======================================
+   SCORE TABLE
+   ====================================== */
 
 .table-wrap {overflow-x:auto}
 
@@ -613,7 +826,9 @@ th:not(:first-child) {text-align:center}
 .won {color:var(--yellow)}
 .waiting {color:#85b4cc}
 
-/* Daily champion */
+/* ======================================
+   DAILY CHAMPION
+   ====================================== */
 
 .champ {
   text-align:center;
@@ -645,12 +860,12 @@ th:not(:first-child) {text-align:center}
    ====================================== */
 
 .chat-shell {
-  position:relative;
   margin-top:25px;
   border:2px solid #ff79a6;
   background:#081f35;
   padding:24px;
   box-shadow:5px 5px #010c18;
+  position:relative;
 }
 
 .chat-heading {color:#ff79a6}
@@ -702,9 +917,7 @@ th:not(:first-child) {text-align:center}
   align-self:flex-start;
 }
 
-.chat-message.mine {
-  align-self:flex-end;
-}
+.chat-message.mine {align-self:flex-end}
 
 .chat-meta {
   display:flex;
@@ -768,9 +981,7 @@ th:not(:first-child) {text-align:center}
   font-size:21px;
 }
 
-.chat-input:focus {
-  border-color:var(--cyan);
-}
+.chat-input:focus {border-color:var(--cyan)}
 
 .chat-send {
   flex-shrink:0;
@@ -796,7 +1007,7 @@ th:not(:first-child) {text-align:center}
   overflow-wrap:anywhere;
 }
 
-/* Subtle festive trim */
+/* Decorative pixel holiday trim */
 
 .score-shell:before,
 .chat-shell:before {
@@ -817,7 +1028,7 @@ th:not(:first-child) {text-align:center}
 }
 
 /* ======================================
-   PIXEL SNOW OVERLAY
+   FALLING PIXEL SNOW
    ====================================== */
 
 .snow-overlay {
@@ -825,12 +1036,14 @@ th:not(:first-child) {text-align:center}
   inset:0;
   width:100%;
   height:100%;
-  pointer-events:none;
   z-index:11;
+  pointer-events:none;
   image-rendering:pixelated;
 }
 
-/* FOOTER */
+/* ======================================
+   FOOTER
+   ====================================== */
 
 .footer {
   text-align:center;
@@ -872,7 +1085,7 @@ th:not(:first-child) {text-align:center}
 
 @media(max-width:420px) {
   .game {
-    padding:17px 8px;
+    padding:24px 8px 17px;
     min-height:220px;
   }
 
@@ -882,19 +1095,24 @@ th:not(:first-child) {text-align:center}
   .game p {font-size:18px}
   .game .play {font-size:9px;padding:10px}
   .hero-title {font-size:clamp(12px,4vw,16px)}
-  .winter-label {font-size:8px}
   .chat-window {height:350px;padding:12px}
   .chat-message {max-width:92%}
   .chat-send {padding:10px;font-size:9px}
   .chat-input {font-size:18px}
   .topbar {font-size:15px;padding:0 10px}
   .nav-links {gap:10px}
+
+  .pixel-wreath {
+    width:42px;
+    height:42px;
+    transform:translateX(-50%) scale(.8);
+    transform-origin:top center;
+  }
 }
 
 @media(prefers-reduced-motion:reduce) {
   .hero-title .letter {animation:none}
   .game {transition:none}
-  .holiday-light {animation:none}
   html {scroll-behavior:auto}
 }
 </style>
@@ -903,22 +1121,41 @@ th:not(:first-child) {text-align:center}
 <body>
 
 <!-- ======================================
-     NAVIGATION
+     NAVIGATION AND CHRISTMAS GARLAND
      ====================================== -->
 
 <nav class="topbar">
-  <div
-    class="holiday-lights"
-    id="holidayLights"
-    aria-hidden="true"
-  ></div>
-
   <a href="#top">H + N</a>
   <span id="topDate"></span>
 
   <div class="nav-links">
     <a href="#scores">SCORES ↓</a>
     <a href="#chat">CHAT ↓</a>
+  </div>
+
+  <div
+    class="christmas-garland"
+    id="christmasGarland"
+    aria-hidden="true"
+  >
+    <div class="garland-branch"></div>
+    <div class="wreath-hanger"></div>
+
+    <div class="pixel-wreath">
+      <div class="wreath-ring"></div>
+      <div class="wreath-hole"></div>
+
+      <span class="wreath-leaf a"></span>
+      <span class="wreath-leaf b"></span>
+      <span class="wreath-leaf c"></span>
+      <span class="wreath-leaf d"></span>
+
+      <span class="wreath-berry a"></span>
+      <span class="wreath-berry b"></span>
+      <span class="wreath-berry c"></span>
+
+      <div class="wreath-bow"></div>
+    </div>
   </div>
 </nav>
 
@@ -938,11 +1175,9 @@ th:not(:first-child) {text-align:center}
       HUDSON VS NOAH
     </h1>
 
-    <p class="hero-kicker">THE DAILY GAMES</p>
-
-    <div class="winter-label">
-      * WINTER EDITION *
-    </div>
+    <p class="hero-kicker">
+      THE DAILY GAMES
+    </p>
 
     <div class="hero-subtitle">
       9 games · 2 players · <strong>1 winner</strong>
@@ -958,11 +1193,13 @@ th:not(:first-child) {text-align:center}
 <div class="container">
 
 <!-- ======================================
-     GAME GRID
+     GAMES
      ====================================== -->
 
 <section id="games">
-  <div class="eyebrow">◈ CHOOSE YOUR GAME ◈</div>
+  <div class="eyebrow">
+    ◈ CHOOSE YOUR GAME ◈
+  </div>
 
   <h2 class="section-heading">
     TODAY'S LINEUP
@@ -984,7 +1221,9 @@ th:not(:first-child) {text-align:center}
      ====================================== -->
 
 <section id="scores">
-  <div class="eyebrow">✦ HIGH SCORES ✦</div>
+  <div class="eyebrow">
+    ✦ HIGH SCORES ✦
+  </div>
 
   <h2 class="section-heading">
     THE LEADERBOARD
@@ -998,7 +1237,9 @@ th:not(:first-child) {text-align:center}
     <div class="score-grid">
 
       <div>
-        <h3 class="panel-title">LOG A SCORE</h3>
+        <h3 class="panel-title">
+          LOG A SCORE
+        </h3>
 
         <div class="auth-box">
           <button id="loginBtn" class="auth-button">
@@ -1029,10 +1270,7 @@ th:not(:first-child) {text-align:center}
           GAME
         </label>
 
-        <select
-          id="gameSelect"
-          class="field"
-        ></select>
+        <select id="gameSelect" class="field"></select>
 
         <label
           for="scoreInput"
@@ -1055,11 +1293,7 @@ th:not(:first-child) {text-align:center}
           placeholder="Enter score"
         >
 
-        <button
-          id="saveBtn"
-          class="save"
-          disabled
-        >
+        <button id="saveBtn" class="save" disabled>
           ▼ SAVE SCORE ▼
         </button>
 
@@ -1221,7 +1455,8 @@ th:not(:first-child) {text-align:center}
   HUDSON KING × NOAH BONN · SEE YOU TOMORROW
 </footer>
 
-<!-- Snow overlay has no pointer events -->
+<!-- Snow does not block links or taps -->
+
 <canvas
   id="snowOverlay"
   class="snow-overlay"
@@ -1230,7 +1465,7 @@ th:not(:first-child) {text-align:center}
 
 <script>
 /* ======================================
-   ORIGINAL BOAT AND WAVE ANIMATION
+   ORIGINAL PIXEL OCEAN AND BOAT
    ====================================== */
 
 const canvas=document.getElementById("scene");
@@ -1252,7 +1487,6 @@ function resizeScene() {
 
   canvas.width=W;
   canvas.height=H;
-
   ctx.imageSmoothingEnabled=false;
 }
 
@@ -1298,7 +1532,7 @@ function drawBoat(t) {
   ctx.scale(.55,.55);
   ctx.translate(-30,-22);
 
-  // Original mast and pink flag
+  // Original mast and flag
   rect(35,-16,2,32,"#17374a");
   rect(37,-15,12,3,"#ff4389");
   rect(37,-12,9,3,"#e34e83");
@@ -1307,34 +1541,34 @@ function drawBoat(t) {
   rect(18,1,28,13,"#f0f8f5");
   rect(21,-4,22,5,"#d9f5f3");
 
-  // Original windows
+  // Windows
   rect(23,4,8,6,"#5bd5ec");
   rect(34,4,8,6,"#5bd5ec");
   rect(24,5,5,4,"#173c58");
   rect(35,5,5,4,"#173c58");
 
-  // Original roof
+  // Roof
   rect(16,0,32,2,"#123c56");
   rect(26,-8,3,4,"#d36e6d");
 
-  // Original rails
+  // Rails
   rect(6,12,49,2,"#e7eee9");
   rect(10,8,2,6,"#18394b");
   rect(52,8,2,6,"#18394b");
 
-  // Original hull
+  // Hull
   rect(4,14,53,7,"#173b50");
   rect(8,21,45,4,"#102d43");
   rect(13,25,35,2,"#092139");
 
-  // Original gold details
+  // Gold details
   rect(6,14,49,2,"#ffe28f");
   rect(16,19,5,2,"#e1c08b");
   rect(39,19,5,2,"#e1c08b");
 
   ctx.restore();
 
-  // Original foam beside boat
+  // Foam
   rect(cx-25,surface+1,8,1,"#e7ffff");
   rect(cx+18,surface+1,8,1,"#e7ffff");
 }
@@ -1345,15 +1579,15 @@ function drawScene(time) {
   ctx.fillStyle="#c7f4ff";
   ctx.fillRect(0,0,W,H);
 
-  // Original sky
+  // Sky
   rect(0,0,W,H*.54,"#a9ebfa");
 
-  // Original clouds
+  // Clouds
   cloud(W*.08,27,1.15);
   cloud(W*.75,20,1.65);
   cloud(W*.87,53,.55);
 
-  // Original moving horizon
+  // Horizon
   for(let x=0;x<W;x+=8) {
     const y=waveY(x,t);
 
@@ -1366,7 +1600,7 @@ function drawScene(time) {
     }
   }
 
-  // Original animated waves
+  // Moving water
   for(let x=0;x<W;x++) {
     const y=Math.round(waveY(x,t));
 
@@ -1375,13 +1609,13 @@ function drawScene(time) {
     rect(x,y+2,1,2,"#5be5f5");
   }
 
-  // Original underwater layers
+  // Underwater
   for(let x=0;x<W;x+=4) {
     const y=waveY(x,t);
     rect(x,y+12,4,H-y-12,"#082541");
   }
 
-  // Original moving reflections
+  // Reflections
   for(let j=0;j<11;j++) {
     const x=((j*47+t*(j%2?3:-4)+W*8)%W);
     const y=H*.85+(j%4)*7;
@@ -1389,7 +1623,6 @@ function drawScene(time) {
     rect(x,y,10+(j%3)*5,1,"#367d9c");
   }
 
-  // Boat remains anchored to moving wave height
   drawBoat(t);
 
   if(!reduceMotion.matches) {
@@ -1397,13 +1630,11 @@ function drawScene(time) {
   }
 }
 
-// Start original ocean animation
 requestAnimationFrame(drawScene);
 
-// Original title wave animation
+// Animated text
 const title=document.getElementById("waveTitle");
 const original=title.textContent.trim();
-
 title.textContent="";
 
 [...original].forEach((ch,i)=>{
@@ -1411,9 +1642,7 @@ title.textContent="";
 
   span.className="letter";
   span.style.setProperty("--i",i);
-
-  span.textContent=
-    ch===" "?"\u00a0":ch;
+  span.textContent=ch===" "?"\u00a0":ch;
 
   title.appendChild(span);
 });
@@ -1421,7 +1650,7 @@ title.textContent="";
 
 <script type="module">
 /* ======================================
-   FIREBASE
+   FIREBASE IMPORTS
    ====================================== */
 
 import {initializeApp} from
@@ -1446,6 +1675,10 @@ import {
 } from
 "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
 
+/* ======================================
+   FIREBASE CONFIG
+   ====================================== */
+
 const firebaseConfig={
   apiKey:"AIzaSyDqfUuUIWKZ76ds5obBF-aaFqaMwNscYh8",
   authDomain:"hudson-noah-game-hub.firebaseapp.com",
@@ -1462,7 +1695,7 @@ const playerUIDs={
 };
 
 /* ======================================
-   NINE DAILY GAMES
+   NINE GAMES
    ====================================== */
 
 const games=[
@@ -1477,9 +1710,7 @@ const games=[
     fallback:"K",
     label:"TOTAL POINTS",
     help:"Enter your final rarity points. Higher wins.",
-    min:0,
-    max:1000000000,
-    integer:false
+    min:0,max:1000000000,integer:false
   },
   {
     id:"maptap",
@@ -1492,9 +1723,7 @@ const games=[
     fallback:"M",
     label:"DAILY POINTS",
     help:"Enter your daily score out of 1,000. Higher wins.",
-    min:0,
-    max:1000,
-    integer:false
+    min:0,max:1000,integer:false
   },
   {
     id:"chainle",
@@ -1507,9 +1736,7 @@ const games=[
     fallback:"C",
     label:"POINTS OUT OF 5000",
     help:"Enter your final score from 0 to 5,000. Higher wins.",
-    min:0,
-    max:5000,
-    integer:true
+    min:0,max:5000,integer:true
   },
   {
     id:"globle",
@@ -1522,9 +1749,7 @@ const games=[
     fallback:"G",
     label:"COUNTRY GUESSES",
     help:"Enter your number of guesses. Fewer wins.",
-    min:1,
-    max:1000000,
-    integer:true
+    min:1,max:1000000,integer:true
   },
   {
     id:"farflung",
@@ -1537,9 +1762,7 @@ const games=[
     fallback:"F",
     label:"DISTANCE / POINTS",
     help:"Enter the final result using the same scoring units as the other player. Higher wins.",
-    min:0,
-    max:1000000000,
-    integer:false
+    min:0,max:1000000000,integer:false
   },
   {
     id:"kabloom",
@@ -1552,9 +1775,7 @@ const games=[
     fallback:"K",
     label:"QUESTIONS CLEARED",
     help:"Enter questions cleared from 0 to 7. Higher wins.",
-    min:0,
-    max:7,
-    integer:true
+    min:0,max:7,integer:true
   },
   {
     id:"magnitudle",
@@ -1567,9 +1788,7 @@ const games=[
     fallback:"S",
     label:"POINTS OUT OF 500",
     help:"Enter your total points out of 500. Higher wins.",
-    min:0,
-    max:500,
-    integer:false
+    min:0,max:500,integer:false
   },
   {
     id:"hooked",
@@ -1582,9 +1801,7 @@ const games=[
     fallback:"H",
     label:"TOTAL CATCH WEIGHT (LBS)",
     help:"Enter total catch weight in pounds. Higher wins.",
-    min:0,
-    max:1000000000,
-    integer:false
+    min:0,max:1000000000,integer:false
   },
   {
     id:"connections",
@@ -1597,14 +1814,12 @@ const games=[
     fallback:"C",
     label:"MISTAKES",
     help:"Enter 0 to 3 for a solve, or 4 if you failed. Fewer mistakes wins.",
-    min:0,
-    max:4,
-    integer:true
+    min:0,max:4,integer:true
   }
 ];
 
 /* ======================================
-   FIREBASE INITIALIZATION
+   INITIALIZATION
    ====================================== */
 
 const app=initializeApp(firebaseConfig);
@@ -1628,7 +1843,7 @@ let chatReady=false;
 let sending=false;
 
 /* ======================================
-   DATE FUNCTIONS
+   EASTERN DATES
    ====================================== */
 
 function getDay() {
@@ -1659,9 +1874,7 @@ function displayDate() {
 }
 
 function messageTime(timestamp) {
-  if(typeof timestamp!=="number") {
-    return "SENDING...";
-  }
+  if(typeof timestamp!=="number") return "SENDING...";
 
   return new Intl.DateTimeFormat(
     "en-US",{
@@ -1675,7 +1888,7 @@ function messageTime(timestamp) {
 }
 
 /* ======================================
-   GAME CARDS
+   GAME CARDS WITH SNOW AND ICICLES
    ====================================== */
 
 function renderCards() {
@@ -1687,6 +1900,15 @@ function renderCards() {
       rel="noopener noreferrer"
       style="--c:${g.color}"
     >
+      <div class="game-snow" aria-hidden="true">
+        <span class="snowcap"></span>
+        <span class="icicle i1"></span>
+        <span class="icicle i2"></span>
+        <span class="icicle i3"></span>
+        <span class="icicle i4"></span>
+        <span class="icicle i5"></span>
+      </div>
+
       <div class="game-image">
         <img
           src="https://www.google.com/s2/favicons?domain=${g.domain}&sz=128"
@@ -1694,20 +1916,15 @@ function renderCards() {
           loading="lazy"
           onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
         >
-
-        <span class="fallback">
-          ${g.fallback}
-        </span>
+        <span class="fallback">${g.fallback}</span>
       </div>
 
       <h3>${g.name}</h3>
       <p>${g.description}</p>
 
       <span class="play">
-        <span
-          class="play-triangle"
-          aria-hidden="true"
-        ></span>
+        <span class="play-triangle"
+              aria-hidden="true"></span>
         PLAY
       </span>
     </a>
@@ -1855,7 +2072,6 @@ function subscribeScores() {
 
   unsubscribeScores=onValue(
     databaseRef,
-
     snapshot=>{
       const data=snapshot.val()||{};
       const updated={};
@@ -1884,7 +2100,6 @@ function subscribeScores() {
       $("syncStatus").textContent=
         "● LIVE SCORES CONNECTED";
     },
-
     error=>{
       synced=false;
       updateSaveButton();
@@ -1919,14 +2134,12 @@ async function saveScore() {
   }
 
   if(!synced) {
-    feedback.textContent=
-      "WAIT FOR LIVE CONNECTION";
+    feedback.textContent="WAIT FOR LIVE CONNECTION";
     return;
   }
 
   if(!g) {
-    feedback.textContent=
-      "SELECT A GAME FIRST";
+    feedback.textContent="SELECT A GAME FIRST";
     return;
   }
 
@@ -1946,7 +2159,6 @@ async function saveScore() {
 
   saving=true;
   updateSaveButton();
-
   $("saveBtn").textContent="SAVING...";
 
   try {
@@ -1990,13 +2202,8 @@ function winnerOf(g) {
   const h=entry.Hudson;
   const n=entry.Noah;
 
-  if(h===undefined||n===undefined) {
-    return null;
-  }
-
-  if(h===n) {
-    return "TIE";
-  }
+  if(h===undefined||n===undefined) return null;
+  if(h===n) return "TIE";
 
   return (
     g.direction==="higher"
@@ -2107,7 +2314,6 @@ function startChat() {
 
   unsubscribeChat=onValue(
     ref(db,"chat/messages"),
-
     snapshot=>{
       const data=snapshot.val()||{};
 
@@ -2134,7 +2340,6 @@ function startChat() {
       $("chatStatus").textContent=
         "LIVE CONNECTION • CHAT HISTORY SAVED";
     },
-
     error=>{
       chatReady=false;
       updateChatControls();
@@ -2160,7 +2365,6 @@ function renderChat(messages) {
 
   if(messages.length===0) {
     const empty=document.createElement("div");
-
     empty.className="chat-empty";
     empty.textContent=
       "NO MESSAGES YET. START THE CONVERSATION!";
@@ -2193,8 +2397,6 @@ function renderChat(messages) {
 
     const bubble=document.createElement("div");
     bubble.className="chat-bubble";
-
-    // Use textContent to safely display messages
     bubble.textContent=message.text;
 
     wrapper.appendChild(meta);
@@ -2262,13 +2464,12 @@ async function sendMessage() {
   finally {
     sending=false;
     updateChatControls();
-
     if(player) input.focus();
   }
 }
 
 /* ======================================
-   EVENT LISTENERS
+   EVENTS
    ====================================== */
 
 $("chatForm").addEventListener("submit",e=>{
@@ -2284,13 +2485,11 @@ $("chatInput").addEventListener("keydown",e=>{
 });
 
 $("gameSelect").addEventListener(
-  "change",
-  fillScore
+  "change",fillScore
 );
 
 $("saveBtn").addEventListener(
-  "click",
-  saveScore
+  "click",saveScore
 );
 
 $("scoreInput").addEventListener(
@@ -2315,14 +2514,13 @@ function updateDay() {
   if(today!==day) {
     day=today;
     scores={};
-
     renderScores();
     subscribeScores();
   }
 }
 
 /* ======================================
-   START FIREBASE & GAME HUB
+   START
    ====================================== */
 
 renderCards();
@@ -2341,28 +2539,57 @@ document.addEventListener("visibilitychange",()=>{
 
 <script>
 /* ======================================
-   WARM AMBER-WHITE LIGHTS + PIXEL SNOW
+   CHRISTMAS GARLAND AND FALLING SNOW
    ====================================== */
 
 (function () {
-  const lights=document.getElementById("holidayLights");
 
-  // Create warm white lights across navigation.
-  // No red, green, or blue bulbs.
-  for(let i=0;i<26;i++) {
-    const bulb=document.createElement("span");
+  /* ------------------------------------
+     Pixel evergreen garland
+     ------------------------------------ */
 
-    bulb.className="holiday-light";
-    bulb.style.setProperty(
-      "--delay",
-      (i%7)*-.42+"s"
-    );
+  const garland=document.getElementById(
+    "christmasGarland"
+  );
 
-    lights.appendChild(bulb);
+  // Repeat evergreen branches across
+  // the entire width of the navigation.
+
+  const sprigCount=36;
+
+  for(let i=0;i<sprigCount;i++) {
+    const sprig=document.createElement("span");
+
+    sprig.className="garland-sprig";
+    sprig.style.left=
+      ((i+.5)/sprigCount*100)+"%";
+
+    sprig.style.top=
+      (i%3===0?1:i%3===1?3:0)+"px";
+
+    garland.appendChild(sprig);
   }
 
-  // Separate snowfall canvas.
-  // Original ocean canvas remains untouched.
+  // Scatter little red berry clusters.
+  // They remain pixelated, not emojis.
+
+  for(let i=0;i<14;i++) {
+    const berry=document.createElement("span");
+
+    berry.className="garland-berry";
+    berry.style.left=
+      ((i+.6)/14*100)+"%";
+
+    berry.style.top=
+      (i%2===0?8:12)+"px";
+
+    garland.appendChild(berry);
+  }
+
+  /* ------------------------------------
+     Snowfall animation
+     ------------------------------------ */
+
   const snow=document.getElementById("snowOverlay");
   const snowCtx=snow.getContext("2d");
 
